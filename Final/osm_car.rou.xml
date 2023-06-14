@@ -59,7 +59,7 @@
         <personTrip from="-105914659#1" to="186037699#0" lines="ANY" vTypes="car"/>
     </person>
      <person id="Emma" depart="8.00">
-        <personTrip from="-387296028#2" to="-105914659#1" lines="ANY" modes="bic"/>
+        <personTrip from="-387296028#2" to="-105914659#1" lines="ANY" vTypes="bic"/>
         <stop duration="549"  actType="singing"/>
         <personTrip from="-105914659#1" to="-387296028#2" lines="ANY" modes="public"/>
     </person>
@@ -146,16 +146,16 @@
         <personTrip from="-30010690#2" to="176129773" lines="ANY" vTypes="bic"/>
     </person>
      <person id="Stefan" depart="21.00">
-        <personTrip from="-36779459#1" to="87687105" lines="ANY" modes="car"/>
+        <personTrip from="-36779459#1" to="87687105" lines="ANY" vTypes="car"/>
         <stop duration="592"  actType="singing"/>
-        <personTrip from="87687105" to="-36779459#1" lines="ANY" modes="car"/>
+        <personTrip from="87687105" to="-36779459#1" lines="ANY" vTypes="car"/>
     </person>
      <person id="Maria" depart="22.00">
         <personTrip from="-44459773#1" to="87687105" lines="ANY" vTypes="bic"/>
         <stop duration="592"  actType="singing"/>
         <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
         <stop duration="95"  actType="singing"/>
-        <personTrip from="4807780#2" to="-44459773#1" lines="ANY" modes="bic"/>
+        <personTrip from="4807780#2" to="-44459773#1" lines="ANY" vTypes="bic"/>
     </person>
      <person id="Giorgio" depart="23.00">
        <personTrip from="-436153519" to="87687105" lines="ANY" vTypes="bic"/>

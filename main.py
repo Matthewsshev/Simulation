@@ -167,6 +167,7 @@ with open("data_person.xml", "w") as file: # Writng information that we`ve saved
     file.write(formatted_xml)
 p1=Human('V',["-692537992","-105914659#1"],"-105914659#1",'1','public','car','0') #trying to make a trip dynamic directly in traci using Class
 p1.go_to_work() #using function
+k=0 #creating a variable, that`ll help to check a depart time
 while traci.simulation.getMinExpectedNumber() > 0: #making a step in simulation while there`re still some trips
     traci.simulationStep() #making one step
     for person in persons: # creating a loop to retrieve a information about persons
@@ -250,4 +251,5 @@ while traci.simulation.getMinExpectedNumber() > 0: #making a step in simulation 
     formatted_xml = dom.toprettyxml(indent="  ")  # Save the formatted XML to a file
     with open("data_vehicles.xml", "w") as file:# Writng information that we`ve saved to the xml file
         file.write(formatted_xml)
+    k+=1
 traci.close() #closing a simulation
