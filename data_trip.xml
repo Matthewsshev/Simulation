@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<Trips>
+  <Person>
+    <DateTime>2023-06-14 12:44:15</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3544.824175191614, 4555.289335787085]</Coord>
+    <GPSCoord>[9.303275719714158, 48.75723673098367]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>75.84</TurnAngle>
+  </Person>
+</Trips>

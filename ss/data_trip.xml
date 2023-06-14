@@ -1,0 +1,2763 @@
+<?xml version="1.0" ?>
+<Trips>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3544.824175191614, 4555.289335787085]</Coord>
+    <GPSCoord>[9.303275719714158, 48.75723673098367]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>75.84</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3546.604141724189, 4555.572725195561]</Coord>
+    <GPSCoord>[9.30329995283108, 48.75723921658516]</GPSCoord>
+    <Speed>6.44</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>79.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2893.867256394345, 1737.490598056077]</Coord>
+    <GPSCoord>[9.294270930330628, 48.73191106708892]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>46.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3550.482080055013, 4556.167451696116]</Coord>
+    <GPSCoord>[9.303352747284798, 48.75724442779781]</GPSCoord>
+    <Speed>14.02</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>81.21</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2896.1213191338325, 1739.6675988215648]</Coord>
+    <GPSCoord>[9.29430169745055, 48.73193057292652]</GPSCoord>
+    <Speed>11.26</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>46.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2727.5290304048503, 2895.495670057383]</Coord>
+    <GPSCoord>[9.292069251865168, 48.74233413294611]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3555.82962338141, 4556.537666234098]</Coord>
+    <GPSCoord>[9.30342552466028, 48.75724756666311]</GPSCoord>
+    <Speed>19.16</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>86.04</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2899.3481247635596, 1742.7840863101044]</Coord>
+    <GPSCoord>[9.294345742191368, 48.73195849651218]</GPSCoord>
+    <Speed>16.12</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>46.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2729.2645425005803, 2895.7984647913995]</Coord>
+    <GPSCoord>[9.292092873625407, 48.74233679702664]</GPSCoord>
+    <Speed>6.35</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Max</Name>
+    <Coord>[2727.5290304048503, 2895.495670057383]</Coord>
+    <GPSCoord>[9.292069251865168, 48.74233413294611]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>90.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3562.636276104858, 4556.846171157378]</Coord>
+    <GPSCoord>[9.30351815097477, 48.75725009806819]</GPSCoord>
+    <Speed>24.36</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>87.89</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2904.3120823571708, 1747.5783359517975]</Coord>
+    <GPSCoord>[9.294413498529373, 48.73200145273682]</GPSCoord>
+    <Speed>24.8</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>46.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2733.4376087749997, 2896.5265395168394]</Coord>
+    <GPSCoord>[9.292149672531517, 48.742343202830554]</GPSCoord>
+    <Speed>15.27</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Max</Name>
+    <Coord>[2727.5290304048503, 2895.495670057383]</Coord>
+    <GPSCoord>[9.292069251865168, 48.74233413294611]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>90.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4002.4962105783707, 1670.3323795593703]</Coord>
+    <GPSCoord>[9.309343365454515, 48.731267431437665]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-42326224#0</Edge>
+    <Lane>-42326224#0_0</Lane>
+    <TurnAngle>132.59</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3571.307687318286, 4557.019719069862]</Coord>
+    <GPSCoord>[9.303636141415831, 48.75725134849995]</GPSCoord>
+    <Speed>31.0</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>88.85</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2909.0431383772843, 1752.1622738662752]</Coord>
+    <GPSCoord>[9.294478076715741, 48.73204252506798]</GPSCoord>
+    <Speed>23.67</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>45.73</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2739.535825008896, 2897.590495087683]</Coord>
+    <GPSCoord>[9.292232674357026, 48.74235256375715]</GPSCoord>
+    <Speed>22.31</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Max</Name>
+    <Coord>[2727.5290304048503, 2895.495670057383]</Coord>
+    <GPSCoord>[9.292069251865168, 48.74233413294611]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4003.314337004985, 1669.5803792022623]</Coord>
+    <GPSCoord>[9.309354449433027, 48.73126063664528]</GPSCoord>
+    <Speed>4.0</Speed>
+    <Edge>:1336463151_w0</Edge>
+    <Lane>:1336463151_w0_0</Lane>
+    <TurnAngle>132.59</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4582.851682166302, 2188.9540153172866]</Coord>
+    <GPSCoord>[9.317264811400713, 48.73591144097959]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3579.4510387124005, 4557.338717659352]</Coord>
+    <GPSCoord>[9.303746955102023, 48.75725392620281]</GPSCoord>
+    <Speed>29.13</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>87.27</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2913.88251720739, 1756.8798153643033]</Coord>
+    <GPSCoord>[9.294544135106037, 48.73208479548399]</GPSCoord>
+    <Speed>24.29</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>45.73</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2748.0281406083313, 2899.0721490902342]</Coord>
+    <GPSCoord>[9.29234826192904, 48.742365599591174]</GPSCoord>
+    <Speed>31.07</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Max</Name>
+    <Coord>[2728.9262980624635, 2895.7394512962337]</Coord>
+    <GPSCoord>[9.29208826983764, 48.74233627780828]</GPSCoord>
+    <Speed>5.11</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4003.6431646197266, 1668.8213782193518]</Coord>
+    <GPSCoord>[9.309358879182291, 48.73125379673845]</GPSCoord>
+    <Speed>3.87</Speed>
+    <Edge>:1336463151_w0</Edge>
+    <Lane>:1336463151_w0_0</Lane>
+    <TurnAngle>137.01</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4583.273875625547, 2190.3243301771104]</Coord>
+    <GPSCoord>[9.317270630790823, 48.73592375237622]</GPSCoord>
+    <Speed>5.16</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:29</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5258.853320025763, 2204.0890052606574]</Coord>
+    <GPSCoord>[9.32645928902337, 48.73602191481274]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-31646611#1</Edge>
+    <Lane>-31646611#1_0</Lane>
+    <TurnAngle>40.96</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3587.787379003576, 4557.736534468119]</Coord>
+    <GPSCoord>[9.303860398833942, 48.75725720591446]</GPSCoord>
+    <Speed>29.83</Speed>
+    <Edge>26734306#2</Edge>
+    <Lane>26734306#2_1</Lane>
+    <TurnAngle>87.27</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2918.6722356418704, 1761.4432791334614]</Coord>
+    <GPSCoord>[9.294609510178347, 48.73212568151764]</GPSCoord>
+    <Speed>23.78</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>47.7</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2757.9127429897294, 2900.7967153184377]</Coord>
+    <GPSCoord>[9.292482799772133, 48.74238077246049]</GPSCoord>
+    <Speed>36.16</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2731.798780702829, 2896.240613240997]</Coord>
+    <GPSCoord>[9.292127366715409, 48.742340687174995]</GPSCoord>
+    <Speed>10.51</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4004.631579798408, 1668.2991847057062]</Coord>
+    <GPSCoord>[9.309372291548367, 48.73124906304834]</GPSCoord>
+    <Speed>4.0</Speed>
+    <Edge>:1336463151_w0</Edge>
+    <Lane>:1336463151_w0_0</Lane>
+    <TurnAngle>117.85</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4584.461483535512, 2194.1789535281737]</Coord>
+    <GPSCoord>[9.317287000443262, 48.735958383683176]</GPSCoord>
+    <Speed>14.52</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5259.227048286642, 2203.756233242373]</Coord>
+    <GPSCoord>[9.326464352339684, 48.73601890683468]</GPSCoord>
+    <Speed>3.8</Speed>
+    <Edge>:5385120551_w0</Edge>
+    <Lane>:5385120551_w0_0</Lane>
+    <TurnAngle>346.42</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5168.350873330412, 3111.1063511798216]</Coord>
+    <GPSCoord>[9.325281101387768, 48.74418481348152]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>138.92</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3595.6034563955113, 4557.86574732381]</Coord>
+    <GPSCoord>[9.303966749434613, 48.757258087858396]</GPSCoord>
+    <Speed>28.27</Speed>
+    <Edge>34424783#1</Edge>
+    <Lane>34424783#1_1</Lane>
+    <TurnAngle>89.47</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2922.0100906442094, 1764.4303519741247]</Coord>
+    <GPSCoord>[9.294655058615986, 48.73215243691896]</GPSCoord>
+    <Speed>16.1</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>48.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2770.1736252679025, 2903.177744596819]</Coord>
+    <GPSCoord>[9.292649693549153, 48.742401768573295]</GPSCoord>
+    <Speed>45.04</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>77.37</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2736.4780207634317, 2897.057000089026]</Coord>
+    <GPSCoord>[9.292191055078867, 48.74234786995254]</GPSCoord>
+    <Speed>17.12</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4005.6583833225736, 1667.8963257424905]</Coord>
+    <GPSCoord>[9.309386232530757, 48.73124540147753]</GPSCoord>
+    <Speed>3.97</Speed>
+    <Edge>:1336463151_w0</Edge>
+    <Lane>:1336463151_w0_0</Lane>
+    <TurnAngle>111.42</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4586.2889358812, 2200.1103223120413]</Coord>
+    <GPSCoord>[9.317312189575045, 48.736011673204594]</GPSCoord>
+    <Speed>22.34</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5259.470857749702, 2204.97418782651]</Coord>
+    <GPSCoord>[9.32646773909074, 48.736029854019264]</GPSCoord>
+    <Speed>4.06</Speed>
+    <Edge>:5385120551_w0</Edge>
+    <Lane>:5385120551_w0_0</Lane>
+    <TurnAngle>11.32</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5170.056767581758, 3109.1495901268067]</Coord>
+    <GPSCoord>[9.325304191682239, 48.74416714520892]</GPSCoord>
+    <Speed>9.35</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>138.92</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3461.4210305240035, 4520.030960103155]</Coord>
+    <GPSCoord>[9.302139055602858, 48.756922531748955]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>176.98</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3603.3065751910744, 4557.878101965021]</Coord>
+    <GPSCoord>[9.30407155680748, 48.75725792251785]</GPSCoord>
+    <Speed>28.02</Speed>
+    <Edge>34424783#1</Edge>
+    <Lane>34424783#1_1</Lane>
+    <TurnAngle>89.91</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2926.3032525538015, 1768.2723365216036]</Coord>
+    <GPSCoord>[9.294713643262263, 48.73218684979197]</GPSCoord>
+    <Speed>20.7</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>48.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2783.0408791910854, 2906.728372649745]</Coord>
+    <GPSCoord>[9.292824896306538, 48.74243326508339]</GPSCoord>
+    <Speed>48.1</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2743.313961098478, 2898.249666357729]</Coord>
+    <GPSCoord>[9.292284097965824, 48.74235836326803]</GPSCoord>
+    <Speed>25.01</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4006.6342480355856, 1667.513452254749]</Coord>
+    <GPSCoord>[9.309399481911509, 48.731241921552424]</GPSCoord>
+    <Speed>3.77</Speed>
+    <Edge>:1336463151_w0</Edge>
+    <Lane>:1336463151_w0_0</Lane>
+    <TurnAngle>111.42</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4588.710964896654, 2207.9715107746483]</Coord>
+    <GPSCoord>[9.31734557428072, 48.73608230090122]</GPSCoord>
+    <Speed>29.61</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5259.338482800476, 2206.020378523368]</Coord>
+    <GPSCoord>[9.326465999732632, 48.736039270530114]</GPSCoord>
+    <Speed>3.77</Speed>
+    <Edge>:5385120551_w0</Edge>
+    <Lane>:5385120551_w0_0</Lane>
+    <TurnAngle>352.79</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5173.204981523338, 3105.53840354676]</Coord>
+    <GPSCoord>[9.325346804590069, 48.744134538543584]</GPSCoord>
+    <Speed>17.25</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>138.92</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3461.5030306166614, 4518.4788154921325]</Coord>
+    <GPSCoord>[9.30214008753219, 48.75690856592899]</GPSCoord>
+    <Speed>5.6</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>176.98</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3715.025327104175, 4396.988259809252]</Coord>
+    <GPSCoord>[9.305582795248364, 48.755806557838426]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>12099342#1</Edge>
+    <Lane>12099342#1_0</Lane>
+    <TurnAngle>287.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3610.737122275667, 4558.108850153512]</Coord>
+    <GPSCoord>[9.304172667498397, 48.757259731510196]</GPSCoord>
+    <Speed>27.04</Speed>
+    <Edge>34424783#1</Edge>
+    <Lane>34424783#1_1</Lane>
+    <TurnAngle>87.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2931.594639821337, 1772.7402082453632]</Coord>
+    <GPSCoord>[9.294785835774437, 48.73222685833778]</GPSCoord>
+    <Speed>24.89</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>49.92</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2794.945216002514, 2910.013290510733]</Coord>
+    <GPSCoord>[9.292986988011798, 48.74246240432378]</GPSCoord>
+    <Speed>44.5</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2751.743065659172, 2899.720291932585]</Coord>
+    <GPSCoord>[9.292398825208291, 48.74237130202134]</GPSCoord>
+    <Speed>30.83</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4006.6450274493236, 1667.5519590062177]</Coord>
+    <GPSCoord>[9.309399630623135, 48.73124226756199]</GPSCoord>
+    <Speed>4.06</Speed>
+    <Edge>:1336463151_w0</Edge>
+    <Lane>:1336463151_w0_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4590.967682192264, 2215.29614638158]</Coord>
+    <GPSCoord>[9.317376680451227, 48.7361481080076]</GPSCoord>
+    <Speed>27.59</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5258.856147190735, 2206.6111535010623]</Coord>
+    <GPSCoord>[9.326459474383322, 48.73604460365753]</GPSCoord>
+    <Speed>4.22</Speed>
+    <Edge>:5385120551_w0</Edge>
+    <Lane>:5385120551_w0_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5177.349283094786, 3100.5662157923516]</Coord>
+    <GPSCoord>[9.32540288735406, 48.744089650211336]</GPSCoord>
+    <Speed>23.31</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>140.41</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3461.5870936930805, 4516.88762154563]</Coord>
+    <GPSCoord>[9.302141145422544, 48.756894248752545]</GPSCoord>
+    <Speed>5.74</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>176.98</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3713.9437275558894, 4397.708467504474]</Coord>
+    <GPSCoord>[9.305568118995803, 48.75581307575297]</GPSCoord>
+    <Speed>4.49</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>287.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4413.679303991811, 2880.148587512794]</Coord>
+    <GPSCoord>[9.315002921259449, 48.74213566259282]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3618.5367912472743, 4558.399028218755]</Coord>
+    <GPSCoord>[9.3042788036051, 48.757262061777496]</GPSCoord>
+    <Speed>28.34</Speed>
+    <Edge>:cluster_6450776823_9450029129_9</Edge>
+    <Lane>:cluster_6450776823_9450029129_9_0</Lane>
+    <TurnAngle>87.85</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2936.382077982149, 1776.7692086761535]</Coord>
+    <GPSCoord>[9.294851152103702, 48.73226293632399]</GPSCoord>
+    <Speed>22.49</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>49.92</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2806.9558086539223, 2913.327528922048]</Coord>
+    <GPSCoord>[9.293150526705663, 48.74249180342389]</GPSCoord>
+    <Speed>44.9</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2762.3913455438587, 2901.5780969478024]</Coord>
+    <GPSCoord>[9.292543757387397, 48.74238764706573]</GPSCoord>
+    <Speed>38.95</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>80.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4007.2517462276924, 1668.5173756083607]</Coord>
+    <GPSCoord>[9.30940793451058, 48.73125093020626]</GPSCoord>
+    <Speed>4.1</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4593.1877871482875, 2222.5019491835715]</Coord>
+    <GPSCoord>[9.317407282043673, 48.73621284746912]</GPSCoord>
+    <Speed>27.14</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5258.003447640797, 2207.4562682523233]</Coord>
+    <GPSCoord>[9.326447926898902, 48.73605223906512]</GPSCoord>
+    <Speed>4.32</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5181.7610348336275, 3095.2310741546826]</Coord>
+    <GPSCoord>[9.32546258683385, 48.74404148649046]</GPSCoord>
+    <Speed>24.93</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>140.41</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3461.657092483621, 4515.562644438969]</Coord>
+    <GPSCoord>[9.302142026320688, 48.75688232693049]</GPSCoord>
+    <Speed>4.78</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>176.98</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3712.9067267319656, 4398.0830203784935]</Coord>
+    <GPSCoord>[9.305554030663496, 48.75581648259058]</GPSCoord>
+    <Speed>4.38</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4414.592543995883, 2880.1263316126337]</Coord>
+    <GPSCoord>[9.315015341581804, 48.74213542842608]</GPSCoord>
+    <Speed>3.29</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3626.1083866854815, 4558.740988522743]</Coord>
+    <GPSCoord>[9.30438183942393, 48.757264865969184]</GPSCoord>
+    <Speed>27.25</Speed>
+    <Edge>34424783#2</Edge>
+    <Lane>34424783#2_1</Lane>
+    <TurnAngle>87.34</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2940.1303998707626, 1779.923712190702]</Coord>
+    <GPSCoord>[9.294902291550434, 48.732291183535885]</GPSCoord>
+    <Speed>17.61</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>49.92</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2818.638377787156, 2916.5512515548908]</Coord>
+    <GPSCoord>[9.293309599146093, 48.74252039937656]</GPSCoord>
+    <Speed>43.67</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2774.37821643391, 2904.3379719020577]</Coord>
+    <GPSCoord>[9.292706943966534, 48.742412060615926]</GPSCoord>
+    <Speed>44.38</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4007.842315331094, 1669.5346441900758]</Coord>
+    <GPSCoord>[9.309416021647996, 48.73126005989519]</GPSCoord>
+    <Speed>4.23</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4595.588009365196, 2230.292359240124]</Coord>
+    <GPSCoord>[9.317440366434145, 48.73628283923724]</GPSCoord>
+    <Speed>29.35</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5257.157704450357, 2208.2403869389364]</Coord>
+    <GPSCoord>[9.326436470464802, 48.73605932549]</GPSCoord>
+    <Speed>4.15</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5186.22745846241, 3089.9849522579893]</Coord>
+    <GPSCoord>[9.325523035026148, 48.74399412144809]</GPSCoord>
+    <Speed>24.81</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.54</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3461.8224855608396, 4513.93363260509]</Coord>
+    <GPSCoord>[9.302144188716943, 48.756867666648]</GPSCoord>
+    <Speed>5.63</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.06</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3711.846544371939, 4398.549452096249]</Coord>
+    <GPSCoord>[9.305539631948479, 48.7558207167929]</GPSCoord>
+    <Speed>4.17</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4416.626444393799, 2880.076764922617]</Coord>
+    <GPSCoord>[9.31504300320204, 48.742134906902464]</GPSCoord>
+    <Speed>7.33</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Noah</Name>
+    <Coord>[994.3917729510689, 2513.350673988783]</Coord>
+    <GPSCoord>[9.26847723045647, 48.73895372174477]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>352.6</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3629.5211314264434, 4558.899271932674]</Coord>
+    <GPSCoord>[9.304428280981432, 48.75726616722]</GPSCoord>
+    <Speed>12.28</Speed>
+    <Edge>34424783#2</Edge>
+    <Lane>34424783#2_1</Lane>
+    <TurnAngle>87.34</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2943.4254975403587, 1782.5599586348371]</Coord>
+    <GPSCoord>[9.29494724037447, 48.73231478430328]</GPSCoord>
+    <Speed>15.17</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>52.44</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2831.290546739163, 2920.0425284255844]</Coord>
+    <GPSCoord>[9.293481874074258, 48.742551368414325]</GPSCoord>
+    <Speed>47.3</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2786.4356650982263, 2907.66513989997]</Coord>
+    <GPSCoord>[9.292871120335576, 48.74244157480795]</GPSCoord>
+    <Speed>45.07</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4008.4034448818984, 1670.5012024793891]</Coord>
+    <GPSCoord>[9.309423705648676, 48.73126873447347]</GPSCoord>
+    <Speed>4.02</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4597.904731582047, 2237.811753040105]</Coord>
+    <GPSCoord>[9.317472299957622, 48.73635039609056]</GPSCoord>
+    <Speed>28.32</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5256.375146309967, 2208.965924511309]</Coord>
+    <GPSCoord>[9.326425869932283, 48.73606588249062]</GPSCoord>
+    <Speed>3.84</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5190.475506210397, 3085.004038015118]</Coord>
+    <GPSCoord>[9.325580528138877, 48.74394915054036]</GPSCoord>
+    <Speed>23.57</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.54</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3462.02524045451, 4512.6449362470175]</Coord>
+    <GPSCoord>[9.302146877803402, 48.75685606646734]</GPSCoord>
+    <Speed>4.7</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.06</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3710.673980155452, 4399.0653266875415]</Coord>
+    <GPSCoord>[9.30552370693253, 48.755825399828645]</GPSCoord>
+    <Speed>4.61</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4419.475104416128, 2880.0073423253084]</Coord>
+    <GPSCoord>[9.315081745782418, 48.74213417645068]</GPSCoord>
+    <Speed>10.26</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Noah</Name>
+    <Coord>[994.2735876100026, 2514.2608775110252]</Coord>
+    <GPSCoord>[9.268475666640862, 48.73896191361421]</GPSCoord>
+    <Speed>3.31</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>352.6</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2494.5820905300743, 1266.1193137663022]</Coord>
+    <GPSCoord>[9.288816794494933, 48.72768438440292]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>103.63</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3632.352331887682, 4559.030583266283]</Coord>
+    <GPSCoord>[9.304466808728153, 48.75726724671869]</GPSCoord>
+    <Speed>10.19</Speed>
+    <Edge>34424783#2</Edge>
+    <Lane>34424783#2_1</Lane>
+    <TurnAngle>87.34</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2946.609231024353, 1785.0082683023534]</Coord>
+    <GPSCoord>[9.294990664904578, 48.732336698266245]</GPSCoord>
+    <Speed>14.43</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>52.44</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2843.82891106625, 2923.5024017119385]</Coord>
+    <GPSCoord>[9.29365259961948, 48.74258205863494]</GPSCoord>
+    <Speed>46.87</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2798.0333333717613, 2910.8654347388206]</Coord>
+    <GPSCoord>[9.293029036433389, 48.742469963329484]</GPSCoord>
+    <Speed>43.36</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4009.029331066701, 1671.5793055292477]</Coord>
+    <GPSCoord>[9.309432276417432, 48.73127841013278]</GPSCoord>
+    <Speed>4.49</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4600.242275781056, 2245.398728823977]</Coord>
+    <GPSCoord>[9.317504520576861, 48.73641856011398]</GPSCoord>
+    <Speed>28.58</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5255.44128078557, 2209.831744557798]</Coord>
+    <GPSCoord>[9.326413219786343, 48.73607370728407]</GPSCoord>
+    <Speed>4.59</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5194.866291832757, 3079.8557609849986]</Coord>
+    <GPSCoord>[9.325639952959396, 48.743902668543086]</GPSCoord>
+    <Speed>24.36</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.54</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3462.2253972427948, 4511.37275327063]</Coord>
+    <GPSCoord>[9.302149532430645, 48.75684461493159]</GPSCoord>
+    <Speed>4.64</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.06</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3709.4745522921653, 4399.593020053976]</Coord>
+    <GPSCoord>[9.305507417068672, 48.75583019015126]</GPSCoord>
+    <Speed>4.72</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4423.373611913222, 2879.9123346676893]</Coord>
+    <GPSCoord>[9.31513476658287, 48.74213317677646]</GPSCoord>
+    <Speed>14.04</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Noah</Name>
+    <Coord>[994.071160600813, 2515.8198676116504]</Coord>
+    <GPSCoord>[9.268472988147472, 48.738975944589676]</GPSCoord>
+    <Speed>5.68</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>352.6</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2495.3868934102866, 1265.924122625701]</Coord>
+    <GPSCoord>[9.288827727977763, 48.72768260104735]</GPSCoord>
+    <Speed>2.98</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>103.63</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4390.2707429488655, 2000.1807521210733]</Coord>
+    <GPSCoord>[9.314635118482427, 48.73422043749277]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3635.473798697316, 4559.175357179401]</Coord>
+    <GPSCoord>[9.304509286500217, 48.757268436877126]</GPSCoord>
+    <Speed>11.23</Speed>
+    <Edge>34424783#2</Edge>
+    <Lane>34424783#2_1</Lane>
+    <TurnAngle>87.34</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2950.0859187455717, 1787.6818614914775]</Coord>
+    <GPSCoord>[9.29503808522683, 48.73236062864431]</GPSCoord>
+    <Speed>15.76</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>52.44</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2855.5689271987753, 2926.7419764394444]</Coord>
+    <GPSCoord>[9.29381245484093, 48.742610794504635]</GPSCoord>
+    <Speed>43.89</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2809.4361163445055, 2914.0119523521475]</Coord>
+    <GPSCoord>[9.29318429910773, 48.742497874603565]</GPSCoord>
+    <Speed>42.63</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4009.660152881588, 1672.6659103130894]</Coord>
+    <GPSCoord>[9.309440914777118, 48.731288162091985]</GPSCoord>
+    <Speed>4.52</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4602.547512146177, 2252.880842952847]</Coord>
+    <GPSCoord>[9.317536295951884, 48.736485782014114]</GPSCoord>
+    <Speed>28.18</Speed>
+    <Edge>-881678625#3</Edge>
+    <Lane>-881678625#3_1</Lane>
+    <TurnAngle>17.12</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5254.4839918057405, 2210.7192813255283]</Coord>
+    <GPSCoord>[9.32640025234211, 48.73608172833956]</GPSCoord>
+    <Speed>4.7</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5199.5330871827, 3074.3838574645847]</Coord>
+    <GPSCoord>[9.325703113170954, 48.743853264601405]</GPSCoord>
+    <Speed>25.89</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.54</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3462.4559427155564, 4509.887494499343]</Coord>
+    <GPSCoord>[9.302152589018505, 48.75683124550902]</GPSCoord>
+    <Speed>5.42</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.23</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3708.37428329109, 4400.077088059174]</Coord>
+    <GPSCoord>[9.305492473914471, 48.75583458444727]</GPSCoord>
+    <Speed>4.33</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4428.311093538972, 2879.7920069360766]</Coord>
+    <GPSCoord>[9.315201917721037, 48.74213191064847]</GPSCoord>
+    <Speed>17.78</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Noah</Name>
+    <Coord>[993.5912847509546, 2518.4106895170544]</Coord>
+    <GPSCoord>[9.268466585540498, 48.73899926663995]</GPSCoord>
+    <Speed>9.52</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>347.56</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2497.009557348709, 1265.5305733073023]</Coord>
+    <GPSCoord>[9.28884977234023, 48.72767900539756]</GPSCoord>
+    <Speed>6.01</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>103.63</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4391.087987563639, 1999.7592137428164]</Coord>
+    <GPSCoord>[9.314646208951496, 48.734216615029865]</GPSCoord>
+    <Speed>3.31</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4917.841747467518, 2008.4671081432518]</Coord>
+    <GPSCoord>[9.321810301769498, 48.73427516728288]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>50.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3638.1237332377373, 4559.289905238685]</Coord>
+    <GPSCoord>[9.30454534707962, 48.75726937206581]</GPSCoord>
+    <Speed>9.53</Speed>
+    <Edge>34424783#2</Edge>
+    <Lane>34424783#2_1</Lane>
+    <TurnAngle>87.44</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2954.79242813885, 1791.1985186326244]</Coord>
+    <GPSCoord>[9.295102274382051, 48.73239210030686]</GPSCoord>
+    <Speed>21.12</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>53.7</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2868.0730768327912, 2930.192408422334]</Coord>
+    <GPSCoord>[9.293982714909355, 48.74264140048859]</GPSCoord>
+    <Speed>46.74</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2821.3995298434143, 2917.313172008771]</Coord>
+    <GPSCoord>[9.293347195628296, 48.74252715794113]</GPSCoord>
+    <Speed>44.72</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4010.259165303622, 1673.6977227013133]</Coord>
+    <GPSCoord>[9.30944911754784, 48.7312974223049]</GPSCoord>
+    <Speed>4.3</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4600.666346599213, 2260.405262552766]</Coord>
+    <GPSCoord>[9.31751113814215, 48.73655354137193]</GPSCoord>
+    <Speed>30.28</Speed>
+    <Edge>:30895465_40</Edge>
+    <Lane>:30895465_40_0</Lane>
+    <TurnAngle>331.41</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5253.5278461266, 2211.6057580984]</Coord>
+    <GPSCoord>[9.326387300380915, 48.73608973981396]</GPSCoord>
+    <Speed>4.69</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5204.329439528171, 3068.7600459801893]</Coord>
+    <GPSCoord>[9.325768026672483, 48.743802489098535]</GPSCoord>
+    <Speed>26.61</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.54</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3462.6529845210366, 4508.610120036228]</Coord>
+    <GPSCoord>[9.302155200981769, 48.75681974738224]</GPSCoord>
+    <Speed>4.65</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.23</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3707.2769763465453, 4400.559852895061]</Coord>
+    <GPSCoord>[9.305477570986438, 48.75583896691138]</GPSCoord>
+    <Speed>4.32</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4433.393864454665, 2879.6681384660856]</Coord>
+    <GPSCoord>[9.31527104483067, 48.74213060722279]</GPSCoord>
+    <Speed>18.31</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Noah</Name>
+    <Coord>[992.8055952702813, 2521.972137228791]</Coord>
+    <GPSCoord>[9.26845607009339, 48.739031330058374]</GPSCoord>
+    <Speed>13.17</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>347.56</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2499.2644130580184, 1264.9836967135273]</Coord>
+    <GPSCoord>[9.288880405206884, 48.727674008871375]</GPSCoord>
+    <Speed>8.35</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>103.63</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4392.621506237691, 1998.9682180443438]</Coord>
+    <GPSCoord>[9.314667019657858, 48.73420944236639]</GPSCoord>
+    <Speed>6.21</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4918.639145540703, 2009.1247232872724]</Coord>
+    <GPSCoord>[9.321821183761562, 48.734281052832024]</GPSCoord>
+    <Speed>3.72</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>50.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3640.727290974629, 4560.647582944458]</Coord>
+    <GPSCoord>[9.304580844276815, 48.757281491943395]</GPSCoord>
+    <Speed>11.48</Speed>
+    <Edge>:cluster_5336731955_6450776807_6450776810_39</Edge>
+    <Lane>:cluster_5336731955_6450776807_6450776810_39_0</Lane>
+    <TurnAngle>72.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2958.518144672, 1793.9357797590203]</Coord>
+    <GPSCoord>[9.295153084718544, 48.732416594715794]</GPSCoord>
+    <Speed>16.61</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>53.7</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2880.348633608059, 2933.7431607059098]</Coord>
+    <GPSCoord>[9.294149871170042, 48.742672916628564]</GPSCoord>
+    <Speed>46.05</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>73.13</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2832.8392289124336, 2920.4698763587417]</Coord>
+    <GPSCoord>[9.293502961311885, 48.742555159145574]</GPSCoord>
+    <Speed>42.77</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4010.7899238061855, 1674.6119661759992]</Coord>
+    <GPSCoord>[9.309456385663916, 48.73130562737086]</GPSCoord>
+    <Speed>3.81</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4593.868943449993, 2262.460808588244]</Coord>
+    <GPSCoord>[9.317418808900678, 48.73657228752437]</GPSCoord>
+    <Speed>25.72</Speed>
+    <Edge>:30895465_40</Edge>
+    <Lane>:30895465_40_0</Lane>
+    <TurnAngle>284.99</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5252.744941236961, 2212.3316171543725]</Coord>
+    <GPSCoord>[9.326376695138533, 48.73609629971544]</GPSCoord>
+    <Speed>3.84</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5206.325983023687, 3066.4722009992115]</Coord>
+    <GPSCoord>[9.325795050805588, 48.743781831162195]</GPSCoord>
+    <Speed>10.93</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.15</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3462.888491958091, 4507.083845560848]</Coord>
+    <GPSCoord>[9.302158322864425, 48.7568060088104]</GPSCoord>
+    <Speed>5.56</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3706.15173114277, 4401.0549092863785]</Coord>
+    <GPSCoord>[9.305462288615962, 48.75584346095431]</GPSCoord>
+    <Speed>4.43</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4438.814751254695, 2879.536030022669]</Coord>
+    <GPSCoord>[9.315344770406979, 48.742129217045]</GPSCoord>
+    <Speed>19.52</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Noah</Name>
+    <Coord>[991.7634375592545, 2526.6961284320637]</Coord>
+    <GPSCoord>[9.268442122127075, 48.7390738597577]</GPSCoord>
+    <Speed>17.47</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>347.56</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2502.170146672806, 1264.43067402812]</Coord>
+    <GPSCoord>[9.288919888247602, 48.72766893485643]</GPSCoord>
+    <Speed>10.68</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>98.33</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4394.698834723626, 1997.8967228454321]</Coord>
+    <GPSCoord>[9.314695210158149, 48.7341997261578]</GPSCoord>
+    <Speed>8.42</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4919.528078555435, 2009.8578274069923]</Coord>
+    <GPSCoord>[9.321833314922552, 48.734287613994056]</GPSCoord>
+    <Speed>4.15</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>50.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Felix</Name>
+    <Coord>[5209.094816797475, 1161.8008564271709]</Coord>
+    <GPSCoord>[9.325722004042227, 48.72664751804139]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>462941119#2</Edge>
+    <Lane>462941119#2_0</Lane>
+    <TurnAngle>201.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3638.662706746986, 4562.505905757689]</Coord>
+    <GPSCoord>[9.304552855105886, 48.757298283409476]</GPSCoord>
+    <Speed>11.68</Speed>
+    <Edge>-34424783#2</Edge>
+    <Lane>-34424783#2_1</Lane>
+    <TurnAngle>344.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2961.956928259219, 1796.3421850254983]</Coord>
+    <GPSCoord>[9.295199975660964, 48.73243812274661]</GPSCoord>
+    <Speed>15.1</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>56.21</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2892.154671570458, 2937.323618303621]</Coord>
+    <GPSCoord>[9.294310642882742, 48.74270471606203]</GPSCoord>
+    <Speed>44.46</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>73.13</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Max</Name>
+    <Coord>[2844.5502301672614, 2923.7014446351955]</Coord>
+    <GPSCoord>[9.293662421289396, 48.7425838242038]</GPSCoord>
+    <Speed>43.78</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4011.434061192787, 1675.7215073320185]</Coord>
+    <GPSCoord>[9.309465206374208, 48.73131558517537]</GPSCoord>
+    <Speed>4.62</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4589.694070700049, 2262.9693624926285]</Coord>
+    <GPSCoord>[9.317362058807218, 48.73657701880656]</GPSCoord>
+    <Speed>15.14</Speed>
+    <Edge>:30895465_40</Edge>
+    <Lane>:30895465_40_0</Lane>
+    <TurnAngle>276.95</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5251.847898282718, 2213.1632976823003]</Coord>
+    <GPSCoord>[9.326364543776677, 48.736103815970004]</GPSCoord>
+    <Speed>4.4</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5206.657265775002, 3066.0978945139586]</Coord>
+    <GPSCoord>[9.32579953517646, 48.74377845120909]</GPSCoord>
+    <Speed>1.8</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.04</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3463.112330846115, 4505.643358567169]</Coord>
+    <GPSCoord>[9.30216129061591, 48.75679304238796]</GPSCoord>
+    <Speed>5.25</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3705.0619250375576, 4401.534374096245]</Coord>
+    <GPSCoord>[9.305447487554355, 48.755847813457414]</GPSCoord>
+    <Speed>4.29</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>293.75</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4444.352361713441, 2879.4010769928527]</Coord>
+    <GPSCoord>[9.315420083453247, 48.742127796884915]</GPSCoord>
+    <Speed>19.94</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Noah</Name>
+    <Coord>[990.6170315432668, 2531.661850677361]</Coord>
+    <GPSCoord>[9.268426767845842, 48.7391185673526]</GPSCoord>
+    <Speed>18.41</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>345.77</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2505.9351841367825, 1264.173976492295]</Coord>
+    <GPSCoord>[9.288971071180718, 48.72766649724603]</GPSCoord>
+    <Speed>13.59</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>93.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4397.737389464616, 1996.3294229029116]</Coord>
+    <GPSCoord>[9.314736445012507, 48.73418551403021]</GPSCoord>
+    <Speed>12.31</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4920.334477868029, 2010.5228658839123]</Coord>
+    <GPSCoord>[9.321844319758855, 48.7342935659786]</GPSCoord>
+    <Speed>3.76</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>50.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Felix</Name>
+    <Coord>[5208.631398092188, 1160.5949145690915]</Coord>
+    <GPSCoord>[9.325715632663556, 48.726636687321424]</GPSCoord>
+    <Speed>4.65</Speed>
+    <Edge>:455539496_w0</Edge>
+    <Lane>:455539496_w0_0</Lane>
+    <TurnAngle>201.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:30</DateTime>
+    <Name>Laura</Name>
+    <Coord>[4398.396562721376, 2528.820860079127]</Coord>
+    <GPSCoord>[9.314775315171072, 48.73897572592332]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>26249175</Edge>
+    <Lane>26249175_0</Lane>
+    <TurnAngle>20.59</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3633.173105213814, 4562.271708652791]</Coord>
+    <GPSCoord>[9.304478152175376, 48.75729637395805]</GPSCoord>
+    <Speed>19.81</Speed>
+    <Edge>-34424783#2</Edge>
+    <Lane>-34424783#2_1</Lane>
+    <TurnAngle>267.45</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2966.0901732159546, 1798.7929873235628]</Coord>
+    <GPSCoord>[9.29525631300915, 48.73246002595239]</GPSCoord>
+    <Speed>17.27</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>59.33</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2904.282895273852, 2941.0017862752857]</Coord>
+    <GPSCoord>[9.294475802251656, 48.74273738306507]</GPSCoord>
+    <Speed>45.67</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>73.13</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Max</Name>
+    <Coord>[2856.119046698872, 2926.893778039161]</Coord>
+    <GPSCoord>[9.293819945420648, 48.74261214101884]</GPSCoord>
+    <Speed>43.25</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4012.02566572208, 1676.740559458152]</Coord>
+    <GPSCoord>[9.309473307711356, 48.7313247308669]</GPSCoord>
+    <Speed>4.24</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4584.0866334939465, 2263.0866479884044]</Coord>
+    <GPSCoord>[9.317285803458622, 48.73657828389901]</GPSCoord>
+    <Speed>20.21</Speed>
+    <Edge>-275526211</Edge>
+    <Lane>-275526211_0</Lane>
+    <TurnAngle>270.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5250.912128508942, 2214.0308832263286]</Coord>
+    <GPSCoord>[9.326351867816685, 48.73611165671227]</GPSCoord>
+    <Speed>4.59</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5206.698360824564, 3066.0514624449743]</Coord>
+    <GPSCoord>[9.32580009145483, 48.74377803193178]</GPSCoord>
+    <Speed>0.22</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.03</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3463.3565029967885, 4504.072019420658]</Coord>
+    <GPSCoord>[9.302164527952742, 48.756778898110774]</GPSCoord>
+    <Speed>5.73</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3703.8524616525565, 4402.1208866172765]</Coord>
+    <GPSCoord>[9.305431064346656, 48.75585313326069]</GPSCoord>
+    <Speed>5.01</Speed>
+    <Edge>:cluster_271977576_274904587_w0</Edge>
+    <Lane>:cluster_271977576_274904587_w0_0</Lane>
+    <TurnAngle>296.3</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4449.661969539514, 2879.2716804474294]</Coord>
+    <GPSCoord>[9.315492295595933, 48.74212643515154]</GPSCoord>
+    <Speed>19.12</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Noah</Name>
+    <Coord>[989.2695934283402, 2536.670549209523]</Coord>
+    <GPSCoord>[9.268408681376972, 48.73916366792526]</GPSCoord>
+    <Speed>18.73</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>344.94</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2510.33302390798, 1263.8741349520658]</Coord>
+    <GPSCoord>[9.289030856592404, 48.72766364990962]</GPSCoord>
+    <Speed>15.87</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>93.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4401.771416133464, 1994.2486541476467]</Coord>
+    <GPSCoord>[9.314791188930904, 48.73416664579324]</GPSCoord>
+    <Speed>16.34</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4921.14019921775, 2011.1873452440411]</Coord>
+    <GPSCoord>[9.32185531534567, 48.73429951295809]</GPSCoord>
+    <Speed>3.76</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>50.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Felix</Name>
+    <Coord>[5206.992320807642, 1159.4647634021085]</Coord>
+    <GPSCoord>[9.325693279725298, 48.72662658359183]</GPSCoord>
+    <Speed>5.35</Speed>
+    <Edge>:455539496_w0</Edge>
+    <Lane>:455539496_w0_0</Lane>
+    <TurnAngle>246.01</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Laura</Name>
+    <Coord>[4399.106509472825, 2529.6869874717363]</Coord>
+    <GPSCoord>[9.314785019666553, 48.738983491133894]</GPSCoord>
+    <Speed>3.82</Speed>
+    <Edge>:30895235_w2</Edge>
+    <Lane>:30895235_w2_0</Lane>
+    <TurnAngle>20.59</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Matvii</Name>
+    <Coord>[4142.184141608839, 3164.9584312957954]</Coord>
+    <GPSCoord>[9.311325961611729, 48.74470781457559]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>32197056#2</Edge>
+    <Lane>32197056#2_1</Lane>
+    <TurnAngle>353.84</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3625.4126930348607, 4561.908213048472]</Coord>
+    <GPSCoord>[9.304372546121794, 48.757293382908806]</GPSCoord>
+    <Speed>28.01</Speed>
+    <Edge>-34424783#2</Edge>
+    <Lane>-34424783#2_1</Lane>
+    <TurnAngle>267.32</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2972.305877535443, 1801.7926716070197]</Coord>
+    <GPSCoord>[9.29534099884466, 48.73248679424725]</GPSCoord>
+    <Speed>24.83</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>65.56</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2917.3320256778106, 2941.649720248649]</Coord>
+    <GPSCoord>[9.29465332852132, 48.74274275811888]</GPSCoord>
+    <Speed>47.07</Speed>
+    <Edge>-378237361</Edge>
+    <Lane>-378237361_1</Lane>
+    <TurnAngle>76.73</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Max</Name>
+    <Coord>[2868.1586001290393, 2930.2160079733067]</Coord>
+    <GPSCoord>[9.293983879419661, 48.7426416098202]</GPSCoord>
+    <Speed>45.01</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>74.57</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4012.584813328492, 1677.703703803612]</Coord>
+    <GPSCoord>[9.309480964591337, 48.731333374802105]</GPSCoord>
+    <Speed>4.01</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>30.14</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4576.527800995763, 2263.0806057561917]</Coord>
+    <GPSCoord>[9.317183001855565, 48.736578512550714]</GPSCoord>
+    <Speed>27.21</Speed>
+    <Edge>-275526211</Edge>
+    <Lane>-275526211_0</Lane>
+    <TurnAngle>269.95</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5250.034772220618, 2214.844311543896]</Coord>
+    <GPSCoord>[9.326339983123598, 48.736119008011215]</GPSCoord>
+    <Speed>4.31</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5206.723538959211, 3066.0230144227107]</Coord>
+    <GPSCoord>[9.325800432275726, 48.743777775048734]</GPSCoord>
+    <Speed>0.14</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3463.5572807444946, 4502.779939493244]</Coord>
+    <GPSCoord>[9.302167189947019, 48.75676726756187]</GPSCoord>
+    <Speed>4.71</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3702.659724201921, 4402.30891008875]</Coord>
+    <GPSCoord>[9.305414846967853, 48.75585486770231]</GPSCoord>
+    <Speed>4.12</Speed>
+    <Edge>12099342#0</Edge>
+    <Lane>12099342#0_0</Lane>
+    <TurnAngle>296.3</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4454.927452909368, 2879.143359226661]</Coord>
+    <GPSCoord>[9.315563907629675, 48.742125084689896]</GPSCoord>
+    <Speed>18.96</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Noah</Name>
+    <Coord>[987.8357452003029, 2542.0004515149094]</Coord>
+    <GPSCoord>[9.268389435002156, 48.7392116607576]</GPSCoord>
+    <Speed>19.93</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>344.94</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2515.3487632131873, 1263.5321654677496]</Coord>
+    <GPSCoord>[9.289099041887438, 48.72766040248263]</GPSCoord>
+    <Speed>18.1</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>93.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4406.342044339225, 1991.8911039519778]</Coord>
+    <GPSCoord>[9.314853214772056, 48.73414526769391]</GPSCoord>
+    <Speed>18.52</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4921.95151659374, 2011.8564396537217]</Coord>
+    <GPSCoord>[9.321866387303432, 48.734305501240414]</GPSCoord>
+    <Speed>3.79</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>50.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Felix</Name>
+    <Coord>[5205.919169666026, 1158.3333030655463]</Coord>
+    <GPSCoord>[9.32567862187405, 48.72661644633167]</GPSCoord>
+    <Speed>5.61</Speed>
+    <Edge>:455539496_w0</Edge>
+    <Lane>:455539496_w0_0</Lane>
+    <TurnAngle>223.48</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Laura</Name>
+    <Coord>[4398.836828549067, 2531.391896366884]</Coord>
+    <GPSCoord>[9.314781447554935, 48.738998838326005]</GPSCoord>
+    <Speed>3.95</Speed>
+    <Edge>:30895235_w2</Edge>
+    <Lane>:30895235_w2_0</Lane>
+    <TurnAngle>344.11</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Matvii</Name>
+    <Coord>[4141.88447844986, 3166.943201312309]</Coord>
+    <GPSCoord>[9.311321995770333, 48.74472568034812]</GPSCoord>
+    <Speed>7.07</Speed>
+    <Edge>32197056#2</Edge>
+    <Lane>32197056#2_1</Lane>
+    <TurnAngle>352.04</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hugo</Name>
+    <Coord>[4286.177008553681, 962.6310316362341]</Coord>
+    <GPSCoord>[9.313161527883418, 48.724890594198115]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>176129773</Edge>
+    <Lane>176129773_0</Lane>
+    <TurnAngle>201.97</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3617.127397732166, 4561.54667320741]</Coord>
+    <GPSCoord>[9.304259798753998, 48.7572904282109]</GPSCoord>
+    <Speed>29.88</Speed>
+    <Edge>:cluster_6450776823_9450029129_8</Edge>
+    <Lane>:cluster_6450776823_9450029129_8_0</Lane>
+    <TurnAngle>267.62</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2978.1466723605463, 1804.3442631691432]</Coord>
+    <GPSCoord>[9.295420562728768, 48.7325095445459]</GPSCoord>
+    <Speed>22.91</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>67.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2930.094198781227, 2945.5821237859154]</Coord>
+    <GPSCoord>[9.294827124497226, 48.7427776896471]</GPSCoord>
+    <Speed>48.09</Speed>
+    <Edge>-378237361</Edge>
+    <Lane>-378237361_1</Lane>
+    <TurnAngle>72.87</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Max</Name>
+    <Coord>[2879.810749014871, 2933.58003460175]</Coord>
+    <GPSCoord>[9.294142546395145, 48.74267146783697]</GPSCoord>
+    <Speed>43.71</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>73.13</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4012.5250355233306, 1678.32725537954]</Coord>
+    <GPSCoord>[9.309480186114168, 48.731338986397006]</GPSCoord>
+    <Speed>3.78</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>352.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4567.274309992557, 2263.0253653375726]</Coord>
+    <GPSCoord>[9.317057149856323, 48.73657836194496]</GPSCoord>
+    <Speed>33.31</Speed>
+    <Edge>:446705630_1</Edge>
+    <Lane>:446705630_1_0</Lane>
+    <TurnAngle>269.63</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5249.157191601554, 2215.6579478464955]</Coord>
+    <GPSCoord>[9.32632809538825, 48.736126361188575]</GPSCoord>
+    <Speed>4.31</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5206.72638748963, 3066.0197959532757]</Coord>
+    <GPSCoord>[9.325800470834526, 48.74377774598626]</GPSCoord>
+    <Speed>0.02</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3463.7552577227866, 4501.505883564915]</Coord>
+    <GPSCoord>[9.302169814806351, 48.7567557992544]</GPSCoord>
+    <Speed>4.64</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3701.5054290360868, 4402.879514048278]</Coord>
+    <GPSCoord>[9.30539917347095, 48.75586004240051]</GPSCoord>
+    <Speed>4.52</Speed>
+    <Edge>12099342#0</Edge>
+    <Lane>12099342#0_0</Lane>
+    <TurnAngle>296.3</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4460.089937360149, 2879.0175481167607]</Coord>
+    <GPSCoord>[9.315634118845628, 48.74212376060164]</GPSCoord>
+    <Speed>18.59</Speed>
+    <Edge>-386831074</Edge>
+    <Lane>-386831074_0</Lane>
+    <TurnAngle>91.4</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Noah</Name>
+    <Coord>[986.2792421894618, 2546.792929432509]</Coord>
+    <GPSCoord>[9.268368494634691, 48.73925482284112]</GPSCoord>
+    <Speed>18.21</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>340.87</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2520.8991993873997, 1263.1537407369717]</Coord>
+    <GPSCoord>[9.289174495983572, 48.72765680882056]</GPSCoord>
+    <Speed>20.03</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>93.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4410.825524809738, 1989.578504942674]</Coord>
+    <GPSCoord>[9.314914057921149, 48.73412429717638]</GPSCoord>
+    <Speed>18.16</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4922.77473053292, 2012.5353451732851]</Coord>
+    <GPSCoord>[9.321877621614952, 48.734311577329436]</GPSCoord>
+    <Speed>3.84</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>50.49</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Felix</Name>
+    <Coord>[5204.999081550747, 1157.349133553215]</Coord>
+    <GPSCoord>[9.325666053851323, 48.7266076282009]</GPSCoord>
+    <Speed>4.85</Speed>
+    <Edge>:455539496_w0</Edge>
+    <Lane>:455539496_w0_0</Lane>
+    <TurnAngle>223.07</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Laura</Name>
+    <Coord>[4398.548861145061, 2532.403727070994]</Coord>
+    <GPSCoord>[9.314777587800158, 48.739007951342245]</GPSCoord>
+    <Speed>3.79</Speed>
+    <Edge>:30895235_w2</Edge>
+    <Lane>:30895235_w2_0</Lane>
+    <TurnAngle>344.11</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Matvii</Name>
+    <Coord>[4140.780168407119, 3171.2305226547155]</Coord>
+    <GPSCoord>[9.311307212762099, 48.74476428917253]</GPSCoord>
+    <Speed>15.57</Speed>
+    <Edge>32197056#2</Edge>
+    <Lane>32197056#2_1</Lane>
+    <TurnAngle>346.08</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hugo</Name>
+    <Coord>[4285.692778946923, 961.4309843499215]</Coord>
+    <GPSCoord>[9.313154876785767, 48.7248798165703]</GPSCoord>
+    <Speed>4.66</Speed>
+    <Edge>:346709737_w0</Edge>
+    <Lane>:346709737_w0_0</Lane>
+    <TurnAngle>201.97</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Stefan</Name>
+    <Coord>[5582.111875455603, 2329.9401283263974]</Coord>
+    <GPSCoord>[9.330863029612178, 48.73714151766932]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>-36779459#1</Edge>
+    <Lane>-36779459#1_0</Lane>
+    <TurnAngle>90.81</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3609.3152351378026, 4561.259457617307]</Coord>
+    <GPSCoord>[9.30415349276402, 48.757288125024886]</GPSCoord>
+    <Speed>27.86</Speed>
+    <Edge>-34424783#1</Edge>
+    <Lane>-34424783#1_1</Lane>
+    <TurnAngle>267.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2983.7028345649455, 1806.7022715240344]</Coord>
+    <GPSCoord>[9.295496245735537, 48.73253056325707]</GPSCoord>
+    <Speed>21.69</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>67.0</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2942.284846183773, 2949.3384233266656]</Coord>
+    <GPSCoord>[9.29499313762861, 48.742811056598676]</GPSCoord>
+    <Speed>45.93</Speed>
+    <Edge>-378237361</Edge>
+    <Lane>-378237361_1</Lane>
+    <TurnAngle>72.87</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Max</Name>
+    <Coord>[2891.1192897047895, 2937.009614496478]</Coord>
+    <GPSCoord>[9.29429654329982, 48.742701927281345]</GPSCoord>
+    <Speed>42.58</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>73.13</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4012.3791110423185, 1679.3686578952504]</Coord>
+    <GPSCoord>[9.309478259219034, 48.73134836008614]</GPSCoord>
+    <Speed>3.79</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>352.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4555.9153350225515, 2262.8515710998963]</Coord>
+    <GPSCoord>[9.316902656253617, 48.736577223456045]</GPSCoord>
+    <Speed>40.9</Speed>
+    <Edge>-4807837#2</Edge>
+    <Lane>-4807837#2_0</Lane>
+    <TurnAngle>268.93</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5248.3169743868775, 2216.436943203821]</Coord>
+    <GPSCoord>[9.326316713775535, 48.736133401299846]</GPSCoord>
+    <Speed>4.13</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5206.726647256557, 3066.0195024503832]</Coord>
+    <GPSCoord>[9.325800474350832, 48.743777743335954]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3463.9764833656177, 4500.082213781797]</Coord>
+    <GPSCoord>[9.302172747904535, 48.75674298421028]</GPSCoord>
+    <Speed>5.19</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3700.4547247101714, 4403.398909837506]</Coord>
+    <GPSCoord>[9.305384906570485, 48.755864752699786]</GPSCoord>
+    <Speed>4.11</Speed>
+    <Edge>12099342#0</Edge>
+    <Lane>12099342#0_0</Lane>
+    <TurnAngle>296.3</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4464.824571937009, 2880.4963117007883]</Coord>
+    <GPSCoord>[9.315698600996303, 48.742136886981626]</GPSCoord>
+    <Speed>18.36</Speed>
+    <Edge>:2113078779_3</Edge>
+    <Lane>:2113078779_3_0</Lane>
+    <TurnAngle>55.8</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Noah</Name>
+    <Coord>[984.5759790053598, 2551.703400952633]</Coord>
+    <GPSCoord>[9.268345563804752, 48.73929905103055]</GPSCoord>
+    <Speed>18.77</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>340.87</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2526.4943658731604, 1262.7722663258492]</Coord>
+    <GPSCoord>[9.289250558144278, 48.72765318614763]</GPSCoord>
+    <Speed>20.19</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>93.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4415.618624748279, 1987.1062028456174]</Coord>
+    <GPSCoord>[9.31497910271048, 48.734101878444754]</GPSCoord>
+    <Speed>19.42</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4923.636104113753, 2013.2745223406441]</Coord>
+    <GPSCoord>[9.321889378343911, 48.734318194164885]</GPSCoord>
+    <Speed>4.04</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>49.23</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Felix</Name>
+    <Coord>[5205.606969397772, 1157.1914689467562]</Coord>
+    <GPSCoord>[9.325674310417735, 48.72660618650457]</GPSCoord>
+    <Speed>4.86</Speed>
+    <Edge>:455539496_w0</Edge>
+    <Lane>:455539496_w0_0</Lane>
+    <TurnAngle>139.09</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Laura</Name>
+    <Coord>[4397.327032148668, 2533.8411267677957]</Coord>
+    <GPSCoord>[9.31476105067109, 48.73902092742382]</GPSCoord>
+    <Speed>4.01</Speed>
+    <Edge>:30895235_w2</Edge>
+    <Lane>:30895235_w2_0</Lane>
+    <TurnAngle>294.34</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Matvii</Name>
+    <Coord>[4138.768512890641, 3177.172691697409]</Coord>
+    <GPSCoord>[9.311280179614068, 48.74481781815115]</GPSCoord>
+    <Speed>22.09</Speed>
+    <Edge>32197056#2</Edge>
+    <Lane>32197056#2_1</Lane>
+    <TurnAngle>340.64</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hugo</Name>
+    <Coord>[4284.20700060266, 960.3562697096825]</Coord>
+    <GPSCoord>[9.313134614633963, 48.72487020343189]</GPSCoord>
+    <Speed>5.11</Speed>
+    <Edge>:346709737_w0</Edge>
+    <Lane>:346709737_w0_0</Lane>
+    <TurnAngle>242.46</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Stefan</Name>
+    <Coord>[5583.443178265844, 2329.921275454357]</Coord>
+    <GPSCoord>[9.330881134595767, 48.73714129608325]</GPSCoord>
+    <Speed>4.79</Speed>
+    <Edge>-36779459#1</Edge>
+    <Lane>-36779459#1_0</Lane>
+    <TurnAngle>90.81</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Alexander</Name>
+    <Coord>[3601.7869535378527, 4561.075743886535]</Coord>
+    <GPSCoord>[9.304051054818206, 48.75728674264]</GPSCoord>
+    <Speed>26.83</Speed>
+    <Edge>-34424783#1</Edge>
+    <Lane>-34424783#1_1</Lane>
+    <TurnAngle>268.95</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Anna</Name>
+    <Coord>[2990.2946184074804, 1808.9531942679976]</Coord>
+    <GPSCoord>[9.295586006672293, 48.73255058245994]</GPSCoord>
+    <Speed>25.04</Speed>
+    <Edge>-448036755#0</Edge>
+    <Lane>-448036755#0_1</Lane>
+    <TurnAngle>71.85</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Thomas</Name>
+    <Coord>[2954.6321649538027, 2953.1445410110364]</Coord>
+    <GPSCoord>[9.295161284626502, 48.74284486601129]</GPSCoord>
+    <Speed>46.88</Speed>
+    <Edge>-135078202#1</Edge>
+    <Lane>-135078202#1_1</Lane>
+    <TurnAngle>72.86</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Max</Name>
+    <Coord>[2901.354465701708, 2940.113671401834]</Coord>
+    <GPSCoord>[9.294435923549832, 48.742729495450504]</GPSCoord>
+    <Speed>38.54</Speed>
+    <Edge>-692537992</Edge>
+    <Lane>-692537992_1</Lane>
+    <TurnAngle>73.13</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Sophie</Name>
+    <Coord>[4012.216692121671, 1680.5277743874822]</Coord>
+    <GPSCoord>[9.30947611451825, 48.73135879332155]</GPSCoord>
+    <Speed>4.21</Speed>
+    <Edge>118898886</Edge>
+    <Lane>118898886_0</Lane>
+    <TurnAngle>352.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Leon</Name>
+    <Coord>[4542.396914657736, 2262.586879259272]</Coord>
+    <GPSCoord>[9.31671878873726, 48.73657534777816]</GPSCoord>
+    <Speed>48.68</Speed>
+    <Edge>-4807837#2</Edge>
+    <Lane>-4807837#2_0</Lane>
+    <TurnAngle>268.78</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Mia</Name>
+    <Coord>[5247.4968784327675, 2217.197283422581]</Coord>
+    <GPSCoord>[9.326305604723075, 48.73614027281562]</GPSCoord>
+    <Speed>4.03</Speed>
+    <Edge>558422644</Edge>
+    <Lane>558422644_0</Lane>
+    <TurnAngle>312.83</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Luca</Name>
+    <Coord>[5206.726647256557, 3066.0195024503832]</Coord>
+    <GPSCoord>[9.325800474350832, 48.743777743335954]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>186037699#0</Edge>
+    <Lane>186037699#0_1</Lane>
+    <TurnAngle>139.02</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emma</Name>
+    <Coord>[3464.190645039376, 4498.704003282646]</Coord>
+    <GPSCoord>[9.302175587344381, 48.75673057836401]</GPSCoord>
+    <Speed>5.02</Speed>
+    <Edge>-387296028#2</Edge>
+    <Lane>-387296028#2_0</Lane>
+    <TurnAngle>171.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Paul</Name>
+    <Coord>[3699.311590805278, 4403.963996439018]</Coord>
+    <GPSCoord>[9.305369384619707, 48.75586987735811]</GPSCoord>
+    <Speed>4.47</Speed>
+    <Edge>12099342#0</Edge>
+    <Lane>12099342#0_0</Lane>
+    <TurnAngle>296.3</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Jonas</Name>
+    <Coord>[4469.984819803142, 2881.9214187874663]</Coord>
+    <GPSCoord>[9.315768869202161, 48.74214951477502]</GPSCoord>
+    <Speed>19.86</Speed>
+    <Edge>-386831075</Edge>
+    <Lane>-386831075_0</Lane>
+    <TurnAngle>88.64</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Noah</Name>
+    <Coord>[982.7483342819714, 2556.6928868298132]</Coord>
+    <GPSCoord>[9.268320945010128, 48.739343993961555]</GPSCoord>
+    <Speed>19.19</Speed>
+    <Edge>-23119545</Edge>
+    <Lane>-23119545_1</Lane>
+    <TurnAngle>338.91</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hannah</Name>
+    <Coord>[2531.9798950393374, 1262.3982669080144]</Coord>
+    <GPSCoord>[9.289325129855685, 48.72764963441225]</GPSCoord>
+    <Speed>19.79</Speed>
+    <Edge>-37721058#1</Edge>
+    <Lane>-37721058#1_0</Lane>
+    <TurnAngle>93.9</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Emilia</Name>
+    <Coord>[4419.980649117464, 1984.856251429284]</Coord>
+    <GPSCoord>[9.315038297536018, 48.734081475947875]</GPSCoord>
+    <Speed>17.67</Speed>
+    <Edge>-474485750#1</Edge>
+    <Lane>-474485750#1_0</Lane>
+    <TurnAngle>117.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Ben</Name>
+    <Coord>[4924.5750627760035, 2014.0840360844359]</Coord>
+    <GPSCoord>[9.321902194236655, 48.734325440791835]</GPSCoord>
+    <Speed>4.46</Speed>
+    <Edge>8038822</Edge>
+    <Lane>8038822_0</Lane>
+    <TurnAngle>49.23</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Felix</Name>
+    <Coord>[5206.004074949593, 1156.7332702331178]</Coord>
+    <GPSCoord>[9.325679683424028, 48.72660204933362]</GPSCoord>
+    <Speed>2.19</Speed>
+    <Edge>-462941119#1</Edge>
+    <Lane>-462941119#1_0</Lane>
+    <TurnAngle>139.09</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Laura</Name>
+    <Coord>[4396.164595560237, 2533.9719027388633]</Coord>
+    <GPSCoord>[9.314745247933491, 48.73902214705353]</GPSCoord>
+    <Speed>4.0</Speed>
+    <Edge>-366030056#2</Edge>
+    <Lane>-366030056#2_0</Lane>
+    <TurnAngle>294.34</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Matvii</Name>
+    <Coord>[4135.871609013217, 3182.355697089123]</Coord>
+    <GPSCoord>[9.311241062738436, 48.744864550297855]</GPSCoord>
+    <Speed>20.89</Speed>
+    <Edge>32197056#2</Edge>
+    <Lane>32197056#2_1</Lane>
+    <TurnAngle>330.28</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Hugo</Name>
+    <Coord>[4283.2632803183305, 959.1558270355738]</Coord>
+    <GPSCoord>[9.313121715829812, 48.72485943922331]</GPSCoord>
+    <Speed>5.5</Speed>
+    <Edge>:346709737_w0</Edge>
+    <Lane>:346709737_w0_0</Lane>
+    <TurnAngle>218.17</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>2023-06-10 20:01:31</DateTime>
+    <Name>Stefan</Name>
+    <Coord>[5584.565028054345, 2329.9053886926463]</Coord>
+    <GPSCoord>[9.330896391133704, 48.737141109356934]</GPSCoord>
+    <Speed>4.04</Speed>
+    <Edge>-36779459#1</Edge>
+    <Lane>-36779459#1_0</Lane>
+    <TurnAngle>90.81</TurnAngle>
+  </Person>
+</Trips>

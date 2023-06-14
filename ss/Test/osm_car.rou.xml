@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2023-05-09 11:38:13 by Eclipse SUMO netedit Version 1.16.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <vType id="car" vClass="passenger"/>
+    <vType id="bic" vClass="bicycle"/>
+    <vType id="typ0" vClass="bus"/>
+    <person id="p_0" depart="0.00">
+        <personTrip from="-692537992" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="20"  actType="singing"/>
+        <personTrip from="-105914659#1" to="-692537992" lines="ANY" modes="public"/>
+    </person>
+   <!-- <person id="test" depart="0.00">
+        <plan>
+            <activity type="home" x="1976.06" y="2668.18" end_time="10"/>
+            <activity type="work" x="2557.6" y="2157.78" start_time="30" end_time="50" />
+            <leg mode="car" dep_time="10" arrTime="30" arrLocation="work" />
+        </plan>
+    </person>!-->
+    <person id="test" depart="100">
+        <personTrip from="-386831074" to="-387296020" lines="ANY" vTypes="bic"/>
+
+    </person>
+</routes>

@@ -1,0 +1,513 @@
+<?xml version="1.0" ?>
+<Persons>
+  <Person>
+    <Name>Alexander</Name>
+    <Home>26734306#2</Home>
+    <Work>-105914659#1</Work>
+    <Salary>4491</Salary>
+    <StartEdges>['26734306#2', '-105914659#1', '-269782626']</StartEdges>
+    <DestinationEdges>['-105914659#1', '-269782626', '26734306#2']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['car', 'car', 'car']</vType>
+    <Depart>0.0</Depart>
+  </Person>
+  <Age>32</Age>
+  <Person>
+    <Name>Anna</Name>
+    <Home>-448036755#0</Home>
+    <Work>-105914659#1</Work>
+    <Salary>3891</Salary>
+    <StartEdges>['-448036755#0', '-105914659#1', '-17096975#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '-17096975#1', '448036755#0']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, 'public']</Modes>
+    <vType>['mot', 'mot', None]</vType>
+    <Depart>1.0</Depart>
+  </Person>
+  <Age>45</Age>
+  <Person>
+    <Name>Thomas</Name>
+    <Home>-692537992</Home>
+    <Work>-105914659#1</Work>
+    <Salary>3595</Salary>
+    <StartEdges>['-692537992', '-105914659#1', '-23032837#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '-23032837#1', '-692537992']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, 'public']</Modes>
+    <vType>['car', 'car', None]</vType>
+    <Depart>2.0</Depart>
+  </Person>
+  <Age>41</Age>
+  <Person>
+    <Name>Max</Name>
+    <Home>-692537992</Home>
+    <Work>-105914659#1</Work>
+    <Salary>4068</Salary>
+    <StartEdges>['-692537992', '-105914659#1', '-23032837#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '-23032837#1', '-692537992']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, 'public']</Modes>
+    <vType>['car', 'car', None]</vType>
+    <Depart>3.0</Depart>
+  </Person>
+  <Age>39</Age>
+  <Person>
+    <Name>Sophie</Name>
+    <Home>-42326224#0</Home>
+    <Work>-105914659#1</Work>
+    <Salary>4676</Salary>
+    <StartEdges>['-42326224#0', '-105914659#1', '-105914659#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '26734306#2', '-42326224#0']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['car', 'car', 'car']</vType>
+    <Depart>4.0</Depart>
+  </Person>
+  <Age>38</Age>
+  <Person>
+    <Name>Leon</Name>
+    <Home>-881678625#3</Home>
+    <Work>-105914659#1</Work>
+    <Salary>3924</Salary>
+    <StartEdges>['-881678625#3', '-105914659#1', '-23032837#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '-23032837#1', '-881678625#3']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, 'public']</Modes>
+    <vType>['car', 'car', None]</vType>
+    <Depart>5.0</Depart>
+  </Person>
+  <Age>56</Age>
+  <Person>
+    <Name>Mia</Name>
+    <Home>-31646611#1</Home>
+    <Work>-105914659#1</Work>
+    <Salary>3865</Salary>
+    <StartEdges>['-31646611#1', '-105914659#1', '-105914659#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '26734306#2', '-31646611#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['car', 'car', 'car']</vType>
+    <Depart>6.0</Depart>
+  </Person>
+  <Age>49</Age>
+  <Person>
+    <Name>Luca</Name>
+    <Home>186037699#0</Home>
+    <Work>-105914659#1</Work>
+    <Salary>3351</Salary>
+    <StartEdges>['186037699#0', '-105914659#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '186037699#0']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>[None, None]</Modes>
+    <vType>['car', 'car']</vType>
+    <Depart>7.0</Depart>
+  </Person>
+  <Age>54</Age>
+  <Person>
+    <Name>Emma</Name>
+    <Home>-387296028#2</Home>
+    <Work>-105914659#1</Work>
+    <Salary>4410</Salary>
+    <StartEdges>['-387296028#2', '-105914659#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '-387296028#2']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>8.0</Depart>
+  </Person>
+  <Age>44</Age>
+  <Person>
+    <Name>Paul</Name>
+    <Home>12099342#1</Home>
+    <Work>-105914659#1</Work>
+    <Salary>3421</Salary>
+    <StartEdges>['12099342#1', '-105914659#1', '-23032837#1']</StartEdges>
+    <DestinationEdges>['-105914659#1', '12099342#1', '-692537992']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, 'bic', None]</vType>
+    <Depart>9.0</Depart>
+  </Person>
+  <Age>45</Age>
+  <Person>
+    <Name>Jonas</Name>
+    <Home>-386831074</Home>
+    <Uni>1000</Uni>
+    <Scholarship/>
+    <StartEdges>['-386831074', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '-386831074']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['bic', 'bic', 'bic']</vType>
+    <Depart>10.0</Depart>
+  </Person>
+  <Age>20</Age>
+  <Person>
+    <Name>Lena</Name>
+    <Home>158513383#1</Home>
+    <Uni>947</Uni>
+    <Scholarship/>
+    <StartEdges>['158513383#1', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '158513383#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['bic', 'bic', 'bic']</vType>
+    <Depart>11.0</Depart>
+  </Person>
+  <Age>27</Age>
+  <Person>
+    <Name>Noah</Name>
+    <Home>-23119545</Home>
+    <Uni>929</Uni>
+    <Scholarship/>
+    <StartEdges>['-23119545', '-386832703#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-23119545']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>[None, None]</Modes>
+    <vType>['bic', 'bic']</vType>
+    <Depart>12.0</Depart>
+  </Person>
+  <Age>24</Age>
+  <Person>
+    <Name>Hannah</Name>
+    <Home>-37721058#1</Home>
+    <Uni>1064</Uni>
+    <Scholarship/>
+    <StartEdges>['-37721058#1', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '-37721058#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['bic', 'bic', 'bic']</vType>
+    <Depart>13.0</Depart>
+  </Person>
+  <Age>23</Age>
+  <Person>
+    <Name>Emilia</Name>
+    <Home>-474485750#1</Home>
+    <Uni>872</Uni>
+    <Scholarship/>
+    <StartEdges>['-474485750#1', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '-474485750#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['bic', 'bic', 'bic']</vType>
+    <Depart>14.0</Depart>
+  </Person>
+  <Age>25</Age>
+  <Person>
+    <Name>Ben</Name>
+    <Home>8038822</Home>
+    <Uni>1027</Uni>
+    <Scholarship/>
+    <StartEdges>['8038822', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '8038822']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>['public', 'public', 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>15.0</Depart>
+  </Person>
+  <Age>27</Age>
+  <Person>
+    <Name>Marie</Name>
+    <Home>-386831074</Home>
+    <Uni>917</Uni>
+    <Scholarship/>
+    <StartEdges>['-386831074', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '-386831074']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>['public', 'public', 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>16.0</Depart>
+  </Person>
+  <Age>28</Age>
+  <Person>
+    <Name>Felix</Name>
+    <Home>462941119#2</Home>
+    <Uni>855</Uni>
+    <Scholarship/>
+    <StartEdges>['462941119#2', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '462941119#2']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>['public', 'public', 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>17.0</Depart>
+  </Person>
+  <Age>27</Age>
+  <Person>
+    <Name>Laura</Name>
+    <Home>26249175</Home>
+    <Uni>1055</Uni>
+    <Scholarship/>
+    <StartEdges>['26249175', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '26249175']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>['public', 'public', 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>18.0</Depart>
+  </Person>
+  <Age>27</Age>
+  <Person>
+    <Name>Matvii</Name>
+    <Home>32197056#2</Home>
+    <Uni>861</Uni>
+    <Scholarship/>
+    <StartEdges>['32197056#2', '-386832703#1', '-31626938#1']</StartEdges>
+    <DestinationEdges>['-386832703#1', '-31626938#1', '32197056#2']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>[None, None, None]</Modes>
+    <vType>['car', 'car', 'car']</vType>
+    <Depart>19.0</Depart>
+  </Person>
+  <Age>29</Age>
+  <Person>
+    <Name>Hugo</Name>
+    <Home>176129773</Home>
+    <School>87687105</School>
+    <PocketMoney>60</PocketMoney>
+    <StartEdges>['176129773', '87687105', '-30010690#2']</StartEdges>
+    <DestinationEdges>['87687105', '-30010690#2', '176129773']</DestinationEdges>
+    <Lines>['ANY', 'ANY', 'ANY']</Lines>
+    <Modes>['public', 'public', None]</Modes>
+    <vType>[None, None, 'bic']</vType>
+    <Depart>20.0</Depart>
+  </Person>
+  <Age>15</Age>
+  <Person>
+    <Name>Stefan</Name>
+    <Home>-36779459#1</Home>
+    <School>87687105</School>
+    <PocketMoney>64</PocketMoney>
+    <StartEdges>['-36779459#1', '87687105']</StartEdges>
+    <DestinationEdges>['87687105', '-31626938#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>21.0</Depart>
+  </Person>
+  <Age>10</Age>
+  <Person>
+    <Name>Maria</Name>
+    <Home>-44459773#1</Home>
+    <School>87687105</School>
+    <PocketMoney>81</PocketMoney>
+    <StartEdges>['-44459773#1', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '-44459773#1']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>22.0</Depart>
+  </Person>
+  <Age>12</Age>
+  <Person>
+    <Name>Giorgio</Name>
+    <Home>-436153519</Home>
+    <School>87687105</School>
+    <PocketMoney>71</PocketMoney>
+    <StartEdges>['-436153519', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '-436153519']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>23.0</Depart>
+  </Person>
+  <Age>6</Age>
+  <Person>
+    <Name>Olivia</Name>
+    <Home>23463893#1</Home>
+    <School>87687105</School>
+    <PocketMoney>80</PocketMoney>
+    <StartEdges>['23463893#1', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '23463893#1']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>24.0</Depart>
+  </Person>
+  <Age>10</Age>
+  <Person>
+    <Name>Isabella</Name>
+    <Home>-53564619#0</Home>
+    <School>87687105</School>
+    <PocketMoney>96</PocketMoney>
+    <StartEdges>['-53564619#0', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '-53564619#0']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>25.0</Depart>
+  </Person>
+  <Age>16</Age>
+  <Person>
+    <Name>Andrii</Name>
+    <Home>273169649#0</Home>
+    <School>87687105</School>
+    <PocketMoney>73</PocketMoney>
+    <StartEdges>['273169649#0', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '273169649#0']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>26.0</Depart>
+  </Person>
+  <Age>9</Age>
+  <Person>
+    <Name>Elena</Name>
+    <Home>-269782624#0</Home>
+    <School>87687105</School>
+    <PocketMoney>65</PocketMoney>
+    <StartEdges>['-269782624#0', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '-269782624#0']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>27.0</Depart>
+  </Person>
+  <Age>13</Age>
+  <Person>
+    <Name>Matej</Name>
+    <Home>-22793821#1</Home>
+    <School>87687105</School>
+    <PocketMoney>95</PocketMoney>
+    <StartEdges>['-22793821#1', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '-22793821#1']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>28.0</Depart>
+  </Person>
+  <Age>5</Age>
+  <Person>
+    <Name>Katrin</Name>
+    <Home>1026932448</Home>
+    <School>87687105</School>
+    <PocketMoney>61</PocketMoney>
+    <StartEdges>['1026932448', '87687105', '4807780#2']</StartEdges>
+    <DestinationEdges>['87687105', '4807780#2', '1026932448']</DestinationEdges>
+    <Lines>['ANY', None, 'ANY']</Lines>
+    <Modes>['public', None, 'public']</Modes>
+    <vType>[None, None, None]</vType>
+    <Depart>29.0</Depart>
+  </Person>
+  <Age>10</Age>
+  <Person>
+    <Name>Leopold</Name>
+    <Home>386851192#1</Home>
+    <Pension>2277</Pension>
+    <StartEdges>['386851192#1', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '386851192#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>30.0</Depart>
+  </Person>
+  <Age>92</Age>
+  <Person>
+    <Name>Marta</Name>
+    <Home>386851192#1</Home>
+    <Pension>2303</Pension>
+    <StartEdges>['386851192#1', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '386851192#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>31.0</Depart>
+  </Person>
+  <Age>86</Age>
+  <Person>
+    <Name>Ingrid</Name>
+    <Home>-23316367</Home>
+    <Pension>3897</Pension>
+    <StartEdges>['-23316367', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '-23316367']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>32.0</Depart>
+  </Person>
+  <Age>91</Age>
+  <Person>
+    <Name>James</Name>
+    <Home>202499351#0</Home>
+    <Pension>2520</Pension>
+    <StartEdges>['202499351#0', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '202499351#0']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>33.0</Depart>
+  </Person>
+  <Age>93</Age>
+  <Person>
+    <Name>Sofia</Name>
+    <Home>8026684#0</Home>
+    <Pension>2465</Pension>
+    <StartEdges>['8026684#0', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '8026684#0']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>34.0</Depart>
+  </Person>
+  <Age>88</Age>
+  <Person>
+    <Name>Tobias</Name>
+    <Home>281915930#1</Home>
+    <Pension>2986</Pension>
+    <StartEdges>['281915930#1', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '281915930#1']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>35.0</Depart>
+  </Person>
+  <Age>80</Age>
+  <Person>
+    <Name>John</Name>
+    <Home>387155266</Home>
+    <Pension>3245</Pension>
+    <StartEdges>['387155266', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '387155266']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>36.0</Depart>
+  </Person>
+  <Age>63</Age>
+  <Person>
+    <Name>Emily</Name>
+    <Home>-412792763</Home>
+    <Pension>3444</Pension>
+    <StartEdges>['-412792763', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '-412792763']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>37.0</Depart>
+  </Person>
+  <Age>71</Age>
+  <Person>
+    <Name>Michael</Name>
+    <Home>441972347#3</Home>
+    <Pension>2599</Pension>
+    <StartEdges>['441972347#3', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '441972347#3']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>38.0</Depart>
+  </Person>
+  <Age>86</Age>
+  <Person>
+    <Name>Sarah</Name>
+    <Home>561591790#0</Home>
+    <Pension>2447</Pension>
+    <StartEdges>['561591790#0', '-23196349']</StartEdges>
+    <DestinationEdges>['-23196349', '561591790#0']</DestinationEdges>
+    <Lines>['ANY', 'ANY']</Lines>
+    <Modes>['public', 'public']</Modes>
+    <vType>[None, None]</vType>
+    <Depart>39.0</Depart>
+  </Person>
+  <Age>79</Age>
+</Persons>

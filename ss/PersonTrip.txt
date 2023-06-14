@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generated on 2023-05-09 11:38:13 by Eclipse SUMO netedit Version 1.16.0
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <vType id="car" vClass="passenger"/>
+    <vType id="bic" vClass="bicycle"/>
+    <vType id="mot" vClass="motorcycle"/>
+     <person id="Alexander" depart="0.00">
+        <personTrip from="26734306#2" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="600"  actType="singing"/>
+        <personTrip from="-105914659#1" to="26734306#2" lines="ANY" vTypes="car"/>
+    </person>
+    <person id="Anna" depart="1.00">
+        <personTrip from="448036755#0" to="-105914659#1" lines="ANY" vTypes="mot"/>
+        <stop duration="600"  actType="singing"/>
+        <personTrip from="-105914659#1" to="-17096975#1" lines="ANY" vTypes="mot"/>
+        <stop duration="100"  actType="singing"/>
+        <personTrip from="-17096975#1" to="448036755#0" lines="ANY" modes="public"/>
+    </person>
+    <person id="Thomas" depart="2.00">
+        <personTrip from="-692537992" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="575"  actType="singing"/>
+        <personTrip from="-105914659#1" to="-23032837#1" lines="ANY" vTypes="car"/>
+        <stop duration="140"  actType="singing"/>
+        <personTrip from="-23032837#1" to="-692537992" lines="ANY" modes="public"/>
+    </person>
+    <person id="Max" depart="3.00">
+         <personTrip from="-692537992" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="620"  actType="singing"/>
+        <personTrip from="-105914659#1" to="-23032837#1" lines="ANY" vTypes="car"/>
+        <stop duration="120"  actType="singing"/>
+        <personTrip from="-23032837#1" to="-692537992" lines="ANY" modes="public"/>
+    </person>
+    <person id="Sophie" depart="4.00">
+        <personTrip from="-42326224#0" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="549"  actType="singing"/>
+        <personTrip from="-105914659#1" to="26734306#2" lines="ANY" vTypes="car"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="26734306#2" to="-42326224#0" lines="ANY" vTypes="car"/>
+    </person>
+     <person id="Leon" depart="5.00">
+        <personTrip from="-881678625#3" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="549"  actType="singing"/>
+        <personTrip from="-105914659#1" to="-23032837#1" lines="ANY" vTypes="car"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="26734306#2" to="-881678625#3" lines="ANY" modes="public"/>
+    </person>
+     <person id="Mia" depart="6.00">
+        <personTrip from="-31646611#1" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="549"  actType="singing"/>
+        <personTrip from="-105914659#1" to="26734306#2" lines="ANY" vTypes="car"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="26734306#2" to="-31646611#1" lines="ANY" vTypes="car"/>
+    </person>
+     <person id="Luca" depart="7.00">
+        <personTrip from="186037699#0" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="549"  actType="singing"/>
+        <personTrip from="-105914659#1" to="186037699#0" lines="ANY" vTypes="car"/>
+    </person>
+     <person id="Emma" depart="8.00">
+        <personTrip from="-387296028#2" to="-105914659#1" lines="ANY" modes="public"/>
+        <stop duration="549"  actType="singing"/>
+        <personTrip from="-105914659#1" to="-387296028#2" lines="ANY" modes="public"/>
+    </person>
+     <person id="Paul" depart="9.00">
+        <personTrip from="12099342#1" to="-105914659#1" lines="ANY" vTypes="car"/>
+        <stop duration="549"  actType="singing"/>
+        <personTrip from="-105914659#1" to="-23032837#1" lines="ANY" vTypes="car"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-23032837#1" to="12099342#1" lines="ANY" vTypes="car"/>
+    </person>
+    <person id="Jonas" depart="10.00">
+        <personTrip from="-386831074" to="-386832703#1" lines="ANY" vTypes="bic"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" vTypes="bic"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="-386831074" lines="ANY" vTypes="bic"/>
+    </person>
+    <person id="Lena" depart="11.00">
+        <personTrip from="158513383#1" to="-386832703#1" lines="ANY" vTypes="bic"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" vTypes="bic"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="158513383#1" lines="ANY" vTypes="bic"/>
+    </person>
+    <person id="Noah" depart="12.00">
+        <personTrip from="-23119545" to="-386832703#1" lines="ANY" vTypes="bic"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-23119545" lines="ANY" vTypes="bic"/>
+    </person>
+    <person id="Hannah" depart="13.00">
+        <personTrip from="-37721058#1" to="-386832703#1" lines="ANY" vTypes="bic"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" vTypes="bic"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="-37721058#1" lines="ANY" vTypes="bic"/>
+    </person>
+    <person id="Emilia" depart="14.00">
+        <personTrip from="-474485750#1" to="-386832703#1" lines="ANY" vTypes="bic"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" vTypes="bic"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="-474485750#1" lines="ANY" vTypes="bic"/>
+    </person>
+    <person id="Ben" depart="15.00">
+        <personTrip from="8038822" to="-386832703#1" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="8038822" lines="ANY" modes="public"/>
+    </person>
+    <person id="Marie" depart="16.00">
+        <personTrip from="-386831074" to="-386832703#1" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="-386831074" lines="ANY" modes="public"/>
+    </person>
+    <person id="Felix" depart="17.00">
+        <personTrip from="462941119#2" to="-386832703#1" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="462941119#2" lines="ANY" modes="public"/>
+    </person>
+    <person id="Laura" depart="18.00">
+        <personTrip from="26249175" to="-386832703#1" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="26249175" lines="ANY" modes="public"/>
+    </person>
+    <person id="Matvii" depart="19.00">
+        <personTrip from="32197056#2" to="-386832703#1" lines="ANY" vTypes="car"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-386832703#1" to="-31626938#1" lines="ANY" vTypes="car"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-31626938#1" to="32197056#2" lines="ANY" vTypes="car"/>
+    </person>
+    <person id="Hugo" depart="20.00">
+        <personTrip from="176129773" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="-30010690#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="-30010690#2" to="176129773" lines="ANY" vTypes="bic"/>
+    </person>
+     <person id="Stefan" depart="21.00">
+        <personTrip from="-36779459#1" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="-36779459#1" lines="ANY" modes="public"/>
+    </person>
+     <person id="Maria" depart="22.00">
+        <personTrip from="-44459773#1" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="-44459773#1" lines="ANY" modes="public"/>
+    </person>
+     <person id="Giorgio" depart="23.00">
+       <personTrip from="-436153519" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="-436153519" lines="ANY" modes="public"/>
+    </person>
+     <person id="Olivia" depart="24.00">
+        <personTrip from="23463893#1" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="23463893#1" lines="ANY" modes="public"/>
+    </person>
+     <person id="Isabella" depart="25.00">
+        <personTrip from="-53564619#0" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="-53564619#0" lines="ANY" modes="public"/>
+    </person>
+     <person id="Andrii" depart="26.00">
+        <personTrip from="273169649#0" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="273169649#0" lines="ANY" modes="public"/>
+    </person>
+     <person id="Elena" depart="27.00">
+        <personTrip from="-269782624#0" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="-269782624#0" lines="ANY" modes="public"/>
+    </person>
+     <person id="Matej" depart="29.00">
+        <personTrip from="-22793821#1" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="-22793821#1" lines="ANY" modes="public"/>
+    </person>
+    <person id="Katrin" depart="29.00">
+        <personTrip from="1026932448" to="87687105" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="87687105" to="4807780#2" lines="ANY" modes="public"/>
+        <stop duration="95"  actType="singing"/>
+        <personTrip from="4807780#2" to="1026932448" lines="ANY" modes="public"/>
+    </person>
+    <person id="Leopold" depart="30.00">
+        <personTrip from="386851192#1" to="-2319634" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-2319634" to="386851192#1" lines="ANY" modes="public"/>
+    </person>
+    <person id="Marta" depart="31.00">
+        <personTrip from="386851192#1" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="386851192#1" lines="ANY" modes="public"/>
+    </person>
+    <person id="Ingrid" depart="32.00">
+        <personTrip from="23316367" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="23316367" lines="ANY" modes="public"/>
+    </person>
+    <person id="James" depart="33.00">
+        <personTrip from="202499351#0" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="202499351#0" lines="ANY" modes="public"/>
+    </person>
+    <person id="Sofia" depart="34.00">
+        <personTrip from="8026684#0" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="8026684#0" lines="ANY" modes="public"/>
+    </person>
+    <person id="Tobias" depart="35.00">
+        <personTrip from="281915930#1" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="281915930#1" lines="ANY" modes="public"/>
+    </person>
+    <person id="John" depart="36.00">
+        <personTrip from="387155266" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="387155266" lines="ANY" modes="public"/>
+    </person>
+    <person id="Emily" depart="37.00">
+        <personTrip from="-412792763" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="-412792763" lines="ANY" modes="public"/>
+    </person>
+    <person id="Michael" depart="38.00">
+        <personTrip from="441972347#3" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="441972347#3" lines="ANY" modes="public"/>
+    </person>
+    <person id="Sarah" depart="38.00">
+        <personTrip from="561591790#0" to="-23196349" lines="ANY" modes="public"/>
+        <stop duration="592"  actType="singing"/>
+        <personTrip from="-23196349" to="561591790#0" lines="ANY" modes="public"/>
+    </person>
+</routes>
