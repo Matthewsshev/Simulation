@@ -5,36 +5,39 @@ import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
 import pytz
 import datetime
+
+
 def getdatetime(): #function to get current date in Germany
     utc_now = pytz.utc.localize(datetime.datetime.utcnow())
     currentDT = utc_now.astimezone(pytz.timezone("Europe/Berlin"))
     DATETIME = currentDT.strftime("%Y-%m-%d %H:%M:%S")
     return DATETIME
+
+
 class Human: #creating a human class for retrieving information
     def __init__(self, name, start_edge, destination_edge,line,mode, vType,depart):
         self.name = name #getting variables from input
         self.start_edge = start_edge
         self.destination_edge = destination_edge
-        self.line=line
-        self.mode=mode
-        self.vType=vType
-        self.home=self.start_edge[0]
-        self.depart=depart
+        self.line = line
+        self.mode = mode
+        self.vType = vType
+        self.home = self.start_edge[0]
+        self.depart = depart
+
     def __str__(self): # method of output of information
         return f"Passenger name: {self.name}\nStart edge: {self.start_edge}\n Home: {self.home}\n Destination edge: {self.destination_edge}"
-    def go_to_work(self): #creating a function that creates trip and adds person
-        line = traci.lane.getIDList() #getting list of lines id`s
-        traci.person.add(self.name, self.start_edge[0],0.5, depart=0.0) #adding person to the simulation
-        traci.person.appendDrivingStage(self.name,self.destination_edge,line) #creating a trip
-class Worker(Human): #creating a subclass of Human
+
+
+class Worker(Human):  # creating a subclass of Human
     def __init__(self, name, start_edge, destination_edge,line,mode, vType,depart):
         super().__init__(name, start_edge, destination_edge,line,mode, vType,depart) #getting variables from class human
-        self.work=self.destination_edge[0] #getting variables that are different from Human
-        self.salary=random.randrange(3300,4800) #getting a random salary in range
-        self.age=random.randrange(30,60) #getting a random age in range
+        self.work = self.destination_edge[0] #getting variables that are different from Human
+        self.salary = random.randrange(3300,4800) #getting a random salary in range
+        self.age = random.randrange(30,60) #getting a random age in range
     def __str__(self):  # method of output of information
         return f"Passenger name: {self.name}\nStart edge: {self.start_edge}\n Home: {self.home}\n Work: {self.work}\n Destination edge: {self.destination_edge}"
-class Student(Human): #creating a second subclass of Human
+class Student(Human): # creating a second subclass of Human
     def __init__(self, name, start_edge, destination_edge,line,mode, vType,depart):
         super().__init__(name, start_edge, destination_edge,line,mode, vType,depart)#getting variables from class human
         self.uni=self.destination_edge[0] #getting variables that are different from Human
@@ -166,7 +169,8 @@ formatted_xml = dom.toprettyxml(indent="  ")  # Save the formatted XML to a file
 with open("data_person.xml", "w") as file: # Writng information that we`ve saved to the xml file
     file.write(formatted_xml)
 p1=Human('V',["-692537992","-105914659#1"],"-105914659#1",'1','public','car','0') #trying to make a trip dynamic directly in traci using Class
-p1.go_to_work() #using function
+d=traci.edge.getIDList()
+print(d)
 k=0 #creating a variable, that`ll help to check a depart time
 while traci.simulation.getMinExpectedNumber() > 0: #making a step in simulation while there`re still some trips
     traci.simulationStep() #making one step
