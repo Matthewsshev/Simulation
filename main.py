@@ -99,16 +99,16 @@ for person_elem in root.iter("person"): #saving information in class
         lines.append(line)
         modes.append(mode)
         vTypes.append(vType)
-    if quantaty_people<=10:#appending list of persons to a different classes, that depends on what place was they in the file
+    if quantaty_people<=20:#appending list of persons to a different classes, that depends on what place was they in the file
         person = Worker(id, start_edges, destination_edges, lines, modes, vTypes, depart)
         persons.append(person)
-    elif quantaty_people<=20:
+    elif quantaty_people<=40:
         person = Student(id, start_edges, destination_edges, lines, modes, vTypes, depart)
         persons.append(person)
-    elif quantaty_people<=30:
+    elif quantaty_people<=60:
         person=Pupil(id, start_edges, destination_edges, lines, modes, vTypes, depart)
         persons.append(person)
-    elif quantaty_people<=40:
+    elif quantaty_people<=80:
         person=Senior(id,start_edges,destination_edges,lines,modes,vTypes,depart)
         persons.append(person)
     else:
