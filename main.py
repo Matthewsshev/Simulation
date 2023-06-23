@@ -15,7 +15,22 @@ def getdatetime(): #function to get current date in Germany
 
 
 class Trip:
-    def __init__(self, start_edge, destination_edge,line,mode,vType,depart):
+    def __init__(self, start_edge, destination_edge, line, mode, vType, depart):
+        '''  edges represent the road segments or links in a transportation network.
+         They define the connections between different nodes
+         (junctions or intersections) and determine the routes vehicles can take.
+          It`s a little bit similar to coordinates. start_edge is a variable which
+          defines a start position of a subject that making a trip.destination_edge
+          is a variable which defines a end position of a subject that making a trip.
+          line refers to a specific lane within an edge or road segment. Lines are
+          used to define the physical divisions or markings within an edge, indicating
+          separate lanes for vehicles. modes refer to different types or categories
+          of transportation modes that can be simulated within the SUMO framework.
+          Modes represent the various ways of transportation available to vehicles or
+          travelers in the simulated network.In SUMO (Simulation of Urban MObility),
+          vType refers to vehicle types. vType is used to define specific characteristics
+          and properties of different types of vehicles in a SUMO simulation. depart is
+          used to define a time in simulation when the trip starts'''
         self.start_edge = start_edge
         self.destination_edge = destination_edge
         self.line = line
@@ -23,11 +38,9 @@ class Trip:
         self.vType = vType
         self.depart = depart
 
-    def prinnt(self):
-        return f'{self.start_edge}'
-
 
 class Human:  # creating a human class for retrieving information
+    edges=traci.edge.getIDList()
     def __init__(self, name):
         self.name = name # getting variables from input
         self.trip = []
@@ -36,8 +49,10 @@ class Human:  # creating a human class for retrieving information
     def assign_trip(self, start_edge, destination_edge, line, mode, vType, depart):
         self.trip.append(Trip(start_edge, destination_edge, line, mode, vType, depart))
         self.home = start_edge[0]
+    def set_info(self):
+        for edge in person.edges:
 
-    def __str__(self): # method of output of information
+    def __str__(self):
         return f"Passenger name: {self.name}\nStart edge: {self.start_edge}\n Home: {self.home}\n Destination edge: {self.destination_edge}"
 
 
@@ -106,7 +121,7 @@ if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd = ["sumo-gui", "-c", "Final\\osm.sumocfg"]  # saving directory of the file
-# traci.start(sumoCmd)  #starting simulation
+traci.start(sumoCmd)  #starting simulation
 tree = ET.parse('Final\\osm_car.rou.xml')  # retrieving information about created passengers from xml file
 root = tree.getroot()
 # Creating an empty root element to hold the data about Persons, their trips and also about vehicles:
@@ -116,9 +131,9 @@ root_vehicle=ET.Element("Vehicles")
 persons = []  # creating a list for all existing persons in a file
 quantaty_people=1  # creating a variable, that`ll help to count people
 for person_elem in root.iter("person"):  # saving information in class
-    id = person_elem.get("id")  # creating new variables to save informations
+    id = person_elem.get("id")  # creating new variables to save information
     depart = float(person_elem.get("depart"))
-    personTrips = []  # creating new lists to save informations
+    personTrips = []  # creating new lists to save information
     start_edges = []
     destination_edges = []
     lines = []
@@ -195,18 +210,6 @@ for person in persons: # iterating list person, to save information about people
         vType_element.text = str(trip.vType)
         depart_element = ET.SubElement(trips_element, 'Depart')
         depart_element.text = str(trip.depart)
-    '''start_element = ET.SubElement(person_element, 'StartEdges') #and then saving elements that are the same for all type of people
-    start_element.text = str()
-    dest_element = ET.SubElement(person_element, 'DestinationEdges')
-    dest_element.text = str(person.destination_edge)
-    line_element = ET.SubElement(person_element, 'Lines')
-    line_element.text = str(person.line)
-    mode_element = ET.SubElement(person_element, 'Modes')
-    mode_element.text = str(person.mode)
-    vType_element = ET.SubElement(person_element, 'vType')
-    vType_element.text = str(person.vType)
-    depart_element = ET.SubElement(person_element, 'Depart')
-    depart_element.text = str(person.depart)'''
 tree_person = ET.ElementTree(root_person)
 xml_string = ET.tostring(root_person, encoding="utf-8")
 dom = minidom.parseString(xml_string)
@@ -215,9 +218,9 @@ formatted_xml = dom.toprettyxml(indent="  ")
 with open("data_person.xml", "w") as file:
     file.write(formatted_xml)
 #p1 = Human('V',["-692537992","-105914659#1"],"-105914659#1",'1','public','car','0')  # trying to make a trip dynamic directly in traci using Class
-#d = traci.edge.getIDList()
-#print(d)
-'''k=0 #creating a variable, that`ll help to check a depart time
+d = traci.edge.getIDList()
+print(d)
+k=0 #creating a variable, that`ll help to check a depart time
 while traci.simulation.getMinExpectedNumber() > 0: #making a step in simulation while there`re still some trips
     traci.simulationStep() #making one step
     for person in persons: # creating a loop to retrieve a information about persons
@@ -252,7 +255,7 @@ while traci.simulation.getMinExpectedNumber() > 0: #making a step in simulation 
             turnAngle_element = ET.SubElement(per_element, "TurnAngle")
             turnAngle_element.text = str(turnAngle)
         else:
-            if step == 0 and k>person.depart:
+            if step == 0 and k > trip.depart:
                 # Trip has ended
                 print("Trip for person", person.name, "has ended")
                 step += 1
@@ -302,4 +305,4 @@ while traci.simulation.getMinExpectedNumber() > 0: #making a step in simulation 
     with open("data_vehicles.xml", "w") as file:# Writng information that we`ve saved to the xml file
         file.write(formatted_xml)
     k+=1
-traci.close() #closing a simulation'''
+traci.close() #closing a simulation
