@@ -52,9 +52,9 @@ class Human:  # creating a human class for retrieving information
     def __init__(self, name):
         self.name = name  # getting variables from input
         self.trip = []
-        filtered_edges = [edge for edge in Human.edges if not edge.endswith("_0")]
+        filtered_edges = [edge for edge in Human.edges if '_' not in edge and not edge.endswith("_0")]
         self.home = random.choice(filtered_edges)
-        self.supermarket = Human.edges[random.randrange(len(Human.edges))]
+        self.supermarket = random.choice(filtered_edges)
 
     def assign_trip(self, start_edge, destination_edge, line, mode, vType, depart):
         self.trip.append(Trip(start_edge, destination_edge, line, mode, vType, depart))
@@ -65,9 +65,19 @@ class Human:  # creating a human class for retrieving information
 
     def __str__(self):
         return f"Passenger name: {self.name}\nStart edge: {self.start_edge}\n Home: {self.home}\n Destination edge: {self.destination_edge}"
-
-v=Human('Lol')
+'''d = traci.polygon.getIDList()
+c = []
+b = []
+for id in d:
+    type = traci.polygon.getType(id)
+    if 'apartments' or 'residential'  in type:
+        c.append(id)
+        l = traci.polygon.getShape(id)
+# print(d)
+'''
+v = Human('Lol')
 print(v.get_home())
+
 
 class Worker(Human):  # creating a subclass of Human
     def __init__(self, name):
