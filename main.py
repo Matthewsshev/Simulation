@@ -22,7 +22,9 @@ def getdatetime():  # function to get current date in Germany
 
 
 class Trip:
-    def __init__(self, start_edge, destination_edge, line, mode, vType, depart):
+    autos = ['bic', 'mot', 'car']
+
+    def __init__(self, start_edge, destination_edge, line,):
         '''  edges represent the road segments or links in a transportation network.
          They define the connections between different nodes
          (junctions or intersections) and determine the routes vehicles can take.
@@ -41,24 +43,32 @@ class Trip:
         self.start_edge = start_edge
         self.destination_edge = destination_edge
         self.line = line
-        self.mode = mode
-        self.vType = vType
-        self.depart = depart
+        self.mode = 'public'
+        if random.randint(0, 3) == 0:
+            self.vType = None
+        elif random.randint(0, 3) == 1:
+            self.vType = Trip.autos[0]
+        elif random.randint(0, 3) == 2:
+
 
 
 class Human:  # creating a human class for retrieving information
     edges = traci.edge.getIDList()
+    houses = []
+    supermarkets = []
 
     def __init__(self, name):
         self.name = name  # getting variables from input
         self.trip = []
-        filtered_edges = [edge for edge in Human.edges if '_' not in edge and not edge.endswith("_0")]
+        filtered_edges = [edge for edge in Human.edges if '_' not in edge and not edge.endswith("_0")
+                          and not edge in Human.houses and not edge in Human.supermarkets]
         self.home = random.choice(filtered_edges)
+        Human.houses.append(self.home)
         self.supermarket = random.choice(filtered_edges)
+        Human.supermarkets.append(self.supermarket)
 
-    def assign_trip(self, start_edge, destination_edge, line, mode, vType, depart):
-        self.trip.append(Trip(start_edge, destination_edge, line, mode, vType, depart))
-        self.home = start_edge[0]
+    def assign_trip(self, start_edge, destination_edge, line, mode, vType, ):
+        self.trip.append(Trip(start_edge, destination_edge, line, mode, vType, ))
 
     def get_home(self):
         return self.home
@@ -68,33 +78,90 @@ class Human:  # creating a human class for retrieving information
 '''d = traci.polygon.getIDList()
 c = []
 b = []
+o = []
 for id in d:
     type = traci.polygon.getType(id)
     if 'apartments' or 'residential'  in type:
         c.append(id)
-        l = traci.polygon.getShape(id)
-# print(d)
+        o.append(traci.polygon.getLineWidth(id))
+print(o)
 '''
-v = Human('Lol')
-print(v.get_home())
 
 
 class Worker(Human):  # creating a subclass of Human
+    works = []
+
     def __init__(self, name):
-        super().__init__(name)  # getting variables from class human
+        super().__init__(name,)  # getting variables from class human
         self.salary = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
-        self.work = None
+        filtered_edges = [edge for edge in Human.edges if '_' not in edge and not edge.endswith("_0")
+                          and not edge in Human.houses and not edge in Human.supermarkets
+                          and not edge in Worker.works]
+        self.work = random.choice(filtered_edges)
+        Worker.works.append(self.work)
 
-    def assign_trip(self, start_edge, destination_edge, line, mode, vType, depart):
-        super().assign_trip(start_edge, destination_edge, line, mode, vType, depart)
-        self.work = destination_edge[0]
+    def assign_trip(self, start_edge, destination_edge, line, mode, vType):
+        super().assign_trip(start_edge, destination_edge, line, mode, vType)
 
     def print_trips(self):
         return f'All trips for a person: {self.name}\n {self.trip}'
 
     def __str__(self):  # method of output of information
         return f"Passenger name: {self.name}\nStart edge: {self.start_edge}\n Home: {self.home}\n Work: {self.work}\n Destination edge: {self.destination_edge}"
+
+
+humans = []
+v = Human('Lol')
+pp = Worker('lil')
+print(pp.print_trips())
+humans.append(v)
+humans.append(pp)
+root_2 = ET.Element("routes")
+vTypes = [
+            {"id": "car", "vClass": "passenger"},
+            {"id": "bic", "vClass": "bicycle"},
+            {"id": "mot", "vClass": "motorcycle"}
+        ]
+for vType in vTypes:
+    ET.SubElement(root_2, 'vType', attrib=vType)
+for human in humans:
+    person_attrib = {'id': human.name, 'depart': '0.00'}
+    person = ET.SubElement(root_2, 'person', attrib=person_attrib)
+    c = 0
+    if isinstance(human, Worker):
+        destination = [human.home, human.work, human.supermarket]
+    else:
+        destination = [human.home, human.supermarket]
+    location = human.home
+    while c <= 10:
+        rd = random.choice(destination)
+        while destination == location:
+            rd = random.choice(destination)
+        human.assign_trip(location, rd, 'ANY')
+        location = rd
+        c += 1
+    for trip in human.trip:
+        trip_attrib = {
+            'from': trip.start_edge, 'to': trip.destination_edge, 'line': trip.line,
+            'mode': trip.mode, 'vTypes': trip.vType}
+        ET.SubElement(person, 'personTrip', attrib=trip_attrib)
+        if trip.destination_edge == human.supermarket:
+            duration = random.randint(600, 1200)
+        elif isinstance(human, Worker) and trip.destination_edge == human.work:
+            duration = random.randint(28800, 36000)
+        elif trip.destination_edge == human.home:
+            duration = random.randint(42000, 43200)
+        stop_attrib = {'duration': str(duration), 'actType': 'singing'}
+        ET.SubElement(person, 'stop',attrib=stop_attrib)
+tree_2 = ET.ElementTree(root_2)
+xml_2string = ET.tostring(root_2, encoding="utf-8")
+dom = minidom.parseString(xml_2string)
+formatted_xml = dom.toprettyxml(indent="  ")
+with open("data.xml", "w") as file:  # Writng information that we`ve saved to the xml file
+    file.write(formatted_xml)
+print(v.get_home())
+print(pp.get_home())
 
 
 class Student(Human):  # creating a second subclass of Human
@@ -104,8 +171,8 @@ class Student(Human):  # creating a second subclass of Human
         self.scholarship = random.randrange(800, 1100)  # getting random scholarship in range
         self.age = random.randrange(20, 30)  # getting random age in range
 
-    def assign_trip(self, start_edge, destination_edge, line, mode, vType, depart):
-        super().assign_trip(start_edge, destination_edge, line, mode, vType, depart)
+    def assign_trip(self, start_edge, destination_edge, line, mode, vType):
+        super().assign_trip(start_edge, destination_edge, line, mode, vType)
         self.uni = destination_edge[0]
 
     def __str__(self):  # method of output of information
@@ -119,8 +186,8 @@ class Pupil(Human):  # creating a second subclass of Human
         self.pocket_money = random.randrange(40, 100)  # getting random pocket money in range
         self.age = random.randrange(5, 20)  # getting random age in range
 
-    def assign_trip(self, start_edge, destination_edge, line, mode, vType, depart):
-        super().assign_trip(start_edge, destination_edge, line, mode, vType, depart)
+    def assign_trip(self, start_edge, destination_edge, line, mode, vType):
+        super().assign_trip(start_edge, destination_edge, line, mode, vType)
         self.school = destination_edge[0]
 
     def __str__(self):  # method of output of information
@@ -134,8 +201,8 @@ class Senior(Human):  # creating a subclass of Human
         self.pension = random.randrange(2000, 4000)  # getting random pension in range
         self.age = random.randrange(60, 100)  # getting random age in range
 
-    def assign_trip(self, start_edge, destination_edge, line, mode, vType, depart):
-        super().assign_trip(start_edge, destination_edge, line, mode, vType, depart)
+    def assign_trip(self, start_edge, destination_edge, line, mode, vType):
+        super().assign_trip(start_edge, destination_edge, line, mode, vType)
         self.park = destination_edge[0]
 
 
@@ -173,19 +240,19 @@ for person_elem in root.iter("person"):  # saving information in class
     if quantaty_people <= 20:  # appending list of persons to a different classes, that depends on what place was they in the file
         person = Worker(id)
         persons.append(person)
-        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes, depart)
+        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes)
     elif quantaty_people <= 40:
         person = Student(id)
         persons.append(person)
-        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes, depart)
+        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes)
     elif quantaty_people <= 60:
         person = Pupil(id)
         persons.append(person)
-        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes, depart)
+        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes)
     else:
         person = Senior(id)
         persons.append(person)
-        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes, depart)
+        person.assign_trip(start_edges, destination_edges, lines, modes, vTypes)
     quantaty_people += 1
 for person in persons:  # iterating list person, to save information about people in new file
     person_element = ET.SubElement(root_person,
@@ -227,8 +294,6 @@ for person in persons:  # iterating list person, to save information about peopl
         mode_element.text = str(trip.mode)
         vType_element = ET.SubElement(trips_element, 'vType')
         vType_element.text = str(trip.vType)
-        depart_element = ET.SubElement(trips_element, 'Depart')
-        depart_element.text = str(trip.depart)
 tree_person = ET.ElementTree(root_person)
 xml_string = ET.tostring(root_person, encoding="utf-8")
 dom = minidom.parseString(xml_string)
@@ -273,7 +338,7 @@ while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulatio
             turnAngle_element = ET.SubElement(per_element, "TurnAngle")
             turnAngle_element.text = str(turnAngle)
         else:
-            if step == 0 and k > trip.depart:
+            if step == 0:
                 # Trip has ended
                 print("Trip for person", person.name, "has ended")
                 step += 1
