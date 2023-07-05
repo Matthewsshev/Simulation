@@ -1,2 +1,33 @@
 <?xml version="1.0" ?>
-<Trips/>
+<Trips>
+  <Person>
+    <DateTime>108.0</DateTime>
+    <Name>Townie</Name>
+    <Coord>[6485.034454495612, 1496.7667342571397]</Coord>
+    <GPSCoord>[9.343092018944045, 48.729610482635046]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>25531541#0</Edge>
+    <Lane/>
+    <TurnAngle>49.63</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>108.0</DateTime>
+    <Name>Barry</Name>
+    <Coord>[5757.708108712823, 1692.4151371039418]</Coord>
+    <GPSCoord>[9.333213285134866, 48.731399537090674]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>366025457</Edge>
+    <Lane/>
+    <TurnAngle>331.73</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>108.0</DateTime>
+    <Name>Juliann</Name>
+    <Coord>[5203.579121164699, 2633.6431058659887]</Coord>
+    <GPSCoord>[9.325732526288563, 48.73988825999277]</GPSCoord>
+    <Speed>0.0</Speed>
+    <Edge>9515416#1</Edge>
+    <Lane/>
+    <TurnAngle>60.2</TurnAngle>
+  </Person>
+</Trips>

@@ -1,121 +1,91 @@
 <?xml version="1.0" ?>
 <Persons>
   <Person>
-    <Name>Joellyn</Name>
-    <Home>696111436#1</Home>
+    <Name>Townie</Name>
+    <Home>33098857</Home>
+    <Friend>113684068</Friend>
     <Trips>
-      <StartEdge>696111436#1</StartEdge>
-      <DestEdge>688229200</DestEdge>
+      <StartEdge>33098857</StartEdge>
+      <DestEdge>25531541#0</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>None</vType>
-      <StartEdge>688229200</StartEdge>
-      <DestEdge>696111436#1</DestEdge>
+      <StartEdge>25531541#0</StartEdge>
+      <DestEdge>33098857</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>None</vType>
-      <StartEdge>696111436#1</StartEdge>
-      <DestEdge>688229200</DestEdge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-      <vType>None</vType>
     </Trips>
   </Person>
-  <Age>33</Age>
+  <Age>94</Age>
   <Person>
-    <Name>Brea</Name>
-    <Home>-36774581</Home>
-    <Work>412718971#0</Work>
-    <Salary>4560</Salary>
+    <Name>Gallagher</Name>
+    <Home>-380001159</Home>
+    <Friend>280128590</Friend>
+    <Work>-22793652#1</Work>
+    <Salary>3891</Salary>
     <Trips>
-      <StartEdge>-36774581</StartEdge>
-      <DestEdge>-284659685</DestEdge>
+      <StartEdge>-380001159</StartEdge>
+      <DestEdge>-23163762#0</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>None</vType>
-      <StartEdge>-284659685</StartEdge>
-      <DestEdge>412718971#0</DestEdge>
+      <StartEdge>-23163762#0</StartEdge>
+      <DestEdge>280128590</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>passenger</vType>
-      <StartEdge>412718971#0</StartEdge>
-      <DestEdge>-284659685</DestEdge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-      <vType>motorcycle</vType>
     </Trips>
   </Person>
-  <Age>46</Age>
+  <Age>41</Age>
   <Person>
-    <Name>Margalit</Name>
-    <Home>4807759#5</Home>
-    <Work>-180784439#5</Work>
-    <Salary>4359</Salary>
+    <Name>Barry</Name>
+    <Home>1167625424</Home>
+    <Friend>366025457</Friend>
+    <Work>243261574</Work>
+    <Salary>3836</Salary>
     <Trips>
-      <StartEdge>4807759#5</StartEdge>
-      <DestEdge>-180784439#5</DestEdge>
+      <StartEdge>1167625424</StartEdge>
+      <DestEdge>366025457</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>None</vType>
-      <StartEdge>-180784439#5</StartEdge>
-      <DestEdge>4807759#5</DestEdge>
+      <StartEdge>366025457</StartEdge>
+      <DestEdge>1167625424</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>None</vType>
-      <StartEdge>4807759#5</StartEdge>
-      <DestEdge>-180784439#5</DestEdge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-      <vType>passenger</vType>
     </Trips>
   </Person>
-  <Age>31</Age>
+  <Age>47</Age>
   <Person>
-    <Name>Oralle</Name>
-    <Home>183419042#8</Home>
-    <Work>317594488</Work>
-    <Salary>3745</Salary>
+    <Name>Juliann</Name>
+    <Home>272673704#2</Home>
+    <Friend>823046840#0</Friend>
+    <Work>9515416#1</Work>
+    <Salary>3537</Salary>
     <Trips>
-      <StartEdge>183419042#8</StartEdge>
-      <DestEdge>317594488</DestEdge>
+      <StartEdge>272673704#2</StartEdge>
+      <DestEdge>9515416#1</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>['passenger', 'motorcycle']</vType>
-      <StartEdge>317594488</StartEdge>
-      <DestEdge>183419042#8</DestEdge>
+      <StartEdge>9515416#1</StartEdge>
+      <DestEdge>823046840#0</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>None</vType>
-      <StartEdge>183419042#8</StartEdge>
-      <DestEdge>317594488</DestEdge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-      <vType>None</vType>
     </Trips>
   </Person>
-  <Age>52</Age>
+  <Age>40</Age>
   <Person>
-    <Name>Flem</Name>
-    <Home>703147343#1</Home>
-    <Work>-54883366#5</Work>
-    <Salary>4739</Salary>
+    <Name>Caroline</Name>
+    <Home>180784439#1</Home>
+    <Friend>1108004516#2</Friend>
+    <Work>23316363#1</Work>
+    <Salary>4573</Salary>
     <Trips>
-      <StartEdge>703147343#1</StartEdge>
-      <DestEdge>9515059#2</DestEdge>
+      <StartEdge>180784439#1</StartEdge>
+      <DestEdge>1108004516#2</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>['bicycle']</vType>
-      <StartEdge>9515059#2</StartEdge>
-      <DestEdge>703147343#1</DestEdge>
+      <StartEdge>1108004516#2</StartEdge>
+      <DestEdge>125223098#2</DestEdge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <vType>None</vType>
-      <StartEdge>703147343#1</StartEdge>
-      <DestEdge>9515059#2</DestEdge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-      <vType>None</vType>
     </Trips>
   </Person>
-  <Age>56</Age>
+  <Age>57</Age>
 </Persons>
