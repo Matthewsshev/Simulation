@@ -1,33 +1,53 @@
 <?xml version="1.0" ?>
 <Trips>
   <Person>
-    <DateTime>108.0</DateTime>
-    <Name>Townie</Name>
-    <Coord>[6485.034454495612, 1496.7667342571397]</Coord>
-    <GPSCoord>[9.343092018944045, 48.729610482635046]</GPSCoord>
-    <Speed>0.0</Speed>
-    <Edge>25531541#0</Edge>
-    <Lane/>
-    <TurnAngle>49.63</TurnAngle>
+    <DateTime>20.0</DateTime>
+    <Name>Aretha</Name>
+    <Coord>[5605.625127716533, 1284.9865189234047]</Coord>
+    <GPSCoord>[9.327878590759964, 48.73028467759985]</GPSCoord>
+    <Speed>5.19</Speed>
+    <Edge>921020467#2</Edge>
+    <Lane>921020467#2_0</Lane>
+    <TurnAngle>291.01</TurnAngle>
   </Person>
   <Person>
-    <DateTime>108.0</DateTime>
-    <Name>Barry</Name>
-    <Coord>[5757.708108712823, 1692.4151371039418]</Coord>
-    <GPSCoord>[9.333213285134866, 48.731399537090674]</GPSCoord>
-    <Speed>0.0</Speed>
-    <Edge>366025457</Edge>
-    <Lane/>
-    <TurnAngle>331.73</TurnAngle>
+    <DateTime>20.0</DateTime>
+    <Name>Hilarie</Name>
+    <Coord>[6438.613469126711, 1541.37251929551]</Coord>
+    <GPSCoord>[9.339221436723253, 48.73255830762763]</GPSCoord>
+    <Speed>4.35</Speed>
+    <Edge>25708826#0</Edge>
+    <Lane>25708826#0_0</Lane>
+    <TurnAngle>337.72</TurnAngle>
   </Person>
   <Person>
-    <DateTime>108.0</DateTime>
-    <Name>Juliann</Name>
-    <Coord>[5203.579121164699, 2633.6431058659887]</Coord>
-    <GPSCoord>[9.325732526288563, 48.73988825999277]</GPSCoord>
-    <Speed>0.0</Speed>
-    <Edge>9515416#1</Edge>
-    <Lane/>
-    <TurnAngle>60.2</TurnAngle>
+    <DateTime>20.0</DateTime>
+    <Name>Adnan</Name>
+    <Coord>[4028.46110477655, 3979.9742824008536]</Coord>
+    <GPSCoord>[9.30657900336223, 48.75458752473542]</GPSCoord>
+    <Speed>4.75</Speed>
+    <Edge>23471130#2</Edge>
+    <Lane>23471130#2_0</Lane>
+    <TurnAngle>257.1</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>20.0</DateTime>
+    <Name>Hernando</Name>
+    <Coord>[3081.1621093657577, 976.1708915248657]</Coord>
+    <GPSCoord>[9.293533575161614, 48.7275991618256]</GPSCoord>
+    <Speed>5.39</Speed>
+    <Edge>-10417266#1</Edge>
+    <Lane>-10417266#1_0</Lane>
+    <TurnAngle>353.81</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>20.0</DateTime>
+    <Name>Annice</Name>
+    <Coord>[4812.301185398598, 3317.3774495041703]</Coord>
+    <GPSCoord>[9.317205634913085, 48.748598028234696]</GPSCoord>
+    <Speed>4.15</Speed>
+    <Edge>400881356#8</Edge>
+    <Lane>400881356#8_0</Lane>
+    <TurnAngle>319.04</TurnAngle>
   </Person>
 </Trips>

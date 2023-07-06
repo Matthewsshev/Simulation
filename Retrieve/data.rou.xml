@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<routes>
+  <vType id="passenger" vClass="passenger"/>
+  <vType id="bicycle" vClass="bicycle"/>
+  <vType id="motorcycle" vClass="motorcycle"/>
+  <person id="Prasad" depart="0.00">
+    <personTrip from="-168357260" to="1161796955#0" line="ANY" modes="public"/>
+    <stop duration="1147" actType="singing"/>
+    <personTrip from="1161796955#0" to="-168357260" line="ANY" vTypes="motorcycle"/>
+    <stop duration="42764" actType="singing"/>
+  </person>
+  <person id="Desmund" depart="0.00">
+    <personTrip from="23167254#1" to="-23275218#1" line="ANY" vTypes="bicycle"/>
+    <stop duration="672" actType="singing"/>
+    <personTrip from="-23275218#1" to="23167254#1" line="ANY" modes="public"/>
+    <stop duration="42035" actType="singing"/>
+  </person>
+  <person id="Jacquelynn" depart="0.00">
+    <personTrip from="124806871#0" to="317594539" line="ANY" vTypes="bicycle"/>
+    <stop duration="42597" actType="singing"/>
+    <personTrip from="317594539" to="622835969#2" line="ANY" vTypes="bicycle"/>
+    <stop duration="42760" actType="singing"/>
+  </person>
+  <person id="Felicio" depart="0.00">
+    <personTrip from="37764820#0" to="303259046#2" line="ANY" vTypes="passenger"/>
+    <stop duration="42655" actType="singing"/>
+    <personTrip from="303259046#2" to="37764820#0" line="ANY" vTypes="passenger"/>
+    <stop duration="42854" actType="singing"/>
+  </person>
+  <person id="Mylo" depart="0.00">
+    <personTrip from="23195845#3" to="281921554" line="ANY" vTypes="motorcycle"/>
+    <stop duration="42413" actType="singing"/>
+    <personTrip from="281921554" to="317594556#0" line="ANY" vTypes="motorcycle"/>
+    <stop duration="42777" actType="singing"/>
+  </person>
+</routes>

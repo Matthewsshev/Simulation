@@ -85,6 +85,8 @@ class Trip:
                             allowed_auto.append(traci.lane.getAllowed(lane))
                     if type(trip.vType) is list:  # checking if person have more that one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
+                        if random_auto not in allowed_auto:
+                            print(traci.route.getEdges(person.name))
                         trip_attrib = {
                             'from': trip.start_edge, 'to': trip.destination_edge,
                             'line': trip.line, 'vTypes': random_auto}  # creating trip attribute for xml file
@@ -110,7 +112,7 @@ class Trip:
         xml_2string = ET.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
         dom = minidom.parseString(xml_2string)  # this two lines help to create readable xml file
         formatted_xml = dom.toprettyxml(indent="  ")
-        with open("Final/data.rou.xml", "w") as save:  # Writing information that we`ve saved to the xml file
+        with open("Without_transport/data.rou.xml", "w") as save:  # Writing information that we`ve saved to the xml fil
             save.write(formatted_xml)
 
     @staticmethod
@@ -208,7 +210,7 @@ class Human:  # creating a human class for retrieving information
     Human will have their own list of trips. List of destination is places where person can go in simulation
     """
     edges = traci.edge.getIDList()  # getting edges from simulation
-    filtered_edges = [edge for edge in edges if '_' not in edge and not edge.endswith("_0")]  # sorted edges
+    filtered_edges = [edge for edge in edges if '_' not in edge]  # sorted edges
 
     def __init__(self, name):
 
@@ -362,7 +364,7 @@ for i in range(5):
     humans.append(human)
 Trip.create_trips(humans, 1)
 Human.save_humans(humans)
-sumoCmd2 = ["sumo-gui", "-c", "Final\\osm.sumocfg"]  # saving directory of the 2nd file
+sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
 traci.start(sumoCmd2, label='sim2')  # starting second simulation
 traci.switch('sim1')
 traci.simulationStep()
