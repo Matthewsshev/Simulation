@@ -1,53 +1,123 @@
 <?xml version="1.0" ?>
 <Trips>
   <Person>
-    <DateTime>20.0</DateTime>
-    <Name>Aretha</Name>
-    <Coord>[5605.625127716533, 1284.9865189234047]</Coord>
-    <GPSCoord>[9.327878590759964, 48.73028467759985]</GPSCoord>
-    <Speed>5.19</Speed>
-    <Edge>921020467#2</Edge>
-    <Lane>921020467#2_0</Lane>
-    <TurnAngle>291.01</TurnAngle>
+    <DateTime>313.0</DateTime>
+    <Name>Melita</Name>
+    <Coord>[1183.7506575245784, 1334.2788142341035]</Coord>
+    <GPSCoord>[9.267750089231845, 48.730883515612426]</GPSCoord>
+    <Speed>4.95</Speed>
+    <Edge>448036759</Edge>
+    <Lane>448036759_0</Lane>
+    <TurnAngle>349.62</TurnAngle>
   </Person>
   <Person>
-    <DateTime>20.0</DateTime>
-    <Name>Hilarie</Name>
-    <Coord>[6438.613469126711, 1541.37251929551]</Coord>
-    <GPSCoord>[9.339221436723253, 48.73255830762763]</GPSCoord>
-    <Speed>4.35</Speed>
-    <Edge>25708826#0</Edge>
-    <Lane>25708826#0_0</Lane>
-    <TurnAngle>337.72</TurnAngle>
+    <DateTime>313.0</DateTime>
+    <Name>Valry</Name>
+    <Coord>[4754.245180633688, 2581.655380186939]</Coord>
+    <GPSCoord>[9.316374329299329, 48.741981732927016]</GPSCoord>
+    <Speed>4.53</Speed>
+    <Edge>449240484</Edge>
+    <Lane>449240484_0</Lane>
+    <TurnAngle>300.19</TurnAngle>
   </Person>
   <Person>
-    <DateTime>20.0</DateTime>
-    <Name>Adnan</Name>
-    <Coord>[4028.46110477655, 3979.9742824008536]</Coord>
-    <GPSCoord>[9.30657900336223, 48.75458752473542]</GPSCoord>
-    <Speed>4.75</Speed>
-    <Edge>23471130#2</Edge>
-    <Lane>23471130#2_0</Lane>
-    <TurnAngle>257.1</TurnAngle>
+    <DateTime>313.0</DateTime>
+    <Name>Quiggly</Name>
+    <Coord>[1724.1844464701783, 3175.396555646047]</Coord>
+    <GPSCoord>[9.275189663951274, 48.74742875596573]</GPSCoord>
+    <Speed>4.53</Speed>
+    <Edge>432904435#1</Edge>
+    <Lane>432904435#1_0</Lane>
+    <TurnAngle>164.99</TurnAngle>
   </Person>
   <Person>
-    <DateTime>20.0</DateTime>
-    <Name>Hernando</Name>
-    <Coord>[3081.1621093657577, 976.1708915248657]</Coord>
-    <GPSCoord>[9.293533575161614, 48.7275991618256]</GPSCoord>
-    <Speed>5.39</Speed>
-    <Edge>-10417266#1</Edge>
-    <Lane>-10417266#1_0</Lane>
-    <TurnAngle>353.81</TurnAngle>
+    <DateTime>313.0</DateTime>
+    <Name>Jeannine</Name>
+    <Coord>[1528.0140127675845, 2962.9361657238496]</Coord>
+    <GPSCoord>[9.272510797202568, 48.745523822400486]</GPSCoord>
+    <Speed>4.61</Speed>
+    <Edge>22793733#1</Edge>
+    <Lane>22793733#1_0</Lane>
+    <TurnAngle>216.53</TurnAngle>
   </Person>
   <Person>
-    <DateTime>20.0</DateTime>
-    <Name>Annice</Name>
-    <Coord>[4812.301185398598, 3317.3774495041703]</Coord>
-    <GPSCoord>[9.317205634913085, 48.748598028234696]</GPSCoord>
-    <Speed>4.15</Speed>
-    <Edge>400881356#8</Edge>
-    <Lane>400881356#8_0</Lane>
-    <TurnAngle>319.04</TurnAngle>
+    <DateTime>313.0</DateTime>
+    <Name>Jewel</Name>
+    <Coord>[3460.0549599761416, 1903.9752444183712]</Coord>
+    <GPSCoord>[9.298735108920763, 48.735932371213835]</GPSCoord>
+    <Speed>0.05</Speed>
+    <Edge>-900882210</Edge>
+    <Lane>-900882210_0</Lane>
+    <TurnAngle>103.6</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>313.0</DateTime>
+    <Name>Fredericka</Name>
+    <Coord>[1859.023713901491, 3103.211383943604]</Coord>
+    <GPSCoord>[9.277020330509131, 48.74677499013078]</GPSCoord>
+    <Speed>3.71</Speed>
+    <Edge>23220039</Edge>
+    <Lane>23220039_0</Lane>
+    <TurnAngle>121.53</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>313.0</DateTime>
+    <Name>Melodee</Name>
+    <Coord>[4021.0283968234876, 4115.054520928663]</Coord>
+    <GPSCoord>[9.306485272848224, 48.75580295817988]</GPSCoord>
+    <Speed>4.93</Speed>
+    <Edge>-12099342#1</Edge>
+    <Lane>-12099342#1_0</Lane>
+    <TurnAngle>89.58</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>313.0</DateTime>
+    <Name>Luella</Name>
+    <Coord>[6372.49371754125, 2140.4556097403174]</Coord>
+    <GPSCoord>[9.338358436204595, 48.737950227496945]</GPSCoord>
+    <Speed>3.85</Speed>
+    <Edge>1180691125</Edge>
+    <Lane>1180691125_0</Lane>
+    <TurnAngle>90.97</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>313.0</DateTime>
+    <Name>Freda</Name>
+    <Coord>[1230.9411257737502, 1916.9716512365667]</Coord>
+    <GPSCoord>[9.26841971977493, 48.736123889976774]</GPSCoord>
+    <Speed>4.4</Speed>
+    <Edge>-791536990#1</Edge>
+    <Lane>-791536990#1_0</Lane>
+    <TurnAngle>230.87</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>313.0</DateTime>
+    <Name>Billie</Name>
+    <Coord>[1325.1522417986457, 2732.8454548408245]</Coord>
+    <GPSCoord>[9.269740267952509, 48.74346043770712]</GPSCoord>
+    <Speed>3.66</Speed>
+    <Edge>824212759#0</Edge>
+    <Lane>824212759#0_0</Lane>
+    <TurnAngle>43.91</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>313.0</DateTime>
+    <Name>Haven</Name>
+    <Coord>[5440.9081549929515, 1612.6854990395104]</Coord>
+    <GPSCoord>[9.325657734240238, 48.733238973782676]</GPSCoord>
+    <Speed>4.7</Speed>
+    <Edge>449556512#6</Edge>
+    <Lane>449556512#6_0</Lane>
+    <TurnAngle>310.77</TurnAngle>
+  </Person>
+  <Person>
+    <DateTime>313.0</DateTime>
+    <Name>Virgie</Name>
+    <Coord>[3188.9176287064042, 1548.4238194826296]</Coord>
+    <GPSCoord>[9.295028924424084, 48.73274336173604]</GPSCoord>
+    <Speed>4.81</Speed>
+    <Edge>-37181840#0</Edge>
+    <Lane>-37181840#0_0</Lane>
+    <TurnAngle>46.27</TurnAngle>
   </Person>
 </Trips>

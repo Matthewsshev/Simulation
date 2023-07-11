@@ -4,8 +4,7 @@ import traci
 import random
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
-import pytz
-import datetime
+
 
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
@@ -48,6 +47,12 @@ class Trip:
             self.vType = None
 
     @staticmethod
+    def get_allowed(edge, allow_auto):  # creating a function that will append lists of allowed lane
+        for lane in traci.lane.getIDList():
+            if traci.lane.getEdgeID(lane) == edge:
+                allow_auto.append(traci.lane.getAllowed(lane))
+
+    @staticmethod
     def create_trips(persons, n):
         """ Creating a function that will take list of created persons and one number for quantity
         of trips for one person. Then saves all it in one xml file for simulation. For one treep is
@@ -76,34 +81,62 @@ class Trip:
                 location = rd  # setting new location for person
                 c += 1
             for trip in person.trip:  # now we`re working with trips
-                allowed_auto = []
-                suitable_lanes = []
                 if trip.vType is not None:
-                    for lane in traci.lane.getIDList():
-                        if traci.lane.getEdgeID(lane) == trip.start_edge:
-                            suitable_lanes.append(lane)
-                            allowed_auto.append(traci.lane.getAllowed(lane))
+                    allowed_auto = []  # creating a list of allowed transport on a start point
+                    Trip.get_allowed(trip.start_edge, allowed_auto,)
                     if type(trip.vType) is list:  # checking if person have more that one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
-                        if random_auto not in allowed_auto:
-                            print(traci.route.getEdges(person.name))
-                        trip_attrib = {
-                            'from': trip.start_edge, 'to': trip.destination_edge,
-                            'line': trip.line, 'vTypes': random_auto}  # creating trip attribute for xml file
-
                     else:  # else using only one transport that is possible
+                        random_auto = trip.vType
+                    if random_auto not in allowed_auto:  # if our auto is not allowed on a start point
+                        allowed_a = []  # creating a new list of allowed autos on next edge
+                        #  getting a route by which person will travel
+                        next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge)
+                        print(next_edges)
+                        if next_edges:
+                            edge_length = 1  # creating a variable, which will help to count edges
+                            next = next_edges[0].edges[edge_length]
+                            while random_auto not in allowed_a:  # making a loop to find the closest suitable edge
+                                allowed_a = []  # creating a new list, which will contain allowed vehicles for new edge
+                                Trip.get_allowed(next, allowed_a)  # using  static function
+                                edge_length += 1  # making a step
+                                next = next_edges[0].edges[edge_length]  # getting next edge
+                                if edge_length <= len(next_edges[0].edges) - 1:  # if tuple does not contain more edges
+                                    break  # end the loop
+                            # creating trip attribute from start to suitable edge using public transport
+                            trip_attrib = {
+                                'from': trip.start_edge, 'to': next,
+                                'line': trip.line, 'modes': trip.mode}
+                            ET.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
+                            # and then from suitable edge to destination
+                            trip_attrib = {
+                                'from': next, 'to': trip.destination_edge,
+                                'line': trip.line, 'vTypes': random_auto}  # creating trip attribute for xml file
+                        else:
+                            trip_attrib = {
+                                'from': trip.start_edge, 'to': trip.destination_edge,
+                                'line': trip.line, 'vTypes': random_auto}
+                    else:  # if  edge is suitable from the start creating only one trip
                         trip_attrib = {
                             'from': trip.start_edge, 'to': trip.destination_edge,
-                            'line': trip.line, 'vTypes': trip.vType}
+                            'line': trip.line, 'vTypes': random_auto}
                 else:  # and if person does not have any transport he`ll use public transport
                     trip_attrib = {
                         'from': trip.start_edge, 'to': trip.destination_edge,
                         'line': trip.line, 'modes': trip.mode}
                 if trip.destination_edge == person.supermarket:  # getting a duration that depends on location
                     duration = random.randint(600, 1200)
-                elif isinstance(Human, Worker) and trip.destination_edge == person.work:
+                elif trip.destination_edge == person.friends:
+                    duration = random.randint(3600, 14400)
+                elif isinstance(person, Worker) and trip.destination_edge == person.work:
                     # checking instance because not everyone have this attribute
                     duration = random.randint(28800, 36000)
+                elif isinstance(person, Student) and trip.destination_edge == person.uni:
+                    duration = random.randint(10800, 21600)
+                elif isinstance(person, Pupil) and trip.destination_edge == person.school:
+                    duration = random.randint(14400, 21600)
+                elif isinstance(person, Senior) and trip.destination_edge == person.park:
+                    duration = random.randint(1800, 7200)
                 else:
                     duration = random.randint(42000, 43200)
                 ET.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
@@ -354,26 +387,29 @@ class Senior(Human):  # creating a subclass of Human
 
 humans = []  # creating an empty list for person that`ll be created
 with open('names.txt', 'r') as file:
-    names = [name.strip() for name in file.readlines()]
-random.shuffle(names)
-for i in range(5):
-    if i < 1:
-        human = Human(names[i])
+    names = [name.strip() for name in file.readlines()]  # getting all names from list
+random.shuffle(names)  # mixing names in list
+for i in range(12):  # creating 12 people with different type of class
+    if i < 3:
+        human = Worker(names[i])  # creating a Worker
+    elif i < 6:
+        human = Student(names[i])  # creating a Student
+    elif i < 9:
+        human = Pupil(names[i])  # creating a Senior
     else:
-        human = Worker(names[i])
+        human = Senior(names[i])  # creating a Senior
     humans.append(human)
-Trip.create_trips(humans, 1)
+Trip.create_trips(humans, 5)  # using a function to create 5 trips for every person
 Human.save_humans(humans)
 sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
 traci.start(sumoCmd2, label='sim2')  # starting second simulation
-traci.switch('sim1')
-traci.simulationStep()
-traci.close()
-traci.switch('sim2')
+traci.switch('sim1')  # switching back to first simulation
+traci.close()  # ending first simulation
+traci.switch('sim2')  # switching back to second simulation
 vehicles = traci.vehicle.getIDList()  # getting list of vehicles id`s
 while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
     traci.simulationStep()  # making one step
-    Trip.pedestrian_retrieval(humans)
-    Trip.autos_retrieval(vehicles)
+    Trip.pedestrian_retrieval(humans)  # using static function to retrieve pedestrian data every step
+    Trip.autos_retrieval(vehicles)  # using static function to retrieve vehicle data every step
 
 traci.close()  # closing a simulation
