@@ -88,21 +88,22 @@ class Trip:
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
                         random_auto = trip.vType
-                    if random_auto not in allowed_auto:  # if our auto is not allowed on a start point
-                        allowed_a = []  # creating a new list of allowed autos on next edge
+
+                    # if our auto is not allowed on a start point
+                    if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
-                        next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge)
+                        next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
+                                                                          vType=random_auto)
                         print(next_edges)
                         if next_edges:
-                            edge_length = 1  # creating a variable, which will help to count edges
-                            next = next_edges[0].edges[edge_length]
-                            while random_auto not in allowed_a:  # making a loop to find the closest suitable edge
-                                allowed_a = []  # creating a new list, which will contain allowed vehicles for new edge
-                                Trip.get_allowed(next, allowed_a)  # using  static function
-                                edge_length += 1  # making a step
-                                next = next_edges[0].edges[edge_length]  # getting next edge
-                                if edge_length <= len(next_edges[0].edges) - 1:  # if tuple does not contain more edges
-                                    break  # end the loop
+                            allowed_a = []  # creating a new list of allowed autos on next edge
+                            for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
+                                Trip.get_allowed(edge, allowed_a)
+                                if any(random_auto in group for group in allowed_a):
+                                    next = edge
+                                    break
+                                else:
+                                    allowed_a = []
                             # creating trip attribute from start to suitable edge using public transport
                             trip_attrib = {
                                 'from': trip.start_edge, 'to': next,
