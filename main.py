@@ -59,13 +59,13 @@ class Trip:
         needed location and destination, type of transport or mode, but not both.
         """
         root_2 = ET.Element("routes")
-        vTypes = [
+        vtypes = [
             {"id": "passenger", "vClass": "passenger"},
             {"id": "bicycle", "vClass": "bicycle"},
             {"id": "motorcycle", "vClass": "motorcycle"}
         ]
-        # creating an list that must be at the start of xml file. It is a type of transport for persons. passenger = car
-        for vType in vTypes:
+        # creating a list that must be at the start of xml file. It is a type of transport for persons. passenger = car
+        for vType in vtypes:
             ET.SubElement(root_2, 'vType', attrib=vType)  # saving all transport to xml
         for person in persons:
             # creating and saving person in xml file depart - time of start. File must be sorted by departure time
@@ -84,7 +84,7 @@ class Trip:
                 if trip.vType is not None:
                     allowed_auto = []  # creating a list of allowed transport on a start point
                     Trip.get_allowed(trip.start_edge, allowed_auto,)
-                    if type(trip.vType) is list:  # checking if person have more that one type of transport
+                    if type(trip.vType) is list:  # checking if person have more than one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
                         random_auto = trip.vType
@@ -94,24 +94,23 @@ class Trip:
                         #  getting a route by which person will travel
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
                                                                           vType=random_auto)
-                        print(next_edges)
                         if next_edges:
                             allowed_a = []  # creating a new list of allowed autos on next edge
                             for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
                                 Trip.get_allowed(edge, allowed_a)
                                 if any(random_auto in group for group in allowed_a):
-                                    next = edge
+                                    next_e = edge
                                     break
                                 else:
                                     allowed_a = []
                             # creating trip attribute from start to suitable edge using public transport
                             trip_attrib = {
-                                'from': trip.start_edge, 'to': next,
+                                'from': trip.start_edge, 'to': next_e,
                                 'line': trip.line, 'modes': trip.mode}
                             ET.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
                             # and then from suitable edge to destination
                             trip_attrib = {
-                                'from': next, 'to': trip.destination_edge,
+                                'from': next_e, 'to': trip.destination_edge,
                                 'line': trip.line, 'vTypes': random_auto}  # creating trip attribute for xml file
                         else:
                             trip_attrib = {
@@ -150,11 +149,9 @@ class Trip:
             save.write(formatted_xml)
 
     @staticmethod
-    def pedestrian_retrieval(persons):
+    def pedestrian_retrieval(persons, root):
         # function will retrieve information of a person movement in every simulation step
-        root_trip = ET.Element("Trips")  # creating main element Trips for
         for person in persons:  # creating a loop to retrieve an information about persons
-            step = 0  # creating a variable that`ll help to know when`ve ended a trip for person
             if person.name in traci.person.getIDList():  # checking is the trip still going
                 # Function descriptions
                 # https://sumo.dlr.de/docs/TraCI/Vehicle_Value_Retrieval.html
@@ -166,14 +163,16 @@ class Trip:
                 spd = round(traci.person.getSpeed(person.name) * 3.6, 2)  # getting speed in km/h
                 edge = traci.person.getRoadID(person.name)  # getting edge
                 lane = traci.person.getLaneID(person.name)  # getting lane
-                turnAngle = round(traci.person.getAngle(person.name),
+                turnangle = round(traci.person.getAngle(person.name),
                                   2)  # Packing of all the data for export to CSV/XLSX
-                per_element = ET.SubElement(root_trip, "Person")
+                per_element = ET.SubElement(root, "Person")
                 # creating a new XML element and add sub-elements for each data item:
-                datetime_element = ET.SubElement(per_element, "DateTime")  # getting and saving simulation time
-                datetime_element.text = str(traci.simulation.getTime())
                 name_element = ET.SubElement(per_element, "Name")  # getting and saving persons name
                 name_element.text = person.name
+                transport_element = ET.SubElement(per_element, 'Transport')  # getting and saving persons transport
+                transport_element.text = traci.person.getVehicle(person.name)
+                datetime_element = ET.SubElement(per_element, "DateTime")  # getting and saving simulation time
+                datetime_element.text = str(traci.simulation.getTime())
                 coord_element = ET.SubElement(per_element, "Coord")  # getting and saving persons coordinates
                 coord_element.text = str(coord)
                 gpscoord_element = ET.SubElement(per_element, "GPSCoord")  # getting and saving persons gps coordinates
@@ -184,19 +183,19 @@ class Trip:
                 edge_element.text = str(edge)
                 lane_element = ET.SubElement(per_element, "Lane")  # getting and saving persons line in simulation
                 lane_element.text = str(lane)
-                turnAngle_element = ET.SubElement(per_element, "TurnAngle")  # getting and saving persons turn angle
-                turnAngle_element.text = str(turnAngle)
+                turnangle_element = ET.SubElement(per_element, "TurnAngle")  # getting and saving persons turn angle
+                turnangle_element.text = str(turnangle)
         # Write the trip XML tree to a file
         # Next line helps to make a structure of XML file readable
-        xml_string = ET.tostring(root_trip, encoding="utf-8")
+        xml_string = ET.tostring(root, encoding="utf-8")
         dom = minidom.parseString(xml_string)
         formatted_xml = dom.toprettyxml(indent="  ")  # Save the formatted XML to a file
         with open("data_trip.xml", "w") as save:  # Writing information that we`ve saved to the xml file
             save.write(formatted_xml)
 
     @staticmethod
-    def autos_retrieval(autos):  # function will retrieve information about vehicles in every simulation step
-        root_vehicle = ET.Element("Vehicles")
+    def autos_retrieval(autos, root):
+        # function will retrieve information about vehicles in every simulation step
         for vehicle in autos:  # creating a loop to retrieve information about vehicles
             x, y = traci.vehicle.getPosition(vehicle)  # getting their position
             coord = [x, y]  # getting their coordinates
@@ -205,10 +204,10 @@ class Trip:
             spd = round(traci.vehicle.getSpeed(vehicle) * 3.6, 2)  # getting a km/h speed of vehicle
             edge = traci.vehicle.getRoadID(vehicle)  # getting edge
             lane = traci.vehicle.getLaneID(vehicle)  # getting line
-            displacement = round(traci.vehicle.getDistance(vehicle), 2)  # geting distance
-            turnAngle = round(traci.vehicle.getAngle(vehicle), 2)  # getting turn angle
-            nextTLS = traci.vehicle.getNextTLS(vehicle)  # getting next TLS
-            veh_element = ET.SubElement(root_vehicle, 'Vehicle')  # creating all SubElements and saving a current values
+            displacement = round(traci.vehicle.getDistance(vehicle), 2)  # getting distance
+            turnangle = round(traci.vehicle.getAngle(vehicle), 2)  # getting turn angle
+            nexttls = traci.vehicle.getNextTLS(vehicle)  # getting next TLS
+            veh_element = ET.SubElement(root, 'Vehicle')  # creating all SubElements and saving a current values
             name_element = ET.SubElement(veh_element, 'id')  # getting and saving name of a vehicle
             name_element.text = vehicle
             datetime_element = ET.SubElement(veh_element, "DateTime")  # getting and saving simulation time
@@ -225,16 +224,17 @@ class Trip:
             lane_element.text = lane
             displacement_element = ET.SubElement(veh_element, 'Displacement')  # getting and saving vehicle displacement
             displacement_element.text = str(displacement)
-            turnAngle_element = ET.SubElement(veh_element, 'TurnAngle')  # getting and saving turn angle of a vehicle
-            turnAngle_element.text = str(turnAngle)
-            nextTLS_element = ET.SubElement(veh_element, 'NextTLS')  # getting and saving TLS of a vehicle
-            nextTLS_element.text = str(nextTLS)
-        # Write the trip XML tree to a file
-        xml_string = ET.tostring(root_vehicle, encoding="utf-8")
-        # This lines helps to make a structure of XML file readable
+            turnangle_element = ET.SubElement(veh_element, 'TurnAngle')  # getting and saving turn angle of a vehicle
+            turnangle_element.text = str(turnangle)
+            nexttls_element = ET.SubElement(veh_element, 'NextTLS')  # getting and saving TLS of a vehicle
+            nexttls_element.text = str(nexttls)
+
+    @staticmethod
+    def xml_save(root, filename):
+        xml_string = ET.tostring(root, encoding="utf-8")  # next lines helping to make xml more readable
         dom = minidom.parseString(xml_string)
-        formatted_xml = dom.toprettyxml(indent="  ")  # Save the formatted XML to a file
-        with open("data_vehicles.xml", "w") as save:  # Writing information that we`ve saved to the xml file
+        formatted_xml = dom.toprettyxml(indent="  ")
+        with open(filename, "w") as save:  # saving information to xml file
             save.write(formatted_xml)
 
 
@@ -261,7 +261,7 @@ class Human:  # creating a human class for retrieving information
 
     @staticmethod
     def save_humans(persons):
-        """ Static method, that will save personal data like Name, salary, pocket money, house adress etc, in
+        """ Static method, that will save personal data like Name, salary, pocket money, house address etc. in
         xml file. Using for this given list of people that was created earlier.
         """
         root_person = ET.Element("Persons")
@@ -299,9 +299,9 @@ class Human:  # creating a human class for retrieving information
                 pension_element.text = str(person.pension)
             trips_element = ET.SubElement(person_element, "Trips")  # Create trips element
             for trip in person.trip:
-                start_element = ET.SubElement(trips_element, "StartEdge")  # getting and saving start_edge element
+                start_element = ET.SubElement(trips_element, "Start_Edge")  # getting and saving start_edge element
                 start_element.text = str(trip.start_edge)
-                dest_element = ET.SubElement(trips_element, 'DestEdge')  # getting and saving dest_edge element
+                dest_element = ET.SubElement(trips_element, 'Destination_Edge')  # getting and saving dest_edge element
                 dest_element.text = str(trip.destination_edge)
                 line_element = ET.SubElement(trips_element, 'Line')  # getting and saving line element
                 line_element.text = str(trip.line)
@@ -311,12 +311,12 @@ class Human:  # creating a human class for retrieving information
                     mode_element.text = str(trip.mode)
                 else:
                     # getting and saving vehicle for person if he`s using vehicle
-                    vType_element = ET.SubElement(trips_element, 'vType')
-                    vType_element.text = str(trip.vType)
+                    vtype_element = ET.SubElement(trips_element, 'vType')
+                    vtype_element.text = str(trip.vType)
         xml_string = ET.tostring(root_person, encoding="utf-8")  # next lines helping to make xml more readable
         dom = minidom.parseString(xml_string)
         formatted_xml = dom.toprettyxml(indent="  ")
-        with open("data_person.xml", "w") as save: # saving information to xml file
+        with open("data_person.xml", "w") as save:  # saving information to xml file
             save.write(formatted_xml)
 
 
@@ -387,20 +387,17 @@ class Senior(Human):  # creating a subclass of Human
 
 
 humans = []  # creating an empty list for person that`ll be created
-with open('names.txt', 'r') as file:
-    names = [name.strip() for name in file.readlines()]  # getting all names from list
-random.shuffle(names)  # mixing names in list
-for i in range(12):  # creating 12 people with different type of class
+for i in range(1):  # creating 12 people with different type of class
     if i < 3:
-        human = Worker(names[i])  # creating a Worker
+        human = Worker(f'p{i}')  # creating a Worker
     elif i < 6:
-        human = Student(names[i])  # creating a Student
+        human = Student(f'p{i}')  # creating a Student
     elif i < 9:
-        human = Pupil(names[i])  # creating a Senior
+        human = Pupil(f'p{i}')  # creating a Senior
     else:
-        human = Senior(names[i])  # creating a Senior
+        human = Senior(f'p{i}')  # creating a Senior
     humans.append(human)
-Trip.create_trips(humans, 5)  # using a function to create 5 trips for every person
+Trip.create_trips(humans, 1)  # using a function to create 5 trips for every person
 Human.save_humans(humans)
 sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
 traci.start(sumoCmd2, label='sim2')  # starting second simulation
@@ -408,9 +405,12 @@ traci.switch('sim1')  # switching back to first simulation
 traci.close()  # ending first simulation
 traci.switch('sim2')  # switching back to second simulation
 vehicles = traci.vehicle.getIDList()  # getting list of vehicles id`s
+root_vehicle = ET.Element("Vehicles")
+root_trips = ET.Element("Trips")  # creating main element Trips for
 while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
     traci.simulationStep()  # making one step
-    Trip.pedestrian_retrieval(humans)  # using static function to retrieve pedestrian data every step
-    Trip.autos_retrieval(vehicles)  # using static function to retrieve vehicle data every step
-
+    Trip.pedestrian_retrieval(humans, root_trips)  # using static function to retrieve pedestrian data every step
+    Trip.autos_retrieval(vehicles, root_vehicle)  # using static function to retrieve vehicle data every step
+Trip.xml_save(root_trips, 'data_trip.xml')  # saving a
+Trip.xml_save(root_vehicle, 'data_vehicles.xml')
 traci.close()  # closing a simulation
