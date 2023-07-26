@@ -4,9 +4,36 @@
   <vType id="bicycle" vClass="bicycle"/>
   <vType id="motorcycle" vClass="motorcycle"/>
   <person id="p0" depart="0.00">
-    <personTrip from="127314434" to="-23163781" line="ANY" modes="public"/>
-    <stop duration="10026" actType="singing"/>
-    <personTrip from="-23163781" to="127314434" line="ANY" modes="public"/>
-    <stop duration="42556" actType="singing"/>
+    <personTrip from="23184036#2" to="317594572#0" line="ANY" modes="public"/>
+    <stop duration="35425" actType="singing"/>
+    <personTrip from="317594572#0" to="432904379#0" line="ANY" modes="public"/>
+    <personTrip from="432904379#0" to="558422638#4" line="ANY" vTypes="passenger"/>
+    <stop duration="12224" actType="singing"/>
+  </person>
+  <person id="p1" depart="0.00">
+    <personTrip from="-884309044#2" to="54883018#1" line="ANY" modes="public"/>
+    <personTrip from="54883018#1" to="148835215#0" line="ANY" vTypes="motorcycle"/>
+    <stop duration="9161" actType="singing"/>
+    <personTrip from="148835215#0" to="4811320#0" line="ANY" vTypes="bicycle"/>
+    <stop duration="1069" actType="singing"/>
+  </person>
+  <person id="p2" depart="0.00">
+    <personTrip from="191096152#0" to="-23093188#0" line="ANY" vTypes="motorcycle"/>
+    <stop duration="1084" actType="singing"/>
+    <personTrip from="-23093188#0" to="191096152#0" line="ANY" modes="public"/>
+    <stop duration="42232" actType="singing"/>
+  </person>
+  <person id="p3" depart="0.00">
+    <personTrip from="693946723#1" to="-23032776#0" line="ANY" modes="public"/>
+    <personTrip from="-23032776#0" to="645763245" line="ANY" vTypes="passenger"/>
+    <stop duration="888" actType="singing"/>
+    <personTrip from="645763245" to="169097416" line="ANY" modes="public"/>
+    <stop duration="12513" actType="singing"/>
+  </person>
+  <person id="p4" depart="0.00">
+    <personTrip from="167641322#4" to="283023000#1" line="ANY" vTypes="motorcycle"/>
+    <stop duration="12357" actType="singing"/>
+    <personTrip from="283023000#1" to="23320456#2" line="ANY" modes="public"/>
+    <stop duration="8808" actType="singing"/>
   </person>
 </routes>

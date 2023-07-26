@@ -332,7 +332,7 @@ class Worker(Human):  # creating a subclass of Human
         self.work = random.choice(Human.filtered_edges)
         self.destination.append(self.work)
 
-    def assign_trip(self, start_edge, destination_edge):
+    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
 
@@ -349,7 +349,7 @@ class Student(Human):  # creating a second subclass of Human
         self.uni = random.choice(Human.filtered_edges)
         self.destination.append(self.uni)
 
-    def assign_trip(self, start_edge, destination_edge):
+    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
 
@@ -365,7 +365,7 @@ class Pupil(Human):  # creating a second subclass of Human
         self.age = random.randrange(5, 20)  # getting random age in range
         self.destination.append(self.school)
 
-    def assign_trip(self, start_edge, destination_edge):
+    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
 
@@ -382,12 +382,12 @@ class Senior(Human):  # creating a subclass of Human
         self.park = random.choice(Human.filtered_edges)
         self.destination.append(self.park)
 
-    def assign_trip(self, start_edge, destination_edge):
+    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
 
 humans = []  # creating an empty list for person that`ll be created
-for i in range(1):  # creating 12 people with different type of class
+for i in range(5):  # creating 12 people with different type of class
     if i < 3:
         human = Worker(f'p{i}')  # creating a Worker
     elif i < 6:
@@ -411,6 +411,6 @@ while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulatio
     traci.simulationStep()  # making one step
     Trip.pedestrian_retrieval(humans, root_trips)  # using static function to retrieve pedestrian data every step
     Trip.autos_retrieval(vehicles, root_vehicle)  # using static function to retrieve vehicle data every step
-Trip.xml_save(root_trips, 'data_trip.xml')  # saving a
-Trip.xml_save(root_vehicle, 'data_vehicles.xml')
+Trip.xml_save(root_trips, 'data_trip.xml')  # saving a data about trips a
+Trip.xml_save(root_vehicle, 'data_vehicles.xml')  # saving data about vehicles
 traci.close()  # closing a simulation

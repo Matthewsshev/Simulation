@@ -2,20 +2,92 @@
 <Persons>
   <Person>
     <Name>p0</Name>
-    <Home>127314434</Home>
-    <Friend>-23163781</Friend>
-    <Work>-23471073#1</Work>
-    <Salary>4376</Salary>
+    <Home>23184036#2</Home>
+    <Friend>558422638#4</Friend>
+    <Work>317594572#0</Work>
+    <Salary>3786</Salary>
     <Trips>
-      <Start_Edge>127314434</Start_Edge>
-      <Destination_Edge>-23163781</Destination_Edge>
+      <Start_Edge>23184036#2</Start_Edge>
+      <Destination_Edge>317594572#0</Destination_Edge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <Start_Edge>-23163781</Start_Edge>
-      <Destination_Edge>127314434</Destination_Edge>
+      <Start_Edge>317594572#0</Start_Edge>
+      <Destination_Edge>558422638#4</Destination_Edge>
       <Line>ANY</Line>
       <Mode>public</Mode>
     </Trips>
   </Person>
-  <Age>58</Age>
+  <Age>51</Age>
+  <Person>
+    <Name>p1</Name>
+    <Home>-884309044#2</Home>
+    <Friend>148835215#0</Friend>
+    <Work>-510096677</Work>
+    <Salary>4478</Salary>
+    <Trips>
+      <Start_Edge>-884309044#2</Start_Edge>
+      <Destination_Edge>148835215#0</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+      <Start_Edge>148835215#0</Start_Edge>
+      <Destination_Edge>4811320#0</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+    </Trips>
+  </Person>
+  <Age>45</Age>
+  <Person>
+    <Name>p2</Name>
+    <Home>191096152#0</Home>
+    <Friend>387296028#0</Friend>
+    <Work>182058678#2</Work>
+    <Salary>4142</Salary>
+    <Trips>
+      <Start_Edge>191096152#0</Start_Edge>
+      <Destination_Edge>-23093188#0</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+      <Start_Edge>-23093188#0</Start_Edge>
+      <Destination_Edge>191096152#0</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+    </Trips>
+  </Person>
+  <Age>32</Age>
+  <Person>
+    <Name>p3</Name>
+    <Home>693946723#1</Home>
+    <Friend>-23528209#4</Friend>
+    <Uni>169097416</Uni>
+    <Scholarship>1014</Scholarship>
+    <Trips>
+      <Start_Edge>693946723#1</Start_Edge>
+      <Destination_Edge>645763245</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+      <Start_Edge>645763245</Start_Edge>
+      <Destination_Edge>169097416</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+    </Trips>
+  </Person>
+  <Age>22</Age>
+  <Person>
+    <Name>p4</Name>
+    <Home>167641322#4</Home>
+    <Friend>23320456#2</Friend>
+    <Uni>283023000#1</Uni>
+    <Scholarship>917</Scholarship>
+    <Trips>
+      <Start_Edge>167641322#4</Start_Edge>
+      <Destination_Edge>283023000#1</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+      <Start_Edge>283023000#1</Start_Edge>
+      <Destination_Edge>23320456#2</Destination_Edge>
+      <Line>ANY</Line>
+      <Mode>public</Mode>
+    </Trips>
+  </Person>
+  <Age>24</Age>
 </Persons>

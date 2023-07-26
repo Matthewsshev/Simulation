@@ -117,7 +117,7 @@
         <access lane="303780061#1_0" pos="3.41" length="1.68" friendlyPos="1"/>
     </busStop>
     <busStop id="-280307039" name="Theodor-Heuss-Gymnasium" lane="-394114218#3_0" startPos="0.00" endPos="15.00" friendlyPos="true" lines="132"/>
-    <busStop id="-2869007744" name="Keplerstraße" lane="-23999291#0_0" startPos="0.00" endPos="0.20" friendlyPos="true" lines="115 138"/>
+    <busStop id="-2869007744" name="Keplerstraße" lane="-23999291#0_0" startPos="0.00" endPos="15.20" friendlyPos="true" lines="115 138"/>
     <busStop id="-3068257006" name="Stuttgart-Obertürkheim" lane="-23163786#3_0" startPos="116.30" endPos="316.30" friendlyPos="true">
         <access lane="-344566273#0_0" pos="308.44" length="238.47" friendlyPos="1"/>
         <access lane="-461133489_0" pos="3.80" length="33.06" friendlyPos="1"/>
@@ -169,7 +169,7 @@
     <busStop id="-3566577210" name="Esslingen (N) ZOB" lane="-386500268#0_0" startPos="0.00" endPos="15.00" friendlyPos="true" lines="108"/>
     <busStop id="-3872480830" name="Mettingen Bahnhof (Trollingerweg)" lane="-383983728_0" startPos="4.33" endPos="19.33" friendlyPos="true" lines="115"/>
     <busStop id="-3872841443" name="Pliensauturm" lane="-350217704#2_0" startPos="45.44" endPos="60.44" friendlyPos="true" lines="131 140 130 N22"/>
-    <busStop id="-3872841444" name="Schelztor" lane="-386832703#0_0" startPos="0.00" endPos="0.20" friendlyPos="true" lines="108 122 105 110"/>
+    <busStop id="-3872841444" name="Schelztor" lane="-386832703#0_0" startPos="0.00" endPos="15.20" friendlyPos="true" lines="108 122 105 110"/>
     <busStop id="-3898445264" name="Georgii-Waldstadion" lane="-386500264#10_0" startPos="0.00" endPos="15.00" friendlyPos="true" lines="112"/>
     <busStop id="-3904477592" name="Sulzgries Zentrum" lane="-24508781#3_0" startPos="0.00" endPos="15.00" friendlyPos="true" lines="109 132"/>
     <busStop id="-3904767704" name="Herrenwiesenweg" lane="-387155257#0_0" startPos="0.00" endPos="15.00" friendlyPos="true" lines="111"/>
@@ -183,7 +183,7 @@
     <busStop id="10814468128" name="Gartenstadt" lane="37177743#1_0" startPos="5.73" endPos="20.73" friendlyPos="true"/>
     <busStop id="109597051" name="Bärenwiesen" lane="34424782#2_0" startPos="37.31" endPos="52.31" friendlyPos="true"/>
     <busStop id="109597336" name="Brunnen" lane="560583353#2_0" startPos="0.00" endPos="8.43" friendlyPos="true"/>
-    <busStop id="1104997093" name="Katharinenstaffel" lane="8812305#1_0" startPos="0.00" endPos="0.20" friendlyPos="true"/>
+    <busStop id="1104997093" name="Katharinenstaffel" lane="8812305#1_0" startPos="0.00" endPos="15.20" friendlyPos="true"/>
     <busStop id="113591455" name="Ruit" lane="12815133_0" startPos="1805.84" endPos="2005.84" friendlyPos="true" lines="U8 U7"/>
     <busStop id="1187477995" name="Altbach" lane="180784454#2_0" startPos="2102.56" endPos="2302.56" friendlyPos="true" lines="S1"/>
     <busStop id="1187534664" name="Oberesslingen" lane="292876199#4_0" startPos="1319.25" endPos="1519.25" friendlyPos="true" lines="S1">
