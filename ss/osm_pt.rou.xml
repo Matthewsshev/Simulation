@@ -124,6 +124,7 @@
         <stop busStop="287465536" duration="20"/>
         <stop busStop="3872841440" duration="20"/>
         <stop busStop="3933810887" duration="20"/>
+        <stop busStop="-1254192526" duration="20"/>
         <stop busStop="3566577208" duration="20"/>
     </route>
     <route id="pt_bus_104:3" color="211,157,112">
@@ -132,6 +133,7 @@
         <stop busStop="245017149" duration="20"/>
         <stop busStop="3872841439" duration="20"/>
         <stop busStop="245016532" duration="20"/>
+        <stop busStop="-1254192526" duration="20"/>
         <stop busStop="3566577208" duration="20"/>
     </route>
     <route id="pt_bus_110:1" color="251,49,153">
@@ -168,6 +170,7 @@
     </route>
     <route id="pt_bus_104:0" color="211,157,112" >
         <stop busStop="3566577208" duration="20" /> <!-- Esslingen (N) ZOB -->
+        <stop busStop="-6515317595" duration="20"/> <!-- Pliensauturm -->
         <stop busStop="3933810887" duration="20"/>
         <stop busStop="3872841440" duration="20"/>
         <stop busStop="287465536" duration="20"/>
