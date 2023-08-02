@@ -4,7 +4,7 @@ import traci
 import random
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
-
+import sqlite3
 
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
@@ -83,7 +83,7 @@ class Trip:
             for trip in person.trip:  # now we`re working with trips
                 if trip.vType is not None:
                     allowed_auto = []  # creating a list of allowed transport on a start point
-                    Trip.get_allowed(trip.start_edge, allowed_auto,)
+                    Trip.get_allowed(trip.start_edge, allowed_auto)
                     if type(trip.vType) is list:  # checking if person have more than one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
@@ -149,7 +149,7 @@ class Trip:
             save.write(formatted_xml)
 
     @staticmethod
-    def pedestrian_retrieval(persons, root):
+    def pedestrian_retrieval(persons, connection):
         # function will retrieve information of a person movement in every simulation step
         for person in persons:  # creating a loop to retrieve an information about persons
             if person.name in traci.person.getIDList():  # checking is the trip still going
@@ -164,37 +164,19 @@ class Trip:
                 edge = traci.person.getRoadID(person.name)  # getting edge
                 lane = traci.person.getLaneID(person.name)  # getting lane
                 turnangle = round(traci.person.getAngle(person.name),
-                                  2)  # Packing of all the data for export to CSV/XLSX
-                per_element = ET.SubElement(root, "Person")
-                # creating a new XML element and add sub-elements for each data item:
-                name_element = ET.SubElement(per_element, "Name")  # getting and saving persons name
-                name_element.text = person.name
-                transport_element = ET.SubElement(per_element, 'Transport')  # getting and saving persons transport
-                transport_element.text = traci.person.getVehicle(person.name)
-                datetime_element = ET.SubElement(per_element, "DateTime")  # getting and saving simulation time
-                datetime_element.text = str(traci.simulation.getTime())
-                coord_element = ET.SubElement(per_element, "Coord")  # getting and saving persons coordinates
-                coord_element.text = str(coord)
-                gpscoord_element = ET.SubElement(per_element, "GPSCoord")  # getting and saving persons gps coordinates
-                gpscoord_element.text = str(gpscoord)
-                spd_element = ET.SubElement(per_element, "Speed")  # getting and saving persons speed
-                spd_element.text = str(spd)
-                edge_element = ET.SubElement(per_element, "Edge")  # getting and saving persons edge in simulation
-                edge_element.text = str(edge)
-                lane_element = ET.SubElement(per_element, "Lane")  # getting and saving persons line in simulation
-                lane_element.text = str(lane)
-                turnangle_element = ET.SubElement(per_element, "TurnAngle")  # getting and saving persons turn angle
-                turnangle_element.text = str(turnangle)
-        # Write the trip XML tree to a file
-        # Next line helps to make a structure of XML file readable
-        xml_string = ET.tostring(root, encoding="utf-8")
-        dom = minidom.parseString(xml_string)
-        formatted_xml = dom.toprettyxml(indent="  ")  # Save the formatted XML to a file
-        with open("data_trip.xml", "w") as save:  # Writing information that we`ve saved to the xml file
-            save.write(formatted_xml)
+                                  2)
+                if traci.person.getVehicle(person.name):
+                    transport = traci.person.getVehicle(person.name)  # getting transport
+                else:
+                    transport = 'Public'  # if there`s no transport them person is using public transport
+                # Executing an SQL query, which will insert new data into vehicle_data table
+                connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord, gpscoord, 
+                speed, edge, lane, turnangle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                                   (person.name, transport, str(traci.simulation.getTime()), str(coord),
+                                    str(gpscoord), str(spd), str(edge), str(lane), str(turnangle)))
 
     @staticmethod
-    def autos_retrieval(autos, root):
+    def autos_retrieval(autos, connection):
         # function will retrieve information about vehicles in every simulation step
         for vehicle in autos:  # creating a loop to retrieve information about vehicles
             x, y = traci.vehicle.getPosition(vehicle)  # getting their position
@@ -207,35 +189,22 @@ class Trip:
             displacement = round(traci.vehicle.getDistance(vehicle), 2)  # getting distance
             turnangle = round(traci.vehicle.getAngle(vehicle), 2)  # getting turn angle
             nexttls = traci.vehicle.getNextTLS(vehicle)  # getting next TLS
-            veh_element = ET.SubElement(root, 'Vehicle')  # creating all SubElements and saving a current values
-            name_element = ET.SubElement(veh_element, 'id')  # getting and saving name of a vehicle
-            name_element.text = vehicle
-            datetime_element = ET.SubElement(veh_element, "DateTime")  # getting and saving simulation time
-            datetime_element.text = traci.simulation.getTime()
-            coord_element = ET.SubElement(veh_element, 'Coordinates')  # getting and saving coordinates of a vehicle
-            coord_element.text = str(coord)
-            gpscoord_element = ET.SubElement(veh_element, 'GpsCoordinates')  # getting  vehicles gps coordinates
-            gpscoord_element.text = str(gpscoord)  # saving vehicles gps coordinates
-            spd_element = ET.SubElement(veh_element, 'Speed')  # getting and saving speed of a vehicle
-            spd_element.text = str(spd)
-            edge_element = ET.SubElement(veh_element, 'Edge')  # getting and saving edge of a vehicle
-            edge_element.text = str(edge)
-            lane_element = ET.SubElement(veh_element, 'Lane')  # getting and saving lane of a vehicle
-            lane_element.text = lane
-            displacement_element = ET.SubElement(veh_element, 'Displacement')  # getting and saving vehicle displacement
-            displacement_element.text = str(displacement)
-            turnangle_element = ET.SubElement(veh_element, 'TurnAngle')  # getting and saving turn angle of a vehicle
-            turnangle_element.text = str(turnangle)
-            nexttls_element = ET.SubElement(veh_element, 'NextTLS')  # getting and saving TLS of a vehicle
-            nexttls_element.text = str(nexttls)
+            # Executing an SQL query, which will insert new data into vehicle_data table
+            connection.execute(''' INSERT INTO vehicle_data (id, datetime, coordinates, gpscoordinates, 
+                            speed, edge, lane, displacement, turnangle, nexttls) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (vehicle, str(traci.simulation.getTime()),
+                                                                       str(coord), str(gpscoord), str(spd), str(edge),
+                                                                       str(lane), str(turnangle), str(displacement),
+                                                                       str(nexttls)))
 
     @staticmethod
-    def xml_save(root, filename):
-        xml_string = ET.tostring(root, encoding="utf-8")  # next lines helping to make xml more readable
-        dom = minidom.parseString(xml_string)
-        formatted_xml = dom.toprettyxml(indent="  ")
-        with open(filename, "w") as save:  # saving information to xml file
-            save.write(formatted_xml)
+    def delete_all(connection):  # function will delete all data from previous simulations
+        sql_vehicle = 'DELETE FROM vehicle_data'  # Setting an SQL query
+        sql_pedestrian = 'DELETE FROM pedestrian_data'  # Setting an SQL query
+        cur = connection.cursor()
+        cur.execute(sql_vehicle)  # Executing previous query`s
+        cur.execute(sql_pedestrian)
+        connection.commit()  # commiting changes
 
 
 class Human:  # creating a human class for retrieving information
@@ -325,6 +294,7 @@ class Worker(Human):  # creating a subclass of Human
     Subclass of Human. Only difference in personal information like age etc. And also worker is having more
     places to go for example work.
     """
+
     def __init__(self, name):
         super().__init__(name, )  # getting variables from class human
         self.salary = random.randrange(3300, 4800)  # getting a random salary in range
@@ -341,6 +311,7 @@ class Student(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Student is having more
         places to go for example uni.
     """
+
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.uni = None  # getting variables that are different from Human
@@ -358,6 +329,7 @@ class Pupil(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Pupil is having more
         places to go for example school.
     """
+
     def __init__(self, name):
         super().__init__(name, )  # getting variables from class human
         self.school = random.choice(Human.filtered_edges)  # getting variables that are different from Human
@@ -374,6 +346,7 @@ class Senior(Human):  # creating a subclass of Human
          Subclass of Human. Only difference in personal information like age etc. And also Senior is having more
          places to go for example park.
      """
+
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.park = None  # getting variables that are different from Human
@@ -404,13 +377,13 @@ traci.start(sumoCmd2, label='sim2')  # starting second simulation
 traci.switch('sim1')  # switching back to first simulation
 traci.close()  # ending first simulation
 traci.switch('sim2')  # switching back to second simulation
-vehicles = traci.vehicle.getIDList()  # getting list of vehicles id`s
-root_vehicle = ET.Element("Vehicles")
-root_trips = ET.Element("Trips")  # creating main element Trips for
+conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
+Trip.delete_all(conn)  # Using function to delete all previous data
 while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
     traci.simulationStep()  # making one step
-    Trip.pedestrian_retrieval(humans, root_trips)  # using static function to retrieve pedestrian data every step
-    Trip.autos_retrieval(vehicles, root_vehicle)  # using static function to retrieve vehicle data every step
-Trip.xml_save(root_trips, 'data_trip.xml')  # saving a data about trips a
-Trip.xml_save(root_vehicle, 'data_vehicles.xml')  # saving data about vehicles
+    vehicles = traci.vehicle.getIDList()  # getting list of vehicles id`s
+    Trip.pedestrian_retrieval(humans, conn)  # using static function to retrieve pedestrian data every step
+    Trip.autos_retrieval(vehicles, conn)  # using static function to retrieve vehicle data every step
+    conn.commit()
+conn.close()
 traci.close()  # closing a simulation

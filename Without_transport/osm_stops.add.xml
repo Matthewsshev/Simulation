@@ -326,7 +326,7 @@
     </busStop>
     <busStop id="2711169196" name="Im Holder" lane="686955221_0" startPos="23.35" endPos="38.35" friendlyPos="true" lines="119 120 118 N19"/>
     <busStop id="2730173334" name="Zimmerbachstraße" lane="25973409#1_0" startPos="9.73" endPos="24.73" friendlyPos="true"/>
-    <busStop id="2739052081" name="Esslingen (N) ZOB" lane="384972991#1_0" startPos="14.52" endPos="29.52" friendlyPos="true" lines="114 106 120 N22"/>
+    <busStop id="2739052081" name="Esslingen (N) ZOB" lane="384972991#1_0" startPos="7.76" endPos="22.76" friendlyPos="true" lines="114 106 120 N22"/>
     <busStop id="27413246" name="Anna-Schieber-Weg" lane="281956714_0" startPos="31.76" endPos="46.76" friendlyPos="true"/>
     <busStop id="27413254" name="Katharinenstaffel" lane="787951054_0" startPos="339.50" endPos="354.50" friendlyPos="true"/>
     <busStop id="27413262" name="Hochschule" lane="4807784#1_0" startPos="71.05" endPos="86.05" friendlyPos="true"/>
