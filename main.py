@@ -96,13 +96,18 @@ class Trip:
                                                                           vType=random_auto)
                         if next_edges:
                             allowed_a = []  # creating a new list of allowed autos on next edge
+                            b = 0
                             for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
-                                Trip.get_allowed(edge, allowed_a)
-                                if any(random_auto in group for group in allowed_a):
-                                    next_e = edge
-                                    break
-                                else:
-                                    allowed_a = []
+                                b += 1
+                                if b % 15 == 0:
+                                    Trip.get_allowed(edge, allowed_a)
+                                    print(b)
+                                    if any(random_auto in group for group in allowed_a):
+                                        next_e = edge
+                                        break
+                                    else:
+                                        allowed_a = []
+                                        next_e = edge
                             # creating trip attribute from start to suitable edge using public transport
                             trip_attrib = {
                                 'from': trip.start_edge, 'to': next_e,
@@ -125,20 +130,20 @@ class Trip:
                         'from': trip.start_edge, 'to': trip.destination_edge,
                         'line': trip.line, 'modes': trip.mode}
                 if trip.destination_edge == person.supermarket:  # getting a duration that depends on location
-                    duration = random.randint(600, 1200)
+                    duration = random.randint(60, 120)
                 elif trip.destination_edge == person.friends:
-                    duration = random.randint(3600, 14400)
+                    duration = random.randint(36, 144)
                 elif isinstance(person, Worker) and trip.destination_edge == person.work:
                     # checking instance because not everyone have this attribute
-                    duration = random.randint(28800, 36000)
+                    duration = random.randint(28, 36)
                 elif isinstance(person, Student) and trip.destination_edge == person.uni:
-                    duration = random.randint(10800, 21600)
+                    duration = random.randint(10, 21)
                 elif isinstance(person, Pupil) and trip.destination_edge == person.school:
-                    duration = random.randint(14400, 21600)
+                    duration = random.randint(14, 21)
                 elif isinstance(person, Senior) and trip.destination_edge == person.park:
-                    duration = random.randint(1800, 7200)
+                    duration = random.randint(18, 72)
                 else:
-                    duration = random.randint(42000, 43200)
+                    duration = random.randint(42, 43)
                 ET.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
                 stop_attrib = {'duration': str(duration), 'actType': 'singing'}  # creating stop attribute
                 ET.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
@@ -165,10 +170,26 @@ class Trip:
                 lane = traci.person.getLaneID(person.name)  # getting lane
                 turnangle = round(traci.person.getAngle(person.name),
                                   2)
-                if traci.person.getVehicle(person.name):
-                    transport = traci.person.getVehicle(person.name)  # getting transport
+                vehicle = traci.person.getVehicle(person.name)
+                if vehicle:
+                    print(traci.vehicle.getVehicleClass(vehicle))
+                    vehicletype = traci.vehicle.getVehicleClass(vehicle)
+                    if vehicletype == 'bus':  # checking type of transport
+                        transport = 1
+                    elif vehicletype == 'trolleybus':
+                        transport = 2
+                    elif vehicletype == 'light rail':
+                        transport = 3
+                    elif vehicletype == 'train':
+                        transport = 4
+                    elif vehicletype == 'bicycle':
+                        transport = 5
+                    elif vehicletype == 'motorcycle':
+                        transport = 6
+                    elif vehicletype == 'passenger':
+                        transport = 7
                 else:
-                    transport = 'Public'  # if there`s no transport them person is using public transport
+                    transport = 8  # if there`s no transport then person is going by foot
                 # Executing an SQL query, which will insert new data into vehicle_data table
                 connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord, gpscoord, 
                 speed, edge, lane, turnangle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
@@ -188,14 +209,13 @@ class Trip:
             lane = traci.vehicle.getLaneID(vehicle)  # getting line
             displacement = round(traci.vehicle.getDistance(vehicle), 2)  # getting distance
             turnangle = round(traci.vehicle.getAngle(vehicle), 2)  # getting turn angle
-            nexttls = traci.vehicle.getNextTLS(vehicle)  # getting next TLS
             # Executing an SQL query, which will insert new data into vehicle_data table
             connection.execute(''' INSERT INTO vehicle_data (id, datetime, coordinates, gpscoordinates, 
-                            speed, edge, lane, displacement, turnangle, nexttls) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (vehicle, str(traci.simulation.getTime()),
-                                                                       str(coord), str(gpscoord), str(spd), str(edge),
+                            speed, edge, lane, displacement, turnangle) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', (vehicle, str(traci.simulation.getTime()),
+                                                                       str(coord), str(gpscoord), spd, str(edge),
                                                                        str(lane), str(turnangle), str(displacement),
-                                                                       str(nexttls)))
+                                                                       ))
 
     @staticmethod
     def delete_all(connection):  # function will delete all data from previous simulations
@@ -360,17 +380,17 @@ class Senior(Human):  # creating a subclass of Human
 
 
 humans = []  # creating an empty list for person that`ll be created
-for i in range(5):  # creating 12 people with different type of class
-    if i < 3:
+for i in range(2):  # creating 1000 people with different type of class
+    if i < 125:
         human = Worker(f'p{i}')  # creating a Worker
-    elif i < 6:
+    elif i < 250:
         human = Student(f'p{i}')  # creating a Student
-    elif i < 9:
+    elif i < 375:
         human = Pupil(f'p{i}')  # creating a Senior
     else:
         human = Senior(f'p{i}')  # creating a Senior
     humans.append(human)
-Trip.create_trips(humans, 1)  # using a function to create 5 trips for every person
+Trip.create_trips(humans, 2)  # using a function to create 5 trips for every person
 Human.save_humans(humans)
 sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
 traci.start(sumoCmd2, label='sim2')  # starting second simulation
