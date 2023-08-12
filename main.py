@@ -5,6 +5,7 @@ import random
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
 import sqlite3
+from threading import Thread
 
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
@@ -101,7 +102,6 @@ class Trip:
                                 b += 1
                                 if b % 15 == 0:
                                     Trip.get_allowed(edge, allowed_a)
-                                    print(b)
                                     if any(random_auto in group for group in allowed_a):
                                         next_e = edge
                                         break
@@ -172,7 +172,6 @@ class Trip:
                                   2)
                 vehicle = traci.person.getVehicle(person.name)
                 if vehicle:
-                    print(traci.vehicle.getVehicleClass(vehicle))
                     vehicletype = traci.vehicle.getVehicleClass(vehicle)
                     if vehicletype == 'bus':  # checking type of transport
                         transport = 1
@@ -380,7 +379,7 @@ class Senior(Human):  # creating a subclass of Human
 
 
 humans = []  # creating an empty list for person that`ll be created
-for i in range(2):  # creating 1000 people with different type of class
+for i in range(500):  # creating 1000 people with different type of class
     if i < 125:
         human = Worker(f'p{i}')  # creating a Worker
     elif i < 250:
@@ -390,20 +389,31 @@ for i in range(2):  # creating 1000 people with different type of class
     else:
         human = Senior(f'p{i}')  # creating a Senior
     humans.append(human)
-Trip.create_trips(humans, 2)  # using a function to create 5 trips for every person
-Human.save_humans(humans)
+conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
+# Using Threading making our code to run Functions at the same time
+t1 = Thread(target=Trip.create_trips(humans, 2))
+t1.start()
+t2 = Thread(target=Human.save_humans(humans))
+t2.start()
+t3 = Thread(target=Trip.delete_all(conn))
+t3.start()
+# Trip.create_trips(humans, 2)  # using a function to create 5 trips for every person
+# Human.save_humans(humans)
 sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
 traci.start(sumoCmd2, label='sim2')  # starting second simulation
 traci.switch('sim1')  # switching back to first simulation
 traci.close()  # ending first simulation
 traci.switch('sim2')  # switching back to second simulation
-conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
-Trip.delete_all(conn)  # Using function to delete all previous data
+# Trip.delete_all(conn)  # Using function to delete all previous data
 while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
-    traci.simulationStep()  # making one step
     vehicles = traci.vehicle.getIDList()  # getting list of vehicles id`s
-    Trip.pedestrian_retrieval(humans, conn)  # using static function to retrieve pedestrian data every step
-    Trip.autos_retrieval(vehicles, conn)  # using static function to retrieve vehicle data every step
+    # Using threads again to make simulation faster
+    t4 = Thread(target=Trip.pedestrian_retrieval(humans, conn))
+    t4.start()
+    t5 = Thread(target=Trip.autos_retrieval(vehicles, conn))
+    # Trip.pedestrian_retrieval(humans, conn)  # using static function to retrieve pedestrian data every step
+    # Trip.autos_retrieval(vehicles, conn)  # using static function to retrieve vehicle data every step
     conn.commit()
+    traci.simulationStep()  # making one step
 conn.close()
 traci.close()  # closing a simulation

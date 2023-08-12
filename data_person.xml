@@ -2,46 +2,24 @@
 <Persons>
   <Person>
     <Name>p0</Name>
-    <Home>-1165980724</Home>
-    <Friend>208632404#1</Friend>
-    <Work>16361905</Work>
-    <Salary>3408</Salary>
+    <Home>269782615#0</Home>
+    <Friend>692621733#4</Friend>
+    <Work>23151398</Work>
+    <Salary>4050</Salary>
     <Trips>
-      <Start_Edge>-1165980724</Start_Edge>
-      <Destination_Edge>450675165#2</Destination_Edge>
+      <Start_Edge>269782615#0</Start_Edge>
+      <Destination_Edge>23151398</Destination_Edge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <Start_Edge>450675165#2</Start_Edge>
-      <Destination_Edge>-1165980724</Destination_Edge>
+      <Start_Edge>23151398</Start_Edge>
+      <Destination_Edge>387401267#7</Destination_Edge>
       <Line>ANY</Line>
       <Mode>public</Mode>
-      <Start_Edge>-1165980724</Start_Edge>
-      <Destination_Edge>208632404#1</Destination_Edge>
+      <Start_Edge>387401267#7</Start_Edge>
+      <Destination_Edge>23151398</Destination_Edge>
       <Line>ANY</Line>
       <Mode>public</Mode>
     </Trips>
   </Person>
-  <Age>56</Age>
-  <Person>
-    <Name>p1</Name>
-    <Home>887382257</Home>
-    <Friend>-33098493#0</Friend>
-    <Work>116448801#2</Work>
-    <Salary>3697</Salary>
-    <Trips>
-      <Start_Edge>887382257</Start_Edge>
-      <Destination_Edge>-33098493#0</Destination_Edge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-      <Start_Edge>-33098493#0</Start_Edge>
-      <Destination_Edge>116448801#2</Destination_Edge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-      <Start_Edge>116448801#2</Start_Edge>
-      <Destination_Edge>-33098493#0</Destination_Edge>
-      <Line>ANY</Line>
-      <Mode>public</Mode>
-    </Trips>
-  </Person>
-  <Age>49</Age>
+  <Age>40</Age>
 </Persons>
