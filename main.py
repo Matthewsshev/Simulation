@@ -156,10 +156,6 @@ class Trip:
     @staticmethod
     def pedestrian_retrieval(persons, connection):
         # function will retrieve information of a person movement in every simulation step
-        for per_id in traci.person.getIDList():
-            traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE, traci.constants.VAR_SPEED])
-        result = traci.person.getAllSubscriptionResults()
-        print(result)
         for person in persons:  # creating a loop to retrieve an information about persons
             if person.name in traci.person.getIDList():  # checking is the trip still going
                 # Function descriptions
@@ -167,8 +163,13 @@ class Trip:
                 # https://sumo.dlr.de/pydoc/traci._person.html#VehicleDomain-getSpeed
                 x, y = traci.person.getPosition(person.name)  # getting position of person
                 coord = [x, y]  # making a list of positions
+                lon, lat = traci.simulation.convertGeo(x, y)  # converting position to geo
+                gpscoord = [lon, lat]  # saving gps to a list
                 spd = round(traci.person.getSpeed(person.name) * 3.6, 2)  # getting speed in km/h
+                edge = traci.person.getRoadID(person.name)  # getting edge
                 lane = traci.person.getLaneID(person.name)  # getting lane
+                turnangle = round(traci.person.getAngle(person.name),
+                                  2)
                 vehicle = traci.person.getVehicle(person.name)
                 if vehicle:
                     vehicletype = traci.vehicle.getVehicleClass(vehicle)
@@ -189,26 +190,31 @@ class Trip:
                 else:
                     transport = 8  # if there`s no transport then person is going by foot
                 # Executing an SQL query, which will insert new data into vehicle_data table
-                connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord, 
-                speed, lane) VALUES (?, ?, ?, ?, ?, ?)''',
-                                   (person.name, transport, traci.simulation.getTime(), str(coord),
-                                    spd, lane))
+                connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord, gpscoord, 
+                speed, edge, lane, turnangle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                                   (person.name, transport, str(traci.simulation.getTime()), str(coord),
+                                    str(gpscoord), str(spd), str(edge), str(lane), str(turnangle)))
 
     @staticmethod
-    def autos_retrieval(connection):
+    def autos_retrieval(autos, connection):
         # function will retrieve information about vehicles in every simulation step
-        for veh_id in traci.simulation.getDepartedIDList():
-            traci.vehicle.subscribe(veh_id,
-                                    [traci.constants.VAR_POSITION,
-                                     traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
-        result = traci.vehicle.getAllSubscriptionResults()
-        for vehicle, vehicle_data in result.items():
-            connection.execute(''' INSERT INTO vehicle_data (id, datetime, coordinates,
-                                        speed, lane) 
-                                        VALUES (?, ?, ?, ?, ?)''',
-                               (vehicle, traci.simulation.getTime(), str(vehicle_data[66]),
-                                vehicle_data[64], vehicle_data[81]))
-
+        for vehicle in autos:  # creating a loop to retrieve information about vehicles
+            x, y = traci.vehicle.getPosition(vehicle)  # getting their position
+            coord = [x, y]  # getting their coordinates
+            lon, lat = traci.simulation.convertGeo(x, y)  # converting them to geo
+            gpscoord = [lon, lat]  # saving them into a list
+            spd = round(traci.vehicle.getSpeed(vehicle) * 3.6, 2)  # getting a km/h speed of vehicle
+            edge = traci.vehicle.getRoadID(vehicle)  # getting edge
+            lane = traci.vehicle.getLaneID(vehicle)  # getting line
+            displacement = round(traci.vehicle.getDistance(vehicle), 2)  # getting distance
+            turnangle = round(traci.vehicle.getAngle(vehicle), 2)  # getting turn angle
+            # Executing an SQL query, which will insert new data into vehicle_data table
+            connection.execute(''' INSERT INTO vehicle_data (id, datetime, coordinates, gpscoordinates, 
+                            speed, edge, lane, displacement, turnangle) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', (vehicle, str(traci.simulation.getTime()),
+                                                                       str(coord), str(gpscoord), spd, str(edge),
+                                                                       str(lane), str(turnangle), str(displacement),
+                                                                       ))
 
     @staticmethod
     def delete_all(connection):  # function will delete all data from previous simulations
@@ -373,7 +379,7 @@ class Senior(Human):  # creating a subclass of Human
 
 
 humans = []  # creating an empty list for person that`ll be created
-for i in range(5):  # creating 1000 people with different type of class
+for i in range(500):  # creating 1000 people with different type of class
     if i < 125:
         human = Worker(f'p{i}')  # creating a Worker
     elif i < 250:
@@ -400,10 +406,11 @@ traci.close()  # ending first simulation
 traci.switch('sim2')  # switching back to second simulation
 # Trip.delete_all(conn)  # Using function to delete all previous data
 while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
+    vehicles = traci.vehicle.getIDList()  # getting list of vehicles id`s
     # Using threads again to make simulation faster
     t4 = Thread(target=Trip.pedestrian_retrieval(humans, conn))
     t4.start()
-    t5 = Thread(target=Trip.autos_retrieval(conn))
+    t5 = Thread(target=Trip.autos_retrieval(vehicles, conn))
     # Trip.pedestrian_retrieval(humans, conn)  # using static function to retrieve pedestrian data every step
     # Trip.autos_retrieval(vehicles, conn)  # using static function to retrieve vehicle data every step
     conn.commit()

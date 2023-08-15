@@ -420,24 +420,6 @@ traci.close()  # closing a simulation
 vehicles_header = []
 # Code was used to create tables in db file
 """
-        for vehicle in autos:  # creating a loop to retrieve information about vehicles
-            x, y = traci.vehicle.getPosition(vehicle)  # getting their position
-            coord = [x, y]  # getting their coordinates
-            lon, lat = traci.simulation.convertGeo(x, y)  # converting them to geo
-            gpscoord = [lon, lat]  # saving them into a list
-            spd = round(traci.vehicle.getSpeed(vehicle) * 3.6, 2)  # getting a km/h speed of vehicle
-            edge = traci.vehicle.getRoadID(vehicle)  # getting edge
-            lane = traci.vehicle.getLaneID(vehicle)  # getting line
-            displacement = round(traci.vehicle.getDistance(vehicle), 2)  # getting distance
-            turnangle = round(traci.vehicle.getAngle(vehicle), 2)  # getting turn angle
-            # Executing an SQL query, which will insert new data into vehicle_data table
-            connection.execute(''' INSERT INTO vehicle_data (id, datetime, coordinates, gpscoordinates, 
-                            speed, edge, lane, displacement, turnangle) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', (vehicle, str(traci.simulation.getTime()),
-                                                                       str(coord), str(gpscoord), spd, str(edge),
-                                                                       str(lane), str(turnangle), str(displacement),
-                                                                       )) """
-"""
 # Create a table to store pedestrian data
 conn.execute('''CREATE TABLE IF NOT EXISTS pedestrian_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
