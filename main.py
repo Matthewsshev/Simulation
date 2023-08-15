@@ -209,7 +209,6 @@ class Trip:
                                (vehicle, traci.simulation.getTime(), str(vehicle_data[66]),
                                 vehicle_data[64], vehicle_data[81]))
 
-
     @staticmethod
     def delete_all(connection):  # function will delete all data from previous simulations
         sql_vehicle = 'DELETE FROM vehicle_data'  # Setting an SQL query
@@ -217,7 +216,7 @@ class Trip:
         cur = connection.cursor()
         cur.execute(sql_vehicle)  # Executing previous query`s
         cur.execute(sql_pedestrian)
-        connection.commit()  # commiting changes
+        connection.commit()  # committing changes
 
 
 class Human:  # creating a human class for retrieving information
