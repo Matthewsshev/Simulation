@@ -156,43 +156,35 @@ class Trip:
     @staticmethod
     def pedestrian_retrieval(persons, connection):
         # function will retrieve information of a person movement in every simulation step
-        for per_id in traci.person.getIDList():
-            traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE, traci.constants.VAR_SPEED])
-        result = traci.person.getAllSubscriptionResults()
-        print(result)
-        for person in persons:  # creating a loop to retrieve an information about persons
-            if person.name in traci.person.getIDList():  # checking is the trip still going
-                # Function descriptions
-                # https://sumo.dlr.de/docs/TraCI/Vehicle_Value_Retrieval.html
-                # https://sumo.dlr.de/pydoc/traci._person.html#VehicleDomain-getSpeed
-                x, y = traci.person.getPosition(person.name)  # getting position of person
-                coord = [x, y]  # making a list of positions
-                spd = round(traci.person.getSpeed(person.name) * 3.6, 2)  # getting speed in km/h
-                lane = traci.person.getLaneID(person.name)  # getting lane
-                vehicle = traci.person.getVehicle(person.name)
-                if vehicle:
-                    vehicletype = traci.vehicle.getVehicleClass(vehicle)
-                    if vehicletype == 'bus':  # checking type of transport
-                        transport = 1
-                    elif vehicletype == 'trolleybus':
-                        transport = 2
-                    elif vehicletype == 'light rail':
-                        transport = 3
-                    elif vehicletype == 'train':
-                        transport = 4
-                    elif vehicletype == 'bicycle':
-                        transport = 5
-                    elif vehicletype == 'motorcycle':
-                        transport = 6
-                    elif vehicletype == 'passenger':
-                        transport = 7
-                else:
-                    transport = 8  # if there`s no transport then person is going by foot
-                # Executing an SQL query, which will insert new data into vehicle_data table
-                connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord, 
-                speed, lane) VALUES (?, ?, ?, ?, ?, ?)''',
-                                   (person.name, transport, traci.simulation.getTime(), str(coord),
-                                    spd, lane))
+        for per_id in traci.person.getIDList():  # using a built-in subscription to get all variables
+            traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE,  traci.constants.VAR_POSITION,
+                                            traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
+        result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
+        for person, pedestrian_data in result.items():  # saving al information into sql table
+            if pedestrian_data[195] == '':  # checking transport type
+                transport = 8  # person is going by foot
+            else:
+                vehicletype = traci.vehicle.getVehicleClass(pedestrian_data[195])  # geting a vehicle type for ours
+                if vehicletype == 'bus':  # checking type of transport
+                    transport = 1
+                elif vehicletype == 'trolleybus':
+                    transport = 2
+                elif vehicletype == 'light rail':
+                    transport = 3
+                elif vehicletype == 'train':
+                    transport = 4
+                elif vehicletype == 'bicycle':
+                    transport = 5
+                elif vehicletype == 'motorcycle':
+                    transport = 6
+                else:  # person is traveling by car
+                    transport = 7
+            # Executing an SQL query, which will insert new data into vehicle_data table
+            connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord,
+                                                    speed, lane) 
+                                                    VALUES (?, ?, ?, ?, ?, ?)''',
+                               (person, transport, traci.simulation.getTime(), str(pedestrian_data[66]),
+                                pedestrian_data[64], pedestrian_data[81]))
 
     @staticmethod
     def autos_retrieval(connection):
@@ -203,6 +195,7 @@ class Trip:
                                      traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
         result = traci.vehicle.getAllSubscriptionResults()
         for vehicle, vehicle_data in result.items():
+            # Executing an SQL query, which will insert new data into vehicle_data table
             connection.execute(''' INSERT INTO vehicle_data (id, datetime, coordinates,
                                         speed, lane) 
                                         VALUES (?, ?, ?, ?, ?)''',
@@ -241,10 +234,32 @@ class Human:  # creating a human class for retrieving information
         self.trip.append(Trip(start_edge, destination_edge))
 
     @staticmethod
-    def save_humans(persons):
+    def save_humans(persons, connection):
         """ Static method, that will save personal data like Name, salary, pocket money, house address etc. in
         xml file. Using for this given list of people that was created earlier.
         """
+        for person in persons:
+            # checking which class our person have to give special variables
+            if isinstance(person, Worker):
+                type_id = 1
+                place = person.work
+            elif isinstance(person, Student):
+                type_id = 2
+                place = person.uni
+            elif isinstance(person, Pupil):
+                type_id = 3
+                place = person.school
+            else:  # last one is Senior
+                type_id = 4
+                place = person.park
+            # Executing an SQL query, which will insert new data into vehicle_data table
+            connection.execute(''' INSERT INTO personal_info (id, type_id, age,
+                                                    home, friends, supermarket, place, money) 
+                                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+                               (person.name, type_id, person.age, person.home, person.friends, person.supermarket,
+                                place, person.money))
+
+"""
         root_person = ET.Element("Persons")
         for person in persons:  # iterating list person, to save information about people in new file
             # creating a new XML element and add sub-elements for each data item in perList
@@ -286,7 +301,7 @@ class Human:  # creating a human class for retrieving information
                 dest_element.text = str(trip.destination_edge)
                 line_element = ET.SubElement(trips_element, 'Line')  # getting and saving line element
                 line_element.text = str(trip.line)
-                if trip.mode is not None:
+                if trip.mode:
                     # getting and saving mode for person if he`s using public transport
                     mode_element = ET.SubElement(trips_element, 'Mode')
                     mode_element.text = str(trip.mode)
@@ -300,6 +315,8 @@ class Human:  # creating a human class for retrieving information
         with open("data_person.xml", "w") as save:  # saving information to xml file
             save.write(formatted_xml)
 
+"""
+
 
 class Worker(Human):  # creating a subclass of Human
     """
@@ -309,7 +326,7 @@ class Worker(Human):  # creating a subclass of Human
 
     def __init__(self, name):
         super().__init__(name, )  # getting variables from class human
-        self.salary = random.randrange(3300, 4800)  # getting a random salary in range
+        self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
         self.work = random.choice(Human.filtered_edges)
         self.destination.append(self.work)
@@ -327,7 +344,7 @@ class Student(Human):  # creating a second subclass of Human
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.uni = None  # getting variables that are different from Human
-        self.scholarship = random.randrange(800, 1100)  # getting random scholarship in range
+        self.money = random.randrange(800, 1100)  # getting random scholarship in range
         self.age = random.randrange(20, 30)  # getting random age in range
         self.uni = random.choice(Human.filtered_edges)
         self.destination.append(self.uni)
@@ -345,7 +362,7 @@ class Pupil(Human):  # creating a second subclass of Human
     def __init__(self, name):
         super().__init__(name, )  # getting variables from class human
         self.school = random.choice(Human.filtered_edges)  # getting variables that are different from Human
-        self.pocket_money = random.randrange(40, 100)  # getting random pocket money in range
+        self.money = random.randrange(40, 100)  # getting random pocket money in range
         self.age = random.randrange(5, 20)  # getting random age in range
         self.destination.append(self.school)
 
@@ -361,8 +378,7 @@ class Senior(Human):  # creating a subclass of Human
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
-        self.park = None  # getting variables that are different from Human
-        self.pension = random.randrange(2000, 4000)  # getting random pension in range
+        self.money = random.randrange(2000, 4000)  # getting random pension in range
         self.age = random.randrange(60, 100)  # getting random age in range
         self.park = random.choice(Human.filtered_edges)
         self.destination.append(self.park)
@@ -386,7 +402,7 @@ conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all
 # Using Threading making our code to run Functions at the same time
 t1 = Thread(target=Trip.create_trips(humans, 2))
 t1.start()
-t2 = Thread(target=Human.save_humans(humans))
+t2 = Thread(target=Human.save_humans(humans, conn))
 t2.start()
 t3 = Thread(target=Trip.delete_all(conn))
 t3.start()
@@ -397,7 +413,7 @@ traci.start(sumoCmd2, label='sim2')  # starting second simulation
 traci.switch('sim1')  # switching back to first simulation
 traci.close()  # ending first simulation
 traci.switch('sim2')  # switching back to second simulation
-# Trip.delete_all(conn)  # Using function to delete all previous data
+Trip.delete_all(conn)  # Using function to delete all previous data
 while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
     # Using threads again to make simulation faster
     t4 = Thread(target=Trip.pedestrian_retrieval(humans, conn))

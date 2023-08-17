@@ -438,6 +438,40 @@ vehicles_header = []
                                                                        str(lane), str(turnangle), str(displacement),
                                                                        )) """
 """
+        for person in persons:  # creating a loop to retrieve an information about persons
+            if person.name in traci.person.getIDList():  # checking is the trip still going
+                # Function descriptions
+                # https://sumo.dlr.de/docs/TraCI/Vehicle_Value_Retrieval.html
+                # https://sumo.dlr.de/pydoc/traci._person.html#VehicleDomain-getSpeed
+                x, y = traci.person.getPosition(person.name)  # getting position of person
+                coord = [x, y]  # making a list of positions
+                spd = round(traci.person.getSpeed(person.name) * 3.6, 2)  # getting speed in km/h
+                lane = traci.person.getLaneID(person.name)  # getting lane
+                vehicle = traci.person.getVehicle(person.name)
+                if vehicle:
+                    vehicletype = traci.vehicle.getVehicleClass(vehicle)
+                    if vehicletype == 'bus':  # checking type of transport
+                        transport = 1
+                    elif vehicletype == 'trolleybus':
+                        transport = 2
+                    elif vehicletype == 'light rail':
+                        transport = 3
+                    elif vehicletype == 'train':
+                        transport = 4
+                    elif vehicletype == 'bicycle':
+                        transport = 5
+                    elif vehicletype == 'motorcycle':
+                        transport = 6
+                    elif vehicletype == 'passenger':
+                        transport = 7
+                else:
+                    transport = 8  # if there`s no transport then person is going by foot
+                # Executing an SQL query, which will insert new data into vehicle_data table
+                connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord, 
+                speed, lane) VALUES (?, ?, ?, ?, ?, ?)''',
+                                   (person.name, transport, traci.simulation.getTime(), str(coord),
+                                    spd, lane))"""
+"""
 # Create a table to store pedestrian data
 conn.execute('''CREATE TABLE IF NOT EXISTS pedestrian_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
