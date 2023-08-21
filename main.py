@@ -14,7 +14,7 @@ else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd1 = ["sumo-gui", "-c", "Retrieve\\osm.sumocfg"]  # saving directory of the file
 traci.start(sumoCmd1, label='sim1')  # starting simulation
-
+railway_edges = []
 
 class Trip:
     """  edges represent the road segments or links in a transportation network.
@@ -154,7 +154,7 @@ class Trip:
             save.write(formatted_xml)
 
     @staticmethod
-    def pedestrian_retrieval(persons, connection):
+    def pedestrian_retrieval(connection):
         # function will retrieve information of a person movement in every simulation step
         for per_id in traci.person.getIDList():  # using a built-in subscription to get all variables
             traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE,  traci.constants.VAR_POSITION,
@@ -164,18 +164,18 @@ class Trip:
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
             else:
-                vehicletype = traci.vehicle.getVehicleClass(pedestrian_data[195])  # geting a vehicle type for ours
-                if vehicletype == 'bus':  # checking type of transport
+                vehicle_type = traci.vehicle.getVehicleClass(pedestrian_data[195])  # getting a vehicle type for ours
+                if vehicle_type == 'bus':  # checking type of transport
                     transport = 1
-                elif vehicletype == 'trolleybus':
+                elif vehicle_type == 'trolleybus':
                     transport = 2
-                elif vehicletype == 'light rail':
+                elif vehicle_type == 'light rail':
                     transport = 3
-                elif vehicletype == 'train':
+                elif vehicle_type == 'train':
                     transport = 4
-                elif vehicletype == 'bicycle':
+                elif vehicle_type == 'bicycle':
                     transport = 5
-                elif vehicletype == 'motorcycle':
+                elif vehicle_type == 'motorcycle':
                     transport = 6
                 else:  # person is traveling by car
                     transport = 7
@@ -207,8 +207,8 @@ class Trip:
         sql_vehicle = 'DELETE FROM vehicle_data'  # Setting an SQL query
         sql_pedestrian = 'DELETE FROM pedestrian_data'  # Setting an SQL query
         cur = connection.cursor()
-        cur.execute(sql_vehicle)  # Executing previous query`s
-        cur.execute(sql_pedestrian)
+        cur.execute(sql_vehicle)
+        cur.execute(sql_pedestrian)  # Executing previous query`s
         connection.commit()  # committing changes
 
 
@@ -218,7 +218,15 @@ class Human:  # creating a human class for retrieving information
     Human will have their own list of trips. List of destination is places where person can go in simulation
     """
     edges = traci.edge.getIDList()  # getting edges from simulation
-    filtered_edges = [edge for edge in edges if '_' not in edge]  # sorted edges
+    railway_edges = list(traci.route.getEdges('pt_light_rail_U8:1'))  # getting all railway edges
+    railway_edges.extend(traci.route.getEdges('pt_light_rail_U8:0'))
+    railway_edges.extend(traci.route.getEdges('pt_train_S1:0'))
+    railway_edges.extend(traci.route.getEdges('pt_train_S1:1'))
+    railway_edges.extend(traci.route.getEdges('pt_train_RE_5:0'))
+    filtered_edges = []  # sorted edges
+    for edge in edges:
+        if '_' not in edge and edge not in railway_edges:  # saving filtered edges that don`t contain railway edges
+            filtered_edges.append(edge)
 
     def __init__(self, name):
 
@@ -258,64 +266,6 @@ class Human:  # creating a human class for retrieving information
                                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
                                (person.name, type_id, person.age, person.home, person.friends, person.supermarket,
                                 place, person.money))
-
-"""
-        root_person = ET.Element("Persons")
-        for person in persons:  # iterating list person, to save information about people in new file
-            # creating a new XML element and add sub-elements for each data item in perList
-            person_element = ET.SubElement(root_person, "Person")
-            name_element = ET.SubElement(person_element, "Name")  # Set attributes for the person element
-            name_element.text = person.name  # Setting information for XML file
-            age_element = ET.SubElement(root_person, 'Age')  # Creating age element
-            age_element.text = str(person.age)  # saving age element
-            home_element = ET.SubElement(person_element, 'Home')  # creating house element
-            home_element.text = person.home  # save house element
-            friend_element = ET.SubElement(person_element, 'Friend')  # creating and saving a friends house
-            friend_element.text = person.friends
-            if isinstance(person, Student):
-                # creating check statements so that people`ll get their own elements that are different for everyone
-                uni_element = ET.SubElement(person_element, 'Uni')  # getting and saving uni for person
-                uni_element.text = person.uni
-                scholarship_element = ET.SubElement(person_element, 'Scholarship')  # getting and saving scholarship
-                scholarship_element.text = str(person.scholarship)
-            elif isinstance(person, Worker):
-                work_element = ET.SubElement(person_element, 'Work')  # getting and saving work for person
-                work_element.text = person.work
-                salary_element = ET.SubElement(person_element, 'Salary')  # getting and saving salary for person
-                salary_element.text = str(person.salary)
-            elif isinstance(person, Pupil):
-                school_element = ET.SubElement(person_element, 'School')  # getting and saving school for person
-                school_element.text = person.school
-                pocket_money_element = ET.SubElement(person_element, 'PocketMoney')  # getting and saving pocket money
-                pocket_money_element.text = str(person.pocket_money)
-            elif isinstance(person, Senior):
-                park_element = ET.SubElement(person_element, 'Park')  # getting and saving park for a person
-                park_element.text = person.park
-                pension_element = ET.SubElement(person_element, 'Pension')  # getting and saving pension for
-                pension_element.text = str(person.pension)
-            trips_element = ET.SubElement(person_element, "Trips")  # Create trips element
-            for trip in person.trip:
-                start_element = ET.SubElement(trips_element, "Start_Edge")  # getting and saving start_edge element
-                start_element.text = str(trip.start_edge)
-                dest_element = ET.SubElement(trips_element, 'Destination_Edge')  # getting and saving dest_edge element
-                dest_element.text = str(trip.destination_edge)
-                line_element = ET.SubElement(trips_element, 'Line')  # getting and saving line element
-                line_element.text = str(trip.line)
-                if trip.mode:
-                    # getting and saving mode for person if he`s using public transport
-                    mode_element = ET.SubElement(trips_element, 'Mode')
-                    mode_element.text = str(trip.mode)
-                else:
-                    # getting and saving vehicle for person if he`s using vehicle
-                    vtype_element = ET.SubElement(trips_element, 'vType')
-                    vtype_element.text = str(trip.vType)
-        xml_string = ET.tostring(root_person, encoding="utf-8")  # next lines helping to make xml more readable
-        dom = minidom.parseString(xml_string)
-        formatted_xml = dom.toprettyxml(indent="  ")
-        with open("data_person.xml", "w") as save:  # saving information to xml file
-            save.write(formatted_xml)
-
-"""
 
 
 class Worker(Human):  # creating a subclass of Human
@@ -416,12 +366,10 @@ traci.switch('sim2')  # switching back to second simulation
 Trip.delete_all(conn)  # Using function to delete all previous data
 while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
     # Using threads again to make simulation faster
-    t4 = Thread(target=Trip.pedestrian_retrieval(humans, conn))
+    t4 = Thread(target=Trip.pedestrian_retrieval(conn))
     t4.start()
     t5 = Thread(target=Trip.autos_retrieval(conn))
-    # Trip.pedestrian_retrieval(humans, conn)  # using static function to retrieve pedestrian data every step
-    # Trip.autos_retrieval(vehicles, conn)  # using static function to retrieve vehicle data every step
-    conn.commit()
+    conn.commit()  # saving data to a database
     traci.simulationStep()  # making one step
-conn.close()
+conn.close()  # closing a connection to database
 traci.close()  # closing a simulation

@@ -549,3 +549,63 @@ dom = minidom.parseString(xml_string)
 formatted_xml = dom.toprettyxml(indent="  ")  # Save the formatted XML to a file
 with open("data_trip.xml", "w") as save:  # Writing information that we`ve saved to the xml file
    save.write(formatted_xml)"""
+
+
+"""
+        root_person = ET.Element("Persons")
+        for person in persons:  # iterating list person, to save information about people in new file
+            # creating a new XML element and add sub-elements for each data item in perList
+            person_element = ET.SubElement(root_person, "Person")
+            name_element = ET.SubElement(person_element, "Name")  # Set attributes for the person element
+            name_element.text = person.name  # Setting information for XML file
+            age_element = ET.SubElement(root_person, 'Age')  # Creating age element
+            age_element.text = str(person.age)  # saving age element
+            home_element = ET.SubElement(person_element, 'Home')  # creating house element
+            home_element.text = person.home  # save house element
+            friend_element = ET.SubElement(person_element, 'Friend')  # creating and saving a friends house
+            friend_element.text = person.friends
+            if isinstance(person, Student):
+                # creating check statements so that people`ll get their own elements that are different for everyone
+                uni_element = ET.SubElement(person_element, 'Uni')  # getting and saving uni for person
+                uni_element.text = person.uni
+                scholarship_element = ET.SubElement(person_element, 'Scholarship')  # getting and saving scholarship
+                scholarship_element.text = str(person.scholarship)
+            elif isinstance(person, Worker):
+                work_element = ET.SubElement(person_element, 'Work')  # getting and saving work for person
+                work_element.text = person.work
+                salary_element = ET.SubElement(person_element, 'Salary')  # getting and saving salary for person
+                salary_element.text = str(person.salary)
+            elif isinstance(person, Pupil):
+                school_element = ET.SubElement(person_element, 'School')  # getting and saving school for person
+                school_element.text = person.school
+                pocket_money_element = ET.SubElement(person_element, 'PocketMoney')  # getting and saving pocket money
+                pocket_money_element.text = str(person.pocket_money)
+            elif isinstance(person, Senior):
+                park_element = ET.SubElement(person_element, 'Park')  # getting and saving park for a person
+                park_element.text = person.park
+                pension_element = ET.SubElement(person_element, 'Pension')  # getting and saving pension for
+                pension_element.text = str(person.pension)
+            trips_element = ET.SubElement(person_element, "Trips")  # Create trips element
+            for trip in person.trip:
+                start_element = ET.SubElement(trips_element, "Start_Edge")  # getting and saving start_edge element
+                start_element.text = str(trip.start_edge)
+                dest_element = ET.SubElement(trips_element, 'Destination_Edge')  # getting and saving dest_edge element
+                dest_element.text = str(trip.destination_edge)
+                line_element = ET.SubElement(trips_element, 'Line')  # getting and saving line element
+                line_element.text = str(trip.line)
+                if trip.mode:
+                    # getting and saving mode for person if he`s using public transport
+                    mode_element = ET.SubElement(trips_element, 'Mode')
+                    mode_element.text = str(trip.mode)
+                else:
+                    # getting and saving vehicle for person if he`s using vehicle
+                    vtype_element = ET.SubElement(trips_element, 'vType')
+                    vtype_element.text = str(trip.vType)
+        xml_string = ET.tostring(root_person, encoding="utf-8")  # next lines helping to make xml more readable
+        dom = minidom.parseString(xml_string)
+        formatted_xml = dom.toprettyxml(indent="  ")
+        with open("data_person.xml", "w") as save:  # saving information to xml file
+            save.write(formatted_xml)
+
+"""
+
