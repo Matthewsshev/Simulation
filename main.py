@@ -14,7 +14,7 @@ else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd1 = ["sumo-gui", "-c", "Retrieve\\osm.sumocfg"]  # saving directory of the file
 traci.start(sumoCmd1, label='sim1')  # starting simulation
-railway_edges = []
+
 
 class Trip:
     """  edges represent the road segments or links in a transportation network.
@@ -82,7 +82,7 @@ class Trip:
                 location = rd  # setting new location for person
                 c += 1
             for trip in person.trip:  # now we`re working with trips
-                if trip.vType is not None:
+                if trip.vType:
                     allowed_auto = []  # creating a list of allowed transport on a start point
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     if type(trip.vType) is list:  # checking if person have more than one type of transport
@@ -97,10 +97,10 @@ class Trip:
                                                                           vType=random_auto)
                         if next_edges:
                             allowed_a = []  # creating a new list of allowed autos on next edge
-                            b = 0
+                            b = 0  # creating variable to count edges
                             for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
                                 b += 1
-                                if b % 15 == 0:
+                                if b % 15 == 0:  # every 15 edges checking for a suitable edge
                                     Trip.get_allowed(edge, allowed_a)
                                     if any(random_auto in group for group in allowed_a):
                                         next_e = edge
@@ -338,7 +338,7 @@ class Senior(Human):  # creating a subclass of Human
 
 
 humans = []  # creating an empty list for person that`ll be created
-for i in range(5):  # creating 1000 people with different type of class
+for i in range(10):  # creating 1000 people with different type of class
     if i < 125:
         human = Worker(f'p{i}')  # creating a Worker
     elif i < 250:

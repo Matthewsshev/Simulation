@@ -76,7 +76,6 @@
     </route>
     <route id="pt_bus_105:1" color="12,136,68">
         <stop busStop="-3566577209" duration="20"/> <!-- Esslingen (N) ZOB -->
-        <!-- Schelztor -->
         <stop busStop="3872841439" duration="20"/>
         <stop busStop="2859168238" duration="20"/>
         <stop busStop="2681465401" duration="20"/>
@@ -86,7 +85,6 @@
     </route>
     <route id="pt_bus_122:0" color="200,185,123">
         <stop busStop="-3566577209" duration="20"/> <!-- Esslingen (N) ZOB -->
-        <!-- Schelztor -->
         <stop busStop="3872841439" duration="20"/>
         <stop busStop="2637351415" duration="20"/>
         <stop busStop="1911101330" duration="20"/>
@@ -158,7 +156,6 @@
     </route>
     <route id="pt_bus_108:0" color="104,102,181">
         <stop busStop="-3566577210" duration="20"/> <!-- Esslingen (N) ZOB -->
-        <!-- Schelztor -->
         <stop busStop="3872841439" duration="20"/>
         <stop busStop="2859168238" duration="20"/>
         <stop busStop="254785763" duration="20"/>
@@ -253,7 +250,6 @@
         <stop busStop="-1254192526" duration="20"/> <!-- Pliensauturm -->
         <stop busStop="1219607572" duration="20"/> <!-- Merkel'sches Bad -->
         <stop busStop="2626499005" duration="20"/> <!-- Charlottenplatz -->
-        <stop busStop="3876394649" duration="20"/>
         <stop busStop="3876394649" duration="20"/>
     </route>
     <route id="pt_bus_131:0" color="248,60,90">
@@ -679,22 +675,47 @@
         <stop busStop="-3566577210" duration="20"/>
     </route>
     <route id="pt_bus_112:3" color="128,198,234">
-        <stop busStop="2239070180" duration="20"/> <!-- Waldackerweg -->
+        <stop busStop="3932154246" duration="20"/>
+        <stop busStop="3932154248" duration="20"/>
+        <stop busStop="2842712174" duration="20"/>
+        <stop busStop="319321739" duration="20"/>
+        <stop busStop="1967351665" duration="20"/>
+        <stop busStop="2637351415" duration="20"/>
+        <stop busStop="30863641" duration="20"/>
+        <stop busStop="-6515317538" duration="20"/>
+        <stop busStop="3224629436" duration="20"/>
     </route>
     <route id="pt_bus_130:0" color="248,60,90">
         <stop busStop="-3968318269" duration="20"/> <!-- Parksiedlung Parkstraße -->
+        <stop busStop="3968318266" duration="20"/>
+        <stop busStop="-6262815029" duration="20"/>
+        <stop busStop="3966025661" duration="20"/>
+        <stop busStop="3872841432" duration="20"/>
+        <stop busStop="3872841446" duration="20"/>
+        <stop busStop="-3872841443" duration="20"/>
+        <stop busStop="3224629436" duration="20"/>
     </route>
     <route id="pt_bus_X20:1" color="0,191,243">
-        <stop busStop="3566577205" duration="20" until="35.0"/> <!-- Esslingen (N) ZOB -->
+        <stop busStop="3566577205" duration="20"/> <!-- Esslingen (N) ZOB -->
+        <stop busStop="3904767707" duration="20"/>
     </route>
     <route id="pt_bus_120:0" color="255,125,36">
-        <stop busStop="2739052081" duration="20" until="371.0"/> <!-- Esslingen (N) ZOB -->
-        <stop busStop="3933810892" duration="20" until="524.0"/> <!-- Weilstraße -->
-        <stop busStop="2711169196" duration="20" until="612.0"/> <!-- Im Holder -->
+        <stop busStop="6327610134" duration="20"/>
+        <stop busStop="3887517744" duration="20"/>
+        <stop busStop="2789521448" duration="20"/>
+        <stop busStop="2681465401" duration="20"/>
+        <stop busStop="3872841439" duration="20"/>
+        <stop busStop="-2648044989" duration="20"/>
+        <stop busStop="2739052081" duration="20"/> <!-- Esslingen (N) ZOB -->
+        <stop busStop="3933810892" duration="20"/> <!-- Weilstraße -->
+        <stop busStop="2711169196" duration="20"/> <!-- Im Holder -->
+        <stop busStop="-89023451" duration="20"/>
+        <stop busStop="2426004802" duration="20"/>
+        <stop busStop="2426004802" duration="20"/>
     </route>
     <route id="pt_bus_X20:0" color="0,191,243">
-        <stop busStop="1967351665" duration="20" until="224.0"/> <!-- Flandernstraße -->
-        <stop busStop="3566577205" duration="20" until="906.0"/> <!-- Esslingen (N) ZOB -->
+        <stop busStop="1967351665" duration="20"/> <!-- Flandernstraße -->
+        <stop busStop="3566577205" duration="20"/> <!-- Esslingen (N) ZOB -->
     </route>
     <route id="pt_bus_113:0" color="24,197,244">
         <stop busStop="3224629436" duration="20"/> <!-- Esslingen (N) ZOB -->
@@ -728,11 +749,13 @@
         <stop busStop="1219607572" duration="20"/> <!-- Merkel'sches Bad -->
         <stop busStop="2626499005" duration="20"/> <!-- Charlottenplatz -->
         <stop busStop="3876394649" duration="20"/>
-        <stop busStop="3876394649" duration="20"/>
     </route>
     <route id="pt_bus_106:0" color="100,194,85">
         <stop busStop="2739052081" duration="20"/> <!-- Esslingen (N) ZOB -->
         <stop busStop="-6515317595" duration="20"/> <!-- Pliensauturm -->
+        <stop busStop="1219607507" duration="20"/>
+        <stop busStop="3876394649" duration="20"/>
+        <stop busStop="1219607569" duration="20"/>
     </route>
     <route id="pt_bus_113:1" color="24,197,244">
         <stop busStop="3224629436" duration="20"/> <!-- Esslingen (N) ZOB -->
@@ -750,12 +773,25 @@
         <stop busStop="3876394649" duration="20"/>
     </route>
     <route id="pt_bus_120:1" color="255,125,36">
-        <stop busStop="2426004802" duration="20" until="101.0"/> <!-- Zollberg -->
-        <stop busStop="-89023451" duration="20" until="173.0"/> <!-- Oberer Eisbergweg -->
+        <stop busStop="2426004802" duration="20"/> <!-- Zollberg -->
+        <stop busStop="-89023451" duration="20"/> <!-- Oberer Eisbergweg -->
+        <stop busStop="6550964524" duration="20"/>
+        <stop busStop="3933810892" duration="20"/>
+        <stop busStop="2739052081" duration="20"/>
+        <stop busStop="3872841440" duration="20"/>
+        <stop busStop="27413254" duration="20"/>
+        <stop busStop="3872841435" duration="20"/>
+        <stop busStop="2789521449" duration="20"/>
+        <stop busStop="3887517744" duration="20"/>
+        <stop busStop="6327610134" duration="20"/>
     </route>
     <route id="pt_bus_106:1" color="100,194,85">
-        <stop busStop="3876398764" duration="20" until="167.0"/> <!-- Steinhalde -->
-        <stop busStop="3876394650" duration="20" until="571.0"/> <!-- Indexstraße/Bahnhof -->
+        <stop busStop="3876398764" duration="20"/> <!-- Steinhalde -->
+        <stop busStop="3876394650" duration="20"/> <!-- Indexstraße/Bahnhof -->
+        <stop busStop="2626499005" duration="20"/>
+        <stop busStop="1219607572" duration="20"/>
+        <stop busStop="-6515317538" duration="20"/>
+        <stop busStop="2739052081" duration="20"/>
     </route>
     <route id="pt_bus_114:4" color="187,148,184">
         <stop busStop="3876398764" duration="20"/> <!-- Steinhalde -->
@@ -774,14 +810,39 @@
         <stop busStop="2739052081" duration="20"/>
     </route>
     <route id="pt_bus_112:2" color="128,198,234">
-        <stop busStop="-3898445264" duration="20"/> <!-- Georgii-Waldstadion -->
+        <stop busStop="3932154246" duration="20"/>
+        <stop busStop="3932154248" duration="20"/>
+        <stop busStop="2842712174" duration="20"/>
+        <stop busStop="319321739" duration="20"/>
+        <stop busStop="1967351665" duration="20"/>
+        <stop busStop="2637351415" duration="20"/>
+        <stop busStop="30863641" duration="20"/>
+        <stop busStop="-6515317538" duration="20"/>
+        <stop busStop="3224629436" duration="20"/>
     </route>
     <route id="pt_bus_112:1" color="128,198,234">
         <stop busStop="3566577206" duration="20"/> <!-- Esslingen (N) ZOB -->
+        <stop busStop="-6515317538" duration="20"/> <!-- Pliensauturm -->
+        <stop busStop="3872841438" duration="20"/>
+        <stop busStop="27413262" duration="20"/>
+        <stop busStop="27413254" duration="20"/>
+        <stop busStop="3904767707" duration="20"/>
+        <stop busStop="437566098" duration="20"/>
+        <stop busStop="2842712181" duration="20"/>
+        <stop busStop="3932154248" duration="20"/>
+        <stop busStop="3932154246" duration="20"/>
     </route>
     <route id="pt_bus_112:0" color="128,198,234">
         <stop busStop="3566577206" duration="20"/> <!-- Esslingen (N) ZOB -->
         <stop busStop="-6515317538" duration="20"/> <!-- Pliensauturm -->
+        <stop busStop="3872841438" duration="20"/>
+        <stop busStop="27413262" duration="20"/>
+        <stop busStop="27413254" duration="20"/>
+        <stop busStop="3904767707" duration="20"/>
+        <stop busStop="437566098" duration="20"/>
+        <stop busStop="2842712181" duration="20"/>
+        <stop busStop="3932154248" duration="20"/>
+        <stop busStop="3932154246" duration="20"/>
     </route>
     <route id="pt_bus_108:1" color="104,102,181">
         <stop busStop="309471406" duration="20"/> <!-- Georgii-Waldstadion -->
@@ -803,11 +864,10 @@
         <stop busStop="1219607572" duration="20"/> <!-- Merkel'sches Bad -->
         <stop busStop="2626499005" duration="20"/> <!-- Charlottenplatz -->
         <stop busStop="3876394649" duration="20"/>
-        <stop busStop="3876394649" duration="20"/>
     </route>
     <route id="pt_bus_N22:0">
-        <stop busStop="2739052081" duration="20" until="39.0"/> <!-- Esslingen (N) ZOB -->
-        <stop busStop="-3872841443" duration="20" until="378.0"/> <!-- Pliensauturm -->
+        <stop busStop="2739052081" duration="20"/> <!-- Esslingen (N) ZOB -->
+        <stop busStop="-3872841443" duration="20"/> <!-- Pliensauturm -->
     </route>
     <route id="pt_trolleybus_101:0" color="255,46,29">
         <stop busStop="3876394651" duration="20"/> <!-- Lerchenäcker -->
@@ -830,6 +890,13 @@
     <route id="pt_bus_130:1" color="248,60,90">
         <stop busStop="3224629436" duration="20"/> <!-- Esslingen (N) ZOB -->
         <stop busStop="-3872841443" duration="20"/> <!-- Pliensauturm -->
+        <stop busStop="3872841438" duration="20"/>
+        <stop busStop="6502333178" duration="20"/>
+        <stop busStop="8688252151" duration="20"/>
+        <stop busStop="66731754" duration="20"/>
+        <stop busStop="3966025663" duration="20"/>
+        <stop busStop="3968318266" duration="20"/>
+        <stop busStop="6262815030" duration="20"/>
     </route>
     <route id="pt_bus_111:0" color="255,181,48">
     <stop busStop="-3566577210" duration="20"/> <!-- Esslingen (N) ZOB -->
