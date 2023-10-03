@@ -4,91 +4,89 @@
   <vType id="bicycle" vClass="bicycle"/>
   <vType id="motorcycle" vClass="motorcycle"/>
   <person id="p0" depart="0.00">
-    <personTrip from="-493291933#1" to="-23439972#1" line="ANY" modes="public"/>
-    <stop duration="74" actType="singing"/>
-    <personTrip from="-23439972#1" to="25973402#1" line="ANY" modes="public"/>
-    <stop duration="36" actType="singing"/>
-    <personTrip from="25973402#1" to="-23439972#1" line="ANY" modes="public"/>
-    <stop duration="53" actType="singing"/>
+    <personTrip from="-130274319#1" to="-1147767206#2" line="ANY" vTypes="bicycle"/>
+    <stop duration="103" actType="singing"/>
+    <personTrip from="-1147767206#2" to="-205275738#0" line="ANY" modes="public"/>
+    <personTrip from="-205275738#0" to="-273990571#3" line="ANY" vTypes="passenger"/>
+    <stop duration="32" actType="singing"/>
+    <personTrip from="-273990571#3" to="-1147767206#2" line="ANY" vTypes="bicycle"/>
+    <stop duration="71" actType="singing"/>
   </person>
   <person id="p1" depart="0.00">
-    <personTrip from="-23151868#0" to="-692621726" line="ANY" modes="public"/>
-    <stop duration="34" actType="singing"/>
-    <personTrip from="-692621726" to="38501726#1" line="ANY" vTypes="passenger"/>
-    <stop duration="75" actType="singing"/>
-    <personTrip from="38501726#1" to="158355467#9" line="ANY" modes="public"/>
-    <stop duration="125" actType="singing"/>
+    <personTrip from="921767197#1" to="4807837#0" line="ANY" modes="public"/>
+    <personTrip from="4807837#0" to="-29701092#3" line="ANY" vTypes="passenger"/>
+    <stop duration="35" actType="singing"/>
+    <personTrip from="-29701092#3" to="432904388#2" line="ANY" modes="public"/>
+    <stop duration="114" actType="singing"/>
+    <personTrip from="432904388#2" to="-23182939" line="ANY" vTypes="motorcycle"/>
+    <stop duration="96" actType="singing"/>
   </person>
   <person id="p2" depart="0.00">
-    <personTrip from="23093209#1" to="9515059#0" line="ANY" modes="public"/>
-    <personTrip from="9515059#0" to="-31133703#0" line="ANY" vTypes="passenger"/>
-    <stop duration="70" actType="singing"/>
-    <personTrip from="-31133703#0" to="23093209#1" line="ANY" modes="public"/>
-    <stop duration="42" actType="singing"/>
-    <personTrip from="23093209#1" to="-31133703#0" line="ANY" modes="public"/>
-    <stop duration="90" actType="singing"/>
+    <personTrip from="127711239" to="-387401267#6" line="ANY" modes="public"/>
+    <personTrip from="-387401267#6" to="-264335987" line="ANY" vTypes="passenger"/>
+    <stop duration="34" actType="singing"/>
+    <personTrip from="-264335987" to="693946722#0" line="ANY" modes="public"/>
+    <personTrip from="693946722#0" to="34393477#1" line="ANY" vTypes="passenger"/>
+    <stop duration="138" actType="singing"/>
+    <personTrip from="34393477#1" to="-25596853" line="ANY" modes="public"/>
+    <stop duration="93" actType="singing"/>
   </person>
   <person id="p3" depart="0.00">
-    <personTrip from="115714373" to="921020465#1" line="ANY" modes="public"/>
-    <stop duration="107" actType="singing"/>
-    <personTrip from="921020465#1" to="115714373" line="ANY" modes="public"/>
+    <personTrip from="-269782614#1" to="823051186#3" line="ANY" modes="public"/>
+    <stop duration="49" actType="singing"/>
+    <personTrip from="823051186#3" to="-791536992" line="ANY" modes="public"/>
+    <stop duration="86" actType="singing"/>
+    <personTrip from="-791536992" to="-269782614#1" line="ANY" modes="public"/>
     <stop duration="43" actType="singing"/>
-    <personTrip from="115714373" to="-23059795" line="ANY" modes="public"/>
-    <personTrip from="-23059795" to="25816922#0" line="ANY" vTypes="bicycle"/>
-    <stop duration="36" actType="singing"/>
   </person>
   <person id="p4" depart="0.00">
-    <personTrip from="-169127813#0" to="118976648#1" line="ANY" modes="public"/>
-    <stop duration="134" actType="singing"/>
-    <personTrip from="118976648#1" to="386832703#0" line="ANY" modes="public"/>
+    <personTrip from="-118976653" to="-4807744#1" line="ANY" modes="public"/>
+    <stop duration="89" actType="singing"/>
+    <personTrip from="-4807744#1" to="25384891#7" line="ANY" vTypes="passenger"/>
     <stop duration="31" actType="singing"/>
-    <personTrip from="386832703#0" to="-169127813#0" line="ANY" modes="public"/>
-    <stop duration="43" actType="singing"/>
+    <personTrip from="25384891#7" to="-118976653" line="ANY" modes="public"/>
+    <stop duration="42" actType="singing"/>
   </person>
   <person id="p5" depart="0.00">
-    <personTrip from="1024863327#0" to="-25213867#4" line="ANY" modes="public"/>
-    <personTrip from="-25213867#4" to="23320720#6" line="ANY" vTypes="motorcycle"/>
-    <stop duration="87" actType="singing"/>
-    <personTrip from="23320720#6" to="946464565#0" line="ANY" modes="public"/>
-    <stop duration="31" actType="singing"/>
-    <personTrip from="946464565#0" to="23151869#1" line="ANY" modes="public"/>
-    <stop duration="77" actType="singing"/>
+    <personTrip from="281962648#1" to="-23528370" line="ANY" modes="public"/>
+    <stop duration="103" actType="singing"/>
+    <personTrip from="-23528370" to="281962648#1" line="ANY" modes="public"/>
+    <stop duration="42" actType="singing"/>
+    <personTrip from="281962648#1" to="23032782" line="ANY" modes="public"/>
+    <stop duration="32" actType="singing"/>
   </person>
   <person id="p6" depart="0.00">
-    <personTrip from="10417272#0" to="211686719" line="ANY" modes="public"/>
-    <personTrip from="211686719" to="-263264910#0" line="ANY" vTypes="motorcycle"/>
-    <stop duration="47" actType="singing"/>
-    <personTrip from="-263264910#0" to="202499354" line="ANY" modes="public"/>
-    <personTrip from="202499354" to="4811453#4" line="ANY" vTypes="passenger"/>
-    <stop duration="100" actType="singing"/>
-    <personTrip from="4811453#4" to="23320738#0" line="ANY" vTypes="passenger"/>
-    <stop duration="33" actType="singing"/>
+    <personTrip from="762379548#1" to="-324049626" line="ANY" modes="public"/>
+    <stop duration="72" actType="singing"/>
+    <personTrip from="-324049626" to="25576697#3" line="ANY" vTypes="passenger"/>
+    <stop duration="30" actType="singing"/>
+    <personTrip from="25576697#3" to="-324049626" line="ANY" vTypes="motorcycle"/>
+    <stop duration="38" actType="singing"/>
   </person>
   <person id="p7" depart="0.00">
-    <personTrip from="-692610285#0" to="109592901" line="ANY" modes="public"/>
-    <personTrip from="109592901" to="170499455#4" line="ANY" vTypes="passenger"/>
-    <stop duration="36" actType="singing"/>
-    <personTrip from="170499455#4" to="-699824715#2" line="ANY" modes="public"/>
-    <stop duration="72" actType="singing"/>
-    <personTrip from="-699824715#2" to="694012900#0" line="ANY" modes="public"/>
-    <stop duration="48" actType="singing"/>
+    <personTrip from="-26683925#1" to="-208691154#2" line="ANY" modes="public"/>
+    <stop duration="82" actType="singing"/>
+    <personTrip from="-208691154#2" to="-26683925#1" line="ANY" modes="public"/>
+    <stop duration="43" actType="singing"/>
+    <personTrip from="-26683925#1" to="-208691154#2" line="ANY" modes="public"/>
+    <stop duration="67" actType="singing"/>
   </person>
   <person id="p8" depart="0.00">
-    <personTrip from="939228251" to="24620747#0" line="ANY" modes="public"/>
-    <stop duration="87" actType="singing"/>
-    <personTrip from="24620747#0" to="939228251" line="ANY" modes="public"/>
-    <personTrip from="939228251" to="939228251" line="ANY" vTypes="motorcycle"/>
-    <stop duration="43" actType="singing"/>
-    <personTrip from="939228251" to="702995499" line="ANY" modes="public"/>
-    <stop duration="63" actType="singing"/>
+    <personTrip from="-464521752" to="169224407#3" line="ANY" modes="public"/>
+    <personTrip from="169224407#3" to="-26686029#1" line="ANY" vTypes="passenger"/>
+    <stop duration="79" actType="singing"/>
+    <personTrip from="-26686029#1" to="-464521752" line="ANY" vTypes="bicycle"/>
+    <stop duration="42" actType="singing"/>
+    <personTrip from="-464521752" to="401038000#0" line="ANY" modes="public"/>
+    <personTrip from="401038000#0" to="125393298#0" line="ANY" vTypes="motorcycle"/>
+    <stop duration="55" actType="singing"/>
   </person>
   <person id="p9" depart="0.00">
-    <personTrip from="-16361899#9" to="56256170#2" line="ANY" modes="public"/>
+    <personTrip from="202499355#0" to="-399038514#1" line="ANY" vTypes="bicycle"/>
+    <stop duration="57" actType="singing"/>
+    <personTrip from="-399038514#1" to="10230452#7" line="ANY" modes="public"/>
     <stop duration="28" actType="singing"/>
-    <personTrip from="56256170#2" to="-424440751#3" line="ANY" modes="public"/>
-    <personTrip from="-424440751#3" to="-23320404#6" line="ANY" vTypes="motorcycle"/>
-    <stop duration="90" actType="singing"/>
-    <personTrip from="-23320404#6" to="56256170#2" line="ANY" vTypes="motorcycle"/>
-    <stop duration="32" actType="singing"/>
+    <personTrip from="10230452#7" to="222756660" line="ANY" vTypes="motorcycle"/>
+    <stop duration="89" actType="singing"/>
   </person>
 </routes>
