@@ -130,20 +130,20 @@ class Trip:
                         'from': trip.start_edge, 'to': trip.destination_edge,
                         'line': trip.line, 'modes': trip.mode}
                 if trip.destination_edge == person.supermarket:  # getting a duration that depends on location
-                    duration = random.randint(60, 120)
+                    duration = random.randint(600, 1200)
                 elif trip.destination_edge == person.friends:
-                    duration = random.randint(36, 144)
+                    duration = random.randint(3600, 14400)
                 elif isinstance(person, Worker) and trip.destination_edge == person.work:
                     # checking instance because not everyone have this attribute
-                    duration = random.randint(28, 36)
+                    duration = random.randint(28000, 36000)
                 elif isinstance(person, Student) and trip.destination_edge == person.uni:
-                    duration = random.randint(10, 21)
+                    duration = random.randint(15000, 34000)
                 elif isinstance(person, Pupil) and trip.destination_edge == person.school:
-                    duration = random.randint(14, 21)
+                    duration = random.randint(14000, 21000)
                 elif isinstance(person, Senior) and trip.destination_edge == person.park:
-                    duration = random.randint(18, 72)
+                    duration = random.randint(180, 720)
                 else:
-                    duration = random.randint(42, 43)
+                    duration = random.randint(4200, 8400)
                 ET.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
                 stop_attrib = {'duration': str(duration), 'actType': 'singing'}  # creating stop attribute
                 ET.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
@@ -337,39 +337,46 @@ class Senior(Human):  # creating a subclass of Human
         super().assign_trip(start_edge, destination_edge)
 
 
-humans = []  # creating an empty list for person that`ll be created
-for i in range(10):  # creating 1000 people with different type of class
-    if i < 125:
-        human = Worker(f'p{i}')  # creating a Worker
-    elif i < 250:
-        human = Student(f'p{i}')  # creating a Student
-    elif i < 375:
-        human = Pupil(f'p{i}')  # creating a Senior
-    else:
-        human = Senior(f'p{i}')  # creating a Senior
-    humans.append(human)
-conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
-# Using Threading making our code to run Functions at the same time
-t1 = Thread(target=Trip.create_trips(humans, 2))
-t1.start()
-t2 = Thread(target=Human.save_humans(humans, conn))
-t2.start()
-t3 = Thread(target=Trip.delete_all(conn))
-t3.start()
-# Trip.create_trips(humans, 2)  # using a function to create 5 trips for every person
-# Human.save_humans(humans)
-sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
-traci.start(sumoCmd2, label='sim2')  # starting second simulation
-traci.switch('sim1')  # switching back to first simulation
-traci.close()  # ending first simulation
-traci.switch('sim2')  # switching back to second simulation
-Trip.delete_all(conn)  # Using function to delete all previous data
-while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
-    # Using threads again to make simulation faster
-    t4 = Thread(target=Trip.pedestrian_retrieval(conn))
-    t4.start()
-    t5 = Thread(target=Trip.autos_retrieval(conn))
-    conn.commit()  # saving data to a database
-    traci.simulationStep()  # making one step
-conn.close()  # closing a connection to database
-traci.close()  # closing a simulation
+def main():
+    humans = []
+    for i in range(10):
+        if i < 125:
+            human = Worker(f'p{i}')
+        elif i < 250:
+            human = Student(f'p{i}')
+        elif i < 375:
+            human = Pupil(f'p{i}')
+        else:
+            human = Senior(f'p{i}')
+        humans.append(human)
+
+    conn = sqlite3.connect('simulation_data.db')
+
+    t1 = Thread(target=Trip.create_trips(humans, 4))
+    t2 = Thread(target=Human.save_humans(humans, conn))
+    t3 = Thread(target=Trip.delete_all(conn))
+    t1.start()
+    t2.start()
+    t3.start()
+
+    sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]
+    traci.start(sumoCmd2, label='sim2')
+    traci.switch('sim1')
+    traci.close()
+    traci.switch('sim2')
+    Trip.delete_all(conn)
+
+    while traci.simulation.getMinExpectedNumber() > 0:
+        t4 = Thread(target=Trip.pedestrian_retrieval(conn))
+        t5 = Thread(target=Trip.autos_retrieval(conn))
+        t4.start()
+        t5.start()
+        conn.commit()
+        traci.simulationStep()
+
+    conn.close()
+    traci.close()
+
+
+if __name__ == "__main__":
+    main()
