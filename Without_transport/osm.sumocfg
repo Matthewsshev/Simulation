@@ -7,7 +7,7 @@
 
     <input>
         <net-file value="osm.net.xml.gz"/>
-        <route-files value="osm_pt.rou.xml,data.rou.xml"/>
+        <route-files value="osm_pt.rou.xml,data.rou.xml, routes.rou.xml"/>
         <additional-files value="osm.poly.xml.gz,osm_stops.add.xml"/>
     </input>
 
@@ -19,7 +19,7 @@
         <device.rerouting.adaptation-steps value="18"/>
         <device.rerouting.adaptation-interval value="10"/>
     </routing>
-
+    
     <report>
         <verbose value="true"/>
         <duration-log.statistics value="true"/>

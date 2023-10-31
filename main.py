@@ -7,6 +7,7 @@ import xml.dom.minidom as minidom
 import sqlite3
 from threading import Thread
 
+random.seed(1)
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
     sys.path.append(tools)
@@ -51,7 +52,23 @@ class Trip:
     def get_allowed(edge, allow_auto):  # creating a function that will append lists of allowed lane
         for lane in traci.lane.getIDList():
             if traci.lane.getEdgeID(lane) == edge:
-                allow_auto.append(traci.lane.getAllowed(lane))
+                allow_auto.append((traci.lane.getAllowed(lane)))
+
+    @staticmethod
+    def get_suitable_edge(next_edges, random_auto, allowed_a, count):
+        for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
+            count += 1
+            if count % 15 == 0:  # every 15 edges checking for a suitable edge
+                Trip.get_allowed(edge, allowed_a)
+                if any(random_auto in group for group in allowed_a):
+                    next_edge = edge
+                    break
+                else:
+                    allowed_a = []
+                    next_edge = edge
+            else:
+                next_edge = edge
+        return next_edge
 
     @staticmethod
     def create_trips(persons, n):
@@ -89,7 +106,6 @@ class Trip:
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
                         random_auto = trip.vType
-
                     # if our auto is not allowed on a start point
                     if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
@@ -98,16 +114,7 @@ class Trip:
                         if next_edges:
                             allowed_a = []  # creating a new list of allowed autos on next edge
                             b = 0  # creating variable to count edges
-                            for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
-                                b += 1
-                                if b % 15 == 0:  # every 15 edges checking for a suitable edge
-                                    Trip.get_allowed(edge, allowed_a)
-                                    if any(random_auto in group for group in allowed_a):
-                                        next_e = edge
-                                        break
-                                    else:
-                                        allowed_a = []
-                                        next_e = edge
+                            next_e = Trip.get_suitable_edge(next_edges, random_auto, allowed_a, b)
                             # creating trip attribute from start to suitable edge using public transport
                             trip_attrib = {
                                 'from': trip.start_edge, 'to': next_e,
@@ -206,8 +213,11 @@ class Trip:
     def delete_all(connection):  # function will delete all data from previous simulations
         sql_vehicle = 'DELETE FROM vehicle_data'  # Setting an SQL query
         sql_pedestrian = 'DELETE FROM pedestrian_data'  # Setting an SQL query
+        sql_pedestrian2 = 'DELETE FROM personal_Info'  # Setting an SQL query
+
         cur = connection.cursor()
         cur.execute(sql_vehicle)
+        cur.execute(sql_pedestrian2)
         cur.execute(sql_pedestrian)  # Executing previous query`s
         connection.commit()  # committing changes
 
@@ -338,44 +348,43 @@ class Senior(Human):  # creating a subclass of Human
 
 
 def main():
-    humans = []
-    for i in range(10):
-        if i < 125:
-            human = Worker(f'p{i}')
-        elif i < 250:
-            human = Student(f'p{i}')
-        elif i < 375:
-            human = Pupil(f'p{i}')
+    humans = set()  # creating an empty list for person that`ll be created
+    quantity = 10
+    for i in range(quantity):  # creating 1000 people with different type of class
+        if i < quantity/4:
+            human = Worker(f'p{i}')  # creating a Worker
+        elif i < quantity/2:
+            human = Student(f'p{i}')  # creating a Student
+        elif i < 3 * quantity/4:
+            human = Pupil(f'p{i}')  # creating a Pupil
         else:
-            human = Senior(f'p{i}')
-        humans.append(human)
-
-    conn = sqlite3.connect('simulation_data.db')
-
-    t1 = Thread(target=Trip.create_trips(humans, 4))
-    t2 = Thread(target=Human.save_humans(humans, conn))
-    t3 = Thread(target=Trip.delete_all(conn))
+            human = Senior(f'p{i}')  # creating a Senior
+        humans.add(human)
+    conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
+    # Using Threading making our code to run Functions at the same time
+    quantityTrips = 3
+    t1 = Thread(target=Trip.create_trips(humans, quantityTrips))
     t1.start()
+    t2 = Thread(target=Human.save_humans(humans, conn))
     t2.start()
+    t3 = Thread(target=Trip.delete_all(conn))
     t3.start()
-
-    sumoCmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]
-    traci.start(sumoCmd2, label='sim2')
-    traci.switch('sim1')
-    traci.close()
-    traci.switch('sim2')
-    Trip.delete_all(conn)
-
-    while traci.simulation.getMinExpectedNumber() > 0:
+    sumo_cmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
+    traci.start(sumo_cmd2, label='sim2')  # starting second simulation
+    traci.switch('sim1')  # switching back to first simulation
+    traci.close()  # ending first simulation
+    traci.switch('sim2')  # switching back to second simulation
+    Trip.delete_all(conn)  # Using function to delete all previous data
+    while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
+        # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
-        t5 = Thread(target=Trip.autos_retrieval(conn))
         t4.start()
+        t5 = Thread(target=Trip.autos_retrieval(conn))
         t5.start()
-        conn.commit()
-        traci.simulationStep()
-
-    conn.close()
-    traci.close()
+        conn.commit()  # saving data to a database
+        traci.simulationStep()  # making one step
+    conn.close()  # closing a connection to database
+    traci.close()  # closing a simulation
 
 
 if __name__ == "__main__":

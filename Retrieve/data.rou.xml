@@ -9848,6 +9848,18 @@
     <personTrip from="921767206#2" to="-23275175#5" line="ANY" modes="public"/>
     <stop duration="989" actType="singing"/>
   </person>
+  <person id="p760" depart="0.00">
+    <personTrip from="-23528364#1" to="-280092625#0" line="ANY" vTypes="bicycle"/>
+    <stop duration="1200" actType="singing"/>
+    <personTrip from="-280092625#0" to="-23528364#1" line="ANY" vTypes="bicycle"/>
+    <stop duration="6738" actType="singing"/>
+    <personTrip from="-23528364#1" to="25576697#1" line="ANY" vTypes="bicycle"/>
+    <stop duration="10116" actType="singing"/>
+    <personTrip from="25576697#1" to="-560711244#1" line="ANY" modes="public"/>
+    <stop duration="635" actType="singing"/>
+    <personTrip from="-560711244#1" to="-280092625#0" line="ANY" vTypes="motorcycle"/>
+    <stop duration="1067" actType="singing"/>
+  </person>
   <person id="p761" depart="0.00">
     <personTrip from="186029492" to="-23471135#4" line="ANY" modes="public"/>
     <stop duration="324" actType="singing"/>
