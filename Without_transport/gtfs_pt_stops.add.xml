@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2023-11-14 17:02:30.948235 by gtfs2pt.py v1_19_0+0000-baa66a0f364
+<configuration>
+    <gtfs value="gtfs_realtime.zip"/>
+    <date value="20231004"/>
+    <modes value="bus"/>
+    <vtype-output value="pt_vtypes.xml"/>
+    <network value="osm.net.xml.gz"/>
+</configuration>
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <busStop id="de:vvs:30062_::1-T0-10.1" lane="-295849087#0_0" startPos="303.65" endPos="316.65" friendlyPos="true" name="Otto-Hirsch-Brücken"/>
+    <busStop id="de:vvs:31101_::1-T0-1.0" lane="-23320397#0_0" startPos="28.65" endPos="41.65" friendlyPos="true" name="Oberessl. Lerchenäcker"/>
+    <busStop id="de:vvs:31101_::1-T0-1.1" lane="-387296014#1_0" startPos="13.72" endPos="26.72" friendlyPos="true" name="Oberesslingen Steinhalde"/>
+    <busStop id="de:vvs:31101_::1-T0-1.2" lane="-183049933#0_0" startPos="28.22" endPos="41.22" friendlyPos="true" name="Oberesslingen Herderstr."/>
+    <busStop id="de:vvs:31101_::1-T0-1.3" lane="183419042#6_0" startPos="7.57" endPos="20.57" friendlyPos="true" name="Oberessl. Indexstr/Bahnhof"/>
+    <busStop id="de:vvs:31101_::1-T0-1.4" lane="273990570_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberesslingen Stauffenbergstraße"/>
+    <busStop id="de:vvs:31101_::1-T0-1.5" lane="4811453#2_0" startPos="10.84" endPos="23.84" friendlyPos="true" name="Esslingen (N) Bismarckstr."/>
+    <busStop id="de:vvs:31101_::1-T0-1.6" lane="-4807837#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Charlottenplatz"/>
+    <busStop id="de:vvs:31101_::1-T0-1.7" lane="-387401256#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Merkel'sches Bad"/>
+    <busStop id="de:vvs:31101_::1-T0-1.8" lane="350217704#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Pliensauturm"/>
+    <busStop id="de:vvs:31101_::1-T0-1.9" lane="146911733_0" startPos="9.55" endPos="22.55" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31101_::1-T0-1.10" lane="4807753#0_0" startPos="8.24" endPos="21.24" friendlyPos="true" name="Esslingen (N) Schelztor"/>
+    <busStop id="de:vvs:31101_::1-T0-1.11" lane="37181838#4_0" startPos="57.94" endPos="70.94" friendlyPos="true" name="Essl.(N) Schlachthausbrücke"/>
+    <busStop id="de:vvs:31101_::1-T0-1.12" lane="378237359#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Volkshochschule"/>
+    <busStop id="de:vvs:31101_::1-T0-1.13" lane="388285827#0_0" startPos="38.56" endPos="51.56" friendlyPos="true" name="Mettingen Burgunderstr."/>
+    <busStop id="de:vvs:31101_::1-T0-1.14" lane="290461455#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Mettingen Bf (Trollingerweg)"/>
+    <busStop id="de:vvs:31101_::1-T0-1.15" lane="-387401262#0_0" startPos="0.53" endPos="13.53" friendlyPos="true" name="Mettingen Weinstraße"/>
+    <busStop id="de:vvs:31101_::1-T0-1.16" lane="-570009376#0_0" startPos="38.74" endPos="51.74" friendlyPos="true" name="Stadtgrenze"/>
+    <busStop id="de:vvs:31101_::1-T0-100.1" lane="570009376#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Stadtgrenze"/>
+    <busStop id="de:vvs:31101_::1-T0-100.2" lane="387401262#3_0" startPos="17.63" endPos="30.63" friendlyPos="true" name="Mettingen Weinstraße"/>
+    <busStop id="de:vvs:31101_::1-T0-100.3" lane="-383983728_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Mettingen Bf (Trollingerweg)"/>
+    <busStop id="de:vvs:31101_::1-T0-100.4" lane="-388285827#0_0" startPos="40.02" endPos="53.02" friendlyPos="true" name="Mettingen Burgunderstr."/>
+    <busStop id="de:vvs:31101_::1-T0-100.5" lane="-378237359#2_0" startPos="65.11" endPos="78.11" friendlyPos="true" name="Esslingen (N) Volkshochschule"/>
+    <busStop id="de:vvs:31101_::1-T0-100.8" lane="386500268#1_0" startPos="10.69" endPos="23.69" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31101_::1-T0-100.9" lane="-350217704#2_0" startPos="26.74" endPos="39.74" friendlyPos="true" name="Esslingen (N) Pliensauturm"/>
+    <busStop id="de:vvs:31101_::1-T0-100.10" lane="54883018#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Merkel'sches Bad"/>
+    <busStop id="de:vvs:31101_::1-T0-100.11" lane="4807837#1_0" startPos="24.15" endPos="37.15" friendlyPos="true" name="Esslingen (N) Charlottenplatz"/>
+    <busStop id="de:vvs:31101_::1-T0-100.12" lane="-4811453#3_0" startPos="33.95" endPos="46.95" friendlyPos="true" name="Esslingen (N) Bismarckstr."/>
+    <busStop id="de:vvs:31101_::1-T0-100.13" lane="-183419042#11_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberesslingen Stauffenbergstraße"/>
+    <busStop id="de:vvs:31101_::1-T0-100.14" lane="-183419042#4_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Indexstr/Bahnhof"/>
+    <busStop id="de:vvs:31101_::1-T0-100.15" lane="38361908#1_0" startPos="9.29" endPos="22.29" friendlyPos="true" name="Oberesslingen Herderstr."/>
+    <busStop id="de:vvs:31101_::1-T0-100.16" lane="387296014#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberesslingen Steinhalde"/>
+    <busStop id="de:vvs:31101_::1-T0-100.17" lane="384338154#2_0" startPos="32.13" endPos="45.13" friendlyPos="true" name="Oberessl. Lerchenäcker"/>
+    <busStop id="de:vvs:31101_::1-T0-125.13" lane="896339463#1_0" startPos="18.93" endPos="31.93" friendlyPos="true" name="Mettingen Cannstatter Str."/>
+    <busStop id="de:vvs:31101_::1-T0-125.14" lane="383945635#1_0" startPos="96.01" endPos="109.01" friendlyPos="true" name="Mettingen Alte Schifffahrt"/>
+    <busStop id="de:vvs:31101_::1-T0-125.15" lane="823062063#6_0" startPos="9.82" endPos="22.82" friendlyPos="true" name="Mettingen Bf"/>
+    <busStop id="de:vvs:31102_::3-T0-1.4" lane="-23439929#0_0" startPos="13.42" endPos="26.42" friendlyPos="true" name="Oberessl. Gartenstadt"/>
+    <busStop id="de:vvs:31102_::3-T0-1.5" lane="283020993#1_0" startPos="40.59" endPos="53.59" friendlyPos="true" name="Oberessl. Weiherstraße"/>
+    <busStop id="de:vvs:31102_::3-T0-1.6" lane="-25973409#1_0" startPos="10.25" endPos="23.25" friendlyPos="true" name="Oberesslingen Zimmerbachstr."/>
+    <busStop id="de:vvs:31102_::3-T0-1.8" lane="281956705#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberesslingen Kreuzstr."/>
+    <busStop id="de:vvs:31102_::3-T0-1.9" lane="8026683#4_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Paracelsusstraße"/>
+    <busStop id="de:vvs:31102_::3-T0-1.10" lane="-23439978#5_0" startPos="16.43" endPos="29.43" friendlyPos="true" name="Esslingen (N) Reutlinger Str."/>
+    <busStop id="de:vvs:31102_::3-T0-1.11" lane="-169224407#2_0" startPos="12.15" endPos="25.15" friendlyPos="true" name="Essl.(N) Ebershaldenfriedhof"/>
+    <busStop id="de:vvs:31102_::3-T0-1.12" lane="29139497#0_0" startPos="20.31" endPos="33.31" friendlyPos="true" name="Esslingen (N) Neckar Forum"/>
+    <busStop id="de:vvs:31102_::3-T0-1.13" lane="94166210#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Marktplatz"/>
+    <busStop id="de:vvs:31102_::3-T0-1.14" lane="442274138_0" startPos="0.88" endPos="13.88" friendlyPos="true" name="Esslingen (N) Schelztor"/>
+    <busStop id="de:vvs:31102_::3-T0-1.17" lane="1157387454#1_0" startPos="11.51" endPos="24.51" friendlyPos="true" name="Esslingen (N) Maille"/>
+    <busStop id="de:vvs:31102_::3-T0-1.18" lane="-169097419#1_0" startPos="0.07" endPos="13.07" friendlyPos="true" name="Pliensauv. Stuttgarter Str."/>
+    <busStop id="de:vvs:31102_::3-T0-1.19" lane="-911891312_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Pliensauvorstadt K.-Pfaff-Str."/>
+    <busStop id="de:vvs:31102_::3-T0-1.20" lane="-387498727#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Pliensauv. E.-Bauer-Straße"/>
+    <busStop id="de:vvs:31102_::3-T0-1.21" lane="37721066#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Weil Sportpark Weil"/>
+    <busStop id="de:vvs:31102_::3-T0-1.22" lane="-167641315#2_0" startPos="35.27" endPos="48.27" friendlyPos="true" name="Weil Königsallee"/>
+    <busStop id="de:vvs:31102_::3-T0-1.23" lane="-448974992#2_0" startPos="49.87" endPos="62.87" friendlyPos="true" name="Weil Gestütsweg"/>
+    <busStop id="de:vvs:31102_::3-T0-1.24" lane="-4066943#3_0" startPos="32.74" endPos="45.74" friendlyPos="true" name="Weil Wannenrain"/>
+    <busStop id="de:vvs:31102_::3-T0-1.25" lane="899604572#2_0" startPos="95.62" endPos="108.62" friendlyPos="true" name="Weil"/>
+    <busStop id="de:vvs:31102_::3-T0-1.26" lane="448974993#0_0" startPos="35.11" endPos="48.11" friendlyPos="true" name="Weil Württembergstr."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.3" lane="-448974993#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Weil Württembergstr."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.4" lane="4066943#3_0" startPos="20.51" endPos="33.51" friendlyPos="true" name="Weil Wannenrain"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.5" lane="448974992#2_0" startPos="28.22" endPos="41.22" friendlyPos="true" name="Weil Gestütsweg"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.6" lane="167641315#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Weil Königsallee"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.7" lane="-37721066#1_0" startPos="50.12" endPos="63.12" friendlyPos="true" name="Weil Sportpark Weil"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.8" lane="26205357#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Pliensauv. E.-Bauer-Straße"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.9" lane="-23032829#1_0" startPos="8.57" endPos="21.57" friendlyPos="true" name="Pliensauv. Parkstraße"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.10" lane="-911891326#0_0" startPos="18.08" endPos="31.08" friendlyPos="true" name="Pliensauvorstadt K.-Pfaff-Str."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.11" lane="169097419#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Pliensauv. Stuttgarter Str."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.12" lane="138203611#1_0" startPos="38.79" endPos="51.79" friendlyPos="true" name="Esslingen (N) Maille"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.15" lane="-386832703#1_0" startPos="9.83" endPos="22.83" friendlyPos="true" name="Esslingen (N) Schelztor"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.16" lane="29138343#0_0" startPos="46.91" endPos="59.91" friendlyPos="true" name="Esslingen (N) Marktplatz"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.17" lane="29139496_0" startPos="30.09" endPos="43.09" friendlyPos="true" name="Esslingen (N) Neckar Forum"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.18" lane="23439978#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Essl.(N) Ebershaldenfriedhof"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.19" lane="23439978#5_0" startPos="12.39" endPos="25.39" friendlyPos="true" name="Esslingen (N) Reutlinger Str."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.20" lane="-8026683#4_0" startPos="231.52" endPos="244.51" friendlyPos="true" name="Oberessl. Paracelsusstraße"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.21" lane="-281956705#3_0" startPos="54.49" endPos="67.49" friendlyPos="true" name="Oberesslingen Kreuzstr."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.22" lane="-758088375#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Schorndorfer Str."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.23" lane="25973409#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberesslingen Zimmerbachstr."/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.24" lane="-283020993#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Weiherstraße"/>
+    <busStop id="de:vvs:31102_::3-T0-1020022.25" lane="-283020993#0_0" startPos="34.80" endPos="47.80" friendlyPos="true" name="Oberessl. Gartenstadt"/>
+    <busStop id="de:vvs:31103_::1-T0-1.1" lane="261563363_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Amstetter Straße"/>
+    <busStop id="de:vvs:31103_::1-T0-1.2" lane="261563363_0" startPos="268.69" endPos="281.69" friendlyPos="true" name="Manzeller Weg"/>
+    <busStop id="de:vvs:31104_::1-T0-1.3" lane="27531049#0_0" startPos="23.74" endPos="36.74" friendlyPos="true" name="Oberesslingen Max-Planck-Str."/>
+    <busStop id="de:vvs:31104_::1-T0-1.4" lane="27531049#0_0" startPos="547.74" endPos="560.74" friendlyPos="true" name="Oberessl. Schwertmühle"/>
+    <busStop id="de:vvs:31104_::1-T0-1.5" lane="-25752783#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Bf (Süd)"/>
+    <busStop id="de:vvs:31104_::1-T0-1.6" lane="474485723#3_0" startPos="140.14" endPos="153.14" friendlyPos="true" name="Esslingen (N) Neckarfreibad"/>
+    <busStop id="de:vvs:31104_::1-T0-1.7" lane="189364993#0_0" startPos="58.49" endPos="71.49" friendlyPos="true" name="Esslingen (N) Schillerplatz"/>
+    <busStop id="de:vvs:31104_::1-T0-1.9" lane="-392441930_0" startPos="21.86" endPos="34.86" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31104_::1-T0-10.0" lane="156260258_0" startPos="26.49" endPos="39.49" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31104_::1-T0-10.1" lane="-350217704#3_0" startPos="2.21" endPos="15.21" friendlyPos="true" name="Esslingen (N) Pliensauturm"/>
+    <busStop id="de:vvs:31104_::1-T0-10.2" lane="24511285#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Schillerplatz"/>
+    <busStop id="de:vvs:31104_::1-T0-10.3" lane="-24008852#3_0" startPos="58.03" endPos="71.03" friendlyPos="true" name="Esslingen (N) Neckarfreibad"/>
+    <busStop id="de:vvs:31104_::1-T0-10.4" lane="-27531049#4_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Bf (Süd)"/>
+    <busStop id="de:vvs:31104_::1-T0-10.5" lane="-27531049#1_0" startPos="3.56" endPos="16.56" friendlyPos="true" name="Oberessl. Schwertmühle"/>
+    <busStop id="de:vvs:31104_::1-T0-10.6" lane="-27531049#1_0" startPos="528.30" endPos="541.30" friendlyPos="true" name="Oberesslingen Max-Planck-Str."/>
+    <busStop id="de:vvs:31104_::1-T0-1040130.3" lane="-386500268#0_0" startPos="13.93" endPos="26.93" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31105_::1-T0-1.0" lane="385405396_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Am Schönen Rain"/>
+    <busStop id="de:vvs:31105_::1-T0-1.1" lane="9514888#6_0" startPos="21.80" endPos="34.80" friendlyPos="true" name="Esslingen (N) Lenzhalde"/>
+    <busStop id="de:vvs:31105_::1-T0-1.2" lane="185953704#1_0" startPos="4.81" endPos="17.81" friendlyPos="true" name="Esslingen (N) Hochschulzentrum"/>
+    <busStop id="de:vvs:31105_::1-T0-1.3" lane="9515416#3_0" startPos="14.36" endPos="27.36" friendlyPos="true" name="Oberessl. Klinikum Esslingen"/>
+    <busStop id="de:vvs:31105_::1-T0-1.4" lane="385405409#0_0" startPos="4.15" endPos="17.15" friendlyPos="true" name="Esslingen (N) Anna-Schieber-Weg"/>
+    <busStop id="de:vvs:31105_::1-T0-1.5" lane="787951054_0" startPos="341.50" endPos="354.50" friendlyPos="true" name="Essl.(N) Katharinenstaffel"/>
+    <busStop id="de:vvs:31105_::1-T0-100.4" lane="-8812305#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Essl.(N) Katharinenstaffel"/>
+    <busStop id="de:vvs:31105_::1-T0-100.5" lane="-8812305#0_0" startPos="324.76" endPos="337.76" friendlyPos="true" name="Esslingen (N) Lenaudenkmal"/>
+    <busStop id="de:vvs:31105_::1-T0-100.7" lane="-185953704#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Hochschulzentrum"/>
+    <busStop id="de:vvs:31105_::1-T0-100.8" lane="-9514888#6_0" startPos="19.70" endPos="32.70" friendlyPos="true" name="Esslingen (N) Lenzhalde"/>
+    <busStop id="de:vvs:31106_::1-T0-1.0" lane="268558821#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31106_::1-T0-1.5" lane="387296014#0_0" startPos="6.62" endPos="19.62" friendlyPos="true" name="Oberesslingen Steinhalde"/>
+    <busStop id="de:vvs:31106_::1-T0-15.3" lane="696225651#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberesslingen Steinhalde"/>
+    <busStop id="de:vvs:31108_::2-T0-1.6" lane="-787951056#0_0" startPos="46.43" endPos="59.43" friendlyPos="true" name="Esslingen (N) Anna-Schieber-Weg"/>
+    <busStop id="de:vvs:31108_::2-T0-1.7" lane="23528330#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Kennenburg"/>
+    <busStop id="de:vvs:31108_::2-T0-1.8" lane="386500263_0" startPos="9.09" endPos="22.09" friendlyPos="true" name="Kennenb. Geriatrisches Zentrum"/>
+    <busStop id="de:vvs:31108_::2-T0-1.9" lane="25072810#0_0" startPos="4.87" endPos="17.87" friendlyPos="true" name="Kennenburg"/>
+    <busStop id="de:vvs:31108_::2-T0-1.10" lane="387212679#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hegensberg Kohlerweg"/>
+    <busStop id="de:vvs:31108_::2-T0-1.11" lane="37181832#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hegensberg Anhäuserstraße"/>
+    <busStop id="de:vvs:31108_::2-T0-1.12" lane="-23724230#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hegensb. Kriegerdenkmal"/>
+    <busStop id="de:vvs:31108_::2-T0-1.13" lane="-23724230#0_0" startPos="9.40" endPos="22.40" friendlyPos="true" name="Liebersbronn Kirche"/>
+    <busStop id="de:vvs:31108_::2-T0-1.14" lane="-391056746#4_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Liebersbronn Neue Straße"/>
+    <busStop id="de:vvs:31108_::2-T0-1.15" lane="-31133710_0" startPos="2.26" endPos="15.26" friendlyPos="true" name="Liebersbronn Alte Steige"/>
+    <busStop id="de:vvs:31108_::2-T0-1.16" lane="-274543260#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Liebersbronn Jägerhaus"/>
+    <busStop id="de:vvs:31108_::2-T0-1.17" lane="-386500264#13_0" startPos="77.87" endPos="90.87" friendlyPos="true" name="Liebersbr. Georgii-Waldstadion"/>
+    <busStop id="de:vvs:31108_::2-T0-1.18" lane="-386500264#2_0" startPos="93.03" endPos="106.03" friendlyPos="true" name="Wiflingsh. Dulkhäusle"/>
+    <busStop id="de:vvs:31108_::2-T0-100.1" lane="391056744_0" startPos="16.81" endPos="29.81" friendlyPos="true" name="Liebersbronn Alte Steige"/>
+    <busStop id="de:vvs:31108_::2-T0-100.2" lane="391056748#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Liebersbronn Neue Straße"/>
+    <busStop id="de:vvs:31108_::2-T0-100.3" lane="23724230#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Liebersbronn Kirche"/>
+    <busStop id="de:vvs:31108_::2-T0-100.4" lane="23724230#2_0" startPos="107.29" endPos="120.29" friendlyPos="true" name="Hegensb. Kriegerdenkmal"/>
+    <busStop id="de:vvs:31108_::2-T0-100.5" lane="-37181832#3_0" startPos="28.69" endPos="41.69" friendlyPos="true" name="Hegensberg Anhäuserstraße"/>
+    <busStop id="de:vvs:31108_::2-T0-100.6" lane="-387212679#3_0" startPos="41.64" endPos="54.64" friendlyPos="true" name="Hegensberg Kohlerweg"/>
+    <busStop id="de:vvs:31108_::2-T0-100.7" lane="-387212676_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Kennenburg"/>
+    <busStop id="de:vvs:31108_::2-T0-112.1" lane="-386500264#16_0" startPos="75.51" endPos="88.51" friendlyPos="true" name="Liebersbr. Georgii-Waldstadion"/>
+    <busStop id="de:vvs:31108_::2-T0-67.10" lane="4807784#1_0" startPos="70.36" endPos="83.36" friendlyPos="true" name="Esslingen (N) Hochschule"/>
+    <busStop id="de:vvs:31109_::1-T0-1.3" lane="956612326_0" startPos="9.10" endPos="22.10" friendlyPos="true" name="Essl.(N) Sulzgrieser Steige"/>
+    <busStop id="de:vvs:31109_::1-T0-1.4" lane="794514058_0" startPos="139.39" endPos="152.39" friendlyPos="true" name="Esslingen (N) Ebene"/>
+    <busStop id="de:vvs:31109_::1-T0-1.5" lane="387155261#2_0" startPos="54.24" endPos="67.24" friendlyPos="true" name="Krummenacker"/>
+    <busStop id="de:vvs:31109_::1-T0-1.6" lane="1035471357#0_0" startPos="6.26" endPos="19.26" friendlyPos="true" name="Sulzgries Maienwalterstraße"/>
+    <busStop id="de:vvs:31109_::1-T0-1.7" lane="558323894_0" startPos="107.81" endPos="120.81" friendlyPos="true" name="Sulzgries Zentrum"/>
+    <busStop id="de:vvs:31109_::1-T0-1.8" lane="-31157172#5_0" startPos="15.12" endPos="28.12" friendlyPos="true" name="Sulzgries Bergstraße"/>
+    <busStop id="de:vvs:31109_::1-T0-1.9" lane="-553076445#0_0" startPos="100.93" endPos="113.93" friendlyPos="true" name="Neckarhalde Heidestraße"/>
+    <busStop id="de:vvs:31109_::1-T0-1.10" lane="23471056#2_0" startPos="71.26" endPos="84.25" friendlyPos="true" name="Neckarhalde Stahlackerweg"/>
+    <busStop id="de:vvs:31109_::1-T0-1.11" lane="-387155257#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Neckarhalde Herrenwiesenweg"/>
+    <busStop id="de:vvs:31109_::1-T0-124.3" lane="-31157172#11_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Sulzgries Schule"/>
+    <busStop id="de:vvs:31109_::1-T0-124.4" lane="-558323894_0" startPos="116.70" endPos="129.70" friendlyPos="true" name="Sulzgries Zentrum"/>
+    <busStop id="de:vvs:31109_::1-T0-124.5" lane="-24508781#0_0" startPos="33.12" endPos="46.12" friendlyPos="true" name="Sulzgries Maienwalterstraße"/>
+    <busStop id="de:vvs:31109_::1-T0-124.6" lane="-387155261#2_0" startPos="8.95" endPos="21.95" friendlyPos="true" name="Krummenacker"/>
+    <busStop id="de:vvs:31109_::1-T0-124.7" lane="-794514058_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Ebene"/>
+    <busStop id="de:vvs:31109_::1-T0-124.8" lane="-956612326_0" startPos="21.00" endPos="34.00" friendlyPos="true" name="Essl.(N) Sulzgrieser Steige"/>
+    <busStop id="de:vvs:31109_::1-T0-149.trimmed.0" lane="23471056#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Neckarhalde Stahlackerweg"/>
+    <busStop id="de:vvs:31109_::1-T0-151.1" lane="-23471056#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Neckarhalde Stahlackerweg"/>
+    <busStop id="de:vvs:31109_::1-T0-151.2" lane="688229195_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Neckarhalde Heidestraße"/>
+    <busStop id="de:vvs:31109_::1-T0-151.3" lane="31157172#5_0" startPos="26.49" endPos="39.49" friendlyPos="true" name="Sulzgries Bergstraße"/>
+    <busStop id="de:vvs:31109_::1-T0-151.4" lane="31157172#11_0" startPos="82.29" endPos="95.29" friendlyPos="true" name="Sulzgries Schule"/>
+    <busStop id="de:vvs:31110_::3-T0-1.5" lane="-169127813#4_0" startPos="246.86" endPos="259.86" friendlyPos="true" name="Essl.(N) Panorama-Klinik"/>
+    <busStop id="de:vvs:31110_::3-T0-1.6" lane="-537710741#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) Burg"/>
+    <busStop id="de:vvs:31110_::3-T0-1.7" lane="12098782#4_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hohenkreuz"/>
+    <busStop id="de:vvs:31110_::3-T0-1.8" lane="431767318#1_0" startPos="47.68" endPos="60.67" friendlyPos="true" name="Hkr. Wäldenbronn Kreuzung"/>
+    <busStop id="de:vvs:31110_::3-T0-1.9" lane="560583354_0" startPos="2.40" endPos="15.40" friendlyPos="true" name="Wäldenbr. Langer Weg"/>
+    <busStop id="de:vvs:31110_::3-T0-1.10" lane="560583353#0_0" startPos="13.78" endPos="26.78" friendlyPos="true" name="Wäldenbronn Brunnen"/>
+    <busStop id="de:vvs:31110_::3-T0-1.11" lane="13622251#2_0" startPos="54.70" endPos="67.70" friendlyPos="true" name="Wäldenbronn Brückle"/>
+    <busStop id="de:vvs:31110_::3-T0-100.1" lane="412792789#2_0" startPos="154.93" endPos="167.93" friendlyPos="true" name="Wiflingsh. Waldackerweg"/>
+    <busStop id="de:vvs:31110_::3-T0-100.2" lane="412792788#1_0" startPos="37.40" endPos="50.40" friendlyPos="true" name="Wiflingsh. Hubertusweg"/>
+    <busStop id="de:vvs:31110_::3-T0-100.3" lane="31133704#1_0" startPos="88.52" endPos="101.51" friendlyPos="true" name="Wiflingsh. Volker-Böhringer-Weg"/>
+    <busStop id="de:vvs:31110_::3-T0-100.4" lane="31133704#4_0" startPos="83.01" endPos="96.01" friendlyPos="true" name="Wiflingsh. Im Unt.Zehen"/>
+    <busStop id="de:vvs:31110_::3-T0-100.5" lane="280092652#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Sankt Bernhardt Talstraße"/>
+    <busStop id="de:vvs:31110_::3-T0-100.6" lane="-387212710#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Wäldenbronn Hainbach"/>
+    <busStop id="de:vvs:31110_::3-T0-100.8" lane="-13622251#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Wäldenbronn Brückle"/>
+    <busStop id="de:vvs:31110_::3-T0-100.9" lane="-560583353#1_0" startPos="1.72" endPos="14.72" friendlyPos="true" name="Wäldenbronn Brunnen"/>
+    <busStop id="de:vvs:31110_::3-T0-100.10" lane="-560583354_0" startPos="353.08" endPos="366.08" friendlyPos="true" name="Wäldenbr. Langer Weg"/>
+    <busStop id="de:vvs:31110_::3-T0-100.11" lane="-12099349_0" startPos="2.96" endPos="15.96" friendlyPos="true" name="Hkr. Wäldenbronn Kreuzung"/>
+    <busStop id="de:vvs:31110_::3-T0-100.12" lane="-12098782#5_0" startPos="41.74" endPos="54.74" friendlyPos="true" name="Hohenkreuz"/>
+    <busStop id="de:vvs:31110_::3-T0-100.13" lane="537710741#3_0" startPos="43.68" endPos="56.68" friendlyPos="true" name="Esslingen (N) Burg"/>
+    <busStop id="de:vvs:31110_::3-T0-100.14" lane="169127813#4_0" startPos="290.56" endPos="303.56" friendlyPos="true" name="Essl.(N) Panorama-Klinik"/>
+    <busStop id="de:vvs:31110_::3-T0-105.11" lane="280092625#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Wäldenbronn Brückle"/>
+    <busStop id="de:vvs:31110_::3-T0-105.13" lane="280092625#1_0" startPos="151.30" endPos="164.30" friendlyPos="true" name="Wäldenbronn Hainbach"/>
+    <busStop id="de:vvs:31110_::3-T0-105.14" lane="280092655_0" startPos="4.57" endPos="17.57" friendlyPos="true" name="Sankt Bernhardt Talstraße"/>
+    <busStop id="de:vvs:31110_::3-T0-105.15" lane="-31133704#4_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Wiflingsh. Im Unt.Zehen"/>
+    <busStop id="de:vvs:31110_::3-T0-105.16" lane="-31133704#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Wiflingsh. Volker-Böhringer-Weg"/>
+    <busStop id="de:vvs:31110_::3-T0-105.17" lane="-412792788#1_0" startPos="2.24" endPos="15.24" friendlyPos="true" name="Wiflingsh. Hubertusweg"/>
+    <busStop id="de:vvs:31110_::3-T0-105.18" lane="-412792789#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Wiflingsh. Waldackerweg"/>
+    <busStop id="de:vvs:31110_::3-T0-105.19" lane="-25812052_0" startPos="25.22" endPos="38.22" friendlyPos="true" name="Wiflingsh. Dulkhäusle"/>
+    <busStop id="de:vvs:31111_::1-T0-1.0" lane="-675777502_0" startPos="33.27" endPos="46.27" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31111_::1-T0-1.2" lane="220151070#0_0" startPos="78.31" endPos="91.31" friendlyPos="true" name="Esslingen (N) Hochschule"/>
+    <busStop id="de:vvs:31111_::1-T0-1.3" lane="4807782#2_0" startPos="16.56" endPos="29.56" friendlyPos="true" name="Esslingen (N) Finanzamt"/>
+    <busStop id="de:vvs:31111_::1-T0-1.7" lane="-186037699#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Sankt Bernhardt Flandernstr."/>
+    <busStop id="de:vvs:31111_::1-T0-1.8" lane="-202555475#2_0" startPos="13.38" endPos="26.38" friendlyPos="true" name="Sankt Bernhardt E.-Bolz-Straße"/>
+    <busStop id="de:vvs:31111_::1-T0-1.9" lane="-205275738#0_0" startPos="65.16" endPos="78.16" friendlyPos="true" name="Sankt Bernhardt Kirchackerstr."/>
+    <busStop id="de:vvs:31111_::1-T0-1.10" lane="-12098881#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hkr. Wäldenbronn Kreuzung"/>
+    <busStop id="de:vvs:31111_::1-T0-1.11" lane="-34424782#2_0" startPos="41.49" endPos="54.49" friendlyPos="true" name="Serach Bärenwiesen"/>
+    <busStop id="de:vvs:31111_::1-T0-1.12" lane="-552812219_0" startPos="100.35" endPos="113.35" friendlyPos="true" name="Serach Seracher Straße"/>
+    <busStop id="de:vvs:31111_::1-T0-1.13" lane="-654570576#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Serach Schulzentr. Nord"/>
+    <busStop id="de:vvs:31111_::1-T0-100.0" lane="654570576#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Serach Schulzentr. Nord"/>
+    <busStop id="de:vvs:31111_::1-T0-100.1" lane="552812219_0" startPos="34.17" endPos="47.17" friendlyPos="true" name="Serach Seracher Straße"/>
+    <busStop id="de:vvs:31111_::1-T0-100.2" lane="34424782#2_0" startPos="14.61" endPos="27.61" friendlyPos="true" name="Serach Bärenwiesen"/>
+    <busStop id="de:vvs:31111_::1-T0-100.3" lane="12098881#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hkr. Wäldenbronn Kreuzung"/>
+    <busStop id="de:vvs:31111_::1-T0-100.4" lane="205275738#0_0" startPos="10.38" endPos="23.38" friendlyPos="true" name="Sankt Bernhardt Kirchackerstr."/>
+    <busStop id="de:vvs:31111_::1-T0-100.5" lane="202555475#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Sankt Bernhardt E.-Bolz-Straße"/>
+    <busStop id="de:vvs:31111_::1-T0-100.6" lane="186037699#0_0" startPos="44.85" endPos="57.85" friendlyPos="true" name="Sankt Bernhardt Flandernstr."/>
+    <busStop id="de:vvs:31111_::1-T0-100.12" lane="675777502_0" startPos="1.94" endPos="14.94" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31111_::1-T0-126.trimmed.0" lane="386831075_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Essl.(N) Katharinenstaffel"/>
+    <busStop id="de:vvs:31113_::1-T0-1.3" lane="345736587#0_0" startPos="19.53" endPos="32.53" friendlyPos="true" name="Pliensauv. Weilstraße"/>
+    <busStop id="de:vvs:31113_::1-T0-1.4" lane="686955221_0" startPos="27.06" endPos="40.06" friendlyPos="true" name="Pliensauv. Im Holder"/>
+    <busStop id="de:vvs:31113_::1-T0-1.5" lane="1079724463_0" startPos="75.50" endPos="88.50" friendlyPos="true" name="Zollberg Ob. Eisbergweg"/>
+    <busStop id="de:vvs:31113_::1-T0-1.6" lane="11336059_0" startPos="7.94" endPos="20.94" friendlyPos="true" name="Zollberg"/>
+    <busStop id="de:vvs:31113_::1-T0-1.7" lane="-419654733#0_0" startPos="147.02" endPos="160.02" friendlyPos="true" name="Zollberg Mutzenreisstr."/>
+    <busStop id="de:vvs:31113_::1-T0-104.4" lane="-390216938_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Adenauerbr. (oben)"/>
+    <busStop id="de:vvs:31113_::1-T0-105.4" lane="419654733#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Zollberg Jusiweg"/>
+    <busStop id="de:vvs:31113_::1-T0-105.5" lane="448974987#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Zollberg Realschule"/>
+    <busStop id="de:vvs:31113_::1-T0-105.6" lane="-23032884#1_0" startPos="25.34" endPos="38.34" friendlyPos="true" name="Zollberg Zollernplatz"/>
+    <busStop id="de:vvs:31113_::1-T0-105.7" lane="21310559_0" startPos="65.43" endPos="78.43" friendlyPos="true" name="Zollberg"/>
+    <busStop id="de:vvs:31113_::1-T0-105.8" lane="-926867314_0" startPos="199.40" endPos="212.40" friendlyPos="true" name="Zollberg Ob. Eisbergweg"/>
+    <busStop id="de:vvs:31113_::1-T0-105.9" lane="-926867318_0" startPos="123.82" endPos="136.82" friendlyPos="true" name="Pliensauv. Im Holder"/>
+    <busStop id="de:vvs:31113_::1-T0-105.10" lane="11335855#1_0" startPos="30.60" endPos="43.50" friendlyPos="true" name="Pliensauv. Weilstraße"/>
+    <busStop id="de:vvs:31113_::1-T0-111.2" lane="24447759#1_0" startPos="6.82" endPos="19.82" friendlyPos="true" name="Oberessl. Adenauerbr. (oben)"/>
+    <busStop id="de:vvs:31114_::3-T0-1.0" lane="386500268#1_0" startPos="24.79" endPos="37.79" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31114_::3-T0-105.12" lane="384972991#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31114a::1-T0-29.9" lane="47110442#2_0" startPos="98.52" endPos="111.52" friendlyPos="true" name="Oberessl. Keplerstraße"/>
+    <busStop id="de:vvs:31114a::1-T0-65.4" lane="23999291#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Keplerstraße"/>
+    <busStop id="de:vvs:31114a::1-T0-65.7" lane="-23059671#0_0" startPos="36.53" endPos="49.53" friendlyPos="true" name="Oberessl. Th.-Heuss-Gymnasium"/>
+    <busStop id="de:vvs:31115_::1-T0-1.5" lane="-1169441387_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Keplerstraße"/>
+    <busStop id="de:vvs:31115_::1-T0-2.7" lane="1169441387_0" startPos="7.87" endPos="20.87" friendlyPos="true" name="Oberessl. Keplerstraße"/>
+    <busStop id="de:vvs:31119_::1-T0-1.9" lane="268558823#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Esslingen (N) ZOB"/>
+    <busStop id="de:vvs:31122_::5-T0-1.5" lane="22910600_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Pliensauv. Weilstraße"/>
+    <busStop id="de:vvs:31122_::5-T0-1.6" lane="432904401_0" startPos="103.44" endPos="116.44" friendlyPos="true" name="Pliensauv. Pfeifferklinge"/>
+    <busStop id="de:vvs:31122_::5-T0-1.7" lane="-943526837_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Zollberg Pliensaufriedhof"/>
+    <busStop id="de:vvs:31122_::5-T0-1.8" lane="23100738#0_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Zollberg Mutzenreis"/>
+    <busStop id="de:vvs:31122_::5-T0-1.9" lane="231875715#1_0" startPos="19.63" endPos="32.63" friendlyPos="true" name="Parks. Robert-Koch-Straße"/>
+    <busStop id="de:vvs:31122_::5-T0-3.1" lane="-231875715#2_0" startPos="11.59" endPos="24.59" friendlyPos="true" name="Parks. Robert-Koch-Straße"/>
+    <busStop id="de:vvs:31122_::5-T0-3.2" lane="-448974989_0" startPos="5.85" endPos="18.85" friendlyPos="true" name="Zollberg Mutzenreis"/>
+    <busStop id="de:vvs:31122_::5-T0-3.3" lane="943526836_0" startPos="22.85" endPos="35.85" friendlyPos="true" name="Zollberg Pliensaufriedhof"/>
+    <busStop id="de:vvs:31122_::5-T0-3.4" lane="-432904401_0" startPos="25.94" endPos="38.94" friendlyPos="true" name="Pliensauv. Pfeifferklinge"/>
+    <busStop id="de:vvs:31130_::1-T0-1.8" lane="432904427#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Parks. Herzog-Philipp-Platz"/>
+    <busStop id="de:vvs:31130_::1-T0-1.9" lane="158355468#1_0" startPos="20.09" endPos="33.09" friendlyPos="true" name="Parksiedlung Parkstraße"/>
+    <busStop id="de:vvs:31130_::1-T0-1.10" lane="-573703452_0" startPos="213.83" endPos="226.83" friendlyPos="true" name="Ruit Zinsholz"/>
+    <busStop id="de:vvs:31130_::1-T0-11.4" lane="383945634#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Pliensauvorstadt K.-Pfaff-Str."/>
+    <busStop id="de:vvs:31130_::1-T0-12.1" lane="231875720#4_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Ruit Zinsholz"/>
+    <busStop id="de:vvs:31130_::1-T0-12.2" lane="-158355468#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Parksiedlung Parkstraße"/>
+    <busStop id="de:vvs:31130_::1-T0-12.3" lane="-432904427#1_0" startPos="13.27" endPos="26.27" friendlyPos="true" name="Parks. Herzog-Philipp-Platz"/>
+    <busStop id="de:vvs:31132_::1-T0-10.8" lane="-993217766_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberesslingen Hirschlandstr."/>
+    <busStop id="de:vvs:31132_::1-T0-10.9" lane="-998175513_0" startPos="37.86" endPos="50.86" friendlyPos="true" name="Oberessl. Hirschlandhof"/>
+    <busStop id="de:vvs:31132_::1-T0-11.3" lane="281956698#1_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Hirschlandhof"/>
+    <busStop id="de:vvs:31132_::1-T0-11.4" lane="281956701#2_0" startPos="113.25" endPos="126.25" friendlyPos="true" name="Oberesslingen Hirschlandstr."/>
+    <busStop id="de:vvs:31138_::1-T0-1.5" lane="23724230#3_0" startPos="141.17" endPos="154.17" friendlyPos="true" name="Hegensberg Hofstraße"/>
+    <busStop id="de:vvs:31138_::1-T0-1.6" lane="23724225_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hegensberg Ortseingang"/>
+    <busStop id="de:vvs:31138_::1-T0-1.7" lane="45524884#6_0" startPos="34.27" endPos="47.27" friendlyPos="true" name="Oberessl. Brandenburger Str."/>
+    <busStop id="de:vvs:31138_::1-T0-1.8" lane="23320401#2_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Oberessl. Lerchenäcker"/>
+    <busStop id="de:vvs:31138_::1-T0-1.9" lane="23059671#0_0" startPos="19.38" endPos="32.38" friendlyPos="true" name="Oberessl. Th.-Heuss-Gymnasium"/>
+    <busStop id="de:vvs:31138_::1-T0-1.12" lane="-23999291#1_0" startPos="5.58" endPos="18.58" friendlyPos="true" name="Oberessl. Keplerstraße"/>
+    <busStop id="de:vvs:31138_::1-T0-1380017.5" lane="921020467#2_0" startPos="24.23" endPos="37.23" friendlyPos="true" name="Oberesslingen Bf (Nord)"/>
+    <busStop id="de:vvs:31138_::1-T0-1380017.9" lane="-45524884#6_0" startPos="54.43" endPos="67.43" friendlyPos="true" name="Oberessl. Brandenburger Str."/>
+    <busStop id="de:vvs:31138_::1-T0-1380017.10" lane="-23724225_0" startPos="62.66" endPos="75.66" friendlyPos="true" name="Hegensberg Ortseingang"/>
+    <busStop id="de:vvs:31138_::1-T0-1380017.11" lane="-23724230#3_0" startPos="0.00" endPos="13.00" friendlyPos="true" name="Hegensberg Hofstraße"/>
+    <busStop id="de:vvs:31138_::1-T0-1380020.15" lane="-23320401#2_0" startPos="2.14" endPos="15.14" friendlyPos="true" name="Oberessl. Lerchenäcker"/>
+    <busStop id="de:vvs:31140_::1-T0-10.4" lane="-183419042#1_0" startPos="30.18" endPos="43.18" friendlyPos="true" name="Oberesslingen Lammgarten"/>
+    <busStop id="de:vvs:31140_::1-T0-1400023.10" lane="183419042#1_0" startPos="8.07" endPos="21.07" friendlyPos="true" name="Oberesslingen Lammgarten"/>
+</additional>

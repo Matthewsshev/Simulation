@@ -6,7 +6,6 @@ import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
 import sqlite3
 from threading import Thread
-
 random.seed(1)
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
@@ -52,7 +51,7 @@ class Trip:
     def get_allowed(edge, allow_auto):  # creating a function that will append lists of allowed lane
         for lane in traci.lane.getIDList():
             if traci.lane.getEdgeID(lane) == edge:
-                allow_auto.append((traci.lane.getAllowed(lane)))
+                allow_auto.add((traci.lane.getAllowed(lane)))
 
     @staticmethod
     def get_suitable_edge(next_edges, random_auto, allowed_a, count):
@@ -64,7 +63,7 @@ class Trip:
                     next_edge = edge
                     break
                 else:
-                    allowed_a = []
+                    allowed_a = set()
                     next_edge = edge
             else:
                 next_edge = edge
@@ -100,7 +99,7 @@ class Trip:
                 c += 1
             for trip in person.trip:  # now we`re working with trips
                 if trip.vType:
-                    allowed_auto = []  # creating a list of allowed transport on a start point
+                    allowed_auto = set()  # creating a list of allowed transport on a start point
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     if type(trip.vType) is list:  # checking if person have more than one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
@@ -112,7 +111,7 @@ class Trip:
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
                                                                           vType=random_auto)
                         if next_edges:
-                            allowed_a = []  # creating a new list of allowed autos on next edge
+                            allowed_a = set()  # creating a new list of allowed autos on next edge
                             b = 0  # creating variable to count edges
                             next_e = Trip.get_suitable_edge(next_edges, random_auto, allowed_a, b)
                             # creating trip attribute from start to suitable edge using public transport
@@ -234,22 +233,26 @@ class Human:  # creating a human class for retrieving information
     railway_edges.extend(traci.route.getEdges('pt_train_S1:1'))
     railway_edges.extend(traci.route.getEdges('pt_train_RE_5:0'))
     filtered_edges = []  # sorted edges
+    quantity = 40  # quantity of people that will be in simulation
     for edge in edges:
         if '_' not in edge and edge not in railway_edges:  # saving filtered edges that don`t contain railway edges
             filtered_edges.append(edge)
+    # Creating lists of existing places for people
+    home = random.sample(filtered_edges, int(quantity/5))
+    supermarket = random.sample(filtered_edges, 10)
+    friends = random.sample(filtered_edges, 10)
 
     def __init__(self, name):
-
         self.name = name  # getting variables from input
-        self.trip = []
-        self.home = random.choice(Human.filtered_edges)
-        self.supermarket = random.choice(Human.filtered_edges)
-        self.friends = random.choice(Human.filtered_edges)
+        self.trip = set()
+        self.home = random.choice(Human.home)
+        self.supermarket = random.choice(Human.supermarket)
+        self.friends = random.choice(Human.friends)
         self.destination = [self.home, self.supermarket, self.friends]
         self.age = random.randint(0, 99)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
-        self.trip.append(Trip(start_edge, destination_edge))
+        self.trip.add(Trip(start_edge, destination_edge))
 
     @staticmethod
     def save_humans(persons, connection):
@@ -283,12 +286,13 @@ class Worker(Human):  # creating a subclass of Human
     Subclass of Human. Only difference in personal information like age etc. And also worker is having more
     places to go for example work.
     """
+    work = random.sample(Human.filtered_edges, 10)
 
     def __init__(self, name):
         super().__init__(name, )  # getting variables from class human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
-        self.work = random.choice(Human.filtered_edges)
+        self.work = random.choice(Worker.work)
         self.destination.append(self.work)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
@@ -300,6 +304,7 @@ class Student(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Student is having more
         places to go for example uni.
     """
+    uni = random.sample(Human.filtered_edges, 10)
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
@@ -318,6 +323,7 @@ class Pupil(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Pupil is having more
         places to go for example school.
     """
+    school = random.sample(Human.filtered_edges, 10)
 
     def __init__(self, name):
         super().__init__(name, )  # getting variables from class human
@@ -335,12 +341,13 @@ class Senior(Human):  # creating a subclass of Human
          Subclass of Human. Only difference in personal information like age etc. And also Senior is having more
          places to go for example park.
      """
+    park = random.sample(Human.filtered_edges, 10)
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(2000, 4000)  # getting random pension in range
         self.age = random.randrange(60, 100)  # getting random age in range
-        self.park = random.choice(Human.filtered_edges)
+        self.park = random.choice(Senior.park)
         self.destination.append(self.park)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
@@ -349,13 +356,12 @@ class Senior(Human):  # creating a subclass of Human
 
 def main():
     humans = set()  # creating an empty list for person that`ll be created
-    quantity = 10
-    for i in range(quantity):  # creating 1000 people with different type of class
-        if i < quantity/4:
+    for i in range(Human.quantity):  # creating 1000 people with different type of class
+        if i < Human.quantity/4:
             human = Worker(f'p{i}')  # creating a Worker
-        elif i < quantity/2:
+        elif i < Human.quantity/2:
             human = Student(f'p{i}')  # creating a Student
-        elif i < 3 * quantity/4:
+        elif i < 3 * Human.quantity/4:
             human = Pupil(f'p{i}')  # creating a Pupil
         else:
             human = Senior(f'p{i}')  # creating a Senior
