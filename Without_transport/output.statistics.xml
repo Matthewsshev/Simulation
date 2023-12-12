@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-12-12 13:24:41 by Eclipse SUMO GUI Version 1.19.0
+<!-- generated on 2023-12-12 15:28:07 by Eclipse SUMO GUI Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="Without_transport\osm.net.xml"/>
-        <route-files value="Without_transport\osm_pt.rou.xml"/>
-        <additional-files value="Without_transport\osm_polygons.add.xml,Without_transport\basic.vType.xml,Without_transport\osm_stops.add.xml,Without_transport\osm_complete_parking_areas.add.xml,Without_transport\         osm_parking_rerouters.add.xml,Without_transport\osm_taxi_stands.add.xml,Without_transport\osm_taxi_rerouters.add.xml,Without_transport\ data.rou.xml"/>
+        <net-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm.net.xml"/>
+        <route-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_pt.rou.xml"/>
+        <additional-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_polygons.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\basic.vType.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_stops.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_complete_parking_areas.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\         osm_parking_rerouters.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_taxi_stands.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_taxi_rerouters.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\ data.rou.xml"/>
     </input>
 
     <output>
         <output-prefix value="output."/>
-        <summary-output value="Without_transport\summary.xml"/>
-        <person-summary-output value="Without_transport\person.summary.xml"/>
-        <tripinfo-output value="Without_transport\tripinfo.xml"/>
+        <summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\summary.xml"/>
+        <person-summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\person.summary.xml"/>
+        <tripinfo-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\tripinfo.xml"/>
         <tripinfo-output.write-unfinished value="false"/>
-        <statistic-output value="Without_transport\statistics.xml"/>
+        <statistic-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\statistics.xml"/>
     </output>
 
     <time>
@@ -68,37 +68,32 @@
 
     <taxi_device>
         <device.taxi.dispatch-algorithm value="greedy"/>
-        <device.taxi.dispatch-algorithm.output value="Without_transport\taxi.dispatch.xml"/>
+        <device.taxi.dispatch-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.dispatch.xml"/>
         <device.taxi.dispatch-period value="60"/>
         <device.taxi.idle-algorithm value="stop"/>
-        <device.taxi.idle-algorithm.output value="Without_transport\taxi.idle.xml"/>
+        <device.taxi.idle-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.idle.xml"/>
     </taxi_device>
-
-    <traci_server>
-        <remote-port value="58471"/>
-    </traci_server>
 
     <random_number>
         <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="Without_transport\default-gui.xml"/>
+        <gui-settings-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\default-gui.xml"/>
     </gui_only>
 
 </configuration>
 -->
 
 <statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
-    <performance clockBegin="571747.67" clockEnd="571846.69" clockDuration="99.02" traciDuration="22.31" realTimeFactor="62.22" vehicleUpdatesPerSecond="61.73" personUpdatesPerSecond="587.98" begin="0.00" end="6161.00" duration="6161.00"/>
-    <vehicles loaded="6" inserted="5" running="0" waiting="0"/>
+    <performance clockBegin="579154.05" clockEnd="579159.24" clockDuration="5.18" traciDuration="0.00" realTimeFactor="0.00" vehicleUpdatesPerSecond="0.00" personUpdatesPerSecond="0.00" begin="0.00" end="0.00" duration="0.00"/>
+    <vehicles loaded="0" inserted="0" running="0" waiting="0"/>
     <teleports total="0" jam="0" yield="0" wrongLane="0"/>
     <safety collisions="0" emergencyStops="0" emergencyBraking="0"/>
-    <persons loaded="10" running="9" jammed="0"/>
+    <persons loaded="10" running="0" jammed="0"/>
     <personTeleports total="0" abortWait="0" wrongDest="0"/>
-    <vehicleTripStatistics count="2" routeLength="7076.98" speed="8.63" duration="822.50" waitingTime="168.00" timeLoss="255.29" departDelay="0.00" departDelayWaiting="-1.00" totalTravelTime="1645.00" totalDepartDelay="0.00"/>
-    <bikeTripStatistics count="3" routeLength="6766.38" speed="4.48" duration="1489.33" waitingTime="84.00" timeLoss="197.58" totalTravelTime="4468.00"/>
-    <pedestrianStatistics number="3" routeLength="622.28" duration="-389.67" timeLoss="60.58"/>
+    <vehicleTripStatistics count="0" routeLength="0.00" speed="0.00" duration="0.00" waitingTime="0.00" timeLoss="0.00" departDelay="0.00" departDelayWaiting="-1.00" totalTravelTime="0.00" totalDepartDelay="0.00"/>
+    <pedestrianStatistics number="0" routeLength="0.00" duration="0.00" timeLoss="0.00"/>
     <rideStatistics number="0"/>
     <transportStatistics number="0"/>
 </statistics>
