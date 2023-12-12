@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2023-11-28 15:27:49.801877 by gtfs2fcd.py v1_19_0+0000-baa66a0f364
+<configuration>
+    <gtfs value="gtfs_realtime.zip"/>
+    <date value="20231009"/>
+    <network value="osm.net.xml.gz"/>
+</configuration>
+-->
+
+<fcd-export>
+    <timestep time="142200"><vehicle id="('de:vvs:20007_::8-T0-10',)" x="9.25366284830711" y="48.7309838599157" until="0" name="Ruit" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="142260"><vehicle id="('de:vvs:20007_::8-T0-10',)" x="9.26188953270382" y="48.7262713513186" until="60" name="Ruit Zinsholz" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="142380"><vehicle id="('de:vvs:20007_::8-T0-10',)" x="9.27159829550138" y="48.7244863034699" until="180" name="Parksiedlung" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="142440"><vehicle id="('de:vvs:20007_::8-T0-10',)" x="9.27256865871195" y="48.7204553815017" until="240" name="Scharnhauser Park" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="159720"><vehicle id="('de:vvs:20007_::8-T0-239',)" x="9.27262297169612" y="48.7204462602587" until="0" name="Scharnhauser Park" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="159780"><vehicle id="('de:vvs:20007_::8-T0-239',)" x="9.27165304983039" y="48.7245581138329" until="60" name="Parksiedlung" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="159900"><vehicle id="('de:vvs:20007_::8-T0-239',)" x="9.26194427517636" y="48.7263431662937" until="180" name="Ruit Zinsholz" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="159960"><vehicle id="('de:vvs:20007_::8-T0-239',)" x="9.25374477081951" y="48.7310556187481" until="240" name="Ruit" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="233640"><vehicle id="('de:vvs:20008_::8-UJ-101',)" x="9.27262297169612" y="48.7204462602587" until="0" name="Scharnhauser Park" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="233700"><vehicle id="('de:vvs:20008_::8-UJ-101',)" x="9.27165304983039" y="48.7245581138329" until="60" name="Parksiedlung" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="233820"><vehicle id="('de:vvs:20008_::8-UJ-101',)" x="9.26194427517636" y="48.7263431662937" until="180" name="Ruit Zinsholz" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="233880"><vehicle id="('de:vvs:20008_::8-UJ-101',)" x="9.25374477081951" y="48.7310556187481" until="240" name="Ruit" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="250020"><vehicle id="('de:vvs:20008_::8-UJ-129',)" x="9.25366284830711" y="48.7309838599157" until="0" name="Ruit" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="250080"><vehicle id="('de:vvs:20008_::8-UJ-129',)" x="9.26188953270382" y="48.7262713513186" until="60" name="Ruit Zinsholz" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="250140"><vehicle id="('de:vvs:20008_::8-UJ-129',)" x="9.27159829550138" y="48.7244863034699" until="120" name="Parksiedlung" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="250200"><vehicle id="('de:vvs:20008_::8-UJ-129',)" x="9.27256865871195" y="48.7204553815017" until="180" name="Scharnhauser Park" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="270960"><vehicle id="('de:vvs:20009_::1-T0-10',)" x="9.25431301787951" y="48.7600999127213" until="0" name="Hedelfingen" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="318600"><vehicle id="('de:vvs:20013_::3-T0-101',)" x="9.25431301787951" y="48.7600999127213" until="0" name="Hedelfingen" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+</fcd-export>
