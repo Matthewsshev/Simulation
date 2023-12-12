@@ -1,58 +1,106 @@
-Warning: Unequal lengths of bidi lane ':1187584479_3_0' and lane ':1187584479_2_0' (42.40 != 4.68).
-Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641417_10947641418_#6more', actuated phase 2 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641417_10947641418_#6more', actuated phase 6 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641417_10947641418_#6more', linkIndex 2 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641417_10947641418_#6more', linkIndex 3 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641417_10947641418_#6more', linkIndex 4 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641417_10947641418_#6more', linkIndex 5 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_1267294309_1267294311_1267294351_1802667776_#3more', actuated phase 2 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_246660456_66731736', linkIndex 6 has no controlling detector.
-Warning: At actuated tlLogic 'cluster_3816418664_6502440129_6502440130_6502440131_#1more', actuated phase 2 has no controlling detector.
+Warning: Unequal lengths of bidi lane ':1073718636_0_0' and lane ':1073718636_3_0' (38.30 != 38.29).
+Warning: Unequal lengths of bidi lane ':1073718717_0_0' and lane ':1073718717_3_0' (32.21 != 32.20).
+Warning: Unequal lengths of bidi lane ':1077561696_2_0' and lane ':1077561696_1_0' (3.03 != 3.00).
+Warning: Rail signal at junction '4561536108' does not control any links
+Warning: At actuated tlLogic '30863190', actuated phase 5 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_1028799417_117289340_1898692559', actuated phase 2 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641377_10947641416_#8more', actuated phase 3 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641377_10947641416_#8more', linkIndex 2 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641377_10947641416_#8more', linkIndex 3 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_10947641375_10947641376_10947641377_10947641416_#8more', linkIndex 4 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_1267294309_1267294311_1267294351_1802667776_#3more', actuated phase 3 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_1337250743_1347756233_28255407_373252315_#1more', linkIndex 2 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_1337250743_1347756233_28255407_373252315_#1more', linkIndex 3 has no controlling detector.
+Warning: At actuated tlLogic 'cluster_1337262031_2397543867_2397543875_2397543877_#7more', actuated phase 5 has no controlling detector.
+Warning: Program '0' at tlLogic 'joinedS_1667998770_373395296_373396736' is incompatible with logic at junction '1667998770' (mutual conflict between link indices 2,6 tl indices 2,6 phase 0).
+  To avoid deadlock/collisions, either: rebuild the signal plan with a newer version of netconvert/netedit
+  or rebuild the network with option '--tls.ignore-internal-junction-jam' or include the program when building.
+Warning: Program '0' at tlLogic 'joinedS_254861494_7057049204_cluster_2402002156_2402002157_3837694329_7057049523_cluster_3837694334_7057049530_81294927' is incompatible with logic at junction 'cluster_2402002156_2402002157_3837694329_7057049523' (mutual conflict between link indices 0,8 tl indices 17,25 phase 3).
+  To avoid deadlock/collisions, either: rebuild the signal plan with a newer version of netconvert/netedit
+  or rebuild the network with option '--tls.ignore-internal-junction-jam' or include the program when building.
+Warning: Program '0' at tlLogic 'joinedS_385187052_385188057_cluster_381939942_385188059' is incompatible with logic at junction '385187052' (mutual conflict between link indices 2,5 tl indices 2,5 phase 0).
+  To avoid deadlock/collisions, either: rebuild the signal plan with a newer version of netconvert/netedit
+  or rebuild the network with option '--tls.ignore-internal-junction-jam' or include the program when building.
+Warning: Program '0' at tlLogic 'joinedS_385187052_385188057_cluster_381939942_385188059' is incompatible with logic at junction 'cluster_381939942_385188059' (mutual conflict between link indices 5,10 tl indices 26,31 phase 0).
+  To avoid deadlock/collisions, either: rebuild the signal plan with a newer version of netconvert/netedit
+  or rebuild the network with option '--tls.ignore-internal-junction-jam' or include the program when building.
 Warning: No connection between edge '384972991#1' and edge '-350217704#3' found.
 Warning: Vehicle '0_bus_114:0' has no valid route from edge '384972991#1' to stop edge '-350217704#3'.
-Warning: Found circular block after railSignal junction '3513112336', link 1 (5 edges, length 5796.80)
-Warning: busStop '-3872841444' on lane '-386832703#0_0' is too short for vehicle '7_bus_108:0'.
+Warning: busStop '764607112' on lane '122124925#0_1' is too short for vehicle '7_bus_138:0'.
+Warning: busStop '29027150' on lane '391056748#0_1' is too short for vehicle '7_bus_138:0'.
+Warning: busStop '2869007744' on lane '23999291#0_1' is too short for vehicle '7_bus_138:0'.
+Warning: busStop '-3872841444' on lane '-386832703#0_1' is too short for vehicle '8_bus_108:0'.
+Warning: busStop '-1104997093' on lane '-8812305#1_1' is too short for vehicle '8_bus_108:0'.
+Warning: busStop '254785865' on lane '386500262#0_1' is too short for vehicle '8_bus_108:0'.
+Warning: busStop '30895400' on lane '38361907_1' is too short for vehicle '9_trolleybus_101:0'.
+Warning: busStop '-5226460705' on lane '-26263195#1_1' is too short for vehicle '12_bus_61:0'.
+Warning: busStop '3238823402' on lane '399038513#17_1' is too short for vehicle '23_trolleybus_118:0'.
+Warning: Found circular block after railSignal junction '4238132862', link 0 (5 edges, length 4869.67)
+Warning: busStop '3872841444' on lane '386832703#0_1' is too short for vehicle '34_bus_102:0'.
+Warning: busStop '-29027251' on lane '-4807776#1_2' is too short for vehicle '36_bus_102:2'.
+Warning: No connection between edge '386500268#1' and edge '-350217704#2' found.
+Warning: Vehicle '38_bus_102:4' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
 Warning: No connection between edge '384972991#1' and edge '-350217704#2' found.
-Warning: Vehicle '3_bus_114:2' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
-Warning: No connection between edge '384972991#1' and edge '-350217704#2' found.
-Warning: Vehicle '4_bus_106:0' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
+Warning: Vehicle '5_bus_106:0' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
 Warning: No connection between edge '675777502' and edge '-350217704#2' found.
-Warning: Vehicle '9_bus_131:0' has no valid route from edge '675777502' to stop edge '-350217704#2'.
-Warning: No connection between edge '-350217704#2' and edge '-231875720#0' found.
-Warning: No route for vehicle '9_bus_131:0' found.
-Warning: busStop '2239070180' on lane '412792789#3_0' is too short for vehicle '52_bus_112:3'.
-Warning: Vehicle '54_bus_113:1' has no valid route from edge '675777502' to stop edge '-350217704#3'.
-Warning: Vehicle '53_bus_113:0' has no valid route from edge '675777502' to stop edge '-350217704#3'.
-Warning: Vehicle '50_bus_112:1' has no valid route from edge '268558823#1' to stop edge '-350217704#3'.
-Warning: Vehicle '36_bus_104:1' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
-Warning: Vehicle '49_bus_112:0' has no valid route from edge '268558823#1' to stop edge '-350217704#3'.
-Warning: Vehicle '47_bus_111:0' has no valid route from edge '-386500268#0' to stop edge '-350217704#3'.
-Warning: Vehicle '35_bus_104:0' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
-Warning: Teleporting vehicle '0_bus_114:0'; waited too long (wrong lane), lane='384972991#1_0', time=341.00.
-Warning: Vehicle '0_bus_114:0' ends teleporting on edge '-350217704#3', time=341.00.
-Warning: Teleporting vehicle '9_bus_131:0'; waited too long (wrong lane), lane='675777502_0', time=402.00.
-Warning: Vehicle '9_bus_131:0' ends teleporting on edge '675777502', time=402.00.
-Warning: busStop '-2869007744' on lane '-23999291#0_0' is too short for vehicle '61_bus_115:1'.
-Warning: Vehicle '57_bus_114:3' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
-Warning: No route for vehicle '65_bus_131:1' found.
-Warning: Vehicle '76_bus_130:1' has no valid route from edge '675777502' to stop edge '-350217704#2'.
-Warning: No route for vehicle '76_bus_130:1' found.
-Warning: Vehicle '77_bus_N22:0' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
-Warning: No route for vehicle '75_bus_130:0' found.
-Warning: Vehicle '70_bus_140:0' has no valid route from edge '268558821#1' to stop edge '-350217704#2'.
-Warning: Teleporting vehicle '35_bus_104:0'; waited too long (wrong lane), lane='386500268#1_0', time=572.00.
-Warning: Vehicle '35_bus_104:0' ends teleporting on edge '-350217704#2', time=572.00.
-Warning: Teleporting vehicle '3_bus_114:2'; waited too long (wrong lane), lane='384972991#1_0', time=678.00.
-Warning: Vehicle '3_bus_114:2' ends teleporting on edge '-350217704#2', time=678.00.
-Warning: Teleporting vehicle '9_bus_131:0'; waited too long (wrong lane), lane='675777502_0', time=709.00.
-Warning: Vehicle '9_bus_131:0' ends teleporting on edge '-350217704#2', time=709.00.
-Warning: Vehicle '47_bus_111:0' skips stop on lane '-350217704#3_0' time=730.00.
-Warning: Vehicle '70_bus_140:0' skips stop on lane '-350217704#2_0' time=915.00.
-Warning: Vehicle '36_bus_104:1' skips stop on lane '-350217704#2_0' time=972.00.
-Warning: Teleporting vehicle '1_bus_114:1'; waited too long (jam), lane='178668745_0', time=976.00.
-Warning: Vehicle '50_bus_112:1' skips stop on lane '-350217704#3_0' time=1063.00.
-Warning: Teleporting vehicle '41_bus_106:1'; waited too long (jam), lane='178668745_0', time=1726.00.
-Warning: 11 total messages of type: At actuated tlLogic '%', linkIndex % has no controlling detector.
-Warning: 19 total messages of type: No connection between edge '%' and edge '%' found.
-Warning: 23 total messages of type: Teleporting vehicle '%'; waited too long (wrong lane), lane='%', time=%.
+Warning: Vehicle '11_bus_131:0' has no valid route from edge '675777502' to stop edge '-350217704#2'.
+Warning: No connection between edge '386500268#1' and edge '-350217704#2' found.
+Warning: Vehicle '24_trolleybus_101:1' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: Vehicle '23_trolleybus_118:0' has no valid route from edge '138203611#1' to stop edge '-350217704#3'.
+Warning: Vehicle '4_bus_114:2' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
+Warning: Vehicle '35_bus_102:1' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: Vehicle '34_bus_102:0' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: busStop '1460518764' on lane '387117388_0' is too short for vehicle '55_bus_109:1'.
+Warning: busStop '125392612' on lane '431767318#2_1' is too short for vehicle '56_bus_110:0'.
+Warning: Vehicle '58_bus_111:0' is not allowed to stop on lane '23471124_0'.
+Warning: Vehicle '60_bus_112:0' is not allowed to stop on lane '-31133704#3_0'.
+Warning: busStop '-764607112' on lane '-122124925#0_1' is too short for vehicle '60_bus_112:0'.
+Warning: Vehicle '61_bus_112:1' is not allowed to stop on lane '-31133704#3_0'.
+Warning: Vehicle '62_bus_112:2' is not allowed to stop on lane '31133704#3_0'.
+Warning: Vehicle '63_bus_112:3' is not allowed to stop on lane '31133704#3_0'.
+Warning: Vehicle '46_bus_104:0' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: Vehicle '47_bus_104:1' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: Vehicle '63_bus_112:3' is not allowed to stop on lane '31133704#3_0'.
+Warning: Vehicle '62_bus_112:2' is not allowed to stop on lane '31133704#3_0'.
+Warning: Vehicle '60_bus_112:0' has no valid route from edge '268558823#1' to stop edge '-350217704#3'.
+Warning: Vehicle '60_bus_112:0' is not allowed to stop on lane '-31133704#3_0'.
+Warning: Vehicle '61_bus_112:1' has no valid route from edge '268558823#1' to stop edge '-350217704#3'.
+Warning: Vehicle '61_bus_112:1' is not allowed to stop on lane '-31133704#3_0'.
+Warning: Vehicle '58_bus_111:0' has no valid route from edge '-386500268#0' to stop edge '-350217704#3'.
+Warning: Vehicle '58_bus_111:0' is not allowed to stop on lane '23471124_0'.
+Warning: Vehicle '40_bus_103:0' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: Vehicle '42_bus_103:2' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: Vehicle '41_bus_103:1' has no valid route from edge '386500268#1' to stop edge '-350217704#2'.
+Warning: Vehicle '64_bus_113:0' has no valid route from edge '675777502' to stop edge '-350217704#3'.
+Warning: Vehicle '65_bus_113:1' has no valid route from edge '675777502' to stop edge '-350217704#3'.
+Warning: Teleporting vehicle '0_bus_114:0'; waited too long (wrong lane), lane='384972991#1_0', time=14743.00.
+Warning: Vehicle '0_bus_114:0' ends teleporting on edge '-350217704#3', time=14743.00.
+Warning: Teleporting vehicle '11_bus_131:0'; waited too long (wrong lane), lane='675777502_1', time=14804.00.
+Warning: Vehicle '11_bus_131:0' ends teleporting on edge '-350217704#2', time=14804.00.
+Warning: busStop '-2869007744' on lane '-23999291#0_1' is too short for vehicle '72_bus_115:1'.
+Warning: busStop '287465536' on lane '392589607#3_1' is too short for vehicle '75_bus_121:1'.
+Warning: Vehicle '77_bus_132:0' is not allowed to stop on lane '23471124_0'.
+Warning: busStop '-1460518764' on lane '-387117388_0' is too short for vehicle '77_bus_132:0'.
+Warning: Vehicle '68_bus_114:3' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
+Warning: Vehicle '77_bus_132:0' is not allowed to stop on lane '23471124_0'.
+Warning: Vehicle '87_bus_130:1' has no valid route from edge '675777502' to stop edge '-350217704#2'.
+Warning: Vehicle '88_bus_N22:0' has no valid route from edge '384972991#1' to stop edge '-350217704#2'.
+Warning: Vehicle '71_bus_115:0' has no valid route from edge '156260258' to stop edge '-350217704#2'.
+Warning: Vehicle '83_trolleybus_118:1' has no valid route from edge '138203611#1' to stop edge '-350217704#3'.
+Warning: Vehicle '81_bus_140:0' has no valid route from edge '268558821#1' to stop edge '-350217704#2'.
+Warning: Teleporting vehicle '46_bus_104:0'; waited too long (wrong lane), lane='386500268#1_0', time=15017.00.
+Warning: Vehicle '46_bus_104:0' ends teleporting on edge '-350217704#2', time=15017.00.
+Warning: Teleporting vehicle '4_bus_114:2'; waited too long (wrong lane), lane='384972991#1_0', time=15082.00.
+Warning: Vehicle '4_bus_114:2' ends teleporting on edge '-350217704#2', time=15082.00.
+Warning: Teleporting vehicle '58_bus_111:0'; waited too long (wrong lane), lane='-386500268#0_0', time=15115.00.
+Warning: Vehicle '58_bus_111:0' ends teleporting on edge '-350217704#3', time=15115.00.
+Warning: Vehicle '60_bus_112:0' skips stop on lane '-350217704#3_1' time=15121.00.
+Warning: Vehicle '64_bus_113:0' skips stop on lane '-350217704#3_1' time=15137.00.
+Warning: Teleporting vehicle '1_bus_114:1'; waited too long (yield), lane='468914851_2', time=15724.00.
+Warning: Vehicle '1_bus_114:1' teleports beyond arrival edge '384972991#1', time=15756.00.
+Warning: Vehicle '1_bus_114:1' skips stop on lane '384972991#1_0' time=15756.00.
+Warning: 11 total messages of type: At actuated tlLogic '%', actuated phase % has no controlling detector.
+Warning: 39 total messages of type: At actuated tlLogic '%', linkIndex % has no controlling detector.
+Warning: 25 total messages of type: No connection between edge '%' and edge '%' found.
+Warning: 25 total messages of type: Teleporting vehicle '%'; waited too long (wrong lane), lane='%', time=%.
 Warning: 25 total messages of type: Vehicle '%' ends teleporting on edge '%', time=%.

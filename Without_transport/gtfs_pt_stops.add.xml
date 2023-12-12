@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-11-14 17:02:30.948235 by gtfs2pt.py v1_19_0+0000-baa66a0f364
+<!-- generated on 2023-11-28 15:30:58.290281 by gtfs2pt.py v1_19_0+0000-baa66a0f364
 <configuration>
     <gtfs value="gtfs_realtime.zip"/>
-    <date value="20231004"/>
-    <modes value="bus"/>
-    <vtype-output value="pt_vtypes.xml"/>
+    <date value="20231009"/>
     <network value="osm.net.xml.gz"/>
 </configuration>
 -->
@@ -261,4 +259,64 @@
     <busStop id="de:vvs:31138_::1-T0-1380020.15" lane="-23320401#2_0" startPos="2.14" endPos="15.14" friendlyPos="true" name="Oberessl. Lerchenäcker"/>
     <busStop id="de:vvs:31140_::1-T0-10.4" lane="-183419042#1_0" startPos="30.18" endPos="43.18" friendlyPos="true" name="Oberesslingen Lammgarten"/>
     <busStop id="de:vvs:31140_::1-T0-1400023.10" lane="183419042#1_0" startPos="8.07" endPos="21.07" friendlyPos="true" name="Oberesslingen Lammgarten"/>
+    <trainStop id="de:vvs:vvs-11-12::1-T0-1.0" lane="-102848475#0_0" startPos="481.65" endPos="591.65" friendlyPos="true" name="Esslingen (N)">
+        <access friendlyPos="true" lane="303780030_0" pos="0.00" length="13.61"/>
+        <access friendlyPos="true" lane="303780037_0" pos="2.68" length="11.41"/>
+        <access friendlyPos="true" lane="303780042_0" pos="0.00" length="14.29"/>
+        <access friendlyPos="true" lane="303780048_0" pos="0.20" length="12.60"/>
+        <access friendlyPos="true" lane="303780056_0" pos="0.00" length="13.64"/>
+        <access friendlyPos="true" lane="303780064_0" pos="0.00" length="8.21"/>
+        <access friendlyPos="true" lane="303780076#2_0" pos="0.67" length="16.24"/>
+        <access friendlyPos="true" lane="303780090#0_0" pos="11.01" length="1.78"/>
+        <access friendlyPos="true" lane="303780090#1_0" pos="0.00" length="10.24"/>
+        <access friendlyPos="true" lane="303780090#2_0" pos="0.00" length="16.39"/>
+    </trainStop>
+    <trainStop id="de:vvs:vvs-11-12::1-T0-10.0" lane="-156199093#0_0" startPos="107.12" endPos="217.12" friendlyPos="true" name="Esslingen (N)">
+        <access friendlyPos="true" lane="156198375_0" pos="0.00" length="5.12"/>
+        <access friendlyPos="true" lane="303780034_0" pos="6.82" length="8.99"/>
+        <access friendlyPos="true" lane="303780041_0" pos="0.00" length="10.42"/>
+        <access friendlyPos="true" lane="303780052_0" pos="0.00" length="8.54"/>
+        <access friendlyPos="true" lane="303780053_0" pos="0.00" length="4.36"/>
+        <access friendlyPos="true" lane="303780054_0" pos="0.20" length="13.21"/>
+        <access friendlyPos="true" lane="303780072#0_0" pos="0.00" length="14.11"/>
+        <access friendlyPos="true" lane="378237415#0_0" pos="16.40" length="13.21"/>
+        <access friendlyPos="true" lane="378237415#1_0" pos="0.20" length="7.44"/>
+        <access friendlyPos="true" lane="378237415#2_0" pos="0.40" length="3.58"/>
+    </trainStop>
+    <trainStop id="de:vvs:vvs-11-12::1-T0-24.0" lane="-156199092#0_0" startPos="93.36" endPos="203.36" friendlyPos="true" name="Esslingen (N)">
+        <access friendlyPos="true" lane="156198375_0" pos="0.00" length="11.26"/>
+        <access friendlyPos="true" lane="156198376_0" pos="0.00" length="13.79"/>
+        <access friendlyPos="true" lane="303780033_0" pos="7.32" length="7.96"/>
+        <access friendlyPos="true" lane="303780050_0" pos="0.00" length="13.39"/>
+        <access friendlyPos="true" lane="303780051_0" pos="0.00" length="15.40"/>
+        <access friendlyPos="true" lane="303780052_0" pos="0.00" length="13.44"/>
+        <access friendlyPos="true" lane="303780053_0" pos="0.00" length="11.05"/>
+        <access friendlyPos="true" lane="378237415#1_0" pos="0.20" length="13.77"/>
+        <access friendlyPos="true" lane="378237415#2_0" pos="4.87" length="3.83"/>
+        <access friendlyPos="true" lane="378237415#3_0" pos="0.00" length="11.18"/>
+    </trainStop>
+    <trainStop id="de:vvs:vvs-11-12::1-T0-30.0" lane="-454381994#0_0" startPos="55.53" endPos="165.53" friendlyPos="true" name="Esslingen (N)">
+        <access friendlyPos="true" lane="156198375_0" pos="0.00" length="12.06"/>
+        <access friendlyPos="true" lane="303780034_0" pos="6.43" length="7.14"/>
+        <access friendlyPos="true" lane="303780041_0" pos="0.00" length="15.54"/>
+        <access friendlyPos="true" lane="303780052_0" pos="0.00" length="14.24"/>
+        <access friendlyPos="true" lane="303780053_0" pos="0.00" length="11.89"/>
+        <access friendlyPos="true" lane="303780072#1_0" pos="0.20" length="16.41"/>
+        <access friendlyPos="true" lane="303780072#2_0" pos="0.24" length="13.89"/>
+        <access friendlyPos="true" lane="378237415#0_0" pos="14.12" length="4.30"/>
+        <access friendlyPos="true" lane="378237415#1_0" pos="0.00" length="10.26"/>
+        <access friendlyPos="true" lane="378237415#2_0" pos="0.00" length="16.12"/>
+    </trainStop>
+    <trainStop id="de:vvs:vvs-11-12::1-T0-7.0" lane="156199090_0" startPos="0.00" endPos="110.00" friendlyPos="true" name="Esslingen (N)">
+        <access friendlyPos="true" lane="156198376_0" pos="0.00" length="7.18"/>
+        <access friendlyPos="true" lane="303780033_0" pos="7.39" length="11.54"/>
+        <access friendlyPos="true" lane="303780040_0" pos="0.21" length="14.80"/>
+        <access friendlyPos="true" lane="303780050_0" pos="0.16" length="6.10"/>
+        <access friendlyPos="true" lane="303780051_0" pos="0.00" length="9.45"/>
+        <access friendlyPos="true" lane="303780063_0" pos="0.00" length="10.51"/>
+        <access friendlyPos="true" lane="303780077#0_0" pos="0.00" length="15.31"/>
+        <access friendlyPos="true" lane="303780090#0_0" pos="1.58" length="3.37"/>
+        <access friendlyPos="true" lane="378237415#2_0" pos="7.68" length="15.61"/>
+        <access friendlyPos="true" lane="378237415#3_0" pos="0.20" length="9.33"/>
+    </trainStop>
 </additional>

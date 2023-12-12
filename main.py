@@ -2,11 +2,9 @@ import os
 import sys
 import traci
 import random
-import xml.etree.ElementTree as ET
-import xml.dom.minidom as minidom
+from lxml import etree
 import sqlite3
 from threading import Thread
-random.seed(1)
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
     sys.path.append(tools)
@@ -55,6 +53,7 @@ class Trip:
 
     @staticmethod
     def get_suitable_edge(next_edges, random_auto, allowed_a, count):
+        next_edge = next_edges[0].edges[0]
         for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
             count += 1
             if count % 15 == 0:  # every 15 edges checking for a suitable edge
@@ -67,7 +66,25 @@ class Trip:
                     next_edge = edge
             else:
                 next_edge = edge
+
         return next_edge
+
+    @staticmethod
+    def get_duration(person, destination_edge):
+        if destination_edge == person.supermarket:
+            return random.randint(600, 1200)
+        elif destination_edge == person.friends:
+            return random.randint(3600, 14400)
+        elif isinstance(person, Worker) and destination_edge == person.work:
+            return random.randint(28000, 36000)
+        elif isinstance(person, Student) and destination_edge == person.uni:
+            return random.randint(15000, 34000)
+        elif isinstance(person, Pupil) and destination_edge == person.school:
+            return random.randint(14000, 21000)
+        elif isinstance(person, Senior) and destination_edge == person.park:
+            return random.randint(180, 720)
+        else:
+            return random.randint(4200, 8400)
 
     @staticmethod
     def create_trips(persons, n):
@@ -75,31 +92,25 @@ class Trip:
         of trips for one person. Then saves all it in one xml file for simulation. For one treep is
         needed location and destination, type of transport or mode, but not both.
         """
-        root_2 = ET.Element("routes")
+        root_2 = etree.Element("routes")
         vtypes = [
             {"id": "passenger", "vClass": "passenger"},
             {"id": "bicycle", "vClass": "bicycle"},
             {"id": "motorcycle", "vClass": "motorcycle"}
         ]
-        # creating a list that must be at the start of xml file. It is a type of transport for persons. passenger = car
-        for vType in vtypes:
-            ET.SubElement(root_2, 'vType', attrib=vType)  # saving all transport to xml
+
         for person in persons:
             # creating and saving person in xml file depart - time of start. File must be sorted by departure time
             person_attrib = {'id': person.name, 'depart': '0.00'}
-            person_element = ET.SubElement(root_2, 'person', attrib=person_attrib)
-            c = 0
+            allowed_auto = set()  # creating a list of allowed transport on a start point
+            person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
             location = person.home  # setting a start position for everyone as Home
-            while c <= n:  # creating a loop that will choose destination that`s different from location
-                rd = random.choice(person.destination)
-                while rd == location:  # creating another loop to make sure that destination`s different
-                    rd = random.choice(person.destination)
+            for c in range(n):  # creating a loop that will choose destination that`s different from location
+                rd = random.choice([d for d in person.destination if d != location])
                 person.assign_trip(location, rd)  # using function to add trip for a person
                 location = rd  # setting new location for person
-                c += 1
             for trip in person.trip:  # now we`re working with trips
                 if trip.vType:
-                    allowed_auto = set()  # creating a list of allowed transport on a start point
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     if type(trip.vType) is list:  # checking if person have more than one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
@@ -118,7 +129,7 @@ class Trip:
                             trip_attrib = {
                                 'from': trip.start_edge, 'to': next_e,
                                 'line': trip.line, 'modes': trip.mode}
-                            ET.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
+                            etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
                             # and then from suitable edge to destination
                             trip_attrib = {
                                 'from': next_e, 'to': trip.destination_edge,
@@ -135,27 +146,13 @@ class Trip:
                     trip_attrib = {
                         'from': trip.start_edge, 'to': trip.destination_edge,
                         'line': trip.line, 'modes': trip.mode}
-                if trip.destination_edge == person.supermarket:  # getting a duration that depends on location
-                    duration = random.randint(600, 1200)
-                elif trip.destination_edge == person.friends:
-                    duration = random.randint(3600, 14400)
-                elif isinstance(person, Worker) and trip.destination_edge == person.work:
-                    # checking instance because not everyone have this attribute
-                    duration = random.randint(28000, 36000)
-                elif isinstance(person, Student) and trip.destination_edge == person.uni:
-                    duration = random.randint(15000, 34000)
-                elif isinstance(person, Pupil) and trip.destination_edge == person.school:
-                    duration = random.randint(14000, 21000)
-                elif isinstance(person, Senior) and trip.destination_edge == person.park:
-                    duration = random.randint(180, 720)
-                else:
-                    duration = random.randint(4200, 8400)
-                ET.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
+                duration = Trip.get_duration(person, trip.destination_edge)
+                etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
                 stop_attrib = {'duration': str(duration), 'actType': 'singing'}  # creating stop attribute
-                ET.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
-        xml_2string = ET.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
-        dom = minidom.parseString(xml_2string)  # this two lines help to create readable xml file
-        formatted_xml = dom.toprettyxml(indent="  ")
+                etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
+        xml_2string = etree.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
+        dom = etree.fromstring(xml_2string)  # this two lines help to create readable xml file
+        formatted_xml = etree.tostring(dom, pretty_print=True, encoding="utf-8").decode()
         with open("Without_transport/data.rou.xml", "w") as save:  # Writing information that we`ve saved to the xml fil
             save.write(formatted_xml)
 
@@ -227,13 +224,11 @@ class Human:  # creating a human class for retrieving information
     Human will have their own list of trips. List of destination is places where person can go in simulation
     """
     edges = traci.edge.getIDList()  # getting edges from simulation
-    railway_edges = list(traci.route.getEdges('pt_light_rail_U8:1'))  # getting all railway edges
-    railway_edges.extend(traci.route.getEdges('pt_light_rail_U8:0'))
-    railway_edges.extend(traci.route.getEdges('pt_train_S1:0'))
-    railway_edges.extend(traci.route.getEdges('pt_train_S1:1'))
-    railway_edges.extend(traci.route.getEdges('pt_train_RE_5:0'))
-    filtered_edges = []  # sorted edges
-    quantity = 40  # quantity of people that will be in simulation
+    railway_edges = set()
+    for route_name in ['pt_light_rail_U8:1', 'pt_light_rail_U8:0', 'pt_train_S1:0', 'pt_train_S1:1', 'pt_train_RE_5:0']:
+        railway_edges.update(traci.route.getEdges(route_name))
+    filtered_edges = []
+    quantity = 10  # quantity of people that will be in simulation
     for edge in edges:
         if '_' not in edge and edge not in railway_edges:  # saving filtered edges that don`t contain railway edges
             filtered_edges.append(edge)
@@ -253,6 +248,19 @@ class Human:  # creating a human class for retrieving information
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         self.trip.add(Trip(start_edge, destination_edge))
+
+    @staticmethod
+    def create_humans(persons):
+        for i in range(Human.quantity):  # creating 1000 people with different type of class
+            if i < Human.quantity / 4:
+                person = Worker(f'p{i}')  # creating a Worker
+            elif i < Human.quantity / 2:
+                person = Student(f'p{i}')  # creating a Student
+            elif i < 3 * Human.quantity / 4:
+                person = Pupil(f'p{i}')  # creating a Pupil
+            else:
+                person = Senior(f'p{i}')  # creating a Senior
+            persons.add(person)
 
     @staticmethod
     def save_humans(persons, connection):
@@ -356,20 +364,12 @@ class Senior(Human):  # creating a subclass of Human
 
 def main():
     humans = set()  # creating an empty list for person that`ll be created
-    for i in range(Human.quantity):  # creating 1000 people with different type of class
-        if i < Human.quantity/4:
-            human = Worker(f'p{i}')  # creating a Worker
-        elif i < Human.quantity/2:
-            human = Student(f'p{i}')  # creating a Student
-        elif i < 3 * Human.quantity/4:
-            human = Pupil(f'p{i}')  # creating a Pupil
-        else:
-            human = Senior(f'p{i}')  # creating a Senior
-        humans.add(human)
-    conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
     # Using Threading making our code to run Functions at the same time
-    quantityTrips = 3
-    t1 = Thread(target=Trip.create_trips(humans, quantityTrips))
+    t = Thread(target=Human.create_humans(humans))  # executing a function to create new persons
+    t.start()
+    conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
+    quantity_trips = 3
+    t1 = Thread(target=Trip.create_trips(humans, quantity_trips))
     t1.start()
     t2 = Thread(target=Human.save_humans(humans, conn))
     t2.start()

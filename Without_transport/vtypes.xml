@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-11-07 18:13:53.262562 by gtfs2pt.py v1_19_0+0000-baa66a0f364
-  options: -n osm.net.xml.gz <doubleminus>gtfs gtfs_realtime.zip <doubleminus>date 20230914 <doubleminus>osm-routes osm_ptlines.xml <doubleminus>repair
+<!-- generated on 2023-11-28 15:27:52.310478 by gtfs2pt.py v1_19_0+0000-baa66a0f364
+  options: <doubleminus>network osm.net.xml.gz <doubleminus>gtfs gtfs_realtime.zip <doubleminus>date 20231009
 -->
 
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
     <vType id="bus" vClass="bus"/>
-    <vType id="ferry" vClass="ship"/>
     <vType id="light_rail" vClass="rail_urban"/>
     <vType id="subway" vClass="rail_urban"/>
     <vType id="train" vClass="rail"/>
-    <vType id="tram" vClass="tram"/>
 </additional>
