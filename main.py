@@ -93,12 +93,6 @@ class Trip:
         needed location and destination, type of transport or mode, but not both.
         """
         root_2 = etree.Element("routes")
-        vtypes = [
-            {"id": "passenger", "vClass": "passenger"},
-            {"id": "bicycle", "vClass": "bicycle"},
-            {"id": "motorcycle", "vClass": "motorcycle"}
-        ]
-
         for person in persons:
             # creating and saving person in xml file depart - time of start. File must be sorted by departure time
             person_attrib = {'id': person.name, 'depart': '0.00'}
@@ -164,6 +158,7 @@ class Trip:
                                             traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
         for person, pedestrian_data in result.items():  # saving al information into sql table
+            lat, lon = traci.simulation.convertGeo(pedestrian_data[66][1], pedestrian_data[66][0])
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
             else:
@@ -183,10 +178,11 @@ class Trip:
                 else:  # person is traveling by car
                     transport = 7
             # Executing an SQL query, which will insert new data into vehicle_data table
-            connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, coord,
+            connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, lat, lon,
                                                     speed, lane) 
-                                                    VALUES (?, ?, ?, ?, ?, ?)''',
-                               (person, transport, traci.simulation.getTime(), str(pedestrian_data[66]),
+                                                    VALUES (?, ?, ?, ?, ?, ?, ?)''',
+                               (person, transport, traci.simulation.getTime(),
+                                lat, lon,
                                 pedestrian_data[64], pedestrian_data[81]))
 
     @staticmethod
@@ -198,11 +194,13 @@ class Trip:
                                      traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
         result = traci.vehicle.getAllSubscriptionResults()
         for vehicle, vehicle_data in result.items():
+            lat, lon = traci.simulation.convertGeo(vehicle_data[66][1], vehicle_data[66][0])
             # Executing an SQL query, which will insert new data into vehicle_data table
-            connection.execute(''' INSERT INTO vehicle_data (id, datetime, coordinates,
+            connection.execute(''' INSERT INTO vehicle_data (id, datetime, lat, lon,
                                         speed, lane) 
-                                        VALUES (?, ?, ?, ?, ?)''',
-                               (vehicle, traci.simulation.getTime(), str(vehicle_data[66]),
+                                        VALUES (?, ?, ?, ?, ?, ?)''',
+                               (vehicle, traci.simulation.getTime(),
+                                lat, lon,
                                 vehicle_data[64], vehicle_data[81]))
 
     @staticmethod

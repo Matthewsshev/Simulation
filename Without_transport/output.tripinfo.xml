@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-12-12 15:28:07 by Eclipse SUMO GUI Version 1.19.0
+<!-- generated on 2024-01-18 14:10:29 by Eclipse SUMO GUI Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm.net.xml"/>
-        <route-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_pt.rou.xml"/>
-        <additional-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_polygons.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\basic.vType.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_stops.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_complete_parking_areas.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\         osm_parking_rerouters.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_taxi_stands.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_taxi_rerouters.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\ data.rou.xml"/>
+        <net-file value="Without_transport\osm.net.xml"/>
+        <route-files value="Without_transport\osm_pt.rou.xml"/>
+        <additional-files value="Without_transport\osm_polygons.add.xml,Without_transport\basic.vType.xml,Without_transport\osm_stops.add.xml,Without_transport\osm_complete_parking_areas.add.xml,Without_transport\         osm_parking_rerouters.add.xml,Without_transport\osm_taxi_stands.add.xml,Without_transport\osm_taxi_rerouters.add.xml,Without_transport\ data.rou.xml"/>
     </input>
 
     <output>
         <output-prefix value="output."/>
-        <summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\summary.xml"/>
-        <person-summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\person.summary.xml"/>
-        <tripinfo-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\tripinfo.xml"/>
+        <summary-output value="Without_transport\summary.xml"/>
+        <person-summary-output value="Without_transport\person.summary.xml"/>
+        <tripinfo-output value="Without_transport\tripinfo.xml"/>
         <tripinfo-output.write-unfinished value="false"/>
-        <statistic-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\statistics.xml"/>
+        <statistic-output value="Without_transport\statistics.xml"/>
     </output>
 
     <time>
@@ -68,22 +68,41 @@
 
     <taxi_device>
         <device.taxi.dispatch-algorithm value="greedy"/>
-        <device.taxi.dispatch-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.dispatch.xml"/>
+        <device.taxi.dispatch-algorithm.output value="Without_transport\taxi.dispatch.xml"/>
         <device.taxi.dispatch-period value="60"/>
         <device.taxi.idle-algorithm value="stop"/>
-        <device.taxi.idle-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.idle.xml"/>
+        <device.taxi.idle-algorithm.output value="Without_transport\taxi.idle.xml"/>
     </taxi_device>
+
+    <traci_server>
+        <remote-port value="53612"/>
+    </traci_server>
 
     <random_number>
         <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\default-gui.xml"/>
+        <gui-settings-file value="Without_transport\default-gui.xml"/>
     </gui_only>
 
 </configuration>
 -->
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
+    <personinfo id="p5" depart="0.00" type="DEFAULT_PEDTYPE" speedFactor="1.07">
+        <walk depart="0.00" departPos="0.00" arrival="-1" arrivalPos="-1" duration="0.00" routeLength="-1" timeLoss="0.00" maxSpeed="1.49"/>
+        <stop duration="0.00" arrival="-0.00" arrivalPos="20.09" actType="singing"/>
+        <stop duration="0.00" arrival="-0.00" arrivalPos="195.70" actType="singing"/>
+        <stop duration="0.00" arrival="-0.00" arrivalPos="4.67" actType="singing"/>
+    </personinfo>
+    <personinfo id="p4" depart="0.00" type="DEFAULT_PEDTYPE" speedFactor="0.84">
+        <walk depart="0.00" departPos="0.00" arrival="-1" arrivalPos="-1" duration="0.00" routeLength="-1" timeLoss="0.00" maxSpeed="1.17"/>
+        <stop duration="0.00" arrival="-0.00" arrivalPos="6.52" actType="singing"/>
+        <stop duration="0.00" arrival="-0.00" arrivalPos="8.86" actType="singing"/>
+        <stop duration="0.00" arrival="-0.00" arrivalPos="8.86" actType="singing"/>
+    </personinfo>
+    <tripinfo id="p1_0" depart="0.00" departLane="-23551739#4_1" departPos="5.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="653.00" arrivalLane="-387212690#2_1" arrivalPos="213.24" arrivalPosLat="0.00" arrivalSpeed="0.26" duration="653.00" routeLength="4339.04" waitingTime="196.00" waitingCount="4" stopTime="0.00" timeLoss="253.38" rerouteNo="1" devices="tripinfo_p1_0 routing_p1_0 person_p1_0" vType="passenger2b" speedFactor="0.99" vaporized=""/>
+    <tripinfo id="p2_0" depart="0.00" departLane="-237985891#1_0" departPos="1.70" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="663.00" arrivalLane="44829958#2_0" arrivalPos="43.02" arrivalPosLat="-0.67" arrivalSpeed="0.31" duration="663.00" routeLength="3323.89" waitingTime="22.00" waitingCount="1" stopTime="0.00" timeLoss="65.18" rerouteNo="1" devices="tripinfo_p2_0 routing_p2_0 person_p2_0" vType="bicycle" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="p8_0" depart="807.00" departLane="32819877#6_1" departPos="15.61" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1430.00" arrivalLane="755497929#0_0" arrivalPos="0.29" arrivalPosLat="0.00" arrivalSpeed="0.36" duration="623.00" routeLength="6394.05" waitingTime="27.00" waitingCount="2" stopTime="0.00" timeLoss="84.79" rerouteNo="1" devices="tripinfo_p8_0 routing_p8_0 person_p8_0" vType="passenger4" speedFactor="0.82" vaporized=""/>
 </tripinfos>

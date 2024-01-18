@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-12-12 14:25:39 by Eclipse SUMO GUI Version 1.19.0
+<!-- generated on 2024-01-18 14:08:59 by Eclipse SUMO GUI Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\osm.net.xml"/>
-        <route-files value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\osm_pt.rou.xml"/>
-        <additional-files value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\osm_polygons.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\basic.vType.xml,C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\osm_stops.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\osm_complete_parking_areas.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\         osm_parking_rerouters.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\osm_taxi_stands.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\osm_taxi_rerouters.add.xml"/>
+        <net-file value="Retrieve\osm.net.xml"/>
+        <route-files value="Retrieve\osm_pt.rou.xml"/>
+        <additional-files value="Retrieve\osm_polygons.add.xml,Retrieve\basic.vType.xml,Retrieve\osm_stops.add.xml,Retrieve\osm_complete_parking_areas.add.xml,Retrieve\         osm_parking_rerouters.add.xml,Retrieve\osm_taxi_stands.add.xml,Retrieve\osm_taxi_rerouters.add.xml"/>
     </input>
 
     <output>
         <output-prefix value="output."/>
-        <summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\summary.xml"/>
-        <person-summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\person.summary.xml"/>
-        <tripinfo-output value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\tripinfo.xml"/>
+        <summary-output value="Retrieve\summary.xml"/>
+        <person-summary-output value="Retrieve\person.summary.xml"/>
+        <tripinfo-output value="Retrieve\tripinfo.xml"/>
         <tripinfo-output.write-unfinished value="false"/>
-        <statistic-output value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\statistics.xml"/>
+        <statistic-output value="Retrieve\statistics.xml"/>
     </output>
 
     <time>
@@ -68,18 +68,22 @@
 
     <taxi_device>
         <device.taxi.dispatch-algorithm value="greedy"/>
-        <device.taxi.dispatch-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\taxi.dispatch.xml"/>
+        <device.taxi.dispatch-algorithm.output value="Retrieve\taxi.dispatch.xml"/>
         <device.taxi.dispatch-period value="60"/>
         <device.taxi.idle-algorithm value="stop"/>
-        <device.taxi.idle-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\taxi.idle.xml"/>
+        <device.taxi.idle-algorithm.output value="Retrieve\taxi.idle.xml"/>
     </taxi_device>
+
+    <traci_server>
+        <remote-port value="53591"/>
+    </traci_server>
 
     <random_number>
         <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="C:\Users\sader\PycharmProjects\OOP_Test\Retrieve\default-gui.xml"/>
+        <gui-settings-file value="Retrieve\default-gui.xml"/>
     </gui_only>
 
 </configuration>

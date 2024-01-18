@@ -12,18 +12,18 @@
         "parkings": "osm_complete_parking_areas.add.xml"
     },
 
-    "intermodalOptions": {
-        "parkingAreaBlacklist": [],
-        "vehicleAllowedParking": ["passenger", "motorcycle", "evehicle"],
-        "taxiFleetSize": 0,
-        "taxiFleetInitialTAZs": [],
-        "taxiStands": "osm_taxi_stands.add.xml",
-        "taxiStandsBlacklist": [],
-        "modeSelection": "PROBABILITY"
-    },
+  "intermodalOptions": {
+    "parkingAreaBlacklist": [],
+    "vehicleAllowedParking": [ "passenger", "motorcycle", "evehicle" ],
+    "taxiFleetSize": 1000,
+    "taxiFleetInitialTAZs": [],
+    "taxiStands": "osm_taxi_stands.add.xml",
+    "taxiStandsBlacklist": [],
+    "modeSelection": "PROBABILITY"
+  },
 
     "population": {
-        "entities" : 0,
+        "entities" : 10000,
         "tazDefinition": "osm_taz.xml",
         "tazWeights": "osm_taz_weight.csv",
         "buildingsWeight": "buildings/",
