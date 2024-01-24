@@ -1,16 +1,22 @@
-import os
 import sys
 import traci
 import random
+import platform
+import os
 from lxml import etree
 import sqlite3
 from threading import Thread
+print(platform.system())  # printing out our system and then creating new variable for slash character
+if platform.system() == "Windows":
+    slash_char = "\\"
+elif platform.system() == "Linux":
+    slash_char = "/"
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
     sys.path.append(tools)
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
-sumoCmd1 = ["sumo-gui", "-c", "Retrieve\\osm.sumocfg"]  # saving directory of the file
+sumoCmd1 = ["sumo-gui", "-c", "Retrieve" + slash_char + "osm.sumocfg"]  # saving directory of the file
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
 
@@ -226,7 +232,7 @@ class Human:  # creating a human class for retrieving information
     for route_name in ['pt_light_rail_U8:1', 'pt_light_rail_U8:0', 'pt_train_S1:0', 'pt_train_S1:1', 'pt_train_RE_5:0']:
         railway_edges.update(traci.route.getEdges(route_name))
     filtered_edges = []
-    quantity = 10  # quantity of people that will be in simulation
+    quantity = 5  # quantity of people that will be in simulation
     for edge in edges:
         if '_' not in edge and edge not in railway_edges:  # saving filtered edges that don`t contain railway edges
             filtered_edges.append(edge)
@@ -258,7 +264,7 @@ class Human:  # creating a human class for retrieving information
                 person = Pupil(f'p{i}')  # creating a Pupil
             else:
                 person = Senior(f'p{i}')  # creating a Senior
-            persons.add(person)
+            persons.append(person)
 
     @staticmethod
     def save_humans(persons, connection):
@@ -267,6 +273,7 @@ class Human:  # creating a human class for retrieving information
         """
         for person in persons:
             # checking which class our person have to give special variables
+            print(person.home)
             if isinstance(person, Worker):
                 type_id = 1
                 place = person.work
@@ -280,9 +287,8 @@ class Human:  # creating a human class for retrieving information
                 type_id = 4
                 place = person.park
             # Executing an SQL query, which will insert new data into vehicle_data table
-            connection.execute(''' INSERT INTO personal_info (id, type_id, age,
-                                                    home, friends, supermarket, place, money) 
-                                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+            connection.execute('''INSERT INTO personal_Info (id, type_id, age, home, friends, supermarket, place, money) 
+                                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
                                (person.name, type_id, person.age, person.home, person.friends, person.supermarket,
                                 place, person.money))
 
@@ -361,24 +367,24 @@ class Senior(Human):  # creating a subclass of Human
 
 
 def main():
-    humans = set()  # creating an empty list for person that`ll be created
-    # Using Threading making our code to run Functions at the same time
-    t = Thread(target=Human.create_humans(humans))  # executing a function to create new persons
-    t.start()
+    humans = []  # creating an empty list for person that`ll be created
     conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
+    # Using Threading making our code to run Functions at the same time
+    t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
+    t.start()
     quantity_trips = 3
-    t1 = Thread(target=Trip.create_trips(humans, quantity_trips))
+    t1 = Thread(target=Human.create_humans(humans))
     t1.start()
-    t2 = Thread(target=Human.save_humans(humans, conn))
+    t2 = Thread(target=Trip.create_trips(humans, quantity_trips))
     t2.start()
-    t3 = Thread(target=Trip.delete_all(conn))
+
+    t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
     sumo_cmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
     traci.start(sumo_cmd2, label='sim2')  # starting second simulation
     traci.switch('sim1')  # switching back to first simulation
     traci.close()  # ending first simulation
     traci.switch('sim2')  # switching back to second simulation
-    Trip.delete_all(conn)  # Using function to delete all previous data
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
