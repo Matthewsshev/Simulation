@@ -2,15 +2,25 @@ import os
 import sys
 import traci
 import random
+import platform
+import os
 from lxml import etree
 import sqlite3
 from threading import Thread
+
+print(platform.system())
+if platform.system() == "Windows":
+    slash_char = "\\"
+elif platform.system() == "Linux":
+    slash_char = "/"
+
+
 if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
     sys.path.append(tools)
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
-sumoCmd1 = ["sumo-gui", "-c", "Retrieve\\osm.sumocfg"]  # saving directory of the file
+sumoCmd1 = ["sumo-gui", "-c", "Retrieve" + slash_char + "osm.sumocfg"]  # saving directory of the file
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
 
@@ -373,7 +383,7 @@ def main():
     t2.start()
     t3 = Thread(target=Trip.delete_all(conn))
     t3.start()
-    sumo_cmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
+    sumo_cmd2 = ["sumo-gui", "-c", "Without_transport" + slash_char + "osm.sumocfg"]  # saving directory of the 2nd file
     traci.start(sumo_cmd2, label='sim2')  # starting second simulation
     traci.switch('sim1')  # switching back to first simulation
     traci.close()  # ending first simulation
