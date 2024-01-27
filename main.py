@@ -58,6 +58,19 @@ class Trip:
                 allow_auto.add((traci.lane.getAllowed(lane)))
 
     @staticmethod
+    def get_lane(edge):  # creating a function that will convert edge to the lane
+        for lane in traci.lane.getIDList():
+            if traci.lane.getEdgeID(lane) == edge:
+                return lane
+
+    @staticmethod
+    def convert_lane_to_gps(lane):  # creating a functuion that will convert edge to lon and lat
+        lane_shape = traci.lane.getShape(lane)
+        for x, y in lane_shape:
+            lon, lat = traci.simulation.convertGeo(x, y)
+        return lon, lat
+
+    @staticmethod
     def get_suitable_edge(next_edges, random_auto, allowed_a, count):
         next_edge = next_edges[0].edges[0]
         for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
@@ -245,8 +258,14 @@ class Human:  # creating a human class for retrieving information
         self.name = name  # getting variables from input
         self.trip = set()
         self.home = random.choice(Human.home)
+        self.home_lane = Trip.get_lane(self.home)
+        self.home_lon, self.home_lat = Trip.convert_lane_to_gps(self.home_lane)
         self.supermarket = random.choice(Human.supermarket)
+        self.supermarket_lane = Trip.get_lane(self.supermarket)
+        self.supermarket_lon, self.supermarket_lat = Trip.convert_lane_to_gps(self.supermarket_lane)
         self.friends = random.choice(Human.friends)
+        self.friends_lane = Trip.get_lane(self.friends)
+        self.friends_lon, self.friends_lat = Trip.convert_lane_to_gps(self.friends_lane)
         self.destination = [self.home, self.supermarket, self.friends]
         self.age = random.randint(0, 99)
 
@@ -273,24 +292,30 @@ class Human:  # creating a human class for retrieving information
         """
         for person in persons:
             # checking which class our person have to give special variables
-            print(person.home)
             if isinstance(person, Worker):
                 type_id = 1
-                place = person.work
+                place_lon = person.work_lon
+                place_lat = person.work_lat
             elif isinstance(person, Student):
                 type_id = 2
-                place = person.uni
+                place_lon = person.uni_lon
+                place_lat = person.uni_lat
             elif isinstance(person, Pupil):
                 type_id = 3
-                place = person.school
+                place_lon = person.school_lon
+                place_lat = person.school_lat
             else:  # last one is Senior
                 type_id = 4
-                place = person.park
+                place_lon = person.park_lon
+                place_lat = person.park_lat
             # Executing an SQL query, which will insert new data into vehicle_data table
-            connection.execute('''INSERT INTO personal_Info (id, type_id, age, home, friends, supermarket, place, money) 
-                                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
-                               (person.name, type_id, person.age, person.home, person.friends, person.supermarket,
-                                place, person.money))
+            print(f'Coord: ({person.home_lon}, {person.home_lat}')
+            connection.execute('''INSERT INTO personal_Info (id, type_id, age, home_lon, home_lat, friends_lon,
+             friends_lat, supermarket_lon, supermarket_lat, place_lon, place_lat, money) 
+                                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                               (person.name, type_id, person.age, person.home_lon, person.home_lat, person.friends_lon,
+                                person.friends_lat, person.supermarket_lon, person.supermarket_lat, place_lon,
+                                place_lat, person.money))
 
 
 class Worker(Human):  # creating a subclass of Human
@@ -305,6 +330,8 @@ class Worker(Human):  # creating a subclass of Human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
         self.work = random.choice(Worker.work)
+        self.work_lane = Trip.get_lane(self.work)
+        self.work_lon, self.work_lat = Trip.convert_lane_to_gps(self.work_lane)
         self.destination.append(self.work)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
@@ -320,10 +347,11 @@ class Student(Human):  # creating a second subclass of Human
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
-        self.uni = None  # getting variables that are different from Human
         self.money = random.randrange(800, 1100)  # getting random scholarship in range
         self.age = random.randrange(20, 30)  # getting random age in range
         self.uni = random.choice(Human.filtered_edges)
+        self.uni_lane = Trip.get_lane(self.uni)
+        self.uni_lon, self.uni_lat = Trip.convert_lane_to_gps(self.uni_lane)
         self.destination.append(self.uni)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
@@ -340,6 +368,8 @@ class Pupil(Human):  # creating a second subclass of Human
     def __init__(self, name):
         super().__init__(name, )  # getting variables from class human
         self.school = random.choice(Human.filtered_edges)  # getting variables that are different from Human
+        self.school_lane = Trip.get_lane(self.school)
+        self.school_lon, self.school_lat = Trip.convert_lane_to_gps(self.school_lane)
         self.money = random.randrange(40, 100)  # getting random pocket money in range
         self.age = random.randrange(5, 20)  # getting random age in range
         self.destination.append(self.school)
@@ -360,6 +390,8 @@ class Senior(Human):  # creating a subclass of Human
         self.money = random.randrange(2000, 4000)  # getting random pension in range
         self.age = random.randrange(60, 100)  # getting random age in range
         self.park = random.choice(Senior.park)
+        self.park_lane = Trip.get_lane(self.park)
+        self.park_lon, self.park_lat = Trip.convert_lane_to_gps(self.park_lane)
         self.destination.append(self.park)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
