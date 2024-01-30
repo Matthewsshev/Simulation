@@ -173,11 +173,12 @@ class Trip:
     def pedestrian_retrieval(connection):
         # function will retrieve information of a person movement in every simulation step
         for per_id in traci.person.getIDList():  # using a built-in subscription to get all variables
-            traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE,  traci.constants.VAR_POSITION,
+            traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE, traci.constants.VAR_POSITION,
                                             traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
         for person, pedestrian_data in result.items():  # saving al information into sql table
-            lat, lon = traci.simulation.convertGeo(pedestrian_data[66][1], pedestrian_data[66][0])
+            print(pedestrian_data)
+            lat, lon = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
             else:
@@ -213,7 +214,7 @@ class Trip:
                                      traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
         result = traci.vehicle.getAllSubscriptionResults()
         for vehicle, vehicle_data in result.items():
-            lat, lon = traci.simulation.convertGeo(vehicle_data[66][1], vehicle_data[66][0])
+            lat, lon = traci.simulation.convertGeo(vehicle_data[66][0], vehicle_data[66][1])
             # Executing an SQL query, which will insert new data into vehicle_data table
             connection.execute(''' INSERT INTO vehicle_data (id, datetime, lat, lon,
                                         speed, lane) 
@@ -309,7 +310,6 @@ class Human:  # creating a human class for retrieving information
                 place_lon = person.park_lon
                 place_lat = person.park_lat
             # Executing an SQL query, which will insert new data into vehicle_data table
-            print(f'Coord: ({person.home_lon}, {person.home_lat}')
             connection.execute('''INSERT INTO personal_Info (id, type_id, age, home_lon, home_lat, friends_lon,
              friends_lat, supermarket_lon, supermarket_lat, place_lon, place_lat, money) 
                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
