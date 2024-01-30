@@ -412,7 +412,8 @@ def main():
 
     t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
-    sumo_cmd2 = ["sumo-gui", "-c", "Without_transport\\osm.sumocfg"]  # saving directory of the 2nd file
+    sumo_cmd2 = ["sumo-gui", "-c", "Without_transport" + slash_char + "osm.sumocfg"]  # saving directory of the file
+
     traci.start(sumo_cmd2, label='sim2')  # starting second simulation
     traci.switch('sim1')  # switching back to first simulation
     traci.close()  # ending first simulation

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-01-30 15:34:16 by Eclipse SUMO GUI Version 1.19.0
+<!-- generated on 2024-01-30 16:49:45 by Eclipse SUMO GUI Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -75,7 +75,7 @@
     </taxi_device>
 
     <traci_server>
-        <remote-port value="51103"/>
+        <remote-port value="51305"/>
     </traci_server>
 
     <random_number>
@@ -90,26 +90,4 @@
 -->
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
-    <personinfo id="p2" depart="0.00" type="DEFAULT_PEDTYPE" speedFactor="1.16">
-        <walk depart="0.00" departPos="0.00" arrival="-1" arrivalPos="-1" duration="0.00" routeLength="-1" timeLoss="0.00" maxSpeed="1.61"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="61.02" actType="singing"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="15.16" actType="singing"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="61.02" actType="singing"/>
-    </personinfo>
-    <personinfo id="p4" depart="0.00" type="DEFAULT_PEDTYPE" speedFactor="0.93">
-        <walk depart="0.00" departPos="0.00" arrival="-1" arrivalPos="-1" duration="0.00" routeLength="-1" timeLoss="0.00" maxSpeed="1.29"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="12.79" actType="singing"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="104.67" actType="singing"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="7.72" actType="singing"/>
-    </personinfo>
-    <tripinfo id="p0_0" depart="0.00" departLane="30349599#1_0" departPos="5.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="354.00" arrivalLane="488705428#2_1" arrivalPos="0.20" arrivalPosLat="0.00" arrivalSpeed="0.16" duration="354.00" routeLength="5340.16" waitingTime="25.00" waitingCount="4" stopTime="0.00" timeLoss="58.70" rerouteNo="1" devices="tripinfo_p0_0 routing_p0_0 person_p0_0" vType="passenger1" speedFactor="1.08" vaporized=""/>
-    <tripinfo id="p1_0" depart="3.00" departLane="30349599#1_0" departPos="5.10" departPosLat="0.00" departSpeed="0.00" departDelay="3.00" arrival="543.00" arrivalLane="921020467#0_2" arrivalPos="107.86" arrivalPosLat="0.00" arrivalSpeed="0.16" duration="540.00" routeLength="7006.02" waitingTime="130.00" waitingCount="3" stopTime="0.00" timeLoss="170.17" rerouteNo="1" devices="tripinfo_p1_0 routing_p1_0 person_p1_0" vType="passenger3" speedFactor="1.03" vaporized=""/>
-    <personinfo id="p0" depart="0.00" type="DEFAULT_PEDTYPE" speedFactor="0.95">
-        <ride waitingTime="0.00" vehicle="p0_0" depart="0.00" arrival="354.00" arrivalPos="0.20" duration="354.00" routeLength="5340.16" timeLoss="58.70"/>
-        <walk depart="354.00" departPos="0.00" arrival="408.00" arrivalPos="0.71" duration="54.00" routeLength="63.18" timeLoss="6.03" maxSpeed="1.32"/>
-        <stop duration="706.00" arrival="1114.00" arrivalPos="0.71" actType="singing"/>
-        <walk depart="1114.00" departPos="0.71" arrival="-1" arrivalPos="-1" duration="0.00" routeLength="-1" timeLoss="0.00" maxSpeed="1.32"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="20.02" actType="singing"/>
-        <stop duration="0.00" arrival="-0.00" arrivalPos="104.88" actType="singing"/>
-    </personinfo>
 </tripinfos>
