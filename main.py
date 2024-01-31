@@ -177,7 +177,6 @@ class Trip:
                                             traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
         for person, pedestrian_data in result.items():  # saving al information into sql table
-            print(pedestrian_data)
             lat, lon = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
