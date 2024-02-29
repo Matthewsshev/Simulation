@@ -15,7 +15,7 @@
   "intermodalOptions": {
     "parkingAreaBlacklist": [],
     "vehicleAllowedParking": [ "passenger", "motorcycle", "evehicle" ],
-    "taxiFleetSize": 1000,
+    "taxiFleetSize": 10,
     "taxiFleetInitialTAZs": [],
     "taxiStands": "osm_taxi_stands.add.xml",
     "taxiStandsBlacklist": [],
@@ -23,7 +23,7 @@
   },
 
     "population": {
-        "entities" : 10000,
+        "entities" : 10,
         "tazDefinition": "osm_taz.xml",
         "tazWeights": "osm_taz_weight.csv",
         "buildingsWeight": "buildings/",

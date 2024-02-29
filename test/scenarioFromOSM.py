@@ -264,6 +264,7 @@ def _call_netconvert(filename, lefthand):
         DEFAULT_SIDE_PARKING_XML,
         "--type-files",
         DEFAULT_TYPE_FILES,
+        "--junctions.join-dist 10",
     ]
     if lefthand:
         netconvert_options.append("--lefthand")

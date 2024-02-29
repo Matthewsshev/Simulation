@@ -5,7 +5,7 @@
 # terms of the Eclipse Public License 2.0 which is available at
 # https://www.eclipse.org/legal/epl-2.0/
 # This Source Code may also be made available under the following Secondary
-# Licenses when the conditions for such availability set forth in the Eclipse
+# Licenses when the conditions for sucpyh availability set forth in the Eclipse
 # Public License 2.0 are satisfied: GNU General Public License, version 2
 # or later which is available at
 # https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html

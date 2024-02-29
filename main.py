@@ -16,7 +16,8 @@ if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     sys.path.append(tools)
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
-sumoCmd1 = ["sumo-gui", "-c", "Retrieve" + slash_char + "osm.sumocfg"]  # saving directory of the file
+sumoCmd1 = ["sumo", "-c", "Retrieve" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64", "-W",
+            "--step-log.period", "2"]  # saving directory of the file
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
 
@@ -91,7 +92,7 @@ class Trip:
     @staticmethod
     def get_duration(person, destination_edge):
         if destination_edge == person.supermarket:
-            return random.randint(600, 1200)
+            return random.randint(600, 2400)
         elif destination_edge == person.friends:
             return random.randint(3600, 14400)
         elif isinstance(person, Worker) and destination_edge == person.work:
@@ -101,7 +102,7 @@ class Trip:
         elif isinstance(person, Pupil) and destination_edge == person.school:
             return random.randint(14000, 21000)
         elif isinstance(person, Senior) and destination_edge == person.park:
-            return random.randint(180, 720)
+            return random.randint(1800, 7200)
         else:
             return random.randint(4200, 8400)
 
@@ -133,7 +134,7 @@ class Trip:
                     if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
-                                                                          vType=random_auto)
+                                                                vType=random_auto, modes='public')
                         if next_edges:
                             allowed_a = set()  # creating a new list of allowed autos on next edge
                             b = 0  # creating variable to count edges
@@ -177,7 +178,6 @@ class Trip:
                                             traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
         for person, pedestrian_data in result.items():  # saving al information into sql table
-            print(pedestrian_data)
             lat, lon = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
@@ -243,12 +243,11 @@ class Human:  # creating a human class for retrieving information
     """
     edges = traci.edge.getIDList()  # getting edges from simulation
     railway_edges = set()
-    for route_name in ['pt_light_rail_U8:1', 'pt_light_rail_U8:0', 'pt_train_S1:0', 'pt_train_S1:1', 'pt_train_RE_5:0']:
-        railway_edges.update(traci.route.getEdges(route_name))
+
     filtered_edges = []
     quantity = 5  # quantity of people that will be in simulation
     for edge in edges:
-        if '_' not in edge and edge not in railway_edges:  # saving filtered edges that don`t contain railway edges
+        if '_' not in edge:  # saving filtered edges that don`t contain railway edges
             filtered_edges.append(edge)
     # Creating lists of existing places for people
     home = random.sample(filtered_edges, int(quantity/5))
@@ -402,22 +401,20 @@ def main():
     humans = []  # creating an empty list for person that`ll be created
     conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
     # Using Threading making our code to run Functions at the same time
+    traci.simulationStep()
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
-    quantity_trips = 3
+    quantity_trips = 1
     t1 = Thread(target=Human.create_humans(humans))
     t1.start()
     t2 = Thread(target=Trip.create_trips(humans, quantity_trips))
     t2.start()
-
     t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
-    sumo_cmd2 = ["sumo-gui", "-c", "Without_transport" + slash_char + "osm.sumocfg"]  # saving directory of the file
-
+    sumo_cmd2 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
+                 "-W", "--step-log.period", "2"]  # saving directory of the file
     traci.start(sumo_cmd2, label='sim2')  # starting second simulation
-    traci.switch('sim1')  # switching back to first simulation
-    traci.close()  # ending first simulation
-    traci.switch('sim2')  # switching back to second simulation
+    traci.switch('sim2')
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
