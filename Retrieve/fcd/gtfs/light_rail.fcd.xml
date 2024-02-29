@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2023-11-28 15:27:49.801877 by gtfs2fcd.py v1_19_0+0000-baa66a0f364
+<configuration>
+    <gtfs value="gtfs_realtime.zip"/>
+    <date value="20231009"/>
+    <network value="osm.net.xml.gz"/>
+</configuration>
+-->
+
+<fcd-export>
+    <timestep time="53700"><vehicle id="('de:vvs:10001_::1-T0-1',)" x="9.38246155495404" y="48.7203582740379" until="0" name="Altbach" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="53820"><vehicle id="('de:vvs:10001_::1-T0-1',)" x="9.35972578700171" y="48.7243433424649" until="120" name="Zell" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="54000"><vehicle id="('de:vvs:10001_::1-T0-1',)" x="9.32729120285567" y="48.7298626595463" until="300" name="Oberesslingen" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="54120"><vehicle id="('de:vvs:10001_::1-T0-1',)" x="9.30052306940846" y="48.7384245940344" until="480" name="Esslingen (N)" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="54240"><vehicle id="('de:vvs:10001_::1-T0-1',)" x="9.27577191061416" y="48.7469844652371" until="600" name="Mettingen" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="54360"><vehicle id="('de:vvs:10001_::1-T0-1',)" x="9.26808613055305" y="48.7617142363618" until="720" name="Obertürkheim" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="118740"><vehicle id="('de:vvs:10001_::1-T0-100',)" x="9.26793627376521" y="48.7616696235992" until="0" name="Obertürkheim" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="118860"><vehicle id="('de:vvs:10001_::1-T0-100',)" x="9.27556770068782" y="48.7469399926403" until="120" name="Mettingen" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="119040"><vehicle id="('de:vvs:10001_::1-T0-100',)" x="9.30046815147943" y="48.7383348130667" until="300" name="Esslingen (N)" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="119160"><vehicle id="('de:vvs:10001_::1-T0-100',)" x="9.32722265386564" y="48.7297729299588" until="420" name="Oberesslingen" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="119340"><vehicle id="('de:vvs:10001_::1-T0-100',)" x="9.35968424217031" y="48.7242355626729" until="600" name="Zell" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+    <timestep time="119460"><vehicle id="('de:vvs:10001_::1-T0-100',)" x="9.38235221862462" y="48.7202777051129" until="720" name="Altbach" fareZone="" fareSymbol="" startFare="" speed="20"/></timestep>
+</fcd-export>

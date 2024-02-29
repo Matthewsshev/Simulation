@@ -1,0 +1,4 @@
+netconvert --osm esslingen.osm -o crr.net.xml --junctions.join-dist 10 --ramps.guess --geometry.remove --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
+python ptlines2flows.py -n crr.net.xml -s additional.xml -l ptlines.xml -o flows.rou.xml -p 1200 --use-osm-routes --ignore-errors --vtype-prefix pt_ --verbose
+netconvert --osm-files esslingen.osm -o crr.net.xml --geometry.remove --ramps.guess --junctions.join-same --edges.join --remove-edges.by-vclass bicycle --remove-edges.isolated --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
+polyconvert --net-file crr.net.xml --osm-files esslingen.osm  -o map.poly.xml --xml-validation never

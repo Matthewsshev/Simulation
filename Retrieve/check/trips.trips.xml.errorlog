@@ -1,0 +1,167 @@
+Warning: Unequal lengths of bidi lane ':1077561696_2_0' and lane ':1077561696_1_0' (3.03 != 3.00).
+Warning: Stop edge '122124925#0' missing in attribute 'via' for trip '7_bus_138:0'.
+Warning: busStop '764607112' for vehicle '7_bus_138:0' on lane '122124925#0_0' is not downstream the current route.
+Warning: busStop '2869007744' on lane '23999291#0_0' is too short for vehicle '7_bus_138:0'.
+Warning: Stop edge '122124925#0' missing in attribute 'via' for trip '8_bus_108:0'.
+Warning: busStop '-3872841444' on lane '-386832703#0_0' is too short for vehicle '8_bus_108:0'.
+Warning: busStop '-1104997093' on lane '-8812305#1_0' is too short for vehicle '8_bus_108:0'.
+Warning: busStop '254785865' on lane '386500262#0_0' is too short for vehicle '8_bus_108:0'.
+Warning: busStop '764607112' for vehicle '8_bus_108:0' on lane '122124925#0_0' is not downstream the current route.
+Warning: busStop '30895400' on lane '38361907_0' is too short for vehicle '9_trolleybus_101:0'.
+Warning: busStop '282837104' for vehicle '10_bus_62:0' on lane '36989717#1_0' is not downstream the current route.
+Warning: busStop '-282836338' for vehicle '10_bus_62:0' on lane '-27607327#1_0' is not downstream the current route.
+Warning: busStop '282837104' for vehicle '12_bus_61:0' on lane '36989717#1_0' is not downstream the current route.
+Warning: busStop '282836158' for vehicle '17_bus_62:1' on lane '27607327#0_0' is not downstream the current route.
+Warning: busStop '282837104' for vehicle '18_bus_65:0' on lane '36989717#1_0' is not downstream the current route.
+Warning: busStop '-282836338' for vehicle '18_bus_65:0' on lane '-27607327#1_0' is not downstream the current route.
+Warning: busStop '282836158' for vehicle '19_bus_65:1' on lane '27607327#0_0' is not downstream the current route.
+Warning: Stop edge '345736587#0' missing in attribute 'via' for trip '23_trolleybus_118:0'.
+Warning: Stop edge '11335855#1' missing in attribute 'via' for trip '23_trolleybus_118:0'.
+Warning: Stop edge '138203611#1' missing in attribute 'via' for trip '23_trolleybus_118:0'.
+Warning: busStop '3933810892' for vehicle '23_trolleybus_118:0' on lane '345736587#0_0' is not downstream the current route.
+Warning: busStop '-89023451' for vehicle '23_trolleybus_118:0' on lane '-926867314_0' is not downstream the current route.
+Warning: busStop '3238823402' on lane '399038513#17_0' is too short for vehicle '23_trolleybus_118:0'.
+Warning: busStop '-89023451' for vehicle '23_trolleybus_118:0' on lane '-926867314_0' is not downstream the current route.
+Warning: busStop '6550964524' for vehicle '23_trolleybus_118:0' on lane '686955221_0' is not downstream the current route.
+Warning: busStop '3523843331' for vehicle '23_trolleybus_118:0' on lane '11335855#1_0' is not downstream the current route.
+Warning: busStop '3872841438' for vehicle '23_trolleybus_118:0' on lane '138203611#1_0' is not downstream the current route.
+Warning: busStop '-1254192526' for vehicle '23_trolleybus_118:0' on lane '-350217704#3_0' is not downstream the current route.
+Warning: busStop '3224629436' for vehicle '23_trolleybus_118:0' on lane '675777502_0' is not downstream the current route.
+Warning: busStop '3872841418' for vehicle '34_bus_102:0' on lane '31151991#3_0' is not downstream the current route.
+Warning: busStop '3872841444' on lane '386832703#0_0' is too short for vehicle '34_bus_102:0'.
+Warning: busStop '3872841429' for vehicle '38_bus_102:4' on lane '25531614#3_0' is not downstream the current route.
+Warning: busStop '10830791667' for vehicle '39_bus_102:5' on lane '39551110_0' is not downstream the current route.
+Warning: busStop '3872841418' for vehicle '40_bus_103:0' on lane '31151991#3_0' is not downstream the current route.
+Warning: busStop '3872841429' for vehicle '42_bus_103:2' on lane '25531614#3_0' is not downstream the current route.
+Warning: busStop '10830791667' for vehicle '44_bus_103:4' on lane '39551110_0' is not downstream the current route.
+Warning: busStop '10830791670' for vehicle '44_bus_103:4' on lane '39765467#0_0' is not downstream the current route.
+Warning: busStop '10830791668' for vehicle '44_bus_103:4' on lane '32819877#2_0' is not downstream the current route.
+Warning: busStop '10830791667' for vehicle '45_bus_103:5' on lane '39551110_0' is not downstream the current route.
+Warning: busStop '10830791670' for vehicle '45_bus_103:5' on lane '39765467#0_0' is not downstream the current route.
+Warning: busStop '764607112' for vehicle '53_bus_108:1' on lane '122124925#0_0' is not downstream the current route.
+Warning: busStop '6501810816' for vehicle '54_bus_109:0' on lane '156260258_0' is not downstream the current route.
+Warning: busStop '1460518764' for vehicle '55_bus_109:1' on lane '387117388_0' is not downstream the current route.
+Warning: busStop '125392612' on lane '431767318#2_0' is too short for vehicle '56_bus_110:0'.
+Warning: busStop '-3566577210' for vehicle '58_bus_111:0' on lane '-386500268#0_0' is not downstream the current route.
+Warning: Vehicle '58_bus_111:0' is not allowed to stop on lane '23471124_0'.
+Warning: busStop '-11386160870' on lane '-31133704#3_0' is too short for vehicle '60_bus_112:0'.
+Warning: busStop '-3932154243' for vehicle '60_bus_112:0' on lane '-31133704#4_0' is not downstream the current route.
+Warning: busStop '-2239070180' on lane '-412792789#3_0' is too short for vehicle '60_bus_112:0'.
+Warning: busStop '-764607112' on lane '-122124925#0_0' is too short for vehicle '60_bus_112:0'.
+Warning: busStop '-3932154243' for vehicle '61_bus_112:1' on lane '-31133704#4_0' is not downstream the current route.
+Warning: busStop '764607112' for vehicle '62_bus_112:2' on lane '122124925#0_0' is not downstream the current route.
+Warning: busStop '2239070180' on lane '412792789#3_0' is too short for vehicle '62_bus_112:2'.
+Warning: busStop '11386160870' on lane '31133704#3_0' is too short for vehicle '62_bus_112:2'.
+Warning: busStop '3224629436' for vehicle '66_bus_113:2' on lane '675777502_0' is not downstream the current route.
+Warning: busStop '3224629436' for vehicle '67_bus_113:3' on lane '675777502_0' is not downstream the current route.
+Warning: busStop '-2869007744' on lane '-23999291#0_0' is too short for vehicle '72_bus_115:1'.
+Warning: busStop '3224629436' for vehicle '76_bus_131:1' on lane '675777502_0' is not downstream the current route.
+Warning: Vehicle '77_bus_132:0' is not allowed to stop on lane '23471124_0'.
+Warning: busStop '-1460518764' on lane '-387117388_0' is too short for vehicle '77_bus_132:0'.
+Warning: busStop '1460518764' for vehicle '78_bus_132:1' on lane '387117388_0' is not downstream the current route.
+Warning: busStop '-280307039' for vehicle '78_bus_132:1' on lane '-394114218#3_0' is not downstream the current route.
+Warning: busStop '-280307039' for vehicle '79_bus_132:2' on lane '-394114218#3_0' is not downstream the current route.
+Warning: busStop '3933810892' for vehicle '83_trolleybus_118:1' on lane '345736587#0_0' is not downstream the current route.
+Warning: busStop '89023451' for vehicle '83_trolleybus_118:1' on lane '1079724463_0' is not downstream the current route.
+Warning: busStop '6550964524' for vehicle '83_trolleybus_118:1' on lane '686955221_0' is not downstream the current route.
+Warning: busStop '3523843331' for vehicle '83_trolleybus_118:1' on lane '11335855#1_0' is not downstream the current route.
+Warning: busStop '3872841438' for vehicle '83_trolleybus_118:1' on lane '138203611#1_0' is not downstream the current route.
+Warning: busStop '-1254192526' for vehicle '83_trolleybus_118:1' on lane '-350217704#3_0' is not downstream the current route.
+Warning: busStop '3224629436' for vehicle '83_trolleybus_118:1' on lane '675777502_0' is not downstream the current route.
+Warning: busStop '3224629436' for vehicle '86_bus_130:0' on lane '675777502_0' is not downstream the current route.
+Warning: busStop '30863641' for vehicle '88_bus_N22:0' on lane '1157387454#1_0' is not downstream the current route.
+Warning: busStop '3933810892' for vehicle '89_bus_N19:0' on lane '345736587#0_0' is not downstream the current route.
+Warning: No connection between edge '-31787956' and edge '-350217703' found.
+Warning: Vehicle '0_bus_114:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: No connection between edge '762092297' and edge '993129236' found.
+Warning: Vehicle '6_train_S1:0' has no valid route from edge '762092297' to stop edge '993129236'.
+Warning: No connection between edge '993129236' and edge '762092295#0' found.
+Warning: Vehicle '6_train_S1:0' has no valid route from edge '993129236' to stop edge '762092295#0'.
+Warning: No connection between edge '-31787956' and edge '-350217703' found.
+Warning: Vehicle '64_bus_113:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: No connection between edge '-31787956' and edge '-350217703' found.
+Warning: Vehicle '61_bus_112:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '60_bus_112:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '28_train_S1:1' has no valid route from edge '762092293#1' to stop edge '993129237'.
+Warning: No route for vehicle '28_train_S1:1' found.
+Warning: Vehicle '58_bus_111:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '5_bus_106:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '11_bus_131:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '24_trolleybus_101:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '23_trolleybus_118:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: busStop '3280786467' for vehicle '23_trolleybus_118:0' on lane '9054575_0' is not downstream the current route.
+Warning: busStop '3947901613' for vehicle '23_trolleybus_118:0' on lane '400416445#8_0' is not downstream the current route.
+Warning: busStop '3947901612' for vehicle '23_trolleybus_118:0' on lane '156261081#6_0' is not downstream the current route.
+Warning: busStop '3238823402' for vehicle '23_trolleybus_118:0' on lane '399038513#17_0' is not downstream the current route.
+Warning: busStop '3947901615' for vehicle '23_trolleybus_118:0' on lane '399038513#28_0' is not downstream the current route.
+Warning: busStop '3279503429' for vehicle '23_trolleybus_118:0' on lane '17082131#0_0' is not downstream the current route.
+Warning: busStop '247224583' for vehicle '23_trolleybus_118:0' on lane '448974987#2_0' is not downstream the current route.
+Warning: busStop '-3947901614' for vehicle '23_trolleybus_118:0' on lane '-23032884#1_0' is not downstream the current route.
+Warning: busStop '2426004802' for vehicle '23_trolleybus_118:0' on lane '21310559_0' is not downstream the current route.
+Warning: busStop '6550964524' for vehicle '23_trolleybus_118:0' on lane '686955221_0' is not downstream the current route.
+Warning: busStop '3523843331' for vehicle '23_trolleybus_118:0' on lane '11335855#1_0' is not downstream the current route.
+Warning: busStop '3872841438' for vehicle '23_trolleybus_118:0' on lane '138203611#1_0' is not downstream the current route.
+Warning: busStop '-1254192526' for vehicle '23_trolleybus_118:0' on lane '-350217704#3_0' is not downstream the current route.
+Warning: busStop '3224629436' for vehicle '23_trolleybus_118:0' on lane '675777502_0' is not downstream the current route.
+Warning: Vehicle '49_bus_104:3' has no valid route from edge '-38509828#0' to stop edge '207210286'.
+Warning: Vehicle '4_bus_114:2' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '48_bus_104:2' has no valid route from edge '-38509828#0' to stop edge '207210286'.
+Warning: Vehicle '47_bus_104:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '47_bus_104:1' has no valid route from edge '207210285' to stop edge '355356765'.
+Warning: Vehicle '46_bus_104:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '46_bus_104:0' has no valid route from edge '207210285' to stop edge '355356765'.
+Warning: busStop '10830791667' for vehicle '45_bus_103:5' on lane '39551110_0' is not downstream the current route.
+Warning: busStop '10830791670' for vehicle '45_bus_103:5' on lane '39765467#0_0' is not downstream the current route.
+Warning: busStop '10830791667' for vehicle '44_bus_103:4' on lane '39551110_0' is not downstream the current route.
+Warning: busStop '10830791670' for vehicle '44_bus_103:4' on lane '39765467#0_0' is not downstream the current route.
+Warning: busStop '10830791668' for vehicle '44_bus_103:4' on lane '32819877#2_0' is not downstream the current route.
+Warning: Vehicle '89_bus_N19:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '88_bus_N22:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '87_bus_130:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: busStop '3224629436' for vehicle '86_bus_130:0' on lane '675777502_0' is not downstream the current route.
+Warning: Vehicle '42_bus_103:2' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '85_bus_X20:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '41_bus_103:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '83_trolleybus_118:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: busStop '89023451' for vehicle '83_trolleybus_118:1' on lane '1079724463_0' is not downstream the current route.
+Warning: busStop '6550964524' for vehicle '83_trolleybus_118:1' on lane '686955221_0' is not downstream the current route.
+Warning: busStop '3523843331' for vehicle '83_trolleybus_118:1' on lane '11335855#1_0' is not downstream the current route.
+Warning: busStop '3872841438' for vehicle '83_trolleybus_118:1' on lane '138203611#1_0' is not downstream the current route.
+Warning: busStop '-1254192526' for vehicle '83_trolleybus_118:1' on lane '-350217704#3_0' is not downstream the current route.
+Warning: busStop '3224629436' for vehicle '83_trolleybus_118:1' on lane '675777502_0' is not downstream the current route.
+Warning: Vehicle '40_bus_103:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '81_bus_140:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '80_bus_138:1' has no valid route from edge '-38509828#0' to stop edge '207210286'.
+Warning: busStop '10830791667' for vehicle '39_bus_102:5' on lane '39551110_0' is not downstream the current route.
+Warning: busStop '-280307039' for vehicle '79_bus_132:2' on lane '-394114218#3_0' is not downstream the current route.
+Warning: busStop '1460518764' for vehicle '78_bus_132:1' on lane '387117388_0' is not downstream the current route.
+Warning: busStop '-280307039' for vehicle '78_bus_132:1' on lane '-394114218#3_0' is not downstream the current route.
+Warning: Vehicle '38_bus_102:4' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: busStop '3224629436' for vehicle '76_bus_131:1' on lane '675777502_0' is not downstream the current route.
+Warning: Vehicle '7_bus_138:0' has no valid route from edge '207210285' to stop edge '38509828#0'.
+Warning: Vehicle '35_bus_102:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '71_bus_115:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '34_bus_102:0' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '68_bus_114:3' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Vehicle '68_bus_114:3' has no valid route from edge '57852606#1' to stop edge '4986037#0'.
+Warning: Vehicle '65_bus_113:1' has no valid route from edge '-31787956' to stop edge '-350217703'.
+Warning: Teleporting vehicle '6_train_S1:0'; waited too long (wrong lane), lane='762092297_0', time=343.00.
+Warning: Vehicle '6_train_S1:0' ends teleporting on edge '993129236', time=343.00.
+Warning: Teleporting vehicle '46_bus_104:0'; waited too long (wrong lane), lane='-31787956_0', time=377.00.
+Warning: Vehicle '46_bus_104:0' ends teleporting on edge '-350217703', time=377.00.
+Warning: Teleporting vehicle '48_bus_104:2'; waited too long (wrong lane), lane='-38509828#0_0', time=492.00.
+Warning: Vehicle '48_bus_104:2' ends teleporting on edge '207210286', time=492.00.
+Warning: Teleporting vehicle '6_train_S1:0'; waited too long (wrong lane), lane='993129236_0', time=661.00.
+Warning: Vehicle '6_train_S1:0' ends teleporting on edge '762092295#0', time=661.00.
+Warning: Teleporting vehicle '0_bus_114:0'; waited too long (wrong lane), lane='-31787956_0', time=688.00.
+Warning: Vehicle '0_bus_114:0' ends teleporting on edge '-350217703', time=688.00.
+Warning: Teleporting vehicle '23_trolleybus_118:0'; waited too long (jam), lane='30998717#0_0', time=1105.00.
+Warning: Teleporting vehicle '20_bus_119:0'; waited too long (jam), lane=':89018994_4_0', time=1207.00.
+Warning: Teleporting vehicle '4_bus_114:2'; waited too long (jam), lane='-468914851_0', time=1312.00.
+Warning: Teleporting vehicle '65_bus_113:1'; waited too long (jam), lane='-911970184_0', time=1919.00.
+Warning: Teleporting vehicle '61_bus_112:1'; waited too long (jam), lane='-468914851_0', time=1924.00.
+Warning: 38 total messages of type: No connection between edge '%' and edge '%' found.
+Warning: 29 total messages of type: Stop edge '%' missing in attribute 'via' for % '%'.
+Warning: 13 total messages of type: Teleporting vehicle '%'; waited too long (jam), lane='%', time=%.
+Warning: 42 total messages of type: Teleporting vehicle '%'; waited too long (wrong lane), lane='%', time=%.
+Warning: 55 total messages of type: Vehicle '%' ends teleporting on edge '%', time=%.
