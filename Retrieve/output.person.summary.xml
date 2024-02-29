@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-01-31 15:01:32 by Eclipse SUMO GUI Version 1.19.0
+<!-- generated on 2024-02-29 10:54:37 by Eclipse SUMO sumo Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="Retrieve\osm.net.xml"/>
-        <route-files value="Retrieve\osm_pt.rou.xml"/>
-        <additional-files value="Retrieve\osm_polygons.add.xml,Retrieve\basic.vType.xml,Retrieve\osm_stops.add.xml,Retrieve\osm_complete_parking_areas.add.xml,Retrieve\         osm_parking_rerouters.add.xml,Retrieve\osm_taxi_stands.add.xml,Retrieve\osm_taxi_rerouters.add.xml"/>
+        <net-file value="Retrieve\crr.net.xml"/>
+        <route-files value="Retrieve\flows.rou.xml"/>
+        <additional-files value="Retrieve\osm_polygons.add.xml,Retrieve\additional.xml,Retrieve\ basic.vType.xml,Retrieve\ data.rou.xml"/>
     </input>
 
     <output>
@@ -17,12 +17,6 @@
         <tripinfo-output.write-unfinished value="false"/>
         <statistic-output value="Retrieve\statistics.xml"/>
     </output>
-
-    <time>
-        <begin value="0.0"/>
-        <end value="86400.0"/>
-        <step-length value="1"/>
-    </time>
 
     <processing>
         <lateral-resolution value="0.8"/>
@@ -53,6 +47,7 @@
         <device.rerouting.probability value="1"/>
         <device.rerouting.period value="300"/>
         <device.rerouting.pre-period value="300"/>
+        <device.rerouting.threads value="64"/>
         <device.rerouting.bike-speeds value="true"/>
         <person-device.rerouting.probability value="1"/>
         <person-device.rerouting.period value="300"/>
@@ -60,10 +55,11 @@
 
     <report>
         <verbose value="true"/>
-        <no-warnings value="false"/>
+        <no-warnings value="true"/>
         <duration-log.disable value="false"/>
         <duration-log.statistics value="true"/>
         <no-step-log value="false"/>
+        <step-log.period value="2"/>
     </report>
 
     <taxi_device>
@@ -75,7 +71,7 @@
     </taxi_device>
 
     <traci_server>
-        <remote-port value="63135"/>
+        <remote-port value="50563"/>
     </traci_server>
 
     <random_number>
@@ -90,4 +86,5 @@
 -->
 
 <personSummary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/person_summary_file.xsd">
+    <step time="0.00" loaded="0" inserted="0" walking="0" waitingForRide="0" riding="0" stopping="0" jammed="0" ended="0" arrived="0" teleports="0" duration="511"/>
 </personSummary>
