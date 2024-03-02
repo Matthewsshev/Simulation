@@ -1219,359 +1219,359 @@
         <stop busStop="-4379712496" duration="20" until="7448.0"/> <!-- Ruit -->
         <stop busStop="-886304580" duration="20" until="7546.0"/> <!-- Ruit Im Kapf -->
     </route>
-    <flow id="pt_light_rail_U13:0" type="pt_light_rail" route="pt_light_rail_U13:0" begin="0.0" end="3600.0" period="1200" line="U13:0" >
+    <flow id="pt_light_rail_U13:0" type="pt_light_rail" route="pt_light_rail_U13:0" begin="0.0" end="3600000000" period="1200" line="U13:0" >
         <param key="name" value="U13: Hedelfingen =&gt; Feuerbach"/>
         <param key="completeness" value="0.16"/>
     </flow>
-    <flow id="pt_light_rail_U13:1" type="pt_light_rail" route="pt_light_rail_U13:1" begin="0.0" end="3600.0" period="1200" line="U13:1" >
+    <flow id="pt_light_rail_U13:1" type="pt_light_rail" route="pt_light_rail_U13:1" begin="0.0" end="3600000000" period="1200" line="U13:1" >
         <param key="name" value="U13: Feuerbach =&gt; Hedelfingen"/>
         <param key="completeness" value="0.16"/>
     </flow>
-    <flow id="pt_light_rail_U9:0" type="pt_light_rail" route="pt_light_rail_U9:0" begin="15.0" end="3615.0" period="600" line="U9:0" >
+    <flow id="pt_light_rail_U9:0" type="pt_light_rail" route="pt_light_rail_U9:0" begin="15.0" end="3600000000" period="600" line="U9:0" >
         <param key="name" value="U9: Hedelfingen =&gt; Heslach Vogelrain"/>
         <param key="completeness" value="0.14"/>
     </flow>
-    <flow id="pt_bus_61:1" type="pt_bus" route="pt_bus_61:1" begin="0.0" end="3600.0" period="1200" line="61:1" >
+    <flow id="pt_bus_61:1" type="pt_bus" route="pt_bus_61:1" begin="0.0" end="3600000000" period="1200" line="61:1" >
         <param key="name" value="Bus 61: Rotenberg =&gt; Obertürkheim"/>
         <param key="completeness" value="0.16"/>
     </flow>
-    <flow id="pt_bus_61:0" type="pt_bus" route="pt_bus_61:0" begin="0.0" end="3600.0" period="1200" line="61:0" >
+    <flow id="pt_bus_61:0" type="pt_bus" route="pt_bus_61:0" begin="0.0" end="3600000000" period="1200" line="61:0" >
         <param key="name" value="Bus 61: Obertürkheim =&gt; Rotenberg"/>
         <param key="completeness" value="0.21"/>
     </flow>
-    <flow id="pt_bus_121:0" type="pt_bus" route="pt_bus_121:0" begin="0.0" end="3600.0" period="1200" line="121:0" >
+    <flow id="pt_bus_121:0" type="pt_bus" route="pt_bus_121:0" begin="0.0" end="3600000000" period="1200" line="121:0" >
         <param key="name" value="Bus 121: Oberesslingen =&gt; Neuhausen (F)"/>
         <param key="completeness" value="0.09"/>
     </flow>
-    <flow id="pt_bus_121:1" type="pt_bus" route="pt_bus_121:1" begin="0.0" end="3600.0" period="1200" line="121:1" >
+    <flow id="pt_bus_121:1" type="pt_bus" route="pt_bus_121:1" begin="0.0" end="3600000000" period="1200" line="121:1" >
         <param key="name" value="Bus 121: Neuhausen (F) =&gt; Oberesslingen"/>
         <param key="completeness" value="0.10"/>
     </flow>
-    <flow id="pt_light_rail_U9:1" type="pt_light_rail" route="pt_light_rail_U9:1" begin="52.0" end="3652.0" period="600" line="U9:1" >
+    <flow id="pt_light_rail_U9:1" type="pt_light_rail" route="pt_light_rail_U9:1" begin="52.0" end="3600000000" period="600" line="U9:1" >
         <param key="name" value="U9: Heslach Vogelrain =&gt; Hedelfingen"/>
         <param key="completeness" value="0.18"/>
     </flow>
-    <flow id="pt_bus_65:0" type="pt_bus" route="pt_bus_65:0" begin="0.0" end="3600.0" period="1200" line="65:0" >
+    <flow id="pt_bus_65:0" type="pt_bus" route="pt_bus_65:0" begin="0.0" end="3600000000" period="1200" line="65:0" >
         <param key="name" value="Bus 65: Obertürkheim Bahnhof =&gt; Echterdingen Flughafen/Messe (SAB)"/>
         <param key="completeness" value="0.11"/>
     </flow>
-    <flow id="pt_bus_65:1" type="pt_bus" route="pt_bus_65:1" begin="0.0" end="3600.0" period="1200" line="65:1" >
+    <flow id="pt_bus_65:1" type="pt_bus" route="pt_bus_65:1" begin="0.0" end="3600000000" period="1200" line="65:1" >
         <param key="name" value="Bus 65: Echterdingen Flughafen/Messe (SAB) =&gt; Obertürkheim Bahnhof"/>
         <param key="completeness" value="0.08"/>
     </flow>
-    <flow id="pt_bus_62:0" type="pt_bus" route="pt_bus_62:0" begin="0.0" end="3600.0" period="1200" line="62:0" >
+    <flow id="pt_bus_62:0" type="pt_bus" route="pt_bus_62:0" begin="0.0" end="3600000000" period="1200" line="62:0" >
         <param key="name" value="Bus 62: Uhlbach =&gt; Rohracker"/>
         <param key="completeness" value="0.27"/>
     </flow>
-    <flow id="pt_bus_816:0" type="pt_bus" route="pt_bus_816:0" begin="0.0" end="3600.0" period="1200" line="816:0" >
+    <flow id="pt_bus_816:0" type="pt_bus" route="pt_bus_816:0" begin="0.0" end="3600000000" period="1200" line="816:0" >
         <param key="name" value="Bus 816: Ruit Krankenhaus =&gt; Bernhausen Bahnhof"/>
         <param key="completeness" value="0.15"/>
     </flow>
-    <flow id="pt_light_rail_U8:0" type="pt_light_rail" route="pt_light_rail_U8:0" begin="0.0" end="3600.0" period="1200" line="U8:0" >
+    <flow id="pt_light_rail_U8:0" type="pt_light_rail" route="pt_light_rail_U8:0" begin="0.0" end="3600000000" period="1200" line="U8:0" >
         <param key="name" value="U8: Nellingen Ostfildern =&gt; Vaihingen"/>
         <param key="completeness" value="0.27"/>
     </flow>
-    <flow id="pt_bus_816:1" type="pt_bus" route="pt_bus_816:1" begin="0.0" end="3600.0" period="1200" line="816:1" >
+    <flow id="pt_bus_816:1" type="pt_bus" route="pt_bus_816:1" begin="0.0" end="3600000000" period="1200" line="816:1" >
         <param key="name" value="Bus 816: Bernhausen Bahnhof =&gt; Ruit Krankenhaus"/>
         <param key="completeness" value="0.15"/>
     </flow>
-    <flow id="pt_light_rail_U8:1" type="pt_light_rail" route="pt_light_rail_U8:1" begin="0.0" end="3600.0" period="1200" line="U8:1" >
+    <flow id="pt_light_rail_U8:1" type="pt_light_rail" route="pt_light_rail_U8:1" begin="0.0" end="3600000000" period="1200" line="U8:1" >
         <param key="name" value="U8: Vaihingen =&gt; Nellingen Ostfildern"/>
         <param key="completeness" value="0.27"/>
     </flow>
-    <flow id="pt_bus_62:1" type="pt_bus" route="pt_bus_62:1" begin="0.0" end="3600.0" period="1200" line="62:1" >
+    <flow id="pt_bus_62:1" type="pt_bus" route="pt_bus_62:1" begin="0.0" end="3600000000" period="1200" line="62:1" >
         <param key="name" value="Bus 62: Rohracker =&gt; Uhlbach"/>
         <param key="completeness" value="0.23"/>
     </flow>
-    <flow id="pt_train_RE_5:0" type="pt_train" route="pt_train_RE_5:0" begin="0.0" end="3600.0" period="1200" line="RE_5:0" >
+    <flow id="pt_train_RE_5:0" type="pt_train" route="pt_train_RE_5:0" begin="0.0" end="3600000000" period="1200" line="RE_5:0" >
         <param key="name" value="RE 5: Ulm =&gt; Stuttgart"/>
         <param key="completeness" value="0.25"/>
     </flow>
-    <flow id="pt_light_rail_U7:0" type="pt_light_rail" route="pt_light_rail_U7:0" begin="52.0" end="3652.0" period="600" line="U7:0" >
+    <flow id="pt_light_rail_U7:0" type="pt_light_rail" route="pt_light_rail_U7:0" begin="52.0" end="3600000000" period="600" line="U7:0" >
         <param key="name" value="U7: Nellingen Ostfildern =&gt; Mönchfeld"/>
         <param key="completeness" value="0.19"/>
     </flow>
-    <flow id="pt_light_rail_U7:1" type="pt_light_rail" route="pt_light_rail_U7:1" begin="15.0" end="3615.0" period="600" line="U7:1" >
+    <flow id="pt_light_rail_U7:1" type="pt_light_rail" route="pt_light_rail_U7:1" begin="15.0" end="3600000000" period="600" line="U7:1" >
         <param key="name" value="U7: Mönchfeld =&gt; Nellingen Ostfildern"/>
         <param key="completeness" value="0.19"/>
     </flow>
-    <flow id="pt_bus_113:3" type="pt_bus" route="pt_bus_113:3" begin="0.0" end="3600.0" period="1200" line="113:3" >
+    <flow id="pt_bus_113:3" type="pt_bus" route="pt_bus_113:3" begin="0.0" end="3600000000" period="1200" line="113:3" >
         <param key="name" value="Bus 113: Berkheim =&gt; See =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.35"/>
     </flow>
-    <flow id="pt_bus_119:1" type="pt_bus" route="pt_bus_119:1" begin="0.0" end="3600.0" period="1200" line="119:1" >
+    <flow id="pt_bus_119:1" type="pt_bus" route="pt_bus_119:1" begin="0.0" end="3600000000" period="1200" line="119:1" >
         <param key="name" value="Bus 119: Denkendorf Weingartenstraße =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.23"/>
     </flow>
-    <flow id="pt_bus_120:1" type="pt_bus" route="pt_bus_120:1" begin="5.0" end="3605.0" period="1200" line="120:1" >
+    <flow id="pt_bus_120:1" type="pt_bus" route="pt_bus_120:1" begin="5.0" end="3600000000" period="1200" line="120:1" >
         <param key="name" value="Bus 120: Wolfschlugen =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.17"/>
     </flow>
-    <flow id="pt_bus_109:0" type="pt_bus" route="pt_bus_109:0" begin="0.0" end="3600.0" period="1200" line="109:0" >
+    <flow id="pt_bus_109:0" type="pt_bus" route="pt_bus_109:0" begin="0.0" end="3600000000" period="1200" line="109:0" >
         <param key="name" value="Bus 109: Esslingen (N) ZOB =&gt; Rüdern Glocke"/>
         <param key="completeness" value="0.52"/>
     </flow>
-    <flow id="pt_bus_X20:0" type="pt_bus" route="pt_bus_X20:0" begin="0.0" end="3600.0" period="1200" line="X20:0" >
+    <flow id="pt_bus_X20:0" type="pt_bus" route="pt_bus_X20:0" begin="0.0" end="3600000000" period="1200" line="X20:0" >
         <param key="name" value="X20: Waiblingen Bahnhof =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.30"/>
     </flow>
-    <flow id="pt_bus_140:1" type="pt_bus" route="pt_bus_140:1" begin="0.0" end="3600.0" period="1200" line="140:1" >
+    <flow id="pt_bus_140:1" type="pt_bus" route="pt_bus_140:1" begin="0.0" end="3600000000" period="1200" line="140:1" >
         <param key="name" value="Bus 140: Plochingen =&gt; Esslingen (N)"/>
         <param key="completeness" value="0.19"/>
     </flow>
-    <flow id="pt_bus_105:1" type="pt_bus" route="pt_bus_105:1" begin="5.0" end="3605.0" period="1200" line="105:1" >
+    <flow id="pt_bus_105:1" type="pt_bus" route="pt_bus_105:1" begin="5.0" end="3600000000" period="1200" line="105:1" >
         <param key="name" value="Bus 105: Esslingen (N) ZOB =&gt; Am Schönen Rain"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_114:1" type="pt_bus" route="pt_bus_114:1" begin="0.0" end="3600.0" period="1200" line="114:1" >
+    <flow id="pt_bus_114:1" type="pt_bus" route="pt_bus_114:1" begin="0.0" end="3600000000" period="1200" line="114:1" >
         <param key="name" value="Bus 114: Endersbach =&gt; Esslingen (N)"/>
         <param key="completeness" value="0.19"/>
     </flow>
-    <flow id="pt_bus_106:1" type="pt_bus" route="pt_bus_106:1" begin="6.0" end="3606.0" period="1200" line="106:1" >
+    <flow id="pt_bus_106:1" type="pt_bus" route="pt_bus_106:1" begin="6.0" end="3600000000" period="1200" line="106:1" >
         <param key="name" value="Bus 106: Winterbach Remsbrücke =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.16"/>
     </flow>
-    <flow id="pt_bus_109:1" type="pt_bus" route="pt_bus_109:1" begin="0.0" end="3600.0" period="1200" line="109:1" >
+    <flow id="pt_bus_109:1" type="pt_bus" route="pt_bus_109:1" begin="0.0" end="3600000000" period="1200" line="109:1" >
         <param key="name" value="Bus 109: Rüdern Glocke =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.52"/>
     </flow>
-    <flow id="pt_bus_132:2" type="pt_bus" route="pt_bus_132:2" begin="39.0" end="3639.0" period="1200" line="132:2" >
+    <flow id="pt_bus_132:2" type="pt_bus" route="pt_bus_132:2" begin="39.0" end="3600000000" period="1200" line="132:2" >
         <param key="name" value="Bus 132: Wäldenbronn =&gt; Oberesslingen"/>
         <param key="completeness" value="0.50"/>
     </flow>
-    <flow id="pt_bus_114:4" type="pt_bus" route="pt_bus_114:4" begin="12.0" end="3612.0" period="1200" line="114:4" >
+    <flow id="pt_bus_114:4" type="pt_bus" route="pt_bus_114:4" begin="12.0" end="3600000000" period="1200" line="114:4" >
         <param key="name" value="Bus 114: Aichelberg =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.23"/>
     </flow>
-    <flow id="pt_bus_110:1" type="pt_bus" route="pt_bus_110:1" begin="0.0" end="3600.0" period="1200" line="110:1" >
+    <flow id="pt_bus_110:1" type="pt_bus" route="pt_bus_110:1" begin="0.0" end="3600000000" period="1200" line="110:1" >
         <param key="name" value="Bus 110: Wäldenbronn =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.52"/>
     </flow>
-    <flow id="pt_bus_105:0" type="pt_bus" route="pt_bus_105:0" begin="0.0" end="3600.0" period="1200" line="105:0" >
+    <flow id="pt_bus_105:0" type="pt_bus" route="pt_bus_105:0" begin="0.0" end="3600000000" period="1200" line="105:0" >
         <param key="name" value="Bus 105: Am Schönen Rain =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_104:2" type="pt_bus" route="pt_bus_104:2" begin="0.0" end="3600.0" period="1200" line="104:2" >
+    <flow id="pt_bus_104:2" type="pt_bus" route="pt_bus_104:2" begin="0.0" end="3600000000" period="1200" line="104:2" >
         <param key="name" value="Bus 104: Deizisau =&gt; Röntgenstraße =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.05"/>
     </flow>
-    <flow id="pt_bus_110:0" type="pt_bus" route="pt_bus_110:0" begin="11.0" end="3611.0" period="1200" line="110:0" >
+    <flow id="pt_bus_110:0" type="pt_bus" route="pt_bus_110:0" begin="11.0" end="3600000000" period="1200" line="110:0" >
         <param key="name" value="Bus 110: Esslingen (N) ZOB =&gt; Wäldenbronn"/>
         <param key="completeness" value="0.52"/>
     </flow>
-    <flow id="pt_bus_122:0" type="pt_bus" route="pt_bus_122:0" begin="0.0" end="3600.0" period="1200" line="122:0" >
+    <flow id="pt_bus_122:0" type="pt_bus" route="pt_bus_122:0" begin="0.0" end="3600000000" period="1200" line="122:0" >
         <param key="name" value="Bus 122: Esslingen (N) ZOB =&gt; Flughafen/Messe (SAB)"/>
         <param key="completeness" value="0.26"/>
     </flow>
-    <flow id="pt_bus_115:1" type="pt_bus" route="pt_bus_115:1" begin="12.0" end="3612.0" period="1200" line="115:1" >
+    <flow id="pt_bus_115:1" type="pt_bus" route="pt_bus_115:1" begin="12.0" end="3600000000" period="1200" line="115:1" >
         <param key="name" value="Bus 115: Zell =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.54"/>
     </flow>
-    <flow id="pt_bus_104:3" type="pt_bus" route="pt_bus_104:3" begin="6.0" end="3606.0" period="1200" line="104:3" >
+    <flow id="pt_bus_104:3" type="pt_bus" route="pt_bus_104:3" begin="6.0" end="3600000000" period="1200" line="104:3" >
         <param key="name" value="Bus 104: Deizisau =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.06"/>
     </flow>
-    <flow id="pt_bus_132:0" type="pt_bus" route="pt_bus_132:0" begin="0.0" end="3600.0" period="1200" line="132:0" >
+    <flow id="pt_bus_132:0" type="pt_bus" route="pt_bus_132:0" begin="0.0" end="3600000000" period="1200" line="132:0" >
         <param key="name" value="Bus 132: Oberesslingen =&gt; Rüdern"/>
         <param key="completeness" value="0.51"/>
     </flow>
-    <flow id="pt_bus_112:3" type="pt_bus" route="pt_bus_112:3" begin="5.0" end="3605.0" period="1200" line="112:3" >
+    <flow id="pt_bus_112:3" type="pt_bus" route="pt_bus_112:3" begin="5.0" end="3600000000" period="1200" line="112:3" >
         <param key="name" value="Bus 112: Dulkhäusle =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.55"/>
     </flow>
-    <flow id="pt_bus_132:1" type="pt_bus" route="pt_bus_132:1" begin="5.0" end="3605.0" period="1200" line="132:1" >
+    <flow id="pt_bus_132:1" type="pt_bus" route="pt_bus_132:1" begin="5.0" end="3600000000" period="1200" line="132:1" >
         <param key="name" value="Bus 132: Rüdern =&gt; Oberesslingen"/>
         <param key="completeness" value="0.51"/>
     </flow>
-    <flow id="pt_train_S1:0" type="pt_train" route="pt_train_S1:0" begin="0.0" end="3600.0" period="1200" line="S1:0" >
+    <flow id="pt_train_S1:0" type="pt_train" route="pt_train_S1:0" begin="0.0" end="3600000000" period="1200" line="S1:0" >
         <param key="name" value="S1: Herrenberg =&gt; Kirchheim (Teck)"/>
         <param key="completeness" value="0.21"/>
     </flow>
-    <flow id="pt_bus_113:2" type="pt_bus" route="pt_bus_113:2" begin="0.0" end="3600.0" period="1200" line="113:2" >
+    <flow id="pt_bus_113:2" type="pt_bus" route="pt_bus_113:2" begin="0.0" end="3600000000" period="1200" line="113:2" >
         <param key="name" value="Bus 113: Berkheim =&gt; Zollberg =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.32"/>
     </flow>
-    <flow id="pt_bus_130:0" type="pt_bus" route="pt_bus_130:0" begin="0.0" end="3600.0" period="1200" line="130:0" >
+    <flow id="pt_bus_130:0" type="pt_bus" route="pt_bus_130:0" begin="0.0" end="3600000000" period="1200" line="130:0" >
         <param key="name" value="Bus 130: Kemnat Reutlinger Straße =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.28"/>
     </flow>
-    <flow id="pt_bus_108:0" type="pt_bus" route="pt_bus_108:0" begin="0.0" end="3600.0" period="1200" line="108:0" >
+    <flow id="pt_bus_108:0" type="pt_bus" route="pt_bus_108:0" begin="0.0" end="3600000000" period="1200" line="108:0" >
         <param key="name" value="Bus 108: Esslingen (N) ZOB =&gt; Dulkhäusle"/>
         <param key="completeness" value="0.51"/>
     </flow>
-    <flow id="pt_train_S1:1" type="pt_train" route="pt_train_S1:1" begin="0.0" end="3600.0" period="1200" line="S1:1" >
+    <flow id="pt_train_S1:1" type="pt_train" route="pt_train_S1:1" begin="0.0" end="3600000000" period="1200" line="S1:1" >
         <param key="name" value="S1: Kirchheim (Teck) =&gt; Herrenberg"/>
         <param key="completeness" value="0.21"/>
     </flow>
-    <flow id="pt_bus_112:2" type="pt_bus" route="pt_bus_112:2" begin="6.0" end="3606.0" period="1200" line="112:2" >
+    <flow id="pt_bus_112:2" type="pt_bus" route="pt_bus_112:2" begin="6.0" end="3600000000" period="1200" line="112:2" >
         <param key="name" value="Bus 112: Jägerhaus =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.55"/>
     </flow>
-    <flow id="pt_bus_104:0" type="pt_bus" route="pt_bus_104:0" begin="0.0" end="3600.0" period="1200" line="104:0" >
+    <flow id="pt_bus_104:0" type="pt_bus" route="pt_bus_104:0" begin="0.0" end="3600000000" period="1200" line="104:0" >
         <param key="name" value="Bus 104: Esslingen (N) ZOB =&gt; Röntgenstraße =&gt; Deizisau"/>
         <param key="completeness" value="0.35"/>
     </flow>
-    <flow id="pt_bus_108:1" type="pt_bus" route="pt_bus_108:1" begin="0.0" end="3600.0" period="1200" line="108:1" >
+    <flow id="pt_bus_108:1" type="pt_bus" route="pt_bus_108:1" begin="0.0" end="3600000000" period="1200" line="108:1" >
         <param key="name" value="Bus 108: Dulkhäusle =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.51"/>
     </flow>
-    <flow id="pt_bus_122:1" type="pt_bus" route="pt_bus_122:1" begin="0.0" end="3600.0" period="1200" line="122:1" >
+    <flow id="pt_bus_122:1" type="pt_bus" route="pt_bus_122:1" begin="0.0" end="3600000000" period="1200" line="122:1" >
         <param key="name" value="Bus 122: Flughafen/Messe (SAB) =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.24"/>
     </flow>
-    <flow id="pt_bus_131:1" type="pt_bus" route="pt_bus_131:1" begin="0.0" end="3600.0" period="1200" line="131:1" >
+    <flow id="pt_bus_131:1" type="pt_bus" route="pt_bus_131:1" begin="0.0" end="3600000000" period="1200" line="131:1" >
         <param key="name" value="Bus 131: Scharnhausen Plieninger Straße (Nord) =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.32"/>
     </flow>
-    <flow id="pt_bus_111:1" type="pt_bus" route="pt_bus_111:1" begin="0.0" end="3600.0" period="1200" line="111:1" >
+    <flow id="pt_bus_111:1" type="pt_bus" route="pt_bus_111:1" begin="0.0" end="3600000000" period="1200" line="111:1" >
         <param key="name" value="Bus 111: Neckarhalde =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_trolleybus_101:0" type="pt_trolleybus" route="pt_trolleybus_101:0" begin="0.0" end="3600.0" period="1200" line="101:0" >
+    <flow id="pt_trolleybus_101:0" type="pt_trolleybus" route="pt_trolleybus_101:0" begin="0.0" end="3600000000" period="1200" line="101:0" >
         <param key="name" value="Bus 101: Oberesslingen Lerchenäcker =&gt; Obertürkheim Bf"/>
         <param key="completeness" value="0.56"/>
     </flow>
-    <flow id="pt_bus_104:1" type="pt_bus" route="pt_bus_104:1" begin="5.0" end="3605.0" period="1200" line="104:1" >
+    <flow id="pt_bus_104:1" type="pt_bus" route="pt_bus_104:1" begin="5.0" end="3600000000" period="1200" line="104:1" >
         <param key="name" value="Bus 104: Esslingen (N) ZOB =&gt; Deizisau"/>
         <param key="completeness" value="0.32"/>
     </flow>
-    <flow id="pt_bus_138:1" type="pt_bus" route="pt_bus_138:1" begin="6.0" end="3606.0" period="1200" line="138:1" >
+    <flow id="pt_bus_138:1" type="pt_bus" route="pt_bus_138:1" begin="6.0" end="3600000000" period="1200" line="138:1" >
         <param key="name" value="Bus 138: Berkheim =&gt; Jägerhaus"/>
         <param key="completeness" value="0.05"/>
     </flow>
-    <flow id="pt_bus_114:0" type="pt_bus" route="pt_bus_114:0" begin="0.0" end="3600.0" period="1200" line="114:0" >
+    <flow id="pt_bus_114:0" type="pt_bus" route="pt_bus_114:0" begin="0.0" end="3600000000" period="1200" line="114:0" >
         <param key="name" value="Bus 114: Esslingen (N) =&gt; Endersbach"/>
         <param key="completeness" value="0.19"/>
     </flow>
-    <flow id="pt_bus_120:0" type="pt_bus" route="pt_bus_120:0" begin="55.0" end="3655.0" period="1200" line="120:0" >
+    <flow id="pt_bus_120:0" type="pt_bus" route="pt_bus_120:0" begin="55.0" end="3600000000" period="1200" line="120:0" >
         <param key="name" value="Bus 120: Esslingen (N) ZOB =&gt; Wolfschlugen"/>
         <param key="completeness" value="0.14"/>
     </flow>
-    <flow id="pt_bus_138:0" type="pt_bus" route="pt_bus_138:0" begin="0.0" end="3600.0" period="1200" line="138:0" >
+    <flow id="pt_bus_138:0" type="pt_bus" route="pt_bus_138:0" begin="0.0" end="3600000000" period="1200" line="138:0" >
         <param key="name" value="Bus 138: Jägerhaus =&gt; Berkheim"/>
         <param key="completeness" value="0.39"/>
     </flow>
-    <flow id="pt_bus_102:2" type="pt_bus" route="pt_bus_102:2" begin="0.0" end="3600.0" period="1200" line="102:2" >
+    <flow id="pt_bus_102:2" type="pt_bus" route="pt_bus_102:2" begin="0.0" end="3600000000" period="1200" line="102:2" >
         <param key="name" value="Bus 102: Weil =&gt; Zell Alleenstraße"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_102:5" type="pt_bus" route="pt_bus_102:5" begin="12.0" end="3612.0" period="1200" line="102:5" >
+    <flow id="pt_bus_102:5" type="pt_bus" route="pt_bus_102:5" begin="12.0" end="3600000000" period="1200" line="102:5" >
         <param key="name" value="Bus 102: Weil =&gt; Zell Johannesstraße"/>
         <param key="completeness" value="0.50"/>
     </flow>
-    <flow id="pt_bus_111:0" type="pt_bus" route="pt_bus_111:0" begin="0.0" end="3600.0" period="1200" line="111:0" >
+    <flow id="pt_bus_111:0" type="pt_bus" route="pt_bus_111:0" begin="0.0" end="3600000000" period="1200" line="111:0" >
         <param key="name" value="Bus 111: Esslingen (N) ZOB =&gt; Neckarhalde"/>
         <param key="completeness" value="0.54"/>
     </flow>
-    <flow id="pt_bus_102:3" type="pt_bus" route="pt_bus_102:3" begin="6.0" end="3606.0" period="1200" line="102:3" >
+    <flow id="pt_bus_102:3" type="pt_bus" route="pt_bus_102:3" begin="6.0" end="3600000000" period="1200" line="102:3" >
         <param key="name" value="Bus 102: Weil =&gt; Zell Albblick"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_114:2" type="pt_bus" route="pt_bus_114:2" begin="6.0" end="3606.0" period="1200" line="114:2" >
+    <flow id="pt_bus_114:2" type="pt_bus" route="pt_bus_114:2" begin="6.0" end="3600000000" period="1200" line="114:2" >
         <param key="name" value="Bus 114: Esslingen (N) ZOB =&gt; Aichelberg"/>
         <param key="completeness" value="0.21"/>
     </flow>
-    <flow id="pt_bus_131:0" type="pt_bus" route="pt_bus_131:0" begin="0.0" end="3600.0" period="1200" line="131:0" >
+    <flow id="pt_bus_131:0" type="pt_bus" route="pt_bus_131:0" begin="0.0" end="3600000000" period="1200" line="131:0" >
         <param key="name" value="Bus 131: Esslingen (N) ZOB =&gt; Scharnhausen Plieninger Straße (Nord)"/>
         <param key="completeness" value="0.32"/>
     </flow>
-    <flow id="pt_bus_106:0" type="pt_bus" route="pt_bus_106:0" begin="49.0" end="3649.0" period="1200" line="106:0" >
+    <flow id="pt_bus_106:0" type="pt_bus" route="pt_bus_106:0" begin="49.0" end="3600000000" period="1200" line="106:0" >
         <param key="name" value="Bus 106: Esslingen (N) ZOB =&gt; Winterbach Remsbrücke"/>
         <param key="completeness" value="0.16"/>
     </flow>
-    <flow id="pt_bus_140:0" type="pt_bus" route="pt_bus_140:0" begin="0.0" end="3600.0" period="1200" line="140:0" >
+    <flow id="pt_bus_140:0" type="pt_bus" route="pt_bus_140:0" begin="0.0" end="3600000000" period="1200" line="140:0" >
         <param key="name" value="Bus 140: Esslingen (N) =&gt; Plochingen"/>
         <param key="completeness" value="0.18"/>
     </flow>
-    <flow id="pt_bus_103:3" type="pt_bus" route="pt_bus_103:3" begin="0.0" end="3600.0" period="1200" line="103:3" >
+    <flow id="pt_bus_103:3" type="pt_bus" route="pt_bus_103:3" begin="0.0" end="3600000000" period="1200" line="103:3" >
         <param key="name" value="Bus 103: Hedelfingen =&gt; Zell Alleenstraße"/>
         <param key="completeness" value="0.54"/>
     </flow>
-    <flow id="pt_bus_103:4" type="pt_bus" route="pt_bus_103:4" begin="6.0" end="3606.0" period="1200" line="103:4" >
+    <flow id="pt_bus_103:4" type="pt_bus" route="pt_bus_103:4" begin="6.0" end="3600000000" period="1200" line="103:4" >
         <param key="name" value="Bus 103: Hedelfingen =&gt; Zell Johannesstraße"/>
         <param key="completeness" value="0.55"/>
     </flow>
-    <flow id="pt_bus_112:0" type="pt_bus" route="pt_bus_112:0" begin="276.0" end="3876.0" period="1200" line="112:0" >
+    <flow id="pt_bus_112:0" type="pt_bus" route="pt_bus_112:0" begin="276.0" end="3600000000" period="1200" line="112:0" >
         <param key="name" value="Bus 112: Esslingen (N) ZOB =&gt; Jägerhaus"/>
         <param key="completeness" value="0.54"/>
     </flow>
-    <flow id="pt_bus_119:0" type="pt_bus" route="pt_bus_119:0" begin="0.0" end="3600.0" period="1200" line="119:0" >
+    <flow id="pt_bus_119:0" type="pt_bus" route="pt_bus_119:0" begin="0.0" end="3600000000" period="1200" line="119:0" >
         <param key="name" value="Bus 119: Esslingen (N) ZOB =&gt; Denkendorf Hindenburgstraße"/>
         <param key="completeness" value="0.19"/>
     </flow>
-    <flow id="pt_bus_113:0" type="pt_bus" route="pt_bus_113:0" begin="38.0" end="3638.0" period="1200" line="113:0" >
+    <flow id="pt_bus_113:0" type="pt_bus" route="pt_bus_113:0" begin="38.0" end="3600000000" period="1200" line="113:0" >
         <param key="name" value="Bus 113: Esslingen (N) ZOB =&gt; Zollberg =&gt; Berkheim"/>
         <param key="completeness" value="0.30"/>
     </flow>
-    <flow id="pt_bus_113:1" type="pt_bus" route="pt_bus_113:1" begin="77.0" end="3677.0" period="1200" line="113:1" >
+    <flow id="pt_bus_113:1" type="pt_bus" route="pt_bus_113:1" begin="77.0" end="3600000000" period="1200" line="113:1" >
         <param key="name" value="Bus 113: Esslingen (N) ZOB =&gt; See =&gt; Berkheim"/>
         <param key="completeness" value="0.32"/>
     </flow>
-    <flow id="pt_bus_X20:1" type="pt_bus" route="pt_bus_X20:1" begin="136.0" end="3736.0" period="1200" line="X20:1" >
+    <flow id="pt_bus_X20:1" type="pt_bus" route="pt_bus_X20:1" begin="136.0" end="3600000000" period="1200" line="X20:1" >
         <param key="name" value="X20: Esslingen (N) ZOB =&gt; Waiblingen Bahnhof"/>
         <param key="completeness" value="0.22"/>
     </flow>
-    <flow id="pt_bus_103:5" type="pt_bus" route="pt_bus_103:5" begin="12.0" end="3612.0" period="1200" line="103:5" >
+    <flow id="pt_bus_103:5" type="pt_bus" route="pt_bus_103:5" begin="12.0" end="3600000000" period="1200" line="103:5" >
         <param key="name" value="Bus 103: Hedelfingen =&gt; Zell Albblick"/>
         <param key="completeness" value="0.54"/>
     </flow>
-    <flow id="pt_bus_103:1" type="pt_bus" route="pt_bus_103:1" begin="6.0" end="3606.0" period="1200" line="103:1" >
+    <flow id="pt_bus_103:1" type="pt_bus" route="pt_bus_103:1" begin="6.0" end="3600000000" period="1200" line="103:1" >
         <param key="name" value="Bus 103: Zell Johannesstraße =&gt; Hedelfingen"/>
         <param key="completeness" value="0.52"/>
     </flow>
-    <flow id="pt_bus_115:0" type="pt_bus" route="pt_bus_115:0" begin="0.0" end="3600.0" period="1200" line="115:0" >
+    <flow id="pt_bus_115:0" type="pt_bus" route="pt_bus_115:0" begin="0.0" end="3600000000" period="1200" line="115:0" >
         <param key="name" value="Bus 115: Mettingen =&gt; Zell"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_trolleybus_118:0" type="pt_trolleybus" route="pt_trolleybus_118:0" begin="0.0" end="3600.0" period="1200" line="118:0" >
+    <flow id="pt_trolleybus_118:0" type="pt_trolleybus" route="pt_trolleybus_118:0" begin="0.0" end="3600000000" period="1200" line="118:0" >
         <param key="name" value="Bus 118: Esslingen (N) ZOB =&gt; Eichendorfschule =&gt; Zollernplatz =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_trolleybus_101:1" type="pt_trolleybus" route="pt_trolleybus_101:1" begin="0.0" end="3600.0" period="1200" line="101:1" >
+    <flow id="pt_trolleybus_101:1" type="pt_trolleybus" route="pt_trolleybus_101:1" begin="0.0" end="3600000000" period="1200" line="101:1" >
         <param key="name" value="Bus 101: Obertürkheim Bf =&gt; Oberesslingen Lerchenäcker"/>
         <param key="completeness" value="0.55"/>
     </flow>
-    <flow id="pt_bus_114:3" type="pt_bus" route="pt_bus_114:3" begin="140.0" end="3740.0" period="1200" line="114:3" >
+    <flow id="pt_bus_114:3" type="pt_bus" route="pt_bus_114:3" begin="140.0" end="3600000000" period="1200" line="114:3" >
         <param key="name" value="Bus 114: Esslingen (N) ZOB =&gt; Lobenrot"/>
         <param key="completeness" value="0.23"/>
     </flow>
-    <flow id="pt_bus_102:1" type="pt_bus" route="pt_bus_102:1" begin="0.0" end="3600.0" period="1200" line="102:1" >
+    <flow id="pt_bus_102:1" type="pt_bus" route="pt_bus_102:1" begin="0.0" end="3600000000" period="1200" line="102:1" >
         <param key="name" value="Bus 102: Zell Albblick =&gt; Weil"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_130:1" type="pt_bus" route="pt_bus_130:1" begin="116.0" end="3716.0" period="1200" line="130:1" >
+    <flow id="pt_bus_130:1" type="pt_bus" route="pt_bus_130:1" begin="116.0" end="3600000000" period="1200" line="130:1" >
         <param key="name" value="Bus 130: Esslingen (N) ZOB =&gt; Kemnat Reutlinger Straße"/>
         <param key="completeness" value="0.28"/>
     </flow>
-    <flow id="pt_bus_102:4" type="pt_bus" route="pt_bus_102:4" begin="0.0" end="3600.0" period="1200" line="102:4" >
+    <flow id="pt_bus_102:4" type="pt_bus" route="pt_bus_102:4" begin="0.0" end="3600000000" period="1200" line="102:4" >
         <param key="name" value="Bus 102: Zell Johannesstraße =&gt; Weil"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_103:0" type="pt_bus" route="pt_bus_103:0" begin="6.0" end="3606.0" period="1200" line="103:0" >
+    <flow id="pt_bus_103:0" type="pt_bus" route="pt_bus_103:0" begin="6.0" end="3600000000" period="1200" line="103:0" >
         <param key="name" value="Bus 103: Zell Alleenstraße =&gt; Hedelfingen"/>
         <param key="completeness" value="0.52"/>
     </flow>
-    <flow id="pt_bus_103:2" type="pt_bus" route="pt_bus_103:2" begin="12.0" end="3612.0" period="1200" line="103:2" >
+    <flow id="pt_bus_103:2" type="pt_bus" route="pt_bus_103:2" begin="12.0" end="3600000000" period="1200" line="103:2" >
         <param key="name" value="Bus 103: Zell Johannesstraße =&gt; Zell Albblick =&gt; Hedelfingen"/>
         <param key="completeness" value="0.52"/>
     </flow>
-    <flow id="pt_bus_102:0" type="pt_bus" route="pt_bus_102:0" begin="0.0" end="3600.0" period="1200" line="102:0" >
+    <flow id="pt_bus_102:0" type="pt_bus" route="pt_bus_102:0" begin="0.0" end="3600000000" period="1200" line="102:0" >
         <param key="name" value="Bus 102: Zell Alleenstraße =&gt; Weil"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_112:1" type="pt_bus" route="pt_bus_112:1" begin="319.0" end="3919.0" period="1200" line="112:1" >
+    <flow id="pt_bus_112:1" type="pt_bus" route="pt_bus_112:1" begin="319.0" end="3600000000" period="1200" line="112:1" >
         <param key="name" value="Bus 112: Esslingen (N) ZOB =&gt; Hohenkreuz =&gt; Dulkhäusle"/>
         <param key="completeness" value="0.55"/>
     </flow>
-    <flow id="pt_trolleybus_118:1" type="pt_trolleybus" route="pt_trolleybus_118:1" begin="6.0" end="3606.0" period="1200" line="118:1" >
+    <flow id="pt_trolleybus_118:1" type="pt_trolleybus" route="pt_trolleybus_118:1" begin="6.0" end="3600000000" period="1200" line="118:1" >
         <param key="name" value="Bus 118: Esslingen (N) ZOB =&gt; Zollernplatz =&gt; Eichendorfschule =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.53"/>
     </flow>
-    <flow id="pt_bus_N19:0" type="pt_bus" route="pt_bus_N19:0" begin="12.0" end="3612.0" period="1200" line="N19:0" >
+    <flow id="pt_bus_N19:0" type="pt_bus" route="pt_bus_N19:0" begin="12.0" end="3600000000" period="1200" line="N19:0" >
         <param key="name" value="N19: Esslingen (N) ZOB =&gt; Neuhausen (F) =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.09"/>
     </flow>
-    <flow id="pt_bus_N22:0" type="pt_bus" route="pt_bus_N22:0" begin="146.0" end="3746.0" period="1200" line="N22:0" >
+    <flow id="pt_bus_N22:0" type="pt_bus" route="pt_bus_N22:0" begin="146.0" end="3600000000" period="1200" line="N22:0" >
         <param key="name" value="N22: Esslingen (N) ZOB =&gt; Kemnat =&gt; Esslingen (N) ZOB"/>
         <param key="completeness" value="0.21"/>
     </flow>
