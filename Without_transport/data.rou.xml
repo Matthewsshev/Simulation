@@ -1,23 +1,22 @@
 <routes>
   <person id="p0" depart="0.00">
-    <personTrip from="37799153" to="-110463614" line="ANY" modes="public"/>
-    <stop duration="11961" actType="singing"/>
+    <personTrip from="688219972" to="25708826#1" line="ANY" modes="public"/>
+    <stop duration="11080" actType="singing"/>
   </person>
   <person id="p1" depart="0.00">
-    <personTrip from="37799153" to="-23999580#5" line="ANY" modes="public"/>
-    <stop duration="1513" actType="singing"/>
+    <personTrip from="688219972" to="-10442531#13" line="ANY" modes="public"/>
+    <stop duration="1685" actType="singing"/>
   </person>
   <person id="p2" depart="0.00">
-    <personTrip from="37799153" to="-23163767#0" line="ANY" modes="public"/>
-    <stop duration="29954" actType="singing"/>
+    <personTrip from="688219972" to="-106674866#1" line="ANY" modes="public"/>
+    <stop duration="8007" actType="singing"/>
   </person>
   <person id="p3" depart="0.00">
-    <personTrip from="37799153" to="-392589607#0" line="ANY" modes="public"/>
-    <personTrip from="-392589607#0" to="25973409#3" line="ANY" vTypes="passenger"/>
-    <stop duration="1227" actType="singing"/>
+    <personTrip from="688219972" to="-23275118#5" line="ANY" modes="public"/>
+    <stop duration="2243" actType="singing"/>
   </person>
   <person id="p4" depart="0.00">
-    <personTrip from="37799153" to="-214338322#2" line="ANY" modes="public"/>
-    <stop duration="5185" actType="singing"/>
+    <personTrip from="688219972" to="-106674866#1" line="ANY" modes="public"/>
+    <stop duration="11688" actType="singing"/>
   </person>
 </routes>
