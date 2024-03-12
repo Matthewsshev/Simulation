@@ -6,6 +6,8 @@ import os
 from lxml import etree
 import sqlite3
 from threading import Thread
+import sumolib
+
 print(platform.system())  # printing out our system and then creating new variable for slash character
 if platform.system() == "Windows":
     slash_char = "\\"
@@ -16,9 +18,11 @@ if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     sys.path.append(tools)
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
-sumoCmd1 = ["sumo", "-c", "Retrieve" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64", "-W",
-            "--step-log.period", "2"]  # saving directory of the file
+sumoCmd1 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
+            "-W", "--step-log.period", "2"]  # saving directory of the file
+net = sumolib.net.readNet("Without_transport" + slash_char + "crr.net.xml")
 traci.start(sumoCmd1, label='sim1')  # starting simulation
+railway = sumolib.net.readNet("Without_transport" + slash_char + "railway.xml")
 
 
 class Trip:
@@ -119,22 +123,24 @@ class Trip:
             allowed_auto = set()  # creating a list of allowed transport on a start point
             person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
             location = person.home  # setting a start position for everyone as Home
-            for c in range(n):  # creating a loop that will choose destination that`s different from location
+            for _ in range(n):  # creating a loop that will choose destination that`s different from location
                 rd = random.choice([d for d in person.destination if d != location])
                 person.assign_trip(location, rd)  # using function to add trip for a person
                 location = rd  # setting new location for person
             for trip in person.trip:  # now we`re working with trips
                 if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
-                    if type(trip.vType) is list:  # checking if person have more than one type of transport
+                    if isinstance(trip.vType, list):  # checking if person have more than one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
                         random_auto = trip.vType
                     # if our auto is not allowed on a start point
+                    # print(net.getFastestPath(net.getEdge(trip.start_edge), net.getEdge(trip.destination_edge), vClass=random_auto))
                     if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
-                                                                vType=random_auto, modes='public')
+                                                                          modes='car public', vType=random_auto)
+                        # print(next_edges)
                         if next_edges:
                             allowed_a = set()  # creating a new list of allowed autos on next edge
                             b = 0  # creating variable to count edges
@@ -242,15 +248,24 @@ class Human:  # creating a human class for retrieving information
     Human will have their own list of trips. List of destination is places where person can go in simulation
     """
     edges = traci.edge.getIDList()  # getting edges from simulation
+    railway_routes = traci.route.getIDList()
+    railway_routes = [element for element in railway_routes if
+                      'pt_light_rail' in element or 'pt_monorail' in element or 'pt_train' in element or 'pt_tram' in element]
     railway_edges = set()
-
+    for route_name in railway_routes:
+        edge = traci.route.getEdges(route_name)
+        railway_edges.update(edge)
     filtered_edges = []
+    print(railway_edges)
     quantity = 5  # quantity of people that will be in simulation
     for edge in edges:
-        if '_' not in edge:  # saving filtered edges that don`t contain railway edges
+        if not any(c.isalpha() for c in
+                   edge) and '_' not in edge and edge not in railway_edges:  # saving filtered edges that don`t contain railway edges
             filtered_edges.append(edge)
+    print(f"Check: {filtered_edges}")
+
     # Creating lists of existing places for people
-    home = random.sample(filtered_edges, int(quantity/5))
+    home = random.sample(filtered_edges, int(quantity / 5))
     supermarket = random.sample(filtered_edges, 10)
     friends = random.sample(filtered_edges, 10)
 
@@ -404,16 +419,15 @@ def main():
     traci.simulationStep()
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
-    quantity_trips = 1
+    quantity_trips = 3
     t1 = Thread(target=Human.create_humans(humans))
     t1.start()
     t2 = Thread(target=Trip.create_trips(humans, quantity_trips))
     t2.start()
     t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
-    sumo_cmd2 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
-                 "-W", "--step-log.period", "2"]  # saving directory of the file
-    traci.start(sumo_cmd2, label='sim2')  # starting second simulation
+    traci.close()
+    traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster

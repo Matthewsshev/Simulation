@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- generated on 2023-11-14 17:13:52.664355 by gtfs2pt.py v1_19_0+0000-baa66a0f364
-  options: -n osm.net.xml.gz <doubleminus>gtfs gtfs_realtime.zip <doubleminus>date 20231009 <doubleminus>modes bus <doubleminus>vtype-output pt_vtypes.xml
--->
-
-<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
-    <vType id="bus" vClass="bus"/>
-</additional>
