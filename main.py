@@ -6,7 +6,7 @@ import os
 from lxml import etree
 import sqlite3
 from threading import Thread
-import sumolib
+import pickle
 
 print(platform.system())  # printing out our system and then creating new variable for slash character
 if platform.system() == "Windows":
@@ -20,9 +20,7 @@ else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd1 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
             "-W", "--step-log.period", "2"]  # saving directory of the file
-net = sumolib.net.readNet("Without_transport" + slash_char + "crr.net.xml")
 traci.start(sumoCmd1, label='sim1')  # starting simulation
-railway = sumolib.net.readNet("Without_transport" + slash_char + "railway.xml")
 
 
 class Trip:
@@ -48,13 +46,13 @@ class Trip:
         self.destination_edge = destination_edge
         self.line = 'ANY'
         self.mode = 'public'
-        if random.choice([True, False]):  # choosing random could person have a transport
-            if random.choice([True, False]):  # if  yes, then how much
+        if random.random() < 0.5:  # Randomly determine if the person has a transport
+            if random.random() < 0.5:  # Randomly determine if they have multiple types of transport
                 self.vType = random.sample(Trip.autos, k=random.randint(1, 3))
-            else:  # else random choosing a one type
-                self.vType = random.choice(Trip.autos)
-        else:  # and in last person does not have any possibility's except public transport
-            self.vType = None
+            else:
+                self.vType = random.choice(Trip.autos)  # Randomly choose one type of transport
+        else:
+            self.vType = None  # No possibility except public transport
 
     @staticmethod
     def get_allowed(edge, allow_auto):  # creating a function that will append lists of allowed lane
@@ -122,11 +120,11 @@ class Trip:
             person_attrib = {'id': person.name, 'depart': '0.00'}
             allowed_auto = set()  # creating a list of allowed transport on a start point
             person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
-            location = person.home  # setting a start position for everyone as Home
             for _ in range(n):  # creating a loop that will choose destination that`s different from location
-                rd = random.choice([d for d in person.destination if d != location])
-                person.assign_trip(location, rd)  # using function to add trip for a person
-                location = rd  # setting new location for person
+                # Choose a destination different from the current location
+                destination = random.choice([d for d in person.destination if d != person.location])
+                person.assign_trip(person.location, destination)
+                person.location = destination  # Update the person's location
             for trip in person.trip:  # now we`re working with trips
                 if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
@@ -135,7 +133,6 @@ class Trip:
                     else:  # else using only one transport that is possible
                         random_auto = trip.vType
                     # if our auto is not allowed on a start point
-                    # print(net.getFastestPath(net.getEdge(trip.start_edge), net.getEdge(trip.destination_edge), vClass=random_auto))
                     if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
@@ -181,7 +178,7 @@ class Trip:
         # function will retrieve information of a person movement in every simulation step
         for per_id in traci.person.getIDList():  # using a built-in subscription to get all variables
             traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE, traci.constants.VAR_POSITION,
-                                            traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
+                                            traci.constants.VAR_SPEED])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
         for person, pedestrian_data in result.items():  # saving al information into sql table
             lat, lon = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
@@ -204,12 +201,11 @@ class Trip:
                 else:  # person is traveling by car
                     transport = 7
             # Executing an SQL query, which will insert new data into vehicle_data table
-            connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, lat, lon,
-                                                    speed, lane) 
-                                                    VALUES (?, ?, ?, ?, ?, ?, ?)''',
+            connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, lat, lon, speed) 
+                                                    VALUES (?, ?, ?, ?, ?, ?)''',
                                (person, transport, traci.simulation.getTime(),
                                 lat, lon,
-                                pedestrian_data[64], pedestrian_data[81]))
+                                pedestrian_data[64]))
 
     @staticmethod
     def autos_retrieval(connection):
@@ -217,17 +213,17 @@ class Trip:
         for veh_id in traci.simulation.getDepartedIDList():
             traci.vehicle.subscribe(veh_id,
                                     [traci.constants.VAR_POSITION,
-                                     traci.constants.VAR_SPEED, traci.constants.VAR_LANE_ID])
+                                     traci.constants.VAR_SPEED])
         result = traci.vehicle.getAllSubscriptionResults()
         for vehicle, vehicle_data in result.items():
             lat, lon = traci.simulation.convertGeo(vehicle_data[66][0], vehicle_data[66][1])
             # Executing an SQL query, which will insert new data into vehicle_data table
             connection.execute(''' INSERT INTO vehicle_data (id, datetime, lat, lon,
-                                        speed, lane) 
-                                        VALUES (?, ?, ?, ?, ?, ?)''',
+                                        speed) 
+                                        VALUES (?, ?, ?, ?, ?)''',
                                (vehicle, traci.simulation.getTime(),
                                 lat, lon,
-                                vehicle_data[64], vehicle_data[81]))
+                                vehicle_data[64]))
 
     @staticmethod
     def delete_all(connection):  # function will delete all data from previous simulations
@@ -250,19 +246,20 @@ class Human:  # creating a human class for retrieving information
     edges = traci.edge.getIDList()  # getting edges from simulation
     railway_routes = traci.route.getIDList()
     railway_routes = [element for element in railway_routes if
-                      'pt_light_rail' in element or 'pt_monorail' in element or 'pt_train' in element or 'pt_tram' in element]
+                      'pt_light_rail' in element or 'pt_monorail' in element
+                      or 'pt_train' in element or 'pt_tram' in element]
     railway_edges = set()
     for route_name in railway_routes:
         edge = traci.route.getEdges(route_name)
         railway_edges.update(edge)
     filtered_edges = []
-    print(railway_edges)
-    quantity = 5  # quantity of people that will be in simulation
+    # print(railway_edges)
+    quantity = 1000  # quantity of people that will be in simulation
     for edge in edges:
         if not any(c.isalpha() for c in
-                   edge) and '_' not in edge and edge not in railway_edges:  # saving filtered edges that don`t contain railway edges
-            filtered_edges.append(edge)
-    print(f"Check: {filtered_edges}")
+                   edge) and '_' not in edge and edge not in railway_edges:
+            filtered_edges.append(edge)  # saving filtered edges that don`t contain railway edges
+    # print(f"Check: {filtered_edges}")
 
     # Creating lists of existing places for people
     home = random.sample(filtered_edges, int(quantity / 5))
@@ -281,11 +278,15 @@ class Human:  # creating a human class for retrieving information
         self.friends = random.choice(Human.friends)
         self.friends_lane = Trip.get_lane(self.friends)
         self.friends_lon, self.friends_lat = Trip.convert_lane_to_gps(self.friends_lane)
+        self.location = self.home
         self.destination = [self.home, self.supermarket, self.friends]
         self.age = random.randint(0, 99)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         self.trip.add(Trip(start_edge, destination_edge))
+
+    def delete_trips(self):
+        self.trip = set()
 
     @staticmethod
     def create_humans(persons):
@@ -303,7 +304,7 @@ class Human:  # creating a human class for retrieving information
     @staticmethod
     def save_humans(persons, connection):
         """ Static method, that will save personal data like Name, salary, pocket money, house address etc. in
-        xml file. Using for this given list of people that was created earlier.
+        database file. Using for this given list of people that was created earlier.
         """
         for person in persons:
             # checking which class our person have to give special variables
@@ -331,6 +332,22 @@ class Human:  # creating a human class for retrieving information
                                 person.friends_lat, person.supermarket_lon, person.supermarket_lat, place_lon,
                                 place_lat, person.money))
 
+    @staticmethod
+    def save_state(filename, data):
+        """ Static method, that will save all object information so that previous information could be loaded.
+         Using for this given list of people that was created earlier.
+                """
+        with open(filename, 'wb') as f:
+            pickle.dump(data, f)
+
+    @staticmethod
+    def load_state(filename):
+        """ Static method, that will load all object information to extend our simulation
+                """
+        with open(filename, 'rb') as f:
+            data = pickle.load(f)
+            return data
+
 
 class Worker(Human):  # creating a subclass of Human
     """
@@ -340,7 +357,7 @@ class Worker(Human):  # creating a subclass of Human
     work = random.sample(Human.filtered_edges, 10)
 
     def __init__(self, name):
-        super().__init__(name, )  # getting variables from class human
+        super().__init__(name)  # getting variables from class human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
         self.work = random.choice(Worker.work)
@@ -350,6 +367,9 @@ class Worker(Human):  # creating a subclass of Human
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
+
+    def delete_trips(self):
+        super().delete_trips()
 
 
 class Student(Human):  # creating a second subclass of Human
@@ -371,6 +391,9 @@ class Student(Human):  # creating a second subclass of Human
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
+    def delete_trips(self):
+        super().delete_trips()
+
 
 class Pupil(Human):  # creating a second subclass of Human
     """
@@ -380,7 +403,7 @@ class Pupil(Human):  # creating a second subclass of Human
     school = random.sample(Human.filtered_edges, 10)
 
     def __init__(self, name):
-        super().__init__(name, )  # getting variables from class human
+        super().__init__(name)  # getting variables from class human
         self.school = random.choice(Human.filtered_edges)  # getting variables that are different from Human
         self.school_lane = Trip.get_lane(self.school)
         self.school_lon, self.school_lat = Trip.convert_lane_to_gps(self.school_lane)
@@ -390,6 +413,9 @@ class Pupil(Human):  # creating a second subclass of Human
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
+
+    def delete_trips(self):
+        super().delete_trips()
 
 
 class Senior(Human):  # creating a subclass of Human
@@ -411,17 +437,22 @@ class Senior(Human):  # creating a subclass of Human
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
+    def delete_trips(self):
+        super().delete_trips()
+
 
 def main():
-    humans = []  # creating an empty list for person that`ll be created
+    humans = Human.load_state('state.pkl')  # creating an empty list for person that`ll be created
+    # humans = []
     conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
     # Using Threading making our code to run Functions at the same time
     traci.simulationStep()
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
-    quantity_trips = 3
-    t1 = Thread(target=Human.create_humans(humans))
-    t1.start()
+    quantity_trips = 1
+    if not humans:
+        t1 = Thread(target=Human.create_humans(humans))
+        t1.start()
     t2 = Thread(target=Trip.create_trips(humans, quantity_trips))
     t2.start()
     t3 = Thread(target=Human.save_humans(humans, conn))
@@ -429,6 +460,11 @@ def main():
     traci.close()
     traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
+    save_obj = True  # will the simulation be extended
+    if save_obj:
+        for human in humans:
+            Human.delete_trips(human)
+        Human.save_state('state.pkl', humans)
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
