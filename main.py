@@ -123,9 +123,11 @@ class Trip:
             for _ in range(n):  # creating a loop that will choose destination that`s different from location
                 # Choose a destination different from the current location
                 destination = random.choice([d for d in person.destination if d != person.location])
+                print(f'Name dest {person.name} From {person.location} to {destination}')
                 person.assign_trip(person.location, destination)
                 person.location = destination  # Update the person's location
             for trip in person.trip:  # now we`re working with trips
+                print(f'Name Start {person.name} From {trip.start_edge} to {trip.destination_edge}')
                 if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     if isinstance(trip.vType, list):  # checking if person have more than one type of transport
@@ -152,14 +154,19 @@ class Trip:
                                 'from': next_e, 'to': trip.destination_edge,
                                 'line': trip.line, 'vTypes': random_auto}  # creating trip attribute for xml file
                         else:
+                            # print(f'Name Auto1 {person.name} From {trip.start_edge} to {trip.destination_edge}')
+
                             trip_attrib = {
                                 'from': trip.start_edge, 'to': trip.destination_edge,
                                 'line': trip.line, 'vTypes': random_auto}
                     else:  # if  edge is suitable from the start creating only one trip
+                        # print(f'Name Auto2 {person.name} From {trip.start_edge} to {trip.destination_edge}')
+
                         trip_attrib = {
                             'from': trip.start_edge, 'to': trip.destination_edge,
                             'line': trip.line, 'vTypes': random_auto}
                 else:  # and if person does not have any transport he`ll use public transport
+                    # print(f'Name Public {person.name} From {trip.start_edge} to {trip.destination_edge}')
                     trip_attrib = {
                         'from': trip.start_edge, 'to': trip.destination_edge,
                         'line': trip.line, 'modes': trip.mode}
@@ -254,7 +261,7 @@ class Human:  # creating a human class for retrieving information
         railway_edges.update(edge)
     filtered_edges = []
     # print(railway_edges)
-    quantity = 1000  # quantity of people that will be in simulation
+    quantity = 5  # quantity of people that will be in simulation
     for edge in edges:
         if not any(c.isalpha() for c in
                    edge) and '_' not in edge and edge not in railway_edges:
@@ -268,7 +275,7 @@ class Human:  # creating a human class for retrieving information
 
     def __init__(self, name):
         self.name = name  # getting variables from input
-        self.trip = set()
+        self.trip = []
         self.home = random.choice(Human.home)
         self.home_lane = Trip.get_lane(self.home)
         self.home_lon, self.home_lat = Trip.convert_lane_to_gps(self.home_lane)
@@ -283,10 +290,10 @@ class Human:  # creating a human class for retrieving information
         self.age = random.randint(0, 99)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
-        self.trip.add(Trip(start_edge, destination_edge))
+        self.trip.append(Trip(start_edge, destination_edge))
 
     def delete_trips(self):
-        self.trip = set()
+        self.trip = []
 
     @staticmethod
     def create_humans(persons):
@@ -442,29 +449,32 @@ class Senior(Human):  # creating a subclass of Human
 
 
 def main():
-    humans = Human.load_state('state.pkl')  # creating an empty list for person that`ll be created
-    # humans = []
     conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
     # Using Threading making our code to run Functions at the same time
     traci.simulationStep()
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
-    quantity_trips = 1
-    if not humans:
+    quantity_trips = 3
+    save_obj = True  # will the simulation be extended
+    if save_obj:
+        print('Loading persons')
+        humans = Human.load_state('state.pkl')
+        for human in humans:
+            Human.delete_trips(human)
+    else:
+        print("Creating persons")
+        humans = []  # creating an empty list for person that`ll be created
         t1 = Thread(target=Human.create_humans(humans))
         t1.start()
     t2 = Thread(target=Trip.create_trips(humans, quantity_trips))
     t2.start()
     t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
+    Human.save_state('state.pkl', humans)
     traci.close()
     traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
-    save_obj = True  # will the simulation be extended
-    if save_obj:
-        for human in humans:
-            Human.delete_trips(human)
-        Human.save_state('state.pkl', humans)
+
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
