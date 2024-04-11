@@ -7,6 +7,9 @@ from lxml import etree
 import sqlite3
 from threading import Thread
 import pickle
+import sumolib
+import csv
+from datetime import datetime, timedelta
 
 print(platform.system())  # printing out our system and then creating new variable for slash character
 if platform.system() == "Windows":
@@ -20,6 +23,7 @@ else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd1 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
             "-W", "--step-log.period", "2"]  # saving directory of the file
+net = sumolib.net.readNet("Without_transport" + slash_char + "crr.net.xml")
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
 
@@ -67,10 +71,8 @@ class Trip:
                 return lane
 
     @staticmethod
-    def convert_lane_to_gps(lane):  # creating a functuion that will convert edge to lon and lat
-        lane_shape = traci.lane.getShape(lane)
-        for x, y in lane_shape:
-            lon, lat = traci.simulation.convertGeo(x, y)
+    def convert_edge_to_gps(edge):  # creating a functuion that will convert edge to lon and lat
+        lon, lat = traci.simulation.convert2D(edge, 0, toGeo=True)
         return lon, lat
 
     @staticmethod
@@ -93,7 +95,9 @@ class Trip:
 
     @staticmethod
     def get_duration(person, destination_edge):
-        if destination_edge == person.supermarket:
+        if person.name == 'Fake':
+            return random.randint(1, 2)
+        elif destination_edge == person.supermarket:
             return random.randint(600, 2400)
         elif destination_edge == person.friends:
             return random.randint(3600, 14400)
@@ -109,7 +113,7 @@ class Trip:
             return random.randint(4200, 8400)
 
     @staticmethod
-    def create_trips(persons, n):
+    def create_trips(persons, n, durations):
         """ Creating a function that will take list of created persons and one number for quantity
         of trips for one person. Then saves all it in one xml file for simulation. For one treep is
         needed location and destination, type of transport or mode, but not both.
@@ -120,14 +124,23 @@ class Trip:
             person_attrib = {'id': person.name, 'depart': '0.00'}
             allowed_auto = set()  # creating a list of allowed transport on a start point
             person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
-            for _ in range(n):  # creating a loop that will choose destination that`s different from location
-                # Choose a destination different from the current location
-                destination = random.choice([d for d in person.destination if d != person.location])
-                print(f'Name dest {person.name} From {person.location} to {destination}')
-                person.assign_trip(person.location, destination)
-                person.location = destination  # Update the person's location
+            if person.name != 'Fake':
+                for _ in range(n):  # creating a loop that will choose destination that`s different from location
+                    # Choose a destination different from the current location
+                    destination = random.choice([d for d in person.destination if d != person.location])
+                    person.assign_trip(person.location, destination)
+                    person.location = destination  # Update the person's location
+            count = 1
             for trip in person.trip:  # now we`re working with trips
-                print(f'Name Start {person.name} From {trip.start_edge} to {trip.destination_edge}')
+                if person.name == 'Fake':
+                    print("The person  = Fake")
+                    for dur in durations:
+                        if count == int(dur[0]):
+                            print(f'Check {dur[1]}')
+                            stop_attrib = {'duration': str(dur[1]), 'actType': 'singing'}  # creating stop attribute
+                            etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
+                count += 2
+                print(f"Count += {count}")
                 if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     if isinstance(trip.vType, list):  # checking if person have more than one type of transport
@@ -139,7 +152,6 @@ class Trip:
                         #  getting a route by which person will travel
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
                                                                           modes='car public', vType=random_auto)
-                        # print(next_edges)
                         if next_edges:
                             allowed_a = set()  # creating a new list of allowed autos on next edge
                             b = 0  # creating variable to count edges
@@ -154,31 +166,100 @@ class Trip:
                                 'from': next_e, 'to': trip.destination_edge,
                                 'line': trip.line, 'vTypes': random_auto}  # creating trip attribute for xml file
                         else:
-                            # print(f'Name Auto1 {person.name} From {trip.start_edge} to {trip.destination_edge}')
 
                             trip_attrib = {
                                 'from': trip.start_edge, 'to': trip.destination_edge,
                                 'line': trip.line, 'vTypes': random_auto}
                     else:  # if  edge is suitable from the start creating only one trip
-                        # print(f'Name Auto2 {person.name} From {trip.start_edge} to {trip.destination_edge}')
 
                         trip_attrib = {
                             'from': trip.start_edge, 'to': trip.destination_edge,
                             'line': trip.line, 'vTypes': random_auto}
                 else:  # and if person does not have any transport he`ll use public transport
-                    # print(f'Name Public {person.name} From {trip.start_edge} to {trip.destination_edge}')
                     trip_attrib = {
                         'from': trip.start_edge, 'to': trip.destination_edge,
                         'line': trip.line, 'modes': trip.mode}
-                duration = Trip.get_duration(person, trip.destination_edge)
                 etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
-                stop_attrib = {'duration': str(duration), 'actType': 'singing'}  # creating stop attribute
-                etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
+                if person.name == 'Fake' and count == 61:
+                    duration = durations[-1][1]
+                    print(duration)
+                    stop_attrib = {'duration': str(duration), 'actType': 'singing'}  # creating stop attribute
+                    etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
+                else:
+                    duration = Trip.get_duration(person, trip.destination_edge)
+
+
         xml_2string = etree.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
         dom = etree.fromstring(xml_2string)  # this two lines help to create readable xml file
         formatted_xml = etree.tostring(dom, pretty_print=True, encoding="utf-8").decode()
         with open("Without_transport/data.rou.xml", "w") as save:  # Writing information that we`ve saved to the xml fil
             save.write(formatted_xml)
+
+    @staticmethod
+    def createTrips(durations, csvname):
+        data = []
+        # Read data from 'fakePerson.csv'
+        with open('fakePerson.csv', newline='') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+            # Store each row as a string in the 'data' list
+            for row in spamreader:
+                data.append(','.join(row))
+
+        # Create a list to store person objects
+        person = []
+        # Append two Worker objects to the 'person' list
+        person.append(Worker('Fake'))
+        person.append(Worker('Check'))
+
+        c = 1
+        # Open the output CSV file for writing
+        with open(csvname, "w") as csvfile:
+            csvfile.write("name,trip, time,lon,lat\n")
+            # Iterate over each row in the 'data' list
+            for row in data:
+                # Split the row string into a list of elements
+                temp = row.split(',')
+                # Remove leading and trailing double quotes from each element in the 'temp' list
+                temp = [element.strip('"') for element in temp]
+                # If the second element of 'temp' is 't', indicating a trip
+                if temp[1] == 't':
+                    # Convert start and end coordinates to edge IDs
+                    edgeStart = traci.simulation.convertRoad(float(temp[2]), float(temp[3]), isGeo=True)
+                    edgeEnd = traci.simulation.convertRoad(float(temp[6]), float(temp[7]), isGeo=True)
+                    # Find intermodal route (public transport) between start and end edges
+                    edges = traci.simulation.findIntermodalRoute(edgeStart[0], edgeEnd[0], modes='public')
+                    print(f'Trips {edges}')
+                    if edges:
+                        # Iterate over each Stage object in the 'edges' list
+                        for i in range(len(edges)):
+                            # Iterate over each edge in the current Stage object
+                            for edge in edges[i].edges:
+                                # Get lane shape and write to CSV
+                                lane = Trip.get_lane(edge)
+                                res = traci.lane.getShape(lane)
+                                csvfile.write(f'{person[0].name}, {temp[0]}, {c}, {res[0]}, {res[1]}\n')
+                                c += 1
+                    # Assign trip to person
+                    person[0].assign_trip(edgeStart[0], edgeEnd[0])
+                else:
+                    # Calculate duration of non-trip
+                    start_time = datetime.strptime(temp[5], '%H:%M:%S')
+                    end_time = datetime.strptime(temp[9], '%H:%M:%S')
+                    duration = (end_time - start_time).total_seconds()
+                    # Ensure duration is non-negative
+                    if duration < 0:
+                        duration = duration + 86400  # Add a day in seconds
+                    # Increment counter by duration
+                    c += duration
+                    # Append duration to 'durations' list
+                    durations.append([temp[0], duration])
+        # Calculate and print sum of durations
+        sum = 0
+        for i, dur in durations:
+            sum += dur
+        print(f"Quantity {sum}")
+        # Create trips for person objects
+        Trip.create_trips(person, 5, durations)
 
     @staticmethod
     def pedestrian_retrieval(connection):
@@ -260,13 +341,11 @@ class Human:  # creating a human class for retrieving information
         edge = traci.route.getEdges(route_name)
         railway_edges.update(edge)
     filtered_edges = []
-    # print(railway_edges)
     quantity = 5  # quantity of people that will be in simulation
     for edge in edges:
         if not any(c.isalpha() for c in
                    edge) and '_' not in edge and edge not in railway_edges:
             filtered_edges.append(edge)  # saving filtered edges that don`t contain railway edges
-    # print(f"Check: {filtered_edges}")
 
     # Creating lists of existing places for people
     home = random.sample(filtered_edges, int(quantity / 5))
@@ -277,14 +356,11 @@ class Human:  # creating a human class for retrieving information
         self.name = name  # getting variables from input
         self.trip = []
         self.home = random.choice(Human.home)
-        self.home_lane = Trip.get_lane(self.home)
-        self.home_lon, self.home_lat = Trip.convert_lane_to_gps(self.home_lane)
+        self.home_lon, self.home_lat = Trip.convert_edge_to_gps(self.home)
         self.supermarket = random.choice(Human.supermarket)
-        self.supermarket_lane = Trip.get_lane(self.supermarket)
-        self.supermarket_lon, self.supermarket_lat = Trip.convert_lane_to_gps(self.supermarket_lane)
+        self.supermarket_lon, self.supermarket_lat = Trip.convert_edge_to_gps(self.supermarket)
         self.friends = random.choice(Human.friends)
-        self.friends_lane = Trip.get_lane(self.friends)
-        self.friends_lon, self.friends_lat = Trip.convert_lane_to_gps(self.friends_lane)
+        self.friends_lon, self.friends_lat = Trip.convert_edge_to_gps(self.friends)
         self.location = self.home
         self.destination = [self.home, self.supermarket, self.friends]
         self.age = random.randint(0, 99)
@@ -368,13 +444,14 @@ class Worker(Human):  # creating a subclass of Human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
         self.work = random.choice(Worker.work)
-        self.work_lane = Trip.get_lane(self.work)
-        self.work_lon, self.work_lat = Trip.convert_lane_to_gps(self.work_lane)
+        self.work_lon, self.work_lat = Trip.convert_edge_to_gps(self.work)
         self.destination.append(self.work)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
+    def getTrips(self):
+        return self.trip
     def delete_trips(self):
         super().delete_trips()
 
@@ -391,8 +468,7 @@ class Student(Human):  # creating a second subclass of Human
         self.money = random.randrange(800, 1100)  # getting random scholarship in range
         self.age = random.randrange(20, 30)  # getting random age in range
         self.uni = random.choice(Human.filtered_edges)
-        self.uni_lane = Trip.get_lane(self.uni)
-        self.uni_lon, self.uni_lat = Trip.convert_lane_to_gps(self.uni_lane)
+        self.uni_lon, self.uni_lat = Trip.convert_edge_to_gps(self.uni)
         self.destination.append(self.uni)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
@@ -412,8 +488,7 @@ class Pupil(Human):  # creating a second subclass of Human
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.school = random.choice(Human.filtered_edges)  # getting variables that are different from Human
-        self.school_lane = Trip.get_lane(self.school)
-        self.school_lon, self.school_lat = Trip.convert_lane_to_gps(self.school_lane)
+        self.school_lon, self.school_lat = Trip.convert_edge_to_gps(self.school)
         self.money = random.randrange(40, 100)  # getting random pocket money in range
         self.age = random.randrange(5, 20)  # getting random age in range
         self.destination.append(self.school)
@@ -437,8 +512,7 @@ class Senior(Human):  # creating a subclass of Human
         self.money = random.randrange(2000, 4000)  # getting random pension in range
         self.age = random.randrange(60, 100)  # getting random age in range
         self.park = random.choice(Senior.park)
-        self.park_lane = Trip.get_lane(self.park)
-        self.park_lon, self.park_lat = Trip.convert_lane_to_gps(self.park_lane)
+        self.park_lon, self.park_lat = Trip.convert_edge_to_gps(self.park)
         self.destination.append(self.park)
 
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
@@ -464,21 +538,28 @@ def main():
     else:
         print("Creating persons")
         humans = []  # creating an empty list for person that`ll be created
-        t1 = Thread(target=Human.create_humans(humans))
-        t1.start()
-    t2 = Thread(target=Trip.create_trips(humans, quantity_trips))
+        # t1 = Thread(target=Human.create_humans(humans))
+        # t1.start()
+    duration = []
+    csvName = 'Fake.csv'
+    t2 = Thread(target=Trip.createTrips(duration, csvName))
     t2.start()
+    # t22 = Thread(target=Trip.create_trips(humans, quantity_trips, duration))
+    # t22.start()
     t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
     Human.save_state('state.pkl', humans)
     traci.close()
     traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
+    print(duration)
 
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
         t4.start()
+        if traci.simulation.getTime() % 3000 == 0:
+            print(f'Persons {traci.person.getIDList()}')
         t5 = Thread(target=Trip.autos_retrieval(conn))
         t5.start()
         conn.commit()  # saving data to a database
