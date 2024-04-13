@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-04-11 15:51:39 by Eclipse SUMO GUI Version 1.19.0
+<!-- generated on 2024-04-13 11:59:39 by Eclipse SUMO sumo Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\fake.net.xml"/>
-        <route-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\flows.rou.xml"/>
-        <additional-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_polygons.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\ basic.vType.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\ additional.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\ data.rou.xml"/>
+        <net-file value="Without_transport\last.net.xml"/>
+        <route-files value="Without_transport\lflows.rou.xml"/>
+        <additional-files value="Without_transport\basic.vType.xml,Without_transport\ ladditional.xml,Without_transport\ data.rou.xml"/>
     </input>
 
     <output>
         <output-prefix value="output."/>
-        <summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\summary.xml"/>
-        <person-summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\person.summary.xml"/>
-        <tripinfo-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\tripinfo.xml"/>
+        <summary-output value="Without_transport\summary.xml"/>
+        <person-summary-output value="Without_transport\person.summary.xml"/>
+        <tripinfo-output value="Without_transport\tripinfo.xml"/>
         <tripinfo-output.write-unfinished value="false"/>
-        <statistic-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\statistics.xml"/>
+        <statistic-output value="Without_transport\statistics.xml"/>
     </output>
 
     <processing>
@@ -47,6 +47,7 @@
         <device.rerouting.probability value="1"/>
         <device.rerouting.period value="300"/>
         <device.rerouting.pre-period value="300"/>
+        <device.rerouting.threads value="64"/>
         <device.rerouting.bike-speeds value="true"/>
         <person-device.rerouting.probability value="1"/>
         <person-device.rerouting.period value="300"/>
@@ -54,30 +55,34 @@
 
     <report>
         <verbose value="true"/>
-        <no-warnings value="false"/>
+        <no-warnings value="true"/>
         <duration-log.disable value="false"/>
         <duration-log.statistics value="true"/>
         <no-step-log value="false"/>
+        <step-log.period value="100"/>
     </report>
 
     <taxi_device>
         <device.taxi.dispatch-algorithm value="greedy"/>
-        <device.taxi.dispatch-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.dispatch.xml"/>
+        <device.taxi.dispatch-algorithm.output value="Without_transport\taxi.dispatch.xml"/>
         <device.taxi.dispatch-period value="60"/>
         <device.taxi.idle-algorithm value="stop"/>
-        <device.taxi.idle-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.idle.xml"/>
+        <device.taxi.idle-algorithm.output value="Without_transport\taxi.idle.xml"/>
     </taxi_device>
+
+    <traci_server>
+        <remote-port value="57651"/>
+    </traci_server>
 
     <random_number>
         <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\default-gui.xml"/>
+        <gui-settings-file value="Without_transport\default-gui.xml"/>
     </gui_only>
 
 </configuration>
 -->
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
-</tripinfos>

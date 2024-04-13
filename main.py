@@ -22,7 +22,7 @@ if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd1 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
-            "-W", "--step-log.period", "2"]  # saving directory of the file
+            "-W", "--step-log.period", "100"]  # saving directory of the file
 net = sumolib.net.readNet("Without_transport" + slash_char + "crr.net.xml")
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
@@ -134,19 +134,14 @@ class Trip:
             for trip in person.trip:  # now we`re working with trips
                 if person.name == 'Fake':
                     print("The person  = Fake")
-                    for dur in durations:
-                        if count == int(dur[0]):
-                            print(f'Check {dur[1]}')
-                            stop_attrib = {'duration': str(dur[1]), 'actType': 'singing'}  # creating stop attribute
-                            etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
                 count += 2
                 print(f"Count += {count}")
-                if trip.vType:
+                if person.name == 'Fake':
                     Trip.get_allowed(trip.start_edge, allowed_auto)
-                    if isinstance(trip.vType, list):  # checking if person have more than one type of transport
+                    if isinstance(trip.vType, list) and person.name != 'Fake':  # checking if person have more than one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
-                        random_auto = trip.vType
+                        random_auto = 'passenger'
                     # if our auto is not allowed on a start point
                     if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
@@ -180,15 +175,10 @@ class Trip:
                         'from': trip.start_edge, 'to': trip.destination_edge,
                         'line': trip.line, 'modes': trip.mode}
                 etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
-                if person.name == 'Fake' and count == 61:
-                    duration = durations[-1][1]
-                    print(duration)
+                if person.name != 'Fake':
+                    duration = Trip.get_duration(person, trip.destination_edge)
                     stop_attrib = {'duration': str(duration), 'actType': 'singing'}  # creating stop attribute
                     etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
-                else:
-                    duration = Trip.get_duration(person, trip.destination_edge)
-
-
         xml_2string = etree.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
         dom = etree.fromstring(xml_2string)  # this two lines help to create readable xml file
         formatted_xml = etree.tostring(dom, pretty_print=True, encoding="utf-8").decode()
@@ -226,8 +216,11 @@ class Trip:
                     # Convert start and end coordinates to edge IDs
                     edgeStart = traci.simulation.convertRoad(float(temp[2]), float(temp[3]), isGeo=True)
                     edgeEnd = traci.simulation.convertRoad(float(temp[6]), float(temp[7]), isGeo=True)
+                    print(f'Check start {Trip.convert_edge_to_gps(edgeStart[0])}  real {temp[2]}  {temp[3]}')
+                    print(f'Check end {Trip.convert_edge_to_gps(edgeEnd[0])}  real {temp[6]}  {temp[7]}')
+
                     # Find intermodal route (public transport) between start and end edges
-                    edges = traci.simulation.findIntermodalRoute(edgeStart[0], edgeEnd[0], modes='public')
+                    edges = traci.simulation.findIntermodalRoute(edgeStart[0], edgeEnd[0], modes='public car')
                     print(f'Trips {edges}')
                     if edges:
                         # Iterate over each Stage object in the 'edges' list
@@ -235,8 +228,8 @@ class Trip:
                             # Iterate over each edge in the current Stage object
                             for edge in edges[i].edges:
                                 # Get lane shape and write to CSV
-                                lane = Trip.get_lane(edge)
-                                res = traci.lane.getShape(lane)
+                                # lane = Trip.get_lane(edge)
+                                res = Trip.convert_edge_to_gps(edge)
                                 csvfile.write(f'{person[0].name}, {temp[0]}, {c}, {res[0]}, {res[1]}\n')
                                 c += 1
                     # Assign trip to person
@@ -560,8 +553,8 @@ def main():
         t4.start()
         if traci.simulation.getTime() % 3000 == 0:
             print(f'Persons {traci.person.getIDList()}')
-        t5 = Thread(target=Trip.autos_retrieval(conn))
-        t5.start()
+        # t5 = Thread(target=Trip.autos_retrieval(conn))
+        # t5.start()
         conn.commit()  # saving data to a database
         traci.simulationStep()  # making one step
     conn.close()  # closing a connection to database
