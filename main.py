@@ -10,6 +10,7 @@ import pickle
 import sumolib
 import csv
 from datetime import datetime, timedelta
+import argparse
 
 print(platform.system())  # printing out our system and then creating new variable for slash character
 if platform.system() == "Windows":
@@ -59,6 +60,12 @@ class Trip:
             self.vType = None  # No possibility except public transport
 
     @staticmethod
+    def parse_args():
+        parser = argparse.ArgumentParser(description='Process trips.')
+        parser.add_argument('-t', type=int, default=10, help='Number of trips to process (default: 10)')
+        parser.add_argument('-p', type=int, default=1, help='Number of persons (default: 5)')
+        return parser.parse_args()
+    @staticmethod
     def get_allowed(edge, allow_auto):  # creating a function that will append lists of allowed lane
         for lane in traci.lane.getIDList():
             if traci.lane.getEdgeID(lane) == edge:
@@ -73,7 +80,9 @@ class Trip:
     @staticmethod
     def convert_edge_to_gps(edge):  # creating a functuion that will convert edge to lon and lat
         lon, lat = traci.simulation.convert2D(edge, 0, toGeo=True)
-        return lon, lat
+        lon_formatted = "{:.5f}".format(lon)
+        lat_formatted = "{:.5f}".format(lat)
+        return lon_formatted, lat_formatted
 
     @staticmethod
     def get_suitable_edge(next_edges, random_auto, allowed_a, count):
@@ -113,7 +122,7 @@ class Trip:
             return random.randint(4200, 8400)
 
     @staticmethod
-    def create_trips(persons, n, durations):
+    def create_trips(persons, n):
         """ Creating a function that will take list of created persons and one number for quantity
         of trips for one person. Then saves all it in one xml file for simulation. For one treep is
         needed location and destination, type of transport or mode, but not both.
@@ -136,17 +145,17 @@ class Trip:
                     print("The person  = Fake")
                 count += 2
                 print(f"Count += {count}")
-                if person.name == 'Fake':
+                if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     if isinstance(trip.vType, list) and person.name != 'Fake':  # checking if person have more than one type of transport
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
-                        random_auto = 'passenger'
+                        random_auto = trip.vType
                     # if our auto is not allowed on a start point
                     if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
-                                                                          modes='car public', vType=random_auto)
+                                                                          modes='car', vType=random_auto)
                         if next_edges:
                             allowed_a = set()  # creating a new list of allowed autos on next edge
                             b = 0  # creating variable to count edges
@@ -220,7 +229,7 @@ class Trip:
                     print(f'Check end {Trip.convert_edge_to_gps(edgeEnd[0])}  real {temp[6]}  {temp[7]}')
 
                     # Find intermodal route (public transport) between start and end edges
-                    edges = traci.simulation.findIntermodalRoute(edgeStart[0], edgeEnd[0], modes='public car')
+                    edges = traci.simulation.findIntermodalRoute(edgeStart[0], edgeEnd[0], modes='car')
                     print(f'Trips {edges}')
                     if edges:
                         # Iterate over each Stage object in the 'edges' list
@@ -262,7 +271,9 @@ class Trip:
                                             traci.constants.VAR_SPEED])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
         for person, pedestrian_data in result.items():  # saving al information into sql table
-            lat, lon = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
+            lon, lat = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
+            lon = "{:.5f}".format(lon)
+            lat = "{:.5f}".format(lat)
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
             else:
@@ -297,7 +308,9 @@ class Trip:
                                      traci.constants.VAR_SPEED])
         result = traci.vehicle.getAllSubscriptionResults()
         for vehicle, vehicle_data in result.items():
-            lat, lon = traci.simulation.convertGeo(vehicle_data[66][0], vehicle_data[66][1])
+            lon, lat = traci.simulation.convertGeo(vehicle_data[66][0], vehicle_data[66][1])
+            lon = "{:.5f}".format(lon)
+            lat = "{:.5f}".format(lat)
             # Executing an SQL query, which will insert new data into vehicle_data table
             connection.execute(''' INSERT INTO vehicle_data (id, datetime, lat, lon,
                                         speed) 
@@ -334,7 +347,7 @@ class Human:  # creating a human class for retrieving information
         edge = traci.route.getEdges(route_name)
         railway_edges.update(edge)
     filtered_edges = []
-    quantity = 5  # quantity of people that will be in simulation
+    quantity = 5 # quantity of people that will be in simulation
     for edge in edges:
         if not any(c.isalpha() for c in
                    edge) and '_' not in edge and edge not in railway_edges:
@@ -365,7 +378,8 @@ class Human:  # creating a human class for retrieving information
         self.trip = []
 
     @staticmethod
-    def create_humans(persons):
+    def create_humans(persons ):
+        print(f"Check Humans {Human.quantity}")
         for i in range(Human.quantity):  # creating 1000 people with different type of class
             if i < Human.quantity / 4:
                 person = Worker(f'p{i}')  # creating a Worker
@@ -518,11 +532,14 @@ class Senior(Human):  # creating a subclass of Human
 def main():
     conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
     # Using Threading making our code to run Functions at the same time
-    traci.simulationStep()
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
-    quantity_trips = 3
-    save_obj = True  # will the simulation be extended
+    # Parse command-line arguments
+    args = Trip.parse_args()
+    quantity_trips = args.t
+    Human.quantity = args.p
+    print(f"Real {Human.quantity}")
+    save_obj = False  # will the simulation be extended
     if save_obj:
         print('Loading persons')
         humans = Human.load_state('state.pkl')
@@ -531,30 +548,28 @@ def main():
     else:
         print("Creating persons")
         humans = []  # creating an empty list for person that`ll be created
-        # t1 = Thread(target=Human.create_humans(humans))
-        # t1.start()
+        t1 = Thread(target=Human.create_humans(humans))
+        t1.start()
     duration = []
     csvName = 'Fake.csv'
-    t2 = Thread(target=Trip.createTrips(duration, csvName))
-    t2.start()
-    # t22 = Thread(target=Trip.create_trips(humans, quantity_trips, duration))
-    # t22.start()
+    # t2 = Thread(target=Trip.createTrips(duration, csvName))
+    # t2.start()
+    t22 = Thread(target=Trip.create_trips(humans, quantity_trips))
+    t22.start()
     t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
     Human.save_state('state.pkl', humans)
     traci.close()
     traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
-    print(duration)
-
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
         t4.start()
         if traci.simulation.getTime() % 3000 == 0:
             print(f'Persons {traci.person.getIDList()}')
-        # t5 = Thread(target=Trip.autos_retrieval(conn))
-        # t5.start()
+        t5 = Thread(target=Trip.autos_retrieval(conn))
+        t5.start()
         conn.commit()  # saving data to a database
         traci.simulationStep()  # making one step
     conn.close()  # closing a connection to database

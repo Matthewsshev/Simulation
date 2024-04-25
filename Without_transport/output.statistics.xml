@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-04-13 11:59:39 by Eclipse SUMO sumo Version 1.19.0
+<!-- generated on 2024-04-25 14:25:22 by Eclipse SUMO sumo Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="Without_transport\last.net.xml"/>
-        <route-files value="Without_transport\lflows.rou.xml"/>
-        <additional-files value="Without_transport\basic.vType.xml,Without_transport\ ladditional.xml,Without_transport\ data.rou.xml"/>
+        <net-file value="Without_transport\crr.net.xml"/>
+        <route-files value="Without_transport\flows.rou.xml"/>
+        <additional-files value="Without_transport\osm_polygons.add.xml,Without_transport\ basic.vType.xml,Without_transport\ additional.xml,Without_transport\ data.rou.xml"/>
     </input>
 
     <output>
@@ -71,7 +71,7 @@
     </taxi_device>
 
     <traci_server>
-        <remote-port value="57651"/>
+        <remote-port value="64625"/>
     </traci_server>
 
     <random_number>
@@ -83,3 +83,7 @@
     </gui_only>
 
 </configuration>
+-->
+
+<statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
+</statistics>
