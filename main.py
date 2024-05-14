@@ -9,8 +9,10 @@ from threading import Thread
 import pickle
 import sumolib
 import csv
-from datetime import datetime, timedelta
+from datetime import datetime
 import argparse
+import osmium as osm
+
 
 print(platform.system())  # printing out our system and then creating new variable for slash character
 if platform.system() == "Windows":
@@ -26,6 +28,20 @@ sumoCmd1 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--d
             "-W", "--step-log.period", "100"]  # saving directory of the file
 net = sumolib.net.readNet("Without_transport" + slash_char + "crr.net.xml")
 traci.start(sumoCmd1, label='sim1')  # starting simulation
+
+
+class NodeHandler(osm.SimpleHandler):
+    """ The class helps to read and convert gps data from OSM file to SUMO edges"""
+    def __init__(self):
+        super().__init__()
+        self.edge = []  # Initialize a list to store SUMO edges.
+
+    def node(self, n):
+        if n.location.valid():  # Check if the node has valid location data.
+            lat, lon = n.location.lat, n.location.lon  # Extract latitude and longitude.
+            # Convert GPS coordinates to SUMO edge and append to the list of edges.
+            res = traci.simulation.convertRoad(lon, lat, isGeo=True)
+            self.edge.append(res[0])
 
 
 class Trip:
@@ -61,10 +77,15 @@ class Trip:
 
     @staticmethod
     def parse_args():
-        parser = argparse.ArgumentParser(description='Process trips.')
-        parser.add_argument('-t', type=int, default=10, help='Number of trips to process (default: 10)')
-        parser.add_argument('-p', type=int, default=1, help='Number of persons (default: 5)')
+        # Define argument parser
+        parser = argparse.ArgumentParser()
+        # Add argument for number of trips (-t) with default value 10
+        parser.add_argument('-t', type=int, default=10)
+        # Add argument for number of persons (-p) with default value 1
+        parser.add_argument('-p', type=int, default=1)
+        # Parse arguments
         return parser.parse_args()
+
     @staticmethod
     def get_allowed(edge, allow_auto):  # creating a function that will append lists of allowed lane
         for lane in traci.lane.getIDList():
@@ -147,11 +168,13 @@ class Trip:
                 print(f"Count += {count}")
                 if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
-                    if isinstance(trip.vType, list) and person.name != 'Fake':  # checking if person have more than one type of transport
+                    # checking if person have more than one type of transport
+                    if isinstance(trip.vType, list) and person.name != 'Fake':
                         random_auto = random.choice(trip.vType)  # choosing random from given list
                     else:  # else using only one transport that is possible
                         random_auto = trip.vType
                     # if our auto is not allowed on a start point
+
                     if not any(random_auto in group for group in allowed_auto):
                         #  getting a route by which person will travel
                         next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
@@ -175,7 +198,6 @@ class Trip:
                                 'from': trip.start_edge, 'to': trip.destination_edge,
                                 'line': trip.line, 'vTypes': random_auto}
                     else:  # if  edge is suitable from the start creating only one trip
-
                         trip_attrib = {
                             'from': trip.start_edge, 'to': trip.destination_edge,
                             'line': trip.line, 'vTypes': random_auto}
@@ -186,7 +208,7 @@ class Trip:
                 etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
                 if person.name != 'Fake':
                     duration = Trip.get_duration(person, trip.destination_edge)
-                    stop_attrib = {'duration': str(duration), 'actType': 'singing'}  # creating stop attribute
+                    stop_attrib = {'duration': str(duration), 'edge': trip.destination_edge, 'actType': 'singing'}  # creating stop attribute
                     etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
         xml_2string = etree.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
         dom = etree.fromstring(xml_2string)  # this two lines help to create readable xml file
@@ -337,26 +359,24 @@ class Human:  # creating a human class for retrieving information
     that will be suitable for all subclasses for example House and supermarket. Also, every
     Human will have their own list of trips. List of destination is places where person can go in simulation
     """
-    edges = traci.edge.getIDList()  # getting edges from simulation
-    railway_routes = traci.route.getIDList()
-    railway_routes = [element for element in railway_routes if
-                      'pt_light_rail' in element or 'pt_monorail' in element
-                      or 'pt_train' in element or 'pt_tram' in element]
-    railway_edges = set()
-    for route_name in railway_routes:
-        edge = traci.route.getEdges(route_name)
-        railway_edges.update(edge)
-    filtered_edges = []
     quantity = 5 # quantity of people that will be in simulation
-    for edge in edges:
-        if not any(c.isalpha() for c in
-                   edge) and '_' not in edge and edge not in railway_edges:
-            filtered_edges.append(edge)  # saving filtered edges that don`t contain railway edges
-
-    # Creating lists of existing places for people
-    home = random.sample(filtered_edges, int(quantity / 5))
-    supermarket = random.sample(filtered_edges, 10)
-    friends = random.sample(filtered_edges, 10)
+    # Define paths to OSM files for different locations
+    osm_file = 'Without_transport/friends.osm'
+    osm_file1 = 'Without_transport/shop.osm'
+    osm_file2 = 'Without_transport/home.osm'
+    # Create NodeHandler instances for handling OSM data
+    handlerFriends = NodeHandler()
+    handlerSupermarket = NodeHandler()
+    handlerHome = NodeHandler()
+    # Apply OSM files to NodeHandlers to extract location data
+    handlerFriends.apply_file(osm_file)
+    handlerSupermarket.apply_file(osm_file1)
+    handlerHome.apply_file(osm_file2)
+    # Extract edges from NodeHandlers for supermarket and friends locations
+    supermarket = handlerSupermarket.edge
+    friends = handlerFriends.edge
+    # Initialize an empty list for home locations
+    home = []
 
     def __init__(self, name):
         self.name = name  # getting variables from input
@@ -374,11 +394,11 @@ class Human:  # creating a human class for retrieving information
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         self.trip.append(Trip(start_edge, destination_edge))
 
-    def delete_trips(self):
+    def delete_trips(self):  # Function to delete all trips
         self.trip = []
 
     @staticmethod
-    def create_humans(persons ):
+    def create_humans(persons):
         print(f"Check Humans {Human.quantity}")
         for i in range(Human.quantity):  # creating 1000 people with different type of class
             if i < Human.quantity / 4:
@@ -444,7 +464,11 @@ class Worker(Human):  # creating a subclass of Human
     Subclass of Human. Only difference in personal information like age etc. And also worker is having more
     places to go for example work.
     """
-    work = random.sample(Human.filtered_edges, 10)
+    osm_file = "Without_transport/work.osm"
+    handler = NodeHandler()
+    handler.apply_file(osm_file)
+    work = handler.edge
+
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
@@ -457,8 +481,6 @@ class Worker(Human):  # creating a subclass of Human
     def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
         super().assign_trip(start_edge, destination_edge)
 
-    def getTrips(self):
-        return self.trip
     def delete_trips(self):
         super().delete_trips()
 
@@ -468,13 +490,19 @@ class Student(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Student is having more
         places to go for example uni.
     """
-    uni = random.sample(Human.filtered_edges, 10)
+    uniGps = []  # List for gps Coord
+    uni = []  # List for sumo edges
+    uniGps.append([48.74527, 9.32249])  # coord of Flandernstrasse
+    uniGps.append([48.73831, 9.31112])  # coord of Stadtmitte
+    for lat, lon in uniGps:
+        res = traci.simulation.convertRoad(lon, lat, isGeo=True)  # converting gps coordinates to sumo edge
+        uni.append(res[0])
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(800, 1100)  # getting random scholarship in range
         self.age = random.randrange(20, 30)  # getting random age in range
-        self.uni = random.choice(Human.filtered_edges)
+        self.uni = random.choice(Student.uni)
         self.uni_lon, self.uni_lat = Trip.convert_edge_to_gps(self.uni)
         self.destination.append(self.uni)
 
@@ -490,11 +518,14 @@ class Pupil(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Pupil is having more
         places to go for example school.
     """
-    school = random.sample(Human.filtered_edges, 10)
+    osm_file = "Without_transport/school.osm"
+    handler = NodeHandler()
+    handler.apply_file(osm_file)
+    school = handler.edge
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
-        self.school = random.choice(Human.filtered_edges)  # getting variables that are different from Human
+        self.school = random.choice(Pupil.school)  # getting variables that are different from Human
         self.school_lon, self.school_lat = Trip.convert_edge_to_gps(self.school)
         self.money = random.randrange(40, 100)  # getting random pocket money in range
         self.age = random.randrange(5, 20)  # getting random age in range
@@ -512,7 +543,10 @@ class Senior(Human):  # creating a subclass of Human
          Subclass of Human. Only difference in personal information like age etc. And also Senior is having more
          places to go for example park.
      """
-    park = random.sample(Human.filtered_edges, 10)
+    osm_file = "Without_transport/park.osm"
+    handler = NodeHandler()
+    handler.apply_file(osm_file)
+    park = handler.edge
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
@@ -534,11 +568,17 @@ def main():
     # Using Threading making our code to run Functions at the same time
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
+    print(f'Checking Time')
     # Parse command-line arguments
+    osm_file = "Without_transport/try.osm"
+    handler = NodeHandler()
+    handler.apply_file(osm_file)
     args = Trip.parse_args()
     quantity_trips = args.t
     Human.quantity = args.p
-    print(f"Real {Human.quantity}")
+    Human.home = random.sample(Human.handlerHome.edge, int(Human.quantity / 5))
+    Worker.work = random.sample(Worker.work, int(Human.quantity / 5))
+    print(f'Checking work {Worker.work}')
     save_obj = False  # will the simulation be extended
     if save_obj:
         print('Loading persons')
@@ -550,8 +590,8 @@ def main():
         humans = []  # creating an empty list for person that`ll be created
         t1 = Thread(target=Human.create_humans(humans))
         t1.start()
-    duration = []
-    csvName = 'Fake.csv'
+    ''' duration = []
+    csvName = 'Fake.csv' '''
     # t2 = Thread(target=Trip.createTrips(duration, csvName))
     # t2.start()
     t22 = Thread(target=Trip.create_trips(humans, quantity_trips))

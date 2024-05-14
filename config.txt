@@ -1,27 +1,38 @@
-netconvert --osm esslingen.osm -o crr.net.xml --junctions.join-dist 10 --ramps.guess --geometry.remove --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
-python ptlines2flows.py -n crr.net.xml -s additional.xml -l ptlines.xml -o flows.rou.xml -p 1200 --use-osm-routes --ignore-errors --vtype-prefix pt_ --verbose
+netconvert --osm check.osm -o crr.net.xml --junctions.join-dist 10 --ramps.guess --geometry.remove --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
+python ptlines2flows.py -n crr.net.xml -s additional.xml -l ptlines.xml -o flows.rou.xml -p 1200 --use-osm-routes --ignore-errors --vtype-prefix pt_ --verbose -e 36000000
 netconvert --osm-files esslingen.osm -o crr.net.xml --geometry.remove --ramps.guess --junctions.join-same --edges.join --remove-edges.by-vclass bicycle --remove-edges.isolated --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
 polyconvert --net-file crr.net.xml --osm-files esslingen.osm  -o map.poly.xml --xml-validation never
-<routes>
-  <person id="p0" depart="0.00">
-    <personTrip from="303780063" to="-468914851" line="ANY" modes="public"/>
-    <personTrip from="-468914851" to="1162808918" line="ANY" vTypes="passenger"/>
-    <stop duration="35256" actType="singing"/>
-  </person>
-  <person id="p1" depart="0.00">
-    <personTrip from="1052309948" to="303780063" line="ANY" modes="public"/>
-    <stop duration="7806" actType="singing"/>
-  </person>
-  <person id="p2" depart="0.00">
-    <personTrip from="-25901128" to="303780063" line="ANY" vTypes="bicycle"/>
-    <stop duration="8035" actType="singing"/>
-  </person>
-  <person id="p3" depart="0.00">
-    <personTrip from="5782863#2" to="-23528284#15" line="ANY" vTypes="bicycle"/>
-    <stop duration="6960" actType="singing"/>
-  </person>
-  <person id="p4" depart="0.00">
-    <personTrip from="39161364" to="401262921" line="ANY" modes="public"/>
-    <stop duration="655" actType="singing"/>
-  </person>
-</routes>
+48.772941235539356, 9.26484699216117 48.73061184177323, 9.259182166833757 48.716116584999455, 9.37831516008301 48.77271496998378, 9.371792027887807
+
+netconvert --osm check.osm -o crr.net.xml --junctions.join-dist 10 --ramps.guess --geometry.remove --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
+
+python ptlines2flows.py -n crr.net.xml -s additional.xml -l ptlines.xml -o flows.rou.xml -p 1200  --ignore-errors --vtype-prefix pt_ --verbose -e 36000000      
+
+
+
+netconvert --osm-files check.osm -o crr.net.xml --geometry.remove --ramps.guess --junctions.join-same --edges.join --remove-edges.by-vclass bicycle --remove-edges.isolated --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml --sidewalks.guess.from-permissions
+duarouter -n crr.net.xml -t data.rou.xml -o try.rou.xml -d basic.vType.xml
+
+
+Check start ('9.32223', '48.74523')  real [48.74527, 9.32249]
+Real 10
+Creating persons
+
+
+School
+osmium tags-filter -o school.osm check.osm n/amenity=school --overwrite
+
+Friends
+osmium tags-filter -o friends.osm check.osm n/amenity=bar,biergarten,cafe,fast_food,food_court,ice_cream,pub,restaurant --overwrite
+
+Work
+
+Shop
+osmium tags-filter -o shop.osm check.osm n/shop=department_store,general,kiosk,mall,supermarket,wholesale --overwrite
+osmium tags-filter -o shop.osm check.osm n/shop --overwrite
+
+Park
+osmium tags-filter -o park.osm check.osm wr/leisure=park --overwrite
+
+Home
+osmium tags-filter -o home.osm check.osm wr/building=house --overwrite
