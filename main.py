@@ -62,9 +62,10 @@ class Trip:
            used to define a time in simulation when the trip starts """
     autos = ['bicycle', 'motorcycle', 'passenger']  # List of usable transport for a person. Passenger = car
 
-    def __init__(self, start_edge, destination_edge):
+    def __init__(self, start_edge, destination_edge, duration):
         self.start_edge = start_edge
         self.destination_edge = destination_edge
+        self.duration = duration
         self.line = 'ANY'
         self.mode = 'public'
         if random.random() < 0.5:  # Randomly determine if the person has a transport
@@ -124,6 +125,47 @@ class Trip:
         return next_edge
 
     @staticmethod
+    def destination_probability(person, current_hour):
+        destination_probs = {}  # Initialize destination probabilities dictionary
+        # Define destination probabilities based on the person's class and time of day
+        if 6 <= current_hour <= 9:  # Morning (going to work/uni/school)
+            destination_probs[person.home] = 0.1
+            destination_probs[person.friends] = 0.05
+            if isinstance(person, Worker):
+                destination_probs[person.work] = 0.5
+            elif isinstance(person, Student):
+                destination_probs[person.uni] = 0.5
+            elif isinstance(person, Pupil):
+                destination_probs[person.school] = 0.5
+            destination_probs[person.supermarket] = 0.05
+        elif 10 <= current_hour <= 15:  # Noon (friends, work/uni/school)
+            destination_probs[person.home] = 0.2
+            destination_probs[person.friends] = 0.2
+            if isinstance(person, Worker):
+                destination_probs[person.work] = 0.2
+            elif isinstance(person, Student):
+                destination_probs[person.uni] = 0.5  # Increased probability for students to go to university
+            elif isinstance(person, Pupil):
+                destination_probs[person.school] = 0.2
+            destination_probs[person.supermarket] = 0.05
+        else:  # Evening (going back home, friends)
+            destination_probs[person.home] = 0.6
+            destination_probs[person.friends] = 0.2
+            if isinstance(person, Worker):
+                destination_probs[person.work] = 0.05
+            elif isinstance(person, Student):
+                destination_probs[person.uni] = 0.05
+            elif isinstance(person, Pupil):
+                destination_probs[person.school] = 0.05
+            destination_probs[person.supermarket] = 0.05
+        # Remove current location from the list of possible destinations
+        current_location = person.location
+        destination_probs.pop(current_location, None)
+        # Choose a destination based on probabilities
+        destination = random.choices(list(destination_probs.keys()), weights=list(destination_probs.values()))[0]
+        return destination
+
+    @staticmethod
     def get_duration(person, destination_edge):
         if person.name == 'Fake':
             return random.randint(1, 2)
@@ -151,21 +193,25 @@ class Trip:
         root_2 = etree.Element("routes")
         for person in persons:
             # creating and saving person in xml file depart - time of start. File must be sorted by departure time
-            person_attrib = {'id': person.name, 'depart': '0.00'}
+            person_attrib = {'id': person.name, 'depart': '21600.00'}
             allowed_auto = set()  # creating a list of allowed transport on a start point
             person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
             if person.name != 'Fake':
+                # seting time to 6 am
+                time = 6
                 for _ in range(n):  # creating a loop that will choose destination that`s different from location
                     # Choose a destination different from the current location
-                    destination = random.choice([d for d in person.destination if d != person.location])
-                    person.assign_trip(person.location, destination)
+                    destination = Trip.destination_probability(person, time)
+                    duration = Trip.get_duration(person, destination)
+                    time += duration / 3600
+                    if time >= 24:
+                        time = time - 24
+                    person.assign_trip(person.location, destination, duration)
                     person.location = destination  # Update the person's location
             count = 1
             for trip in person.trip:  # now we`re working with trips
                 if person.name == 'Fake':
                     print("The person  = Fake")
-                count += 2
-                print(f"Count += {count}")
                 if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     # checking if person have more than one type of transport
@@ -207,8 +253,7 @@ class Trip:
                         'line': trip.line, 'modes': trip.mode}
                 etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
                 if person.name != 'Fake':
-                    duration = Trip.get_duration(person, trip.destination_edge)
-                    stop_attrib = {'duration': str(duration), 'edge': trip.destination_edge, 'actType': 'singing'}  # creating stop attribute
+                    stop_attrib = {'duration': str(trip.duration), 'edge': trip.destination_edge, 'actType': 'singing'}  # creating stop attribute
                     etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
         xml_2string = etree.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
         dom = etree.fromstring(xml_2string)  # this two lines help to create readable xml file
@@ -391,15 +436,14 @@ class Human:  # creating a human class for retrieving information
         self.destination = [self.home, self.supermarket, self.friends]
         self.age = random.randint(0, 99)
 
-    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
-        self.trip.append(Trip(start_edge, destination_edge))
+    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
+        self.trip.append(Trip(start_edge, destination_edge, destination))
 
     def delete_trips(self):  # Function to delete all trips
         self.trip = []
 
     @staticmethod
     def create_humans(persons):
-        print(f"Check Humans {Human.quantity}")
         for i in range(Human.quantity):  # creating 1000 people with different type of class
             if i < Human.quantity / 4:
                 person = Worker(f'p{i}')  # creating a Worker
@@ -478,8 +522,8 @@ class Worker(Human):  # creating a subclass of Human
         self.work_lon, self.work_lat = Trip.convert_edge_to_gps(self.work)
         self.destination.append(self.work)
 
-    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge)
+    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, destination)
 
     def delete_trips(self):
         super().delete_trips()
@@ -506,8 +550,8 @@ class Student(Human):  # creating a second subclass of Human
         self.uni_lon, self.uni_lat = Trip.convert_edge_to_gps(self.uni)
         self.destination.append(self.uni)
 
-    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge)
+    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, destination)
 
     def delete_trips(self):
         super().delete_trips()
@@ -531,8 +575,8 @@ class Pupil(Human):  # creating a second subclass of Human
         self.age = random.randrange(5, 20)  # getting random age in range
         self.destination.append(self.school)
 
-    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge)
+    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, destination)
 
     def delete_trips(self):
         super().delete_trips()
@@ -556,8 +600,8 @@ class Senior(Human):  # creating a subclass of Human
         self.park_lon, self.park_lat = Trip.convert_edge_to_gps(self.park)
         self.destination.append(self.park)
 
-    def assign_trip(self, start_edge, destination_edge):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge)
+    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, destination)
 
     def delete_trips(self):
         super().delete_trips()
@@ -568,7 +612,6 @@ def main():
     # Using Threading making our code to run Functions at the same time
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
-    print(f'Checking Time')
     # Parse command-line arguments
     osm_file = "Without_transport/try.osm"
     handler = NodeHandler()
@@ -578,7 +621,6 @@ def main():
     Human.quantity = args.p
     Human.home = random.sample(Human.handlerHome.edge, int(Human.quantity / 5))
     Worker.work = random.sample(Worker.work, int(Human.quantity / 5))
-    print(f'Checking work {Worker.work}')
     save_obj = False  # will the simulation be extended
     if save_obj:
         print('Loading persons')
@@ -606,8 +648,8 @@ def main():
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
         t4.start()
-        if traci.simulation.getTime() % 3000 == 0:
-            print(f'Persons {traci.person.getIDList()}')
+        # if traci.simulation.getTime() % 3000 == 0:
+        # print(f'Persons {traci.person.getIDList()}')
         t5 = Thread(target=Trip.autos_retrieval(conn))
         t5.start()
         conn.commit()  # saving data to a database
