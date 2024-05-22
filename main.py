@@ -7,11 +7,11 @@ from lxml import etree
 import sqlite3
 from threading import Thread
 import pickle
-import sumolib
 import csv
 from datetime import datetime
 import argparse
 import osmium as osm
+import pandas as pd
 
 
 print(platform.system())  # printing out our system and then creating new variable for slash character
@@ -26,7 +26,6 @@ else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd1 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
             "-W", "--step-log.period", "100"]  # saving directory of the file
-net = sumolib.net.readNet("Without_transport" + slash_char + "crr.net.xml")
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
 
@@ -137,16 +136,20 @@ class Trip:
                 destination_probs[person.uni] = 0.5
             elif isinstance(person, Pupil):
                 destination_probs[person.school] = 0.5
+            elif isinstance(person, Senior):
+                destination_probs[person.park] = 0.2
             destination_probs[person.supermarket] = 0.05
         elif 10 <= current_hour <= 15:  # Noon (friends, work/uni/school)
-            destination_probs[person.home] = 0.2
+            destination_probs[person.home] = 0.1
             destination_probs[person.friends] = 0.2
             if isinstance(person, Worker):
-                destination_probs[person.work] = 0.2
+                destination_probs[person.work] = 0.3
             elif isinstance(person, Student):
                 destination_probs[person.uni] = 0.5  # Increased probability for students to go to university
             elif isinstance(person, Pupil):
-                destination_probs[person.school] = 0.2
+                destination_probs[person.school] = 0.4
+            elif isinstance(person, Senior):
+                destination_probs[person.park] = 0.5
             destination_probs[person.supermarket] = 0.05
         else:  # Evening (going back home, friends)
             destination_probs[person.home] = 0.6
@@ -157,16 +160,24 @@ class Trip:
                 destination_probs[person.uni] = 0.05
             elif isinstance(person, Pupil):
                 destination_probs[person.school] = 0.05
+            elif isinstance(person, Senior):
+                destination_probs[person.park] = 0.05
             destination_probs[person.supermarket] = 0.05
         # Remove current location from the list of possible destinations
         current_location = person.location
         destination_probs.pop(current_location, None)
         # Choose a destination based on probabilities
         destination = random.choices(list(destination_probs.keys()), weights=list(destination_probs.values()))[0]
+        if destination == person.supermarket:
+            person.supermarket = Human.supermarket['edge'].sample(n=1).to_string(index=False)
+        elif destination == person.friends:
+            person.friends = Human.friends['edge'].sample(n=1).to_string(index=False)
+        elif isinstance(person, Senior) and destination == person.park:
+            person.park = Senior.park['edge'].sample(n=1).to_string(index=False)
         return destination
 
     @staticmethod
-    def get_duration(person, destination_edge):
+    def get_duration(person, destination_edge, time):
         if person.name == 'Fake':
             return random.randint(1, 2)
         elif destination_edge == person.supermarket:
@@ -181,8 +192,10 @@ class Trip:
             return random.randint(14000, 21000)
         elif isinstance(person, Senior) and destination_edge == person.park:
             return random.randint(1800, 7200)
-        else:
+        elif 6 <= time <= 15 and destination_edge == person.home:
             return random.randint(4200, 8400)
+        else:
+            return random.randint(28800, 50400)
 
     @staticmethod
     def create_trips(persons, n):
@@ -202,14 +215,14 @@ class Trip:
                 for _ in range(n):  # creating a loop that will choose destination that`s different from location
                     # Choose a destination different from the current location
                     destination = Trip.destination_probability(person, time)
-                    duration = Trip.get_duration(person, destination)
+                    duration = Trip.get_duration(person, destination, time)
                     time += duration / 3600
                     if time >= 24:
                         time = time - 24
                     person.assign_trip(person.location, destination, duration)
                     person.location = destination  # Update the person's location
-            count = 1
             for trip in person.trip:  # now we`re working with trips
+                print(f'Trip')
                 if person.name == 'Fake':
                     print("The person  = Fake")
                 if trip.vType:
@@ -404,40 +417,26 @@ class Human:  # creating a human class for retrieving information
     that will be suitable for all subclasses for example House and supermarket. Also, every
     Human will have their own list of trips. List of destination is places where person can go in simulation
     """
-    quantity = 5 # quantity of people that will be in simulation
-    # Define paths to OSM files for different locations
-    osm_file = 'Without_transport/friends.osm'
-    osm_file1 = 'Without_transport/shop.osm'
-    osm_file2 = 'Without_transport/home.osm'
-    # Create NodeHandler instances for handling OSM data
-    handlerFriends = NodeHandler()
-    handlerSupermarket = NodeHandler()
-    handlerHome = NodeHandler()
-    # Apply OSM files to NodeHandlers to extract location data
-    handlerFriends.apply_file(osm_file)
-    handlerSupermarket.apply_file(osm_file1)
-    handlerHome.apply_file(osm_file2)
-    # Extract edges from NodeHandlers for supermarket and friends locations
-    supermarket = handlerSupermarket.edge
-    friends = handlerFriends.edge
-    # Initialize an empty list for home locations
-    home = []
+    quantity = 5  # quantity of people that will be in simulation
+    friends = pd.read_csv('Without_transport' + slash_char + 'friends.csv')
+    home = pd.read_csv('Without_transport' + slash_char + 'home.csv')
+    supermarket = pd.read_csv('Without_transport' + slash_char + 'shop.csv')
 
     def __init__(self, name):
         self.name = name  # getting variables from input
         self.trip = []
-        self.home = random.choice(Human.home)
+        self.home = Human.home['edge'].sample(n=1).to_string(index=False)
         self.home_lon, self.home_lat = Trip.convert_edge_to_gps(self.home)
-        self.supermarket = random.choice(Human.supermarket)
+        self.supermarket = Human.supermarket['edge'].sample(n=1).to_string(index=False)
         self.supermarket_lon, self.supermarket_lat = Trip.convert_edge_to_gps(self.supermarket)
-        self.friends = random.choice(Human.friends)
+        self.friends = Human.friends['edge'].sample(n=1).to_string(index=False)
         self.friends_lon, self.friends_lat = Trip.convert_edge_to_gps(self.friends)
         self.location = self.home
         self.destination = [self.home, self.supermarket, self.friends]
         self.age = random.randint(0, 99)
 
-    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
-        self.trip.append(Trip(start_edge, destination_edge, destination))
+    def assign_trip(self, start_edge, destination_edge, duration):  # Function will create trips with first class Trip
+        self.trip.append(Trip(start_edge, destination_edge, duration))
 
     def delete_trips(self):  # Function to delete all trips
         self.trip = []
@@ -508,22 +507,18 @@ class Worker(Human):  # creating a subclass of Human
     Subclass of Human. Only difference in personal information like age etc. And also worker is having more
     places to go for example work.
     """
-    osm_file = "Without_transport/work.osm"
-    handler = NodeHandler()
-    handler.apply_file(osm_file)
-    work = handler.edge
-
+    work = pd.read_csv('Without_transport' + slash_char + 'work.csv')
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
-        self.work = random.choice(Worker.work)
+        self.work = Worker.work['edge'].sample(n=1).to_string(index=False)
         self.work_lon, self.work_lat = Trip.convert_edge_to_gps(self.work)
         self.destination.append(self.work)
 
-    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge, destination)
+    def assign_trip(self, start_edge, destination_edge, duration):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, duration)
 
     def delete_trips(self):
         super().delete_trips()
@@ -550,8 +545,8 @@ class Student(Human):  # creating a second subclass of Human
         self.uni_lon, self.uni_lat = Trip.convert_edge_to_gps(self.uni)
         self.destination.append(self.uni)
 
-    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge, destination)
+    def assign_trip(self, start_edge, destination_edge, duration):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, duration)
 
     def delete_trips(self):
         super().delete_trips()
@@ -562,21 +557,19 @@ class Pupil(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Pupil is having more
         places to go for example school.
     """
-    osm_file = "Without_transport/school.osm"
-    handler = NodeHandler()
-    handler.apply_file(osm_file)
-    school = handler.edge
+    school = pd.read_csv('Without_transport' + slash_char + 'school.csv')
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
-        self.school = random.choice(Pupil.school)  # getting variables that are different from Human
+        self.school = Pupil.school['edge'].sample(n=1).to_string(index=False)  # getting variables that are different from Human
+        print(f'School {self.school}')
         self.school_lon, self.school_lat = Trip.convert_edge_to_gps(self.school)
         self.money = random.randrange(40, 100)  # getting random pocket money in range
         self.age = random.randrange(5, 20)  # getting random age in range
         self.destination.append(self.school)
 
-    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge, destination)
+    def assign_trip(self, start_edge, destination_edge, duration):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, duration)
 
     def delete_trips(self):
         super().delete_trips()
@@ -587,21 +580,18 @@ class Senior(Human):  # creating a subclass of Human
          Subclass of Human. Only difference in personal information like age etc. And also Senior is having more
          places to go for example park.
      """
-    osm_file = "Without_transport/park.osm"
-    handler = NodeHandler()
-    handler.apply_file(osm_file)
-    park = handler.edge
+    park = pd.read_csv('Without_transport' + slash_char + 'park.csv')
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(2000, 4000)  # getting random pension in range
         self.age = random.randrange(60, 100)  # getting random age in range
-        self.park = random.choice(Senior.park)
+        self.park = Senior.park['edge'].sample(n=1).to_string(index=False)
         self.park_lon, self.park_lat = Trip.convert_edge_to_gps(self.park)
         self.destination.append(self.park)
 
-    def assign_trip(self, start_edge, destination_edge, destination):  # Function will create trips with first class Trip
-        super().assign_trip(start_edge, destination_edge, destination)
+    def assign_trip(self, start_edge, destination_edge, duration):  # Function will create trips with first class Trip
+        super().assign_trip(start_edge, destination_edge, duration)
 
     def delete_trips(self):
         super().delete_trips()
@@ -613,14 +603,12 @@ def main():
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
     # Parse command-line arguments
-    osm_file = "Without_transport/try.osm"
-    handler = NodeHandler()
-    handler.apply_file(osm_file)
     args = Trip.parse_args()
     quantity_trips = args.t
     Human.quantity = args.p
-    Human.home = random.sample(Human.handlerHome.edge, int(Human.quantity / 5))
-    Worker.work = random.sample(Worker.work, int(Human.quantity / 5))
+    Human.home = Human.home.sample(n=int(Human.quantity / 5))
+    Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
+    print(f'Home {Human.home}\n Work {Worker.work}')
     save_obj = False  # will the simulation be extended
     if save_obj:
         print('Loading persons')
@@ -650,8 +638,8 @@ def main():
         t4.start()
         # if traci.simulation.getTime() % 3000 == 0:
         # print(f'Persons {traci.person.getIDList()}')
-        t5 = Thread(target=Trip.autos_retrieval(conn))
-        t5.start()
+        # t5 = Thread(target=Trip.autos_retrieval(conn))
+        # t5.start()
         conn.commit()  # saving data to a database
         traci.simulationStep()  # making one step
     conn.close()  # closing a connection to database
