@@ -125,6 +125,9 @@ class Trip:
 
     @staticmethod
     def destination_probability(person, current_hour):
+        """
+        Calculate the probability of a person's next destination based on the current hour and their type.
+        """
         destination_probs = {}  # Initialize destination probabilities dictionary
         # Define destination probabilities based on the person's class and time of day
         if 6 <= current_hour <= 9:  # Morning (going to work/uni/school)
@@ -178,6 +181,9 @@ class Trip:
 
     @staticmethod
     def get_duration(person, destination_edge, time):
+        """
+        Calculate the duration of stay at a given destination for a person based on their type and destination.
+        """
         if person.name == 'Fake':
             return random.randint(1, 2)
         elif destination_edge == person.supermarket:
@@ -638,8 +644,8 @@ def main():
         t4.start()
         # if traci.simulation.getTime() % 3000 == 0:
         # print(f'Persons {traci.person.getIDList()}')
-        # t5 = Thread(target=Trip.autos_retrieval(conn))
-        # t5.start()
+        t5 = Thread(target=Trip.autos_retrieval(conn))
+        t5.start()
         conn.commit()  # saving data to a database
         traci.simulationStep()  # making one step
     conn.close()  # closing a connection to database
