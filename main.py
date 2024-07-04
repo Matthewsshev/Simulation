@@ -280,7 +280,7 @@ class Trip:
         with open("Without_transport/data.rou.xml", "w") as save:  # Writing information that we`ve saved to the xml fil
             save.write(formatted_xml)
 
-    @staticmethod
+    """@staticmethod
     def createTrips(durations, csvname):
         data = []
         # Read data from 'fakePerson.csv'
@@ -348,7 +348,7 @@ class Trip:
         print(f"Quantity {sum}")
         # Create trips for person objects
         Trip.create_trips(person, 5, durations)
-
+    """
     @staticmethod
     def pedestrian_retrieval(connection):
         # function will retrieve information of a person movement in every simulation step
@@ -568,7 +568,6 @@ class Pupil(Human):  # creating a second subclass of Human
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.school = Pupil.school['edge'].sample(n=1).to_string(index=False)  # getting variables that are different from Human
-        print(f'School {self.school}')
         self.school_lon, self.school_lat = Trip.convert_edge_to_gps(self.school)
         self.money = random.randrange(40, 100)  # getting random pocket money in range
         self.age = random.randrange(5, 20)  # getting random age in range
@@ -614,7 +613,6 @@ def main():
     Human.quantity = args.p
     Human.home = Human.home.sample(n=int(Human.quantity / 5))
     Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
-    print(f'Home {Human.home}\n Work {Worker.work}')
     save_obj = False  # will the simulation be extended
     if save_obj:
         print('Loading persons')

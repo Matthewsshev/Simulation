@@ -97,7 +97,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
     con = openDB(dbinname)
     cur = con.cursor()  # to read data
     # get curser to simulated coordinates
-    sql_cmd = ("SELECT p.name, v.name AS transport, datetime, lat, lon, speed "
+    sql_cmd = ("SELECT  DISTINCT p.name, v.name AS transport, datetime, lat, lon, speed "
                "FROM pedestrian_data AS p, vehicles AS v "
                "WHERE transport = v.id")  # AND lat < 100 and lat > -100  was deleted, because no data was in those querries
     if len(personlist) > 0:
@@ -129,7 +129,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
         coordinates = []  # list of all points of a trip/stay
         nr = 0  # consecutive number of trip/stay of one person
         stop = 0  # counter for stop time
-        mob_list = ["trip", "stay"]  # trip and stay
+        mob_list = ["trip", "stay", "pt_stay"]  # trip and stay
         public_transport_list = ["bus", "trolleybus", "light rail", "train"]
         while coordinate:
             ctr += 1
@@ -144,10 +144,10 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
             point = Point(coordinate[3], coordinate[4])  # shapely object
             speed = coordinate[5]
             # Getting a stop with time more than 600 sec
-            if speed == 0 and name == name_prev:
+            if speed == 0 and name == name_prev and transport_prev == transport:
                 stop += 1
             elif stop >= 600 and speed_prev != speed and name == name_prev:
-                print(f'The stop is at the time {coordinates_prev}  for {name}')
+                print(f'The stop is at the time {stop}  for {name}  {startsimulationstep}')
                 stop_end = True
                 stop -= 1
             else:
@@ -196,7 +196,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                     stop = 0
                     print(f'WKTSRT\n{wktstr}')
                     """
-                    if nr == 1:
+                    if nr == 1 or transport_prev != transport_trip_prev or transport_prev == transport_trip_prev:
                         # write first trip before stay if stay is 1 activity
                         mobtype = mob_list[0]
                         # getting trip data without stay
@@ -211,16 +211,20 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                         startsimulationstep = simulationstep_prev
                         simulationstep_prev = simulationstep
                         nr += 1
+                    if transport in public_transport_list:
+                        mobtype = mob_list[2]
+                    else:
+                        mobtype = mob_list[1]
                     # definition of point where stay is
                     stop_end = False
                     stop = 0
-                    mobtype = mob_list[1]
                     wktstr = coordinates2WKT([point_prev], geoformat)
                 else:
                     mobtype = mob_list[0]
                     if stop >= 600:
                         # deleting stay data if stay is more than 600 sec and transport on previous trip is same as now
                         erase = stop - 1
+                        print(f"check person")
                         if transport_trip_prev == transport_prev:
                             coordinates = coordinates[:-erase]
                             simulationstep_prev -= erase
@@ -365,9 +369,9 @@ def main():
     # stepjump = n only takes ever n-th point, reduces size
     # geoformat = 'WKB' is 13% smaller than 'WKT', however WKB might fail in Kepler.gl
     # csv file with raw points in WKT is 93% smaller than db file
-    filename = 'simulation_data_1000'
+    filename = 'simulation_data'
     print(filename + ".db")
-    convertSQLtoWKT(filename + ".db", "test.csv", "2024-04-01 08:00:00", stepjump=1)
+    convertSQLtoWKT(filename + ".db", "testpol.csv", "2024-04-01 08:00:00", stepjump=1)
     # convertSQLtoWKTraw(filename+".db", filename+"raw.csv", "2024-04-01 08:00:00")
     # dumpdb2csv(filename+".db", filename+"_dbraw_p136.csv", personlist=['p136'])
 
