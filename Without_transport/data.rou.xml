@@ -1,46 +1,42 @@
 <routes>
-  <person id="p0" depart="0.00">
-    <personTrip from="317594597" to="288809225#1" line="ANY" modes="public"/>
-    <stop duration="32076" edge="288809225#1" actType="singing"/>
+  <person id="p0" depart="21600.00">
+    <personTrip from="39551121" to="-96414313#0" line="ANY" vTypes="bicycle"/>
+    <stop duration="31605" edge="-96414313#0" actType="singing"/>
   </person>
-  <person id="p1" depart="0.00">
-    <personTrip from="303259038" to="387498727#0" line="ANY" modes="public"/>
-    <personTrip from="387498727#0" to="288809225#1" line="ANY" vTypes="motorcycle"/>
-    <stop duration="31491" edge="288809225#1" actType="singing"/>
+  <person id="p1" depart="21600.00">
+    <personTrip from="39551121" to="970981143" line="ANY" modes="public"/>
+    <stop duration="31897" edge="970981143" actType="singing"/>
   </person>
-  <person id="p2" depart="0.00">
-    <personTrip from="317594597" to="30998710#4" line="ANY" modes="public"/>
-    <personTrip from="30998710#4" to="24621848#1" line="ANY" vTypes="motorcycle"/>
-    <stop duration="31089" edge="24621848#1" actType="singing"/>
+  <person id="p2" depart="21600.00">
+    <personTrip from="39551121" to="970981143" line="ANY" modes="public"/>
+    <stop duration="33221" edge="970981143" actType="singing"/>
   </person>
-  <person id="p3" depart="0.00">
-    <personTrip from="303259038" to="639832307#0" line="ANY" modes="public"/>
-    <stop duration="32913" edge="639832307#0" actType="singing"/>
+  <person id="p3" depart="21600.00">
+    <personTrip from="38478976#3" to="-26735019" line="ANY" modes="public"/>
+    <stop duration="32905" edge="-26735019" actType="singing"/>
   </person>
-  <person id="p4" depart="0.00">
-    <personTrip from="317594597" to="21310559" line="ANY" modes="public"/>
-    <personTrip from="21310559" to="-26735019" line="ANY" vTypes="bicycle"/>
-    <stop duration="22292" edge="-26735019" actType="singing"/>
+  <person id="p4" depart="21600.00">
+    <personTrip from="38478976#3" to="-26735019" line="ANY" vTypes="bicycle"/>
+    <stop duration="17888" edge="-26735019" actType="singing"/>
   </person>
-  <person id="p5" depart="0.00">
-    <personTrip from="317594597" to="765613426" line="ANY" modes="public"/>
-    <stop duration="14290" edge="765613426" actType="singing"/>
+  <person id="p5" depart="21600.00">
+    <personTrip from="39551121" to="695712555#2" line="ANY" vTypes="passenger"/>
+    <stop duration="14528" edge="695712555#2" actType="singing"/>
   </person>
-  <person id="p6" depart="0.00">
-    <personTrip from="303259038" to="1016666958" line="ANY" modes="public"/>
-    <stop duration="20620" edge="1016666958" actType="singing"/>
+  <person id="p6" depart="21600.00">
+    <personTrip from="39551121" to="-38388547#5" line="ANY" vTypes="motorcycle"/>
+    <stop duration="20530" edge="-38388547#5" actType="singing"/>
   </person>
-  <person id="p7" depart="0.00">
-    <personTrip from="317594597" to="-38388547#5" line="ANY" modes="public"/>
-    <stop duration="17938" edge="-38388547#5" actType="singing"/>
+  <person id="p7" depart="21600.00">
+    <personTrip from="38478976#3" to="157115786" line="ANY" vTypes="motorcycle"/>
+    <stop duration="17961" edge="157115786" actType="singing"/>
   </person>
-  <person id="p8" depart="0.00">
-    <personTrip from="317594597" to="-400416447#2" line="ANY" modes="public"/>
-    <personTrip from="-400416447#2" to="109592896#1" line="ANY" vTypes="bicycle"/>
-    <stop duration="42736" edge="109592896#1" actType="singing"/>
+  <person id="p8" depart="21600.00">
+    <personTrip from="38478976#3" to="303259036#1" line="ANY" modes="public"/>
+    <stop duration="33364" edge="303259036#1" actType="singing"/>
   </person>
-  <person id="p9" depart="0.00">
-    <personTrip from="303259038" to="-27324202#1" line="ANY" modes="public"/>
-    <stop duration="40346" edge="-27324202#1" actType="singing"/>
+  <person id="p9" depart="21600.00">
+    <personTrip from="39551121" to="25812046#10" line="ANY" vTypes="passenger"/>
+    <stop duration="45106" edge="25812046#10" actType="singing"/>
   </person>
 </routes>
