@@ -360,6 +360,7 @@ class Trip:
             lon, lat = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
             lon = "{:.5f}".format(lon)
             lat = "{:.5f}".format(lat)
+
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
             else:
@@ -378,7 +379,7 @@ class Trip:
                     transport = 6
                 else:  # person is traveling by car
                     transport = 7
-            # Executing an SQL query, which will insert new data into vehicle_data table
+            # Executing an SQL query, which will insert new data into pedestrian_data table
             connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, lat, lon, speed) 
                                                     VALUES (?, ?, ?, ?, ?, ?)''',
                                (person, transport, traci.simulation.getTime(),
@@ -391,19 +392,20 @@ class Trip:
         for veh_id in traci.simulation.getDepartedIDList():
             traci.vehicle.subscribe(veh_id,
                                     [traci.constants.VAR_POSITION,
-                                     traci.constants.VAR_SPEED])
+                                     traci.constants.VAR_SPEED,traci.constants.VAR_CO2EMISSION])
         result = traci.vehicle.getAllSubscriptionResults()
         for vehicle, vehicle_data in result.items():
             lon, lat = traci.simulation.convertGeo(vehicle_data[66][0], vehicle_data[66][1])
             lon = "{:.5f}".format(lon)
             lat = "{:.5f}".format(lat)
+            co2 = "{:.0f}".format(vehicle_data[96])
             # Executing an SQL query, which will insert new data into vehicle_data table
             connection.execute(''' INSERT INTO vehicle_data (id, datetime, lat, lon,
-                                        speed) 
-                                        VALUES (?, ?, ?, ?, ?)''',
+                                        speed, co2) 
+                                        VALUES (?, ?, ?, ?, ?, ?)''',
                                (vehicle, traci.simulation.getTime(),
                                 lat, lon,
-                                vehicle_data[64]))
+                                vehicle_data[64], co2))
 
     @staticmethod
     def delete_all(connection):  # function will delete all data from previous simulations
