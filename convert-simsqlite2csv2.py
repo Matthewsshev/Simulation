@@ -121,10 +121,8 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
         name_prev = coordinate[0]
         transport_prev = coordinate[1]  # string such as "on foot", "bus", ...
         simulationstep_prev = coordinate[2]  # min is 1
-        starttime = simulationstep2datetimestr(basetime, simulationstep_prev)
         startsimulationstep = simulationstep_prev
         point_prev = Point(coordinate[3], coordinate[4])  # shapely object
-        speed_prev = coordinate[5]  # previous speed
         lat_prev = coordinate[3]
         stop_end = None  # variable for end of stop
         transport_trip_prev = transport_prev
@@ -145,13 +143,12 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
             simulationstep = coordinate[2]
             lat = coordinate[3]
             point = Point(coordinate[3], coordinate[4])  # shapely object
-            speed = coordinate[5]
             # Getting a stop with time more than 600 sec
             if lat == lat_prev and name == name_prev and transport_prev == transport:
                 stop += 1
             elif stop >= 600 and lat != lat_prev and name == name_prev:
                 stop_end = True
-                print(f"Stop for {name_prev} at {simulationstep} for {stop}")
+                print(f"Stop for {name_prev} at {simulationstep_prev} for {stop}")
             else:
                 stop = 0
 
@@ -198,25 +195,22 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                     stop = 0
                     print(f'WKTSRT\n{wktstr}')
                     """
-                    print(
-                        f"Start stop  {name_prev}  end {nr}  start {simulationstep_prev - stop}  endd {startsimulationstep}")
-                    if nr == 1 or transport_prev != transport_trip_prev or transport_prev == transport_trip_prev:
+
+                    if nr == 1 or transport_prev != transport_trip_prev or transport_prev == transport_trip_prev or transport_prev != transport:
                         if simulationstep_prev - stop != startsimulationstep:
                             # write first trip before stay if stay is 1 activity
-
                             mobtype = mob_list[0]
                             # getting trip data without stay
                             trip = coordinates[:-stop]
                             wktstr = coordinates2WKT(trip, geoformat)
                             # adjusting time for trip
-                            simulationstep_prev -= stop
+                            simulationstep_prev -= stop + 1
                             starttime = simulationstep2datetimestr(basetime, startsimulationstep)
                             endtime = simulationstep2datetimestr(basetime, simulationstep_prev)
-                            print(f"check1 {startsimulationstep} {simulationstep_prev}")
                             csvstr = f'"{name_prev}","{nr}","{journey}","{mobtype}","{transport_prev}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{endtime}","{wktstr}"\n'
                             csvfile.write(csvstr)
-                            startsimulationstep = simulationstep_prev
-                            simulationstep_prev = simulationstep
+                            startsimulationstep = simulationstep_prev + 1
+                            simulationstep_prev = simulationstep - 1
                             nr += 1
                     if transport in public_transport_list and transport_prev not in public_transport_list:
                         mobtype = mob_list[2]
@@ -231,31 +225,8 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
 
                     wktstr = coordinates2WKT([point_prev], geoformat)
                 else:
-                    if stop >= 600:
-                        if simulationstep_prev - stop != startsimulationstep:
-                            nr += 1
-                            mobtype = mob_list[0]
-                            # Getting trip data without stay
-                            trip = coordinates[:-stop]
-                            wktstr = coordinates2WKT(trip, geoformat)
-                            # Adjusting time for trip
-                            simulationstep_prev -= stop
-                            starttime = simulationstep2datetimestr(basetime, startsimulationstep)
-                            endtime = simulationstep2datetimestr(basetime, simulationstep_prev)
-                            print(f"check2 {startsimulationstep} {simulationstep_prev}")
-                            csvstr = f'"{name_prev}","{nr}","{journey}","{mobtype}","{transport_prev}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{endtime}","{wktstr}"\n'
-                            csvfile.write(csvstr)
-                            startsimulationstep = simulationstep_prev
-                            simulationstep_prev = simulationstep
-                        if stop <= 3600:
-                            mobtype = mob_list[1]
-                        else:
-                            mobtype = mob_list[3]
-
-                        wktstr = coordinates2WKT([point_prev], geoformat)
-                    else:
-                        mobtype = mob_list[0]
-                        wktstr = coordinates2WKT(coordinates, geoformat)
+                   mobtype = mob_list[0]
+                   wktstr = coordinates2WKT(coordinates, geoformat)
                 # Add coordinate as the last one if not coordinate of next user
                 # if name == name_prev:
                 #    coordinates.append(point)
@@ -265,7 +236,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                 starttime = simulationstep2datetimestr(basetime, startsimulationstep)
                 endtime = simulationstep2datetimestr(basetime, simulationstep_prev)
                 # NO SPACE AFTER COMMA!
-                print(f"check3 {startsimulationstep} {simulationstep_prev}")
                 csvstr = f'"{name_prev}","{nr}","{journey}","{mobtype}","{transport_prev}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{endtime}","{wktstr}"\n'
                 csvfile.write(csvstr)
                 if mobtype == mob_list[3]:
@@ -273,13 +243,10 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                 coordinates = []  # start new trip
                 transport_trip_prev = transport_prev
                 coordinates.append(point)
-                starttime = simulationstep2datetimestr(basetime, simulationstep)
                 if stop >= 600:
                     startsimulationstep = simulationstep_prev
-                    print(f"UUU {startsimulationstep}")
                 else:
                     startsimulationstep = simulationstep
-                    print(f"SSS {startsimulationstep}")
                 # If change of user store current coordinate and reset trip/stay number and change
                 # transport for previous trip
                 if name != name_prev:
@@ -310,7 +277,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                 simulationstep_prev -= stop
                 starttime = simulationstep2datetimestr(basetime, startsimulationstep)
                 endtime = simulationstep2datetimestr(basetime, simulationstep_prev)
-                print(f"check4 {startsimulationstep} {simulationstep_prev}")
                 csvstr = f'"{name_prev}","{nr}","{journey}","{mobtype}","{transport_prev}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{endtime}","{wktstr}"\n'
                 csvfile.write(csvstr)
                 startsimulationstep = simulationstep_prev
@@ -327,7 +293,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
         endtime = simulationstep2datetimestr(basetime, simulationstep_prev)
         nr += 1
         # NO SPACE AFTER COMMA!
-        print(f"check5 {startsimulationstep} {simulationstep_prev}")
         csvstr = f'"{name_prev}","{nr}","{journey}","{mobtype}","{transport_prev}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{endtime}","{wktstr}"\n'
         if mobtype == mob_list[3]:
             journey += 1
