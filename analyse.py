@@ -116,7 +116,7 @@ def get_journeys(data):
 
 # Main function to execute the script
 def main():
-    state = pd.read_csv("testjourney.csv")  # Read the CSV file
+    state = pd.read_csv("test.csv")  # Read the CSV file
     # Define start and end polygons
     polygon_s = [(9.263235935155773, 48.76401181283296), (9.261301142916075, 48.76401181283296),
                  (9.261301142916075, 48.765175863995516), (9.263235935155773, 48.765175863995516)]
@@ -132,20 +132,19 @@ def main():
     polygon_m_geojson = geojson.Feature(geometry=polygon_m)
     # Convert FeatureCollection to a GeoJSON string
     journeys = get_journeys(state)  # Get all journeys from the data
-    print(f"All journeys {journeys}")
-    filt_1 = journeys_between_time(state, journeys, "6:00:00", "20:00:00")
+    filt_1 = journeys_between_time(state, journeys, "22:00:00", "8:00:00")
     journeys_start_a_end_b = start_a_end_b(state, journeys, polygon_s, polygon_e)  # Filter journeys based on polygons
     journeys_start_a_inersects_b_end_c = start_a_through_b_end_c(state, journeys, polygon_s, polygon_m, polygon_e)
     # print(f'Filtered {journeys_start_a_end_b}')
-    print(f'Filtered {journeys_start_a_inersects_b_end_c}')
+    print(f'Filtered {filt_1}')
     filename = 'a_through_b_c.csv'
     filename2 = 'a_c.csv'
     filename3 = 'time_between.csv'
     csvfile = 'polygon.csv'
     save_polygon(csvfile, polygon_s_geojson, polygon_e_geojson, polygon_m_geojson)
-    save_journeys(filename, filt_1, state)
+    save_journeys(filename, journeys_start_a_inersects_b_end_c, state)
     save_journeys(filename2, journeys_start_a_end_b, state)
-    save_journeys(filename3, journeys_start_a_inersects_b_end_c, state)
+    save_journeys(filename3, filt_1, state)
 
 
 # Entry point of the script
