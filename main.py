@@ -1,3 +1,4 @@
+import math
 import sys
 import traci
 import random
@@ -131,39 +132,52 @@ class Trip:
         destination_probs = {}  # Initialize destination probabilities dictionary
         # Define destination probabilities based on the person's class and time of day
         if 6 <= current_hour <= 9:  # Morning (going to work/uni/school)
-            destination_probs[person.home] = 0.1
+            destination_probs[person.home] = 0.05
             destination_probs[person.friends] = 0.05
             if isinstance(person, Worker):
-                destination_probs[person.work] = 0.5
+                destination_probs[person.work] = 0.7
+                destination_probs[person.supermarket] = 0.2
             elif isinstance(person, Student):
-                destination_probs[person.uni] = 0.5
+                destination_probs[person.uni] = 0.75
+                destination_probs[person.supermarket] = 0.15
             elif isinstance(person, Pupil):
-                destination_probs[person.school] = 0.5
+                destination_probs[person.school] = 0.8
+                destination_probs[person.supermarket] = 0.1
             elif isinstance(person, Senior):
-                destination_probs[person.park] = 0.2
-            destination_probs[person.supermarket] = 0.05
+                destination_probs[person.park] = 0.3
+                destination_probs[person.supermarket] = 0.6
         elif 10 <= current_hour <= 15:  # Noon (friends, work/uni/school)
             destination_probs[person.home] = 0.1
-            destination_probs[person.friends] = 0.2
+            destination_probs[person.supermarket] = 0.2
             if isinstance(person, Worker):
-                destination_probs[person.work] = 0.3
+                destination_probs[person.work] = 0.4
+                destination_probs[person.friends] = 0.3
             elif isinstance(person, Student):
-                destination_probs[person.uni] = 0.5  # Increased probability for students to go to university
+                destination_probs[person.uni] = 0.3
+                destination_probs[person.friends] = 0.4
             elif isinstance(person, Pupil):
                 destination_probs[person.school] = 0.4
+                destination_probs[person.friends] = 0.3
             elif isinstance(person, Senior):
                 destination_probs[person.park] = 0.5
-            destination_probs[person.supermarket] = 0.05
+                destination_probs[person.friends] = 0.4
+
         else:  # Evening (going back home, friends)
-            destination_probs[person.home] = 0.6
-            destination_probs[person.friends] = 0.2
             if isinstance(person, Worker):
+                destination_probs[person.home] = 0.6
                 destination_probs[person.work] = 0.05
+                destination_probs[person.friends] = 0.3
             elif isinstance(person, Student):
+                destination_probs[person.home] = 0.6
+                destination_probs[person.friends] = 0.3
                 destination_probs[person.uni] = 0.05
             elif isinstance(person, Pupil):
+                destination_probs[person.home] = 0.7
+                destination_probs[person.friends] = 0.2
                 destination_probs[person.school] = 0.05
             elif isinstance(person, Senior):
+                destination_probs[person.home] = 0.7
+                destination_probs[person.friends] = 0.2
                 destination_probs[person.park] = 0.05
             destination_probs[person.supermarket] = 0.05
         # Remove current location from the list of possible destinations
@@ -212,7 +226,7 @@ class Trip:
         root_2 = etree.Element("routes")
         for person in persons:
             # creating and saving person in xml file depart - time of start. File must be sorted by departure time
-            person_attrib = {'id': person.name, 'depart': '21600.00'}
+            person_attrib = {'id': person.name, 'depart': '0.00'}
             allowed_auto = set()  # creating a list of allowed transport on a start point
             person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
             if person.name != 'Fake':
@@ -360,6 +374,8 @@ class Trip:
             lon, lat = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
             lon = "{:.5f}".format(lon)
             lat = "{:.5f}".format(lat)
+            print(f"Check {pedestrian_data[66][0]} Check {pedestrian_data[66][1]}")
+
 
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 8  # person is going by foot
@@ -605,7 +621,7 @@ class Senior(Human):  # creating a subclass of Human
 
 
 def main():
-    conn = sqlite3.connect('simulation_data.db')  # Connecting to a db file with all data
+    conn = sqlite3.connect('simulation_data_test.db')  # Connecting to a db file with all data
     # Using Threading making our code to run Functions at the same time
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
@@ -615,7 +631,7 @@ def main():
     Human.quantity = args.p
     Human.home = Human.home.sample(n=int(Human.quantity / 5))
     Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
-    save_obj = False  # will the simulation be extended
+    save_obj = True  # will the simulation be extended
     if save_obj:
         print('Loading persons')
         humans = Human.load_state('state.pkl')

@@ -109,6 +109,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
     print(sql_cmd)
     res = cur.execute(sql_cmd)
     coordinate = res.fetchone()
+    print(f"Count {len(coordinate)}")
     # open csvfile
     with open(csvname, "w") as csvfile:
         # write heading
@@ -131,6 +132,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
         stop = 0  # counter for stop time
         mob_list = ["trip", "stay", "pt_stay", "big_stay"]  # trip and stay
         public_transport_list = ["bus", "trolleybus", "light rail", "train"]
+        inf = 0
         while coordinate:
             ctr += 1
             stepctr += 1
@@ -141,9 +143,21 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
             name = coordinate[0]
             transport = coordinate[1]
             simulationstep = coordinate[2]
+            print(f'Chhh {simulationstep}')
             lat = coordinate[4]
             point = Point(coordinate[4], coordinate[3])  # shapely object
             # Getting a stop with time more than 600 sec
+            '''if lat == 'inf':
+                inf += 1
+                name_prev = name
+                transport_prev = transport
+                # simulationstep_prev = simulationstep    # Change  if needed
+                point_prev = point
+                lat_prev = lat
+                coordinate = res.fetchone()
+                # print(f'Check simulation {simulationstep_prev}')
+                continue
+            '''
             if lat == lat_prev and name == name_prev and lat_prev != 'inf' and transport_prev == transport:
                 stop += 1
             elif stop >= 600 and lat != lat_prev and name == name_prev:
@@ -299,6 +313,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
         if mobtype == mob_list[3]:
             journey += 1
         csvfile.write(csvstr)
+        print(f"Try {inf}")
     con.close()
     print(ctr)
     print("finished")
@@ -391,7 +406,7 @@ def main():
     # csv file with raw points in WKT is 93% smaller than db file
     filename = 'simulation_data'
     print(filename + ".db")
-    convertSQLtoWKT(filename + ".db", "test.csv", "2024-04-01 08:00:00", stepjump=1)
+    convertSQLtoWKT(filename + ".db", "test3.csv", "2024-04-01 08:00:00", stepjump=1, personlist=['p2508'])
     # convertSQLtoWKTraw(filename+".db", filename+"raw.csv", "2024-04-01 08:00:00")
     # dumpdb2csv(filename+".db", filename+"_dbraw_p136.csv", personlist=['p136'])
 

@@ -57,4 +57,4 @@ osmium tags-filter -o home.osm check.osm w/landuse=residential --overwrite
 	Default: Without_transport/park.osm
 	To specify custom OSM files for different locations:
 	python main.py -f custom_friends.osm -s custom_shop.osm -home custom_home.osm -w custom_work.osm -sc custom_school.osm -p custom_park.osm
-9.Finally, the code is ready to work with new Map 😊
+11.Finally, the code is ready to work with new Map 😊
