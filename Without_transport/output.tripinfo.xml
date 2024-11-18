@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-07-27 11:17:03 by Eclipse SUMO sumo Version 1.19.0
+<!-- generated on 2024-11-02 10:50:52 by Eclipse SUMO GUI Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="Without_transport\crr.net.xml"/>
-        <route-files value="Without_transport\flows.rou.xml"/>
-        <additional-files value="Without_transport\osm_polygons.add.xml,Without_transport\ basic.vType.xml,Without_transport\ additional.xml,Without_transport\ data.rou.xml"/>
+        <net-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\crr.net.xml"/>
+        <route-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\flows.rou.xml"/>
+        <additional-files value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\osm_polygons.add.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\ additional.xml,C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\ tst.rou.alt.xml"/>
     </input>
 
     <output>
         <output-prefix value="output."/>
-        <emission-output value="emissions.xml"/>
-        <summary-output value="Without_transport\summary.xml"/>
-        <person-summary-output value="Without_transport\person.summary.xml"/>
-        <tripinfo-output value="Without_transport\tripinfo.xml"/>
+        <summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\summary.xml"/>
+        <person-summary-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\person.summary.xml"/>
+        <tripinfo-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\tripinfo.xml"/>
         <tripinfo-output.write-unfinished value="false"/>
-        <statistic-output value="Without_transport\statistics.xml"/>
+        <statistic-output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\statistics.xml"/>
     </output>
 
     <processing>
@@ -48,7 +47,6 @@
         <device.rerouting.probability value="1"/>
         <device.rerouting.period value="300"/>
         <device.rerouting.pre-period value="300"/>
-        <device.rerouting.threads value="64"/>
         <device.rerouting.bike-speeds value="true"/>
         <person-device.rerouting.probability value="1"/>
         <person-device.rerouting.period value="300"/>
@@ -56,256 +54,40 @@
 
     <report>
         <verbose value="true"/>
-        <no-warnings value="true"/>
+        <no-warnings value="false"/>
         <duration-log.disable value="false"/>
         <duration-log.statistics value="true"/>
         <no-step-log value="false"/>
-        <step-log.period value="100"/>
     </report>
 
     <taxi_device>
         <device.taxi.dispatch-algorithm value="greedy"/>
-        <device.taxi.dispatch-algorithm.output value="Without_transport\taxi.dispatch.xml"/>
+        <device.taxi.dispatch-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.dispatch.xml"/>
         <device.taxi.dispatch-period value="60"/>
         <device.taxi.idle-algorithm value="stop"/>
-        <device.taxi.idle-algorithm.output value="Without_transport\taxi.idle.xml"/>
+        <device.taxi.idle-algorithm.output value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\taxi.idle.xml"/>
     </taxi_device>
-
-    <traci_server>
-        <remote-port value="52494"/>
-    </traci_server>
 
     <random_number>
         <seed value="42"/>
     </random_number>
 
     <gui_only>
-        <gui-settings-file value="Without_transport\default-gui.xml"/>
+        <gui-settings-file value="C:\Users\sader\PycharmProjects\OOP_Test\Without_transport\default-gui.xml"/>
     </gui_only>
 
 </configuration>
 -->
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
-    <tripinfo id="pt_bus_114:5.0" depart="0.00" departLane="-390841675_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="214.00" arrivalLane="122574095_1" arrivalPos="35.58" arrivalPosLat="0.00" arrivalSpeed="4.51" duration="214.00" routeLength="1529.70" waitingTime="0.00" waitingCount="0" stopTime="68.00" timeLoss="27.18" rerouteNo="0" devices="tripinfo_pt_bus_114:5.0 routing_pt_bus_114:5.0 emissions_pt_bus_114:5.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="4677.146023" CO2_abs="2311691.824939" HC_abs="1069.963328" PMx_abs="490.412787" NOx_abs="19556.634997" fuel_abs="731428.736443" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U13:0.0" depart="0.00" departLane="673171637_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="249.00" arrivalLane="172027782#5_0" arrivalPos="1439.03" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="249.00" routeLength="1862.23" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="61.92" rerouteNo="0" devices="tripinfo_pt_light_rail_U13:0.0 routing_pt_light_rail_U13:0.0 emissions_pt_light_rail_U13:0.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U13:1.0" depart="0.00" departLane="68552415#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="254.00" arrivalLane="172027783_0" arrivalPos="98.63" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="254.00" routeLength="1860.56" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="66.98" rerouteNo="0" devices="tripinfo_pt_light_rail_U13:1.0 routing_pt_light_rail_U13:1.0 emissions_pt_light_rail_U13:1.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U9:0.0" depart="51.00" departLane="673171637_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="265.00" arrivalLane="172027782#5_0" arrivalPos="1439.03" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="214.00" routeLength="1862.23" waitingTime="0.00" waitingCount="0" stopTime="90.00" timeLoss="56.50" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:0.0 routing_pt_light_rail_U9:0.0 emissions_pt_light_rail_U9:0.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_61:1.0" depart="0.00" departLane="431444776#1_0" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="276.00" arrivalLane="-676917368#0_1" arrivalPos="22.31" arrivalPosLat="0.00" arrivalSpeed="0.67" duration="276.00" routeLength="1030.97" waitingTime="37.00" waitingCount="3" stopTime="121.00" timeLoss="74.56" rerouteNo="0" devices="tripinfo_pt_bus_61:1.0 routing_pt_bus_61:1.0 emissions_pt_bus_61:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="5989.259242" CO2_abs="2444560.594725" HC_abs="1368.077640" PMx_abs="614.217602" NOx_abs="22480.668416" fuel_abs="773288.841196" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U9:1.0" depart="52.00" departLane="68552415#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="306.00" arrivalLane="172027783_0" arrivalPos="98.63" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="254.00" routeLength="1860.56" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="66.98" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:1.0 routing_pt_light_rail_U9:1.0 emissions_pt_light_rail_U9:1.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_train_RE_5:0.0" depart="0.00" departLane="156199094#3_0" departPos="135.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="317.00" arrivalLane="48316096#2_0" arrivalPos="589.00" arrivalPosLat="0.00" arrivalSpeed="7.75" duration="317.00" routeLength="4125.58" waitingTime="0.00" waitingCount="0" stopTime="60.00" timeLoss="158.59" rerouteNo="0" devices="tripinfo_pt_train_RE_5:0.0 routing_pt_train_RE_5:0.0 emissions_pt_train_RE_5:0.0" vType="pt_train" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="11663.485655" CO2_abs="5896211.708190" HC_abs="2772.382452" PMx_abs="2314.427146" NOx_abs="82412.669696" fuel_abs="1855184.126634" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_816:1.0" depart="0.00" departLane="-294067066#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="416.00" arrivalLane="29146499#2_1" arrivalPos="40.22" arrivalPosLat="0.00" arrivalSpeed="3.49" duration="416.00" routeLength="2061.50" waitingTime="50.00" waitingCount="3" stopTime="114.00" timeLoss="108.51" rerouteNo="0" devices="tripinfo_pt_bus_816:1.0 routing_pt_bus_816:1.0 emissions_pt_bus_816:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="8994.525078" CO2_abs="4017100.991056" HC_abs="2047.851171" PMx_abs="931.138562" NOx_abs="35489.863059" fuel_abs="1270871.169676" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_61:0.0" depart="0.00" departLane="-540190677_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="480.00" arrivalLane="-24779203#0_0" arrivalPos="263.70" arrivalPosLat="0.00" arrivalSpeed="5.74" duration="480.00" routeLength="2182.34" waitingTime="3.00" waitingCount="3" stopTime="216.00" timeLoss="102.62" rerouteNo="0" devices="tripinfo_pt_bus_61:0.0 routing_pt_bus_61:0.0 emissions_pt_bus_61:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="10971.827276" CO2_abs="5025538.453421" HC_abs="2433.018932" PMx_abs="1134.969450" NOx_abs="43995.871391" fuel_abs="1589903.011943" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U8:1.0" depart="0.00" departLane="26946520#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="498.00" arrivalLane="40985104#4_0" arrivalPos="2135.05" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="498.00" routeLength="4576.90" waitingTime="0.00" waitingCount="0" stopTime="210.00" timeLoss="123.20" rerouteNo="0" devices="tripinfo_pt_light_rail_U8:1.0 routing_pt_light_rail_U8:1.0 emissions_pt_light_rail_U8:1.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_816:0.0" depart="0.00" departLane="29146499#2_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="509.00" arrivalLane="294067066#10_1" arrivalPos="37.98" arrivalPosLat="0.00" arrivalSpeed="2.76" duration="509.00" routeLength="2307.06" waitingTime="71.00" waitingCount="6" stopTime="156.00" timeLoss="138.47" rerouteNo="0" devices="tripinfo_pt_bus_816:0.0 routing_pt_bus_816:0.0 emissions_pt_bus_816:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="11043.327590" CO2_abs="4775866.342975" HC_abs="2528.509719" PMx_abs="1140.014797" NOx_abs="42778.986155" fuel_abs="1510869.127671" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_65:1.0" depart="39.00" departLane="27607327#0_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="520.00" arrivalLane="-676917368#0_1" arrivalPos="22.31" arrivalPosLat="0.00" arrivalSpeed="0.85" duration="481.00" routeLength="1888.42" waitingTime="91.00" waitingCount="6" stopTime="152.00" timeLoss="185.24" rerouteNo="0" devices="tripinfo_pt_bus_65:1.0 routing_pt_bus_65:1.0 emissions_pt_bus_65:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="10860.938233" CO2_abs="4751694.025966" HC_abs="2427.342878" PMx_abs="1118.813657" NOx_abs="42418.267827" fuel_abs="1503197.131353" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U7:1.0" depart="15.00" departLane="26946520#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="549.00" arrivalLane="40985104#4_0" arrivalPos="2135.05" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="534.00" routeLength="4576.90" waitingTime="25.00" waitingCount="1" stopTime="210.00" timeLoss="159.20" rerouteNo="0" devices="tripinfo_pt_light_rail_U7:1.0 routing_pt_light_rail_U7:1.0 emissions_pt_light_rail_U7:1.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U8:0.0" depart="0.00" departLane="89344777#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="558.00" arrivalLane="26946516#1_0" arrivalPos="1910.04" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="558.00" routeLength="5963.27" waitingTime="0.00" waitingCount="0" stopTime="210.00" timeLoss="132.34" rerouteNo="0" devices="tripinfo_pt_light_rail_U8:0.0 routing_pt_light_rail_U8:0.0 emissions_pt_light_rail_U8:0.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U7:0.0" depart="52.00" departLane="89344777#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="610.00" arrivalLane="26946516#1_0" arrivalPos="1910.04" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="558.00" routeLength="5963.27" waitingTime="0.00" waitingCount="0" stopTime="210.00" timeLoss="132.34" rerouteNo="0" devices="tripinfo_pt_light_rail_U7:0.0 routing_pt_light_rail_U7:0.0 emissions_pt_light_rail_U7:0.0" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_65:0.0" depart="0.00" departLane="-676917368#0_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="627.00" arrivalLane="-27607327#1_1" arrivalPos="46.34" arrivalPosLat="0.00" arrivalSpeed="1.68" duration="627.00" routeLength="2396.96" waitingTime="103.00" waitingCount="9" stopTime="207.00" timeLoss="241.28" rerouteNo="0" devices="tripinfo_pt_bus_65:0.0 routing_pt_bus_65:0.0 emissions_pt_bus_65:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="14215.937242" CO2_abs="6234424.151883" HC_abs="3168.158153" PMx_abs="1464.236325" NOx_abs="55606.808566" fuel_abs="1972257.319834" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_121:0.0" depart="0.00" departLane="-392589607#0_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="658.00" arrivalLane="613655965_1" arrivalPos="255.51" arrivalPosLat="0.00" arrivalSpeed="7.01" duration="658.00" routeLength="3513.31" waitingTime="44.00" waitingCount="3" stopTime="253.00" timeLoss="147.29" rerouteNo="0" devices="tripinfo_pt_bus_121:0.0 routing_pt_bus_121:0.0 emissions_pt_bus_121:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="15038.059134" CO2_abs="7007170.192304" HC_abs="3381.153479" PMx_abs="1561.735027" NOx_abs="60835.996970" fuel_abs="2216903.714377" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_121:1.0" depart="12.00" departLane="-207082664_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="686.00" arrivalLane="392589607#3_1" arrivalPos="31.11" arrivalPosLat="0.00" arrivalSpeed="6.03" duration="674.00" routeLength="3629.01" waitingTime="56.00" waitingCount="2" stopTime="247.00" timeLoss="162.15" rerouteNo="0" devices="tripinfo_pt_bus_121:1.0 routing_pt_bus_121:1.0 emissions_pt_bus_121:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="14813.175406" CO2_abs="6732577.977663" HC_abs="3378.290426" PMx_abs="1536.955262" NOx_abs="59022.432934" fuel_abs="2130003.133398" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_62:0.0" depart="0.00" departLane="27607327#0_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="689.00" arrivalLane="-195389808#1_1" arrivalPos="142.50" arrivalPosLat="0.00" arrivalSpeed="10.60" duration="689.00" routeLength="3518.45" waitingTime="49.00" waitingCount="8" stopTime="246.00" timeLoss="179.90" rerouteNo="0" devices="tripinfo_pt_bus_62:0.0 routing_pt_bus_62:0.0 emissions_pt_bus_62:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="15696.593724" CO2_abs="7297783.806743" HC_abs="3506.775213" PMx_abs="1628.252422" NOx_abs="63447.149298" fuel_abs="2308823.351272" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_X20:1.0" depart="39.00" departLane="268558821#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="32.00" arrival="764.00" arrivalLane="-232962013#1_1" arrivalPos="13.55" arrivalPosLat="0.00" arrivalSpeed="1.12" duration="725.00" routeLength="5682.81" waitingTime="64.00" waitingCount="6" stopTime="72.00" timeLoss="146.20" rerouteNo="0" devices="tripinfo_pt_bus_X20:1.0 routing_pt_bus_X20:1.0 emissions_pt_bus_X20:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="15843.993610" CO2_abs="8328867.373468" HC_abs="3575.175371" PMx_abs="1671.289609" NOx_abs="68786.774298" fuel_abs="2635421.325296" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_X20:0.0" depart="0.00" departLane="232962013#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="791.00" arrivalLane="268558821#1_1" arrivalPos="28.71" arrivalPosLat="0.00" arrivalSpeed="2.01" duration="791.00" routeLength="7121.57" waitingTime="22.00" waitingCount="3" stopTime="133.00" timeLoss="110.52" rerouteNo="0" devices="tripinfo_pt_bus_X20:0.0 routing_pt_bus_X20:0.0 emissions_pt_bus_X20:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="18359.180811" CO2_abs="10213648.075716" HC_abs="4090.464713" PMx_abs="1948.125835" NOx_abs="82569.718679" fuel_abs="3231948.638064" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_119:1.0" depart="0.00" departLane="569733700#3_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="797.00" arrivalLane="268558823#1_1" arrivalPos="25.19" arrivalPosLat="0.00" arrivalSpeed="0.96" duration="797.00" routeLength="4410.99" waitingTime="10.00" waitingCount="5" stopTime="320.00" timeLoss="123.71" rerouteNo="0" devices="tripinfo_pt_bus_119:1.0 routing_pt_bus_119:1.0 emissions_pt_bus_119:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="17527.903304" CO2_abs="8074911.941369" HC_abs="3987.495525" PMx_abs="1820.857200" NOx_abs="70391.095047" fuel_abs="2554714.005878" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_140:1.0" depart="0.00" departLane="-39761675#3_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="829.00" arrivalLane="268558821#1_1" arrivalPos="28.71" arrivalPosLat="0.00" arrivalSpeed="2.19" duration="829.00" routeLength="4728.53" waitingTime="185.00" waitingCount="8" stopTime="181.00" timeLoss="305.02" rerouteNo="0" devices="tripinfo_pt_bus_140:1.0 routing_pt_bus_140:1.0 emissions_pt_bus_140:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="18450.386210" CO2_abs="8527447.447247" HC_abs="4203.405835" PMx_abs="1917.806006" NOx_abs="74225.303505" fuel_abs="2697900.736450" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_119:0.0" depart="0.00" departLane="268558823#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="846.00" arrivalLane="-127121917#0_1" arrivalPos="103.63" arrivalPosLat="0.00" arrivalSpeed="1.10" duration="846.00" routeLength="4303.86" waitingTime="92.00" waitingCount="10" stopTime="280.00" timeLoss="223.56" rerouteNo="0" devices="tripinfo_pt_bus_119:0.0 routing_pt_bus_119:0.0 emissions_pt_bus_119:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="18729.584772" CO2_abs="8442897.342043" HC_abs="4252.323426" PMx_abs="1940.231422" NOx_abs="74304.315706" fuel_abs="2671059.969840" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U9:0.1" depart="651.00" departLane="673171637_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="865.00" arrivalLane="172027782#5_0" arrivalPos="1439.03" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="214.00" routeLength="1862.23" waitingTime="0.00" waitingCount="0" stopTime="90.00" timeLoss="56.50" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:0.1 routing_pt_light_rail_U9:0.1 emissions_pt_light_rail_U9:0.1" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_140:0.0" depart="0.00" departLane="268558821#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="866.00" arrivalLane="39761675#3_1" arrivalPos="87.90" arrivalPosLat="0.00" arrivalSpeed="2.32" duration="866.00" routeLength="5368.93" waitingTime="129.00" waitingCount="9" stopTime="196.00" timeLoss="273.43" rerouteNo="0" devices="tripinfo_pt_bus_140:0.0 routing_pt_bus_140:0.0 emissions_pt_bus_140:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="19169.563818" CO2_abs="9116731.522513" HC_abs="4373.361495" PMx_abs="1999.749704" NOx_abs="78388.757132" fuel_abs="2884437.834040" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U9:1.1" depart="652.00" departLane="68552415#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="906.00" arrivalLane="172027783_0" arrivalPos="98.63" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="254.00" routeLength="1860.56" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="66.98" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:1.1 routing_pt_light_rail_U9:1.1 emissions_pt_light_rail_U9:1.1" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_120:1.0" depart="0.00" departLane="177336121_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="916.00" arrivalLane="384972991#1_1" arrivalPos="28.13" arrivalPosLat="0.00" arrivalSpeed="0.61" duration="916.00" routeLength="4570.33" waitingTime="114.00" waitingCount="7" stopTime="302.00" timeLoss="252.46" rerouteNo="0" devices="tripinfo_pt_bus_120:1.0 routing_pt_bus_120:1.0 emissions_pt_bus_120:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="20002.133948" CO2_abs="8901837.003557" HC_abs="4560.880580" PMx_abs="2070.285533" NOx_abs="78757.906530" fuel_abs="2816225.174172" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_train_S1:1.0" depart="0.00" departLane="123444522#1_0" departPos="135.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="947.00" arrivalLane="23163786#1_0" arrivalPos="616.75" arrivalPosLat="0.00" arrivalSpeed="7.50" duration="947.00" routeLength="10689.15" waitingTime="0.00" waitingCount="0" stopTime="180.00" timeLoss="435.15" rerouteNo="0" devices="tripinfo_pt_train_S1:1.0 routing_pt_train_S1:1.0 emissions_pt_train_S1:1.0" vType="pt_train" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="31565.550745" CO2_abs="16121374.072651" HC_abs="7941.341851" PMx_abs="6368.483715" NOx_abs="224590.337422" fuel_abs="5072459.511173" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_train_S1:0.0" depart="0.00" departLane="292876200#2_0" departPos="135.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="948.00" arrivalLane="180784454#2_0" arrivalPos="2403.09" arrivalPosLat="0.00" arrivalSpeed="7.00" duration="948.00" routeLength="10699.83" waitingTime="0.00" waitingCount="0" stopTime="180.00" timeLoss="438.09" rerouteNo="0" devices="tripinfo_pt_train_S1:0.0 routing_pt_train_S1:0.0 emissions_pt_train_S1:0.0" vType="pt_train" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="31600.304965" CO2_abs="16138980.749879" HC_abs="7956.413528" PMx_abs="6376.682066" NOx_abs="224824.704355" fuel_abs="5077999.600470" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_109:1.0" depart="0.00" departLane="387117388_1" departPos="1.30" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="975.00" arrivalLane="-386500268#0_1" arrivalPos="71.25" arrivalPosLat="0.00" arrivalSpeed="5.41" duration="975.00" routeLength="4676.02" waitingTime="23.00" waitingCount="8" stopTime="373.00" timeLoss="140.99" rerouteNo="0" devices="tripinfo_pt_bus_109:1.0 routing_pt_bus_109:1.0 emissions_pt_bus_109:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="20507.086067" CO2_abs="8880394.694262" HC_abs="4716.044046" PMx_abs="2118.610703" NOx_abs="79472.022346" fuel_abs="2809378.011104" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_N19:0.0" depart="142.00" departLane="268558823#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1019.00" arrivalLane="576816774#0_1" arrivalPos="239.14" arrivalPosLat="0.00" arrivalSpeed="9.42" duration="877.00" routeLength="4504.22" waitingTime="187.00" waitingCount="8" stopTime="237.00" timeLoss="309.95" rerouteNo="0" devices="tripinfo_pt_bus_N19:0.0 routing_pt_bus_N19:0.0 emissions_pt_bus_N19:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="19548.007807" CO2_abs="8760726.118562" HC_abs="4459.153168" PMx_abs="2025.012936" NOx_abs="77270.931820" fuel_abs="2771607.659708" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_114:0.0" depart="0.00" departLane="384972991#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1025.00" arrivalLane="846930959_1" arrivalPos="96.74" arrivalPosLat="0.00" arrivalSpeed="12.28" duration="1025.00" routeLength="5664.17" waitingTime="195.00" waitingCount="11" stopTime="226.00" timeLoss="355.98" rerouteNo="0" devices="tripinfo_pt_bus_114:0.0 routing_pt_bus_114:0.0 emissions_pt_bus_114:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="22726.009812" CO2_abs="10552696.120310" HC_abs="5150.766521" PMx_abs="2361.812709" NOx_abs="91703.526082" fuel_abs="3338643.115360" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_114:1.0" depart="0.00" departLane="-846930959_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1095.00" arrivalLane="384972991#1_1" arrivalPos="28.13" arrivalPosLat="0.00" arrivalSpeed="0.61" duration="1095.00" routeLength="4964.62" waitingTime="326.00" waitingCount="17" stopTime="207.00" timeLoss="501.84" rerouteNo="0" devices="tripinfo_pt_bus_114:1.0 routing_pt_bus_114:1.0 emissions_pt_bus_114:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="24207.062559" CO2_abs="10638215.107709" HC_abs="5485.081937" PMx_abs="2499.712201" NOx_abs="94686.131676" fuel_abs="3365474.339417" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_114:2.0" depart="49.00" departLane="384972991#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="43.00" arrival="1116.00" arrivalLane="846930959_1" arrivalPos="96.74" arrivalPosLat="0.00" arrivalSpeed="11.32" duration="1067.00" routeLength="5611.84" waitingTime="225.00" waitingCount="13" stopTime="236.00" timeLoss="394.45" rerouteNo="0" devices="tripinfo_pt_bus_114:2.0 routing_pt_bus_114:2.0 emissions_pt_bus_114:2.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="23810.202411" CO2_abs="10926131.593582" HC_abs="5382.930615" PMx_abs="2470.176274" NOx_abs="95448.618089" fuel_abs="3456730.956055" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_106:1.0" depart="6.00" departLane="-846930959_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="1.00" arrival="1139.00" arrivalLane="384972991#1_1" arrivalPos="28.13" arrivalPosLat="0.00" arrivalSpeed="1.01" duration="1133.00" routeLength="4964.62" waitingTime="368.00" waitingCount="17" stopTime="208.00" timeLoss="538.79" rerouteNo="0" devices="tripinfo_pt_bus_106:1.0 routing_pt_bus_106:1.0 emissions_pt_bus_106:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="24924.359058" CO2_abs="10724382.647838" HC_abs="5691.373294" PMx_abs="2570.536692" NOx_abs="96298.183315" fuel_abs="3392678.293081" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_109:0.0" depart="0.00" departLane="156260258_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1146.00" arrivalLane="24508759#6_1" arrivalPos="28.21" arrivalPosLat="0.00" arrivalSpeed="5.42" duration="1146.00" routeLength="4636.43" waitingTime="194.00" waitingCount="13" stopTime="346.00" timeLoss="346.03" rerouteNo="0" devices="tripinfo_pt_bus_109:0.0 routing_pt_bus_109:0.0 emissions_pt_bus_109:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="24091.950641" CO2_abs="9920571.311435" HC_abs="5554.971432" PMx_abs="2476.348795" NOx_abs="90798.804761" fuel_abs="3138255.628663" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U7:1.1" depart="615.00" departLane="26946520#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1149.00" arrivalLane="40985104#4_0" arrivalPos="2135.05" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="534.00" routeLength="4576.90" waitingTime="0.00" waitingCount="0" stopTime="246.00" timeLoss="123.20" rerouteNo="0" devices="tripinfo_pt_light_rail_U7:1.1 routing_pt_light_rail_U7:1.1 emissions_pt_light_rail_U7:1.1" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_113:1.0" depart="106.00" departLane="675777502_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="2.00" arrival="1165.00" arrivalLane="390216945#2_1" arrivalPos="18.72" arrivalPosLat="0.00" arrivalSpeed="0.80" duration="1059.00" routeLength="4742.83" waitingTime="223.00" waitingCount="13" stopTime="240.00" timeLoss="412.13" rerouteNo="0" devices="tripinfo_pt_bus_113:1.0 routing_pt_bus_113:1.0 emissions_pt_bus_113:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="23146.103642" CO2_abs="10071888.184235" HC_abs="5270.294158" PMx_abs="2389.153272" NOx_abs="90006.644686" fuel_abs="3186293.563120" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_110:1.0" depart="0.00" departLane="1028791820_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1171.00" arrivalLane="156260258_1" arrivalPos="74.72" arrivalPosLat="0.00" arrivalSpeed="0.82" duration="1171.00" routeLength="4973.87" waitingTime="120.00" waitingCount="12" stopTime="400.00" timeLoss="280.30" rerouteNo="0" devices="tripinfo_pt_bus_110:1.0 routing_pt_bus_110:1.0 emissions_pt_bus_110:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="24868.388188" CO2_abs="10511043.378226" HC_abs="5701.508434" PMx_abs="2561.230737" NOx_abs="95112.124676" fuel_abs="3325130.587936" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_105:1.0" depart="6.00" departLane="-392441930_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="1.00" arrival="1182.00" arrivalLane="675674221_1" arrivalPos="36.76" arrivalPosLat="0.00" arrivalSpeed="0.87" duration="1176.00" routeLength="4281.59" waitingTime="247.00" waitingCount="15" stopTime="307.00" timeLoss="404.45" rerouteNo="0" devices="tripinfo_pt_bus_105:1.0 routing_pt_bus_105:1.0 emissions_pt_bus_105:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="24196.514470" CO2_abs="9619194.935307" HC_abs="5600.382485" PMx_abs="2479.353842" NOx_abs="89453.217944" fuel_abs="3042793.542299" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_122:1.0" depart="0.00" departLane="101742272#8_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1184.00" arrivalLane="-392441930_1" arrivalPos="52.90" arrivalPosLat="0.00" arrivalSpeed="0.66" duration="1184.00" routeLength="4768.76" waitingTime="372.00" waitingCount="5" stopTime="293.00" timeLoss="486.36" rerouteNo="0" devices="tripinfo_pt_bus_122:1.0 routing_pt_bus_122:1.0 emissions_pt_bus_122:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="24856.109907" CO2_abs="10033981.013802" HC_abs="5764.978497" PMx_abs="2551.744482" NOx_abs="92635.790017" fuel_abs="3174075.032952" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U7:0.1" depart="652.00" departLane="89344777#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1210.00" arrivalLane="26946516#1_0" arrivalPos="1910.04" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="558.00" routeLength="5963.27" waitingTime="0.00" waitingCount="0" stopTime="210.00" timeLoss="132.34" rerouteNo="0" devices="tripinfo_pt_light_rail_U7:0.1 routing_pt_light_rail_U7:0.1 emissions_pt_light_rail_U7:0.1" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_114:4.0" depart="12.00" departLane="-846930959_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="1.00" arrival="1218.00" arrivalLane="384972991#1_1" arrivalPos="28.13" arrivalPosLat="0.00" arrivalSpeed="0.76" duration="1206.00" routeLength="4964.62" waitingTime="413.00" waitingCount="19" stopTime="214.00" timeLoss="605.60" rerouteNo="0" devices="tripinfo_pt_bus_114:4.0 routing_pt_bus_114:4.0 emissions_pt_bus_114:4.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="26258.480195" CO2_abs="11017836.464701" HC_abs="6033.019516" PMx_abs="2703.085497" NOx_abs="100011.135523" fuel_abs="3485430.179236" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_132:2.0" depart="37.00" departLane="1028791820_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1287.00" arrivalLane="-394114218#3_1" arrivalPos="90.16" arrivalPosLat="0.00" arrivalSpeed="8.16" duration="1250.00" routeLength="5396.39" waitingTime="96.00" waitingCount="12" stopTime="459.00" timeLoss="285.31" rerouteNo="0" devices="tripinfo_pt_bus_132:2.0 routing_pt_bus_132:2.0 emissions_pt_bus_132:2.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="27165.219260" CO2_abs="11779914.120075" HC_abs="6165.162171" PMx_abs="2801.623706" NOx_abs="105457.369117" fuel_abs="3726604.295740" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_106:0.0" depart="90.00" departLane="384972991#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="34.00" arrival="1293.00" arrivalLane="846930959_1" arrivalPos="96.74" arrivalPosLat="0.00" arrivalSpeed="12.23" duration="1203.00" routeLength="5611.84" waitingTime="359.00" waitingCount="16" stopTime="218.00" timeLoss="548.04" rerouteNo="0" devices="tripinfo_pt_bus_106:0.0 routing_pt_bus_106:0.0 emissions_pt_bus_106:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="26578.935238" CO2_abs="11708142.349685" HC_abs="6054.344874" PMx_abs="2747.416222" NOx_abs="104061.372228" fuel_abs="3703989.157782" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_105:0.0" depart="0.00" departLane="675674221_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1335.00" arrivalLane="-392441930_1" arrivalPos="52.90" arrivalPosLat="0.00" arrivalSpeed="0.93" duration="1335.00" routeLength="6179.45" waitingTime="204.00" waitingCount="13" stopTime="314.00" timeLoss="397.42" rerouteNo="0" devices="tripinfo_pt_bus_105:0.0 routing_pt_bus_105:0.0 emissions_pt_bus_105:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="28201.110993" CO2_abs="12251723.273691" HC_abs="6456.855070" PMx_abs="2912.695651" NOx_abs="109521.000939" fuel_abs="3875915.639013" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_114:3.0" depart="261.00" departLane="384972991#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="32.00" arrival="1336.00" arrivalLane="846930959_1" arrivalPos="96.74" arrivalPosLat="0.00" arrivalSpeed="12.58" duration="1075.00" routeLength="5611.84" waitingTime="256.00" waitingCount="14" stopTime="202.00" timeLoss="435.58" rerouteNo="0" devices="tripinfo_pt_bus_114:3.0 routing_pt_bus_114:3.0 emissions_pt_bus_114:3.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="23996.798476" CO2_abs="10979918.982031" HC_abs="5447.474734" PMx_abs="2490.130060" NOx_abs="96010.522479" fuel_abs="3473753.339781" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_120:0.0" depart="174.00" departLane="384972991#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="35.00" arrival="1355.00" arrivalLane="-576816774#0_1" arrivalPos="239.32" arrivalPosLat="0.00" arrivalSpeed="13.39" duration="1181.00" routeLength="4265.95" waitingTime="209.00" waitingCount="11" stopTime="512.00" timeLoss="356.10" rerouteNo="0" devices="tripinfo_pt_bus_120:0.0 routing_pt_bus_120:0.0 emissions_pt_bus_120:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="25750.724219" CO2_abs="10402045.710472" HC_abs="5906.193230" PMx_abs="2639.507363" NOx_abs="96086.581892" fuel_abs="3290456.802736" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_132:0.0" depart="0.00" departLane="-394114218#3_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1418.00" arrivalLane="-387117388_1" arrivalPos="4.11" arrivalPosLat="0.00" arrivalSpeed="1.08" duration="1418.00" routeLength="7070.18" waitingTime="21.00" waitingCount="9" stopTime="538.00" timeLoss="217.26" rerouteNo="0" devices="tripinfo_pt_bus_132:0.0 routing_pt_bus_132:0.0 emissions_pt_bus_132:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="30491.991415" CO2_abs="13601315.745470" HC_abs="6958.241264" PMx_abs="3157.192096" NOx_abs="120209.008126" fuel_abs="4302989.652520" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_110:0.0" depart="12.00" departLane="-392441930_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="1.00" arrival="1425.00" arrivalLane="-412792775_1" arrivalPos="24.73" arrivalPosLat="0.00" arrivalSpeed="0.87" duration="1413.00" routeLength="4983.99" waitingTime="311.00" waitingCount="20" stopTime="406.00" timeLoss="513.01" rerouteNo="0" devices="tripinfo_pt_bus_110:0.0 routing_pt_bus_110:0.0 emissions_pt_bus_110:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="29657.317383" CO2_abs="11854153.408801" HC_abs="6825.654382" PMx_abs="3038.116890" NOx_abs="110008.037584" fuel_abs="3749764.090258" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_115:1.0" depart="77.00" departLane="169225673_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1426.00" arrivalLane="156260258_1" arrivalPos="74.72" arrivalPosLat="0.00" arrivalSpeed="0.83" duration="1349.00" routeLength="6351.02" waitingTime="234.00" waitingCount="12" stopTime="408.00" timeLoss="429.26" rerouteNo="0" devices="tripinfo_pt_bus_115:1.0 routing_pt_bus_115:1.0 emissions_pt_bus_115:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="29839.449549" CO2_abs="13239761.720355" HC_abs="6759.873258" PMx_abs="3084.581646" NOx_abs="117347.271048" fuel_abs="4188540.472415" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_104:1.0" depart="6.00" departLane="386500268#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="1.00" arrival="1453.00" arrivalLane="613655965_1" arrivalPos="255.51" arrivalPosLat="0.00" arrivalSpeed="7.59" duration="1447.00" routeLength="8672.94" waitingTime="104.00" waitingCount="9" stopTime="439.00" timeLoss="341.24" rerouteNo="0" devices="tripinfo_pt_bus_104:1.0 routing_pt_bus_104:1.0 emissions_pt_bus_104:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="32215.032780" CO2_abs="15393896.412524" HC_abs="7277.845253" PMx_abs="3357.957945" NOx_abs="132186.537488" fuel_abs="4870436.769421" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U9:0.2" depart="1251.00" departLane="673171637_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1465.00" arrivalLane="172027782#5_0" arrivalPos="1439.03" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="214.00" routeLength="1862.23" waitingTime="0.00" waitingCount="0" stopTime="90.00" timeLoss="56.50" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:0.2 routing_pt_light_rail_U9:0.2 emissions_pt_light_rail_U9:0.2" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_122:0.0" depart="0.00" departLane="-392441930_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1473.00" arrivalLane="-101742272#8_1" arrivalPos="61.85" arrivalPosLat="0.00" arrivalSpeed="9.50" duration="1473.00" routeLength="6067.70" waitingTime="371.00" waitingCount="15" stopTime="345.00" timeLoss="553.87" rerouteNo="0" devices="tripinfo_pt_bus_122:0.0 routing_pt_bus_122:0.0 emissions_pt_bus_122:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="30855.059042" CO2_abs="12703608.984965" HC_abs="7123.868897" PMx_abs="3172.072605" NOx_abs="116266.806559" fuel_abs="4018643.425244" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_130:0.0" depart="0.00" departLane="-343305746#1_1" departPos="7.47" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1497.00" arrivalLane="675777502_1" arrivalPos="64.45" arrivalPosLat="0.00" arrivalSpeed="9.87" duration="1497.00" routeLength="6055.36" waitingTime="422.00" waitingCount="11" stopTime="376.00" timeLoss="590.26" rerouteNo="0" devices="tripinfo_pt_bus_130:0.0 routing_pt_bus_130:0.0 emissions_pt_bus_130:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="31831.333435" CO2_abs="13011353.367388" HC_abs="7363.204383" PMx_abs="3270.842566" NOx_abs="119459.690524" fuel_abs="4115967.044688" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U9:1.2" depart="1252.00" departLane="68552415#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1506.00" arrivalLane="172027783_0" arrivalPos="98.63" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="254.00" routeLength="1860.56" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="66.98" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:1.2 routing_pt_light_rail_U9:1.2 emissions_pt_light_rail_U9:1.2" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_104:3.0" depart="6.00" departLane="-207082664_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1581.00" arrivalLane="386500268#1_1" arrivalPos="53.18" arrivalPosLat="0.00" arrivalSpeed="0.72" duration="1575.00" routeLength="8165.73" waitingTime="198.00" waitingCount="16" stopTime="502.00" timeLoss="444.46" rerouteNo="0" devices="tripinfo_pt_bus_104:3.0 routing_pt_bus_104:3.0 emissions_pt_bus_104:3.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="34248.682947" CO2_abs="15391215.449427" HC_abs="7812.077054" PMx_abs="3548.966122" NOx_abs="135591.285933" fuel_abs="4869293.725565" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_113:0.0" depart="71.00" departLane="675777502_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="2.00" arrival="1591.00" arrivalLane="390216945#2_1" arrivalPos="18.72" arrivalPosLat="0.00" arrivalSpeed="1.16" duration="1520.00" routeLength="6852.06" waitingTime="386.00" waitingCount="15" stopTime="363.00" timeLoss="619.58" rerouteNo="0" devices="tripinfo_pt_bus_113:0.0 routing_pt_bus_113:0.0 emissions_pt_bus_113:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="33246.639260" CO2_abs="14429098.445603" HC_abs="7582.723438" PMx_abs="3431.539531" NOx_abs="129079.398946" fuel_abs="4564714.261952" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_112:2.0" depart="36.00" departLane="122124925#0_1" departPos="0.20" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1619.00" arrivalLane="268558823#1_1" arrivalPos="25.19" arrivalPosLat="0.00" arrivalSpeed="0.89" duration="1583.00" routeLength="7512.42" waitingTime="121.00" waitingCount="15" stopTime="527.00" timeLoss="353.65" rerouteNo="0" devices="tripinfo_pt_bus_112:2.0 routing_pt_bus_112:2.0 emissions_pt_bus_112:2.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="33941.778540" CO2_abs="15013150.105471" HC_abs="7703.573496" PMx_abs="3508.334472" NOx_abs="133229.512408" fuel_abs="4749563.906819" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_130:1.0" depart="175.00" departLane="675777502_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="2.00" arrival="1626.00" arrivalLane="75077804#3_1" arrivalPos="54.50" arrivalPosLat="0.00" arrivalSpeed="0.95" duration="1451.00" routeLength="6755.42" waitingTime="173.00" waitingCount="15" stopTime="493.00" timeLoss="367.33" rerouteNo="0" devices="tripinfo_pt_bus_130:1.0 routing_pt_bus_130:1.0 emissions_pt_bus_130:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="31049.419827" CO2_abs="13425623.759488" HC_abs="7119.604995" PMx_abs="3205.879154" NOx_abs="120253.482919" fuel_abs="4247270.332027" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_131:0.0" depart="0.00" departLane="675777502_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1629.00" arrivalLane="29146499#2_1" arrivalPos="40.22" arrivalPosLat="0.00" arrivalSpeed="3.77" duration="1629.00" routeLength="8288.71" waitingTime="199.00" waitingCount="19" stopTime="456.00" timeLoss="438.04" rerouteNo="0" devices="tripinfo_pt_bus_131:0.0 routing_pt_bus_131:0.0 emissions_pt_bus_131:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="35098.982958" CO2_abs="15624327.621846" HC_abs="8037.236312" PMx_abs="3635.141629" NOx_abs="138177.740187" fuel_abs="4943010.609518" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_104:0.0" depart="0.00" departLane="386500268#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1639.00" arrivalLane="613655965_1" arrivalPos="255.51" arrivalPosLat="0.00" arrivalSpeed="7.10" duration="1639.00" routeLength="10628.44" waitingTime="44.00" waitingCount="7" stopTime="539.00" timeLoss="291.26" rerouteNo="0" devices="tripinfo_pt_bus_104:0.0 routing_pt_bus_104:0.0 emissions_pt_bus_104:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="37412.587899" CO2_abs="18424476.632088" HC_abs="8442.857577" PMx_abs="3913.608144" NOx_abs="156245.358762" fuel_abs="5829465.732662" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_112:3.0" depart="6.00" departLane="-26685613_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1656.00" arrivalLane="268558823#1_1" arrivalPos="25.19" arrivalPosLat="0.00" arrivalSpeed="1.16" duration="1650.00" routeLength="7335.74" waitingTime="173.00" waitingCount="14" stopTime="515.00" timeLoss="407.02" rerouteNo="0" devices="tripinfo_pt_bus_112:3.0 routing_pt_bus_112:3.0 emissions_pt_bus_112:3.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="34956.502204" CO2_abs="14976273.846924" HC_abs="8006.625097" PMx_abs="3605.047338" NOx_abs="134706.327454" fuel_abs="4737765.335723" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_108:0.0" depart="0.00" departLane="-386500268#0_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1678.00" arrivalLane="-26685613_1" arrivalPos="33.13" arrivalPosLat="0.00" arrivalSpeed="1.18" duration="1678.00" routeLength="7847.00" waitingTime="142.00" waitingCount="14" stopTime="594.00" timeLoss="380.44" rerouteNo="0" devices="tripinfo_pt_bus_108:0.0 routing_pt_bus_108:0.0 emissions_pt_bus_108:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="36469.821147" CO2_abs="16041969.396271" HC_abs="8293.576871" PMx_abs="3768.319995" NOx_abs="142687.929561" fuel_abs="5075019.297534" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_108:1.0" depart="0.00" departLane="-26685613_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1689.00" arrivalLane="-386500268#0_1" arrivalPos="71.25" arrivalPosLat="0.00" arrivalSpeed="5.46" duration="1689.00" routeLength="7960.36" waitingTime="115.00" waitingCount="15" stopTime="608.00" timeLoss="359.28" rerouteNo="1" devices="tripinfo_pt_bus_108:1.0 routing_pt_bus_108:1.0 emissions_pt_bus_108:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="36426.027909" CO2_abs="16060507.927010" HC_abs="8283.302070" PMx_abs="3764.774774" NOx_abs="142705.010418" fuel_abs="5080898.674153" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U8:1.1" depart="1200.00" departLane="26946520#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1698.00" arrivalLane="40985104#4_0" arrivalPos="2135.05" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="498.00" routeLength="4576.90" waitingTime="0.00" waitingCount="0" stopTime="210.00" timeLoss="123.20" rerouteNo="0" devices="tripinfo_pt_light_rail_U8:1.1 routing_pt_light_rail_U8:1.1 emissions_pt_light_rail_U8:1.1" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_111:1.0" depart="0.00" departLane="-387155257#0_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1718.00" arrivalLane="-392441930_1" arrivalPos="52.90" arrivalPosLat="0.00" arrivalSpeed="0.83" duration="1718.00" routeLength="8027.11" waitingTime="103.00" waitingCount="11" stopTime="624.00" timeLoss="338.79" rerouteNo="0" devices="tripinfo_pt_bus_111:1.0 routing_pt_bus_111:1.0 emissions_pt_bus_111:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="36866.736933" CO2_abs="16091554.267484" HC_abs="8419.986933" PMx_abs="3808.349397" NOx_abs="143574.219864" fuel_abs="5090685.331264" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_132:1.0" depart="36.00" departLane="387117388_1" departPos="1.30" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1741.00" arrivalLane="-394114218#3_1" arrivalPos="90.16" arrivalPosLat="0.00" arrivalSpeed="8.18" duration="1705.00" routeLength="7636.75" waitingTime="114.00" waitingCount="12" stopTime="623.00" timeLoss="355.74" rerouteNo="0" devices="tripinfo_pt_bus_132:1.0 routing_pt_bus_132:1.0 emissions_pt_bus_132:1.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="36514.919971" CO2_abs="15825403.138586" HC_abs="8324.419389" PMx_abs="3768.049285" NOx_abs="141662.943275" fuel_abs="5006430.256858" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_112:0.0" depart="40.00" departLane="268558823#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1749.00" arrivalLane="-122124925#0_1" arrivalPos="0.20" arrivalPosLat="0.00" arrivalSpeed="0.66" duration="1709.00" routeLength="8179.34" waitingTime="139.00" waitingCount="15" stopTime="575.00" timeLoss="371.16" rerouteNo="1" devices="tripinfo_pt_bus_112:0.0 routing_pt_bus_112:0.0 emissions_pt_bus_112:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="36710.885647" CO2_abs="16144113.290021" HC_abs="8384.536823" PMx_abs="3795.449488" NOx_abs="143566.891107" fuel_abs="5107360.241659" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U7:1.2" depart="1215.00" departLane="26946520#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1749.00" arrivalLane="40985104#4_0" arrivalPos="2135.05" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="534.00" routeLength="4576.90" waitingTime="25.00" waitingCount="1" stopTime="210.00" timeLoss="159.20" rerouteNo="0" devices="tripinfo_pt_light_rail_U7:1.2 routing_pt_light_rail_U7:1.2 emissions_pt_light_rail_U7:1.2" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_light_rail_U8:0.1" depart="1200.00" departLane="89344777#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1758.00" arrivalLane="26946516#1_0" arrivalPos="1910.04" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="558.00" routeLength="5963.27" waitingTime="0.00" waitingCount="0" stopTime="210.00" timeLoss="132.34" rerouteNo="0" devices="tripinfo_pt_light_rail_U8:0.1 routing_pt_light_rail_U8:0.1 emissions_pt_light_rail_U8:0.1" vType="pt_light_rail" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="0" CO2_abs="0" HC_abs="0" PMx_abs="0" NOx_abs="0" fuel_abs="0" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_104:2.0" depart="0.00" departLane="-207082664_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1804.00" arrivalLane="386500268#1_1" arrivalPos="53.18" arrivalPosLat="0.00" arrivalSpeed="0.72" duration="1804.00" routeLength="10043.56" waitingTime="206.00" waitingCount="10" stopTime="567.00" timeLoss="468.99" rerouteNo="0" devices="tripinfo_pt_bus_104:2.0 routing_pt_bus_104:2.0 emissions_pt_bus_104:2.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="40313.997094" CO2_abs="18714081.704999" HC_abs="9137.125919" PMx_abs="4189.515079" NOx_abs="162646.727693" fuel_abs="5920725.720531" electricity_abs="0"/>
-    </tripinfo>
-    <tripinfo id="pt_bus_115:0.0" depart="0.00" departLane="-383983728_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="1805.00" arrivalLane="-391001057#0_1" arrivalPos="31.30" arrivalPosLat="0.00" arrivalSpeed="1.16" duration="1805.00" routeLength="9927.12" waitingTime="75.00" waitingCount="13" stopTime="602.00" timeLoss="354.85" rerouteNo="0" devices="tripinfo_pt_bus_115:0.0 routing_pt_bus_115:0.0 emissions_pt_bus_115:0.0" vType="pt_bus" speedFactor="1.00" vaporized="">
-        <emissions CO_abs="39841.953936" CO2_abs="18559251.081241" HC_abs="9013.481090" PMx_abs="4141.089289" NOx_abs="161082.748207" fuel_abs="5871751.567161" electricity_abs="0"/>
-    </tripinfo>
+    <tripinfo id="pt_bus_114:5.0" depart="0.00" departLane="-390841675_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="215.00" arrivalLane="122574095_1" arrivalPos="35.58" arrivalPosLat="0.00" arrivalSpeed="4.72" duration="215.00" routeLength="1529.70" waitingTime="0.00" waitingCount="0" stopTime="70.00" timeLoss="26.31" rerouteNo="0" devices="tripinfo_pt_bus_114:5.0 routing_pt_bus_114:5.0" vType="pt_bus" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="pt_light_rail_U13:0.0" depart="0.00" departLane="673171637_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="249.00" arrivalLane="172027782#5_0" arrivalPos="1439.03" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="249.00" routeLength="1862.23" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="61.92" rerouteNo="0" devices="tripinfo_pt_light_rail_U13:0.0 routing_pt_light_rail_U13:0.0" vType="pt_light_rail" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="pt_light_rail_U13:1.0" depart="0.00" departLane="68552415#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="254.00" arrivalLane="172027783_0" arrivalPos="98.63" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="254.00" routeLength="1860.56" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="66.98" rerouteNo="0" devices="tripinfo_pt_light_rail_U13:1.0 routing_pt_light_rail_U13:1.0" vType="pt_light_rail" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="pt_light_rail_U9:0.0" depart="51.00" departLane="673171637_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="265.00" arrivalLane="172027782#5_0" arrivalPos="1439.03" arrivalPosLat="0.00" arrivalSpeed="27.78" duration="214.00" routeLength="1862.23" waitingTime="0.00" waitingCount="0" stopTime="90.00" timeLoss="56.50" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:0.0 routing_pt_light_rail_U9:0.0" vType="pt_light_rail" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="pt_bus_61:1.0" depart="0.00" departLane="431444776#1_0" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="276.00" arrivalLane="-676917368#0_1" arrivalPos="22.31" arrivalPosLat="0.00" arrivalSpeed="0.69" duration="276.00" routeLength="1030.97" waitingTime="37.00" waitingCount="3" stopTime="120.00" timeLoss="75.12" rerouteNo="0" devices="tripinfo_pt_bus_61:1.0 routing_pt_bus_61:1.0" vType="pt_bus" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="pt_light_rail_U9:1.0" depart="52.00" departLane="68552415#0_0" departPos="109.60" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="306.00" arrivalLane="172027783_0" arrivalPos="98.63" arrivalPosLat="0.00" arrivalSpeed="1.00" duration="254.00" routeLength="1860.56" waitingTime="0.00" waitingCount="0" stopTime="120.00" timeLoss="66.98" rerouteNo="0" devices="tripinfo_pt_light_rail_U9:1.0 routing_pt_light_rail_U9:1.0" vType="pt_light_rail" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="pt_train_RE_5:0.0" depart="0.00" departLane="156199094#3_0" departPos="135.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="317.00" arrivalLane="48316096#2_0" arrivalPos="589.00" arrivalPosLat="0.00" arrivalSpeed="7.75" duration="317.00" routeLength="4125.58" waitingTime="0.00" waitingCount="0" stopTime="60.00" timeLoss="158.59" rerouteNo="0" devices="tripinfo_pt_train_RE_5:0.0 routing_pt_train_RE_5:0.0" vType="pt_train" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="pt_bus_816:1.0" depart="0.00" departLane="-294067066#1_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="416.00" arrivalLane="29146499#2_1" arrivalPos="40.22" arrivalPosLat="0.00" arrivalSpeed="3.61" duration="416.00" routeLength="2061.50" waitingTime="50.00" waitingCount="3" stopTime="112.00" timeLoss="110.44" rerouteNo="0" devices="tripinfo_pt_bus_816:1.0 routing_pt_bus_816:1.0" vType="pt_bus" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="p5_0" depart="0.00" departLane="5047080#2_1" departPos="5.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="469.00" arrivalLane="-31157172#11_1" arrivalPos="54.37" arrivalPosLat="0.00" arrivalSpeed="2.94" duration="469.00" routeLength="4236.23" waitingTime="28.00" waitingCount="2" stopTime="0.00" timeLoss="73.42" rerouteNo="1" devices="tripinfo_p5_0 routing_p5_0 person_p5_0" vType="DEFAULT_VEHTYPE" speedFactor="1.05" vaporized=""/>
+    <tripinfo id="pt_bus_61:0.0" depart="0.00" departLane="-540190677_1" departPos="12.10" departPosLat="0.00" departSpeed="0.00" departDelay="0.00" arrival="480.00" arrivalLane="-24779203#0_0" arrivalPos="263.70" arrivalPosLat="0.00" arrivalSpeed="4.79" duration="480.00" routeLength="2182.34" waitingTime="4.00" waitingCount="4" stopTime="215.00" timeLoss="102.48" rerouteNo="0" devices="tripinfo_pt_bus_61:0.0 routing_pt_bus_61:0.0" vType="pt_bus" speedFactor="1.00" vaporized=""/>
+</tripinfos>
