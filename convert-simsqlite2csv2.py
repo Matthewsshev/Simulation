@@ -267,8 +267,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                     coordinates = percentages_remove(coordinates, erase_prob)
                     wktstr, length = coordinates2WKT(coordinates, geoformat)
 
-                    else:
-                        print("ll")
+
 
                 # Add coordinate as the last one if not coordinate of next user
                 # if name == name_prev:
