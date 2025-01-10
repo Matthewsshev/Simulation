@@ -233,8 +233,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                             trip = coordinates[:-stop]
                             trip = percentages_remove(trip, erase_prob)
                             wktstr, length = coordinates2WKT(trip, geoformat)
-                            if length == 0:
-                                print(1)
+
                             print(f"Check 12 {simulationstep_prev}")
 
                             # adjusting time for trip
@@ -267,8 +266,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                     gps_change(coordinates, 0.05)
                     coordinates = percentages_remove(coordinates, erase_prob)
                     wktstr, length = coordinates2WKT(coordinates, geoformat)
-                    if length == 0:
-                        print(2)
+
                     else:
                         print("ll")
 
@@ -321,8 +319,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
                 trip = coordinates[:-stop]
                 trip = percentages_remove(trip, erase_prob)
                 wktstr, length = coordinates2WKT(trip, geoformat)
-                if length == 0:
-                    print(3)
+
                 # Adjusting time for trip
                 simulationstep_prev -= stop
                 starttime = simulationstep2datetimestr(basetime, startsimulationstep)
@@ -339,8 +336,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, stepjump=1, geoformat='WKT', pe
         else:
             mobtype = mob_list[0]
             wktstr, length = coordinates2WKT(coordinates, geoformat)
-            if length == 0:
-                print(4)
+
         starttime = simulationstep2datetimestr(basetime, startsimulationstep)
         endtime = simulationstep2datetimestr(basetime, simulationstep_prev)
         nr += 1
