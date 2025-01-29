@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 from shapely import wkt, geometry, Point, LineString
-from datetime import datetime
+from datetime import datetime, timedelta
 import osmnx as ox
 import matplotlib.pyplot as plt
 import time
@@ -27,9 +27,42 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
 
-# Function to get journeys from the data
+# Function to get journeys from the data +
 def get_journeys(data):
     journeys = []
+    journey = []
+    data_inx = data.index
+    prev_inx = data_inx[0]
+    for inx in data_inx:
+        if inx % 5000 == 0:
+            print(inx)
+
+        if data['type'][inx] == 's':
+            duration = get_duration(data, inx)
+            if duration >= timedelta(hours=1):
+                # Start einer neuen Reise, wenn die Dauer >= 1 Stunde ist
+                journey.append(inx)
+                journeys.append(journey)
+                journey = []
+            else:
+                # Füge den aktuellen Index zur Reise hinzu
+                journey.append(inx)
+        elif data['userid'][prev_inx] != data['userid'][inx]:
+            # Benutzerwechsel prüfen
+            if data['type'][prev_inx] == 's':
+                duration = get_duration(data, prev_inx)
+                if duration >= timedelta(hours=1):
+                    # Alte Reise abschließen und neue beginnen
+                    journey = []
+            # Neue Reise beginnen (unabhängig von der Dauer)
+            if journey:
+                journeys.append(journey)
+            journey = [inx]
+        else:
+            # Füge Index der aktuellen Reise hinzu
+            journey.append(inx)
+        prev_inx = inx
+    """journeys = []
     journey = []
     check = data['journey'].tolist()
     prev_jr = check[0]
@@ -48,23 +81,35 @@ def get_journeys(data):
         prev_cr = cr
         cr += 1
     journeys.append(journey)  # Append the last journey
-    print(f'All of the journeys from database are found')
+    print(f'All of the journeys from database are found')"""
+    print(f'Journeys {journeys}')
     return journeys
 
 
-# Function to get area of place for analysis
+# Function to get area of place for analysis +
 def get_area(name):
     return ox.geocode_to_gdf(name, by_osmid=True)
 
 
-# Function to check the rationality of the Trip using departure times
+# Function to get duration of an activity +
+def get_duration(data, inx):
+    timeformat = "%Y-%m-%d %H:%M:%S"
+    start_time = f'{data["started_at_date"][inx]} {data["started_at_time"][inx]}'
+    end_time = f'{data["finished_at_date"][inx]} {data["finished_at_time"][inx]}'
+    start_time = datetime.strptime(start_time, timeformat)
+    end_time = datetime.strptime(end_time, timeformat)
+    duration = end_time - start_time
+    return duration
+
+# Function to check the rationality of the Trip using departure times +
 def check_rationality(data, journeys, time):
     begin = datetime.strptime(time, "%H:%M:%S").time()
     bad = 0
     good = 0
     for journey in journeys:
-        if data['mobtype'][journey[-1]] == 'big_stay':
-            start_time = datetime.strptime(data['starttime'][journey[-1]], "%Y-%m-%d %H:%M:%S").time()
+        duration = get_duration(data, journey[-1])
+        if data['type'][journey[-1]] == 's' and duration >= timedelta(hours=1):
+            start_time = datetime.strptime(data['started_at_time'][journey[-1]], "%H:%M:%S").time()
             if start_time >= begin:
                 bad += 1
             else:
@@ -76,7 +121,7 @@ def check_rationality(data, journeys, time):
         print(f'Percentage {(bad/good) * 100:.2f} %')
 
 
-# Function to get duration of a trip
+# Function to get duration of a trip +
 def journey_time(data, journeys):
     duration = []
     for journey in journeys:
@@ -89,7 +134,7 @@ def journey_time(data, journeys):
     return duration
 
 
-# Function to create polygon using OSM
+# Function to create polygon using OSM +
 def create_polygon(address):
     area = get_area(address)
     simplified_polygon = area['geometry'].simplify(tolerance=0.0001)
@@ -98,7 +143,7 @@ def create_polygon(address):
     return polygon
 
 
-# Function to check if a point is within a given polygon
+# Function to check if a point is within a given polygon +
 def polygon_contains(data, polygon_list):
    #  gobj = wkt.loads(data)  # Load WKT data to geometry object
     if isinstance(data, LineString):
@@ -109,14 +154,14 @@ def polygon_contains(data, polygon_list):
     return polygon.contains(point)  # Check if the point is within the polygon
 
 
-# Function to check whether trip intersects  given polygon
+# Function to check whether trip intersects  given polygon +
 def polygon_intersects(data, polygon_list):
     # gobj = wkt.loads(data)
     polygon = geometry.Polygon(polygon_list)
     return polygon.intersects(data)
 
 
-# Function to save polygons in geojson format
+# Function to save polygons in geojson format +
 def save_polygon(filename, polygon_s_g, polygon_f_g, polygon_k_g, polygon_m_g):
     with open('analyse/' + filename, "w") as csvfile:
         csvfile.write(f'"id","polygon"\n')
@@ -132,19 +177,21 @@ def save_polygon(filename, polygon_s_g, polygon_f_g, polygon_k_g, polygon_m_g):
         writer.writerow(['polygon_m', geojson.dumps(polygon_m_g)])
 '''
 
-# Function to save journeys in csv
+
+# Function to save journeys in csv +
 def save_journeys(filename, journeys, data):
     with open(f'analyse/' + filename, 'w') as csvfile:
-        csvfile.write('name,nr,journey,mobtype,transport,startstep,starttime,endstep,endtime,wkt\n')
+        csvfile.write("id,userid,type,mode,geometry,length,timearray,started_at_date,started_at_time,finished_at_date,finished_at_time,confirmed\n")
         for journey in journeys:
             for mobility in journey:
-                csvstr = f'"{data["name"][mobility]}","{data["nr"][mobility]}","{data["journey"][mobility]}","{data["mobtype"][mobility]}",' \
-                         f'"{data["transport"][mobility]}","{data["startstep"][mobility]}","{data["starttime"][mobility]}",' \
-                         f'"{data["endstep"][mobility]}","{data["endtime"][mobility]}","{data["wkt"][mobility]}"\n'
+                csvstr = f'"{data["id"][mobility]}","{data["userid"][mobility]}","{data["type"][mobility]}","{data["mode"][mobility]}",' \
+                         f'"{data["geometry"][mobility]}","{data["length"][mobility]}","{data["timearray"][mobility]}",' \
+                         f'"{data["started_at_date"][mobility]}","{data["started_at_time"][mobility]}","{data["finished_at_date"][mobility]}",' \
+                         f'"{data["finished_at_time"][mobility]}","{data["confirmed"][mobility]}"\n'
                 csvfile.write(csvstr)
 
 
-# Function to get all journeys that are starting in polygon
+# Function to get all journeys that are starting in polygon +
 def start_a(data, journeys, polygon_start):
     filtered_journeys = []
     cr = 0
@@ -152,7 +199,7 @@ def start_a(data, journeys, polygon_start):
     for journey in journeys:
         if cr % 5000 == 0:
             print(cr)
-        if polygon_contains(data['wkt'][journey[0]], polygon_start):
+        if polygon_contains(data['geometry'][journey[0]], polygon_start):
             filtered_journeys.append(journey)
         cr += 1
     print(f'All of the journeys have been found')
@@ -199,9 +246,9 @@ def through_b(data, journeys, polygon_middle):
     cr = 0
     print(f'Starting the funktion to get journeys that are going through point b')
     for journey in journeys:
-        if not polygon_contains(data['wkt'][journey[0]], polygon_middle) and not polygon_contains(data['wkt'][journey[-1]], polygon_middle):
+        if not polygon_contains(data['geometry'][journey[0]], polygon_middle) and not polygon_contains(data['geometry'][journey[-1]], polygon_middle):
             for trip in journey:
-                if polygon_intersects(data['wkt'][trip], polygon_middle):
+                if polygon_intersects(data['geometry'][trip], polygon_middle):
                     filtered_journeys.append(journey)
                     break  # Break out of the inner loop to avoid adding the same journey multiple times
         if cr % 5000 == 0:
@@ -219,7 +266,8 @@ def end_c(data, journeys, polygon_end):
     for journey in journeys:
         if cr % 5000 == 0:
             print(cr)
-        if data['mobtype'][journey[-1]] == 'big_stay' and polygon_contains(data['wkt'][journey[-1]], polygon_end):
+        duration = get_duration(data, journey[-1])
+        if data['type'][journey[-1]] == 's' and duration >= timedelta(hours=1) and polygon_contains(data['geometry'][journey[-1]], polygon_end):
             filtered_journeys.append(journey)
             continue
         cr += 1
@@ -343,13 +391,8 @@ def start_a_end_b(data, journeys, polygon_start, polygon_end):
 # Main function to execute the script
 def main():
     print(f"Check")
-    state = pd.read_csv("a_through_b_c.csv")  # Read the CSV file
-    pt_state = pd.read_csv('pt.csv')
-    filtered_pt = pt_state[pt_state['wkt'].str.contains('LINESTRING')]
-    # print(f'ss {pt_state.loc["starttime", "endtime"]}')
-    # pt_time_check(filtered_pt)
-    state['wkt'] = gpd.GeoSeries.from_wkt(state['wkt'])
-    #state = state[~state['wkt'].isin([np.inf, -np.inf])]
+    state = pd.read_csv("try1.csv")  # Read the CSV file
+    state['geometry'] = gpd.GeoSeries.from_wkt(state['geometry'])
     # Define start and end polygons
     addresses = ['R5297117', 'W1319624540', 'R5732233', 'R5732224']
     polygon_k = create_polygon(addresses[0])
@@ -367,6 +410,7 @@ def main():
     # flandernstrasse_data = state.loc(np.array(flandernstrasse).flatten())
 
     kanalstrasse = end_c(state, journeys, polygon_k)
+    print(f'kanalstrasse {kanalstrasse}')
     kanalstrasse = start_a(state, kanalstrasse, polygon_i)
     #f_length = journey_length(state, flandernstrasse)
     #f_times = journey_time(state, flandernstrasse)

@@ -1,4 +1,3 @@
-import math
 import sys
 import traci
 import random
@@ -8,8 +7,6 @@ from lxml import etree
 import sqlite3
 from threading import Thread
 import pickle
-import csv
-from datetime import datetime
 import argparse
 import osmium as osm
 import pandas as pd
@@ -243,8 +240,6 @@ class Trip:
                     person.location = destination  # Update the person's location
             for trip in person.trip:  # now we`re working with trips
                 print(f'Trip')
-                if person.name == 'Fake':
-                    print("The person  = Fake")
                 if trip.vType:
                     Trip.get_allowed(trip.start_edge, allowed_auto)
                     # checking if person have more than one type of transport
@@ -374,7 +369,6 @@ class Trip:
             lon, lat = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
             lon = "{:.5f}".format(lon)
             lat = "{:.5f}".format(lat)
-            print(f"Check {pedestrian_data[66][0]} Check {pedestrian_data[66][1]}")
 
 
             if pedestrian_data[195] == '':  # checking transport type
