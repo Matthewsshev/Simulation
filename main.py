@@ -81,14 +81,21 @@ class Trip:
         parser.add_argument('-t', type=int, default=10)
         # Add argument for number of persons (-p) with default value 1
         parser.add_argument('-p', type=int, default=1)
+        # Add argument for loading/creating of persons with default value False(creating of persons)
+        parser.add_argument('-l', type=bool, default=False)
         # Parse arguments
         return parser.parse_args()
 
     @staticmethod
-    def get_allowed(edge, allow_auto):  # creating a function that will append lists of allowed lane
-        for lane in traci.lane.getIDList():
+    def get_allowed(edge):  # creating a function that will append lists of allowed lane
+        '''for lane in traci.lane.getIDList():
             if traci.lane.getEdgeID(lane) == edge:
-                allow_auto.add((traci.lane.getAllowed(lane)))
+                print(f'edge {edge} lane {lane} Lane number {traci.edge.getLaneNumber(edge)}')
+                res = traci.lane.getAllowed(lane)
+                '''
+        lane = f'{edge}_0'
+        res = traci.lane.getAllowed(lane)
+        return res
 
     @staticmethod
     def get_lane(edge):  # creating a function that will convert edge to the lane
@@ -109,12 +116,13 @@ class Trip:
         for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
             count += 1
             if count % 15 == 0:  # every 15 edges checking for a suitable edge
-                Trip.get_allowed(edge, allowed_a)
-                if any(random_auto in group for group in allowed_a):
+                if edge not in allowed_a:
+                    allowed_a[edge] = Trip.get_allowed(edge)
+                allowed = allowed_a[edge]
+                if any(random_auto in group for group in allowed):
                     next_edge = edge
                     break
                 else:
-                    allowed_a = set()
                     next_edge = edge
             else:
                 next_edge = edge
@@ -195,9 +203,7 @@ class Trip:
         """
         Calculate the duration of stay at a given destination for a person based on their type and destination.
         """
-        if person.name == 'Fake':
-            return random.randint(1, 2)
-        elif destination_edge == person.supermarket:
+        if destination_edge == person.supermarket:
             return random.randint(600, 2400)
         elif destination_edge == person.friends:
             return random.randint(3600, 14400)
@@ -221,74 +227,73 @@ class Trip:
         needed location and destination, type of transport or mode, but not both.
         """
         root_2 = etree.Element("routes")
+        # Precompute allowed transports for all starting locations
+        allowed_transport_cache = {}
+        cr = 0
         for person in persons:
             # creating and saving person in xml file depart - time of start. File must be sorted by departure time
             person_attrib = {'id': person.name, 'depart': '0.00'}
-            allowed_auto = set()  # creating a list of allowed transport on a start point
             person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
-            if person.name != 'Fake':
-                # seting time to 6 am
-                time = 6
-                for _ in range(n):  # creating a loop that will choose destination that`s different from location
-                    # Choose a destination different from the current location
-                    destination = Trip.destination_probability(person, time)
-                    duration = Trip.get_duration(person, destination, time)
-                    time += duration / 3600
-                    if time >= 24:
-                        time = time - 24
-                    person.assign_trip(person.location, destination, duration)
-                    person.location = destination  # Update the person's location
+            # seting time to 6 am
+            time = 6
+            for _ in range(n):  # creating a loop that will choose destination that`s different from location
+                # Choose a destination different from the current location
+                destination = Trip.destination_probability(person, time)
+                duration = Trip.get_duration(person, destination, time)
+                time = (time + duration / 3600) % 24  # Keep within 24-hour range
+                person.assign_trip(person.location, destination, duration)
+                person.location = destination  # Update the person's location
+
             for trip in person.trip:  # now we`re working with trips
-                print(f'Trip')
-                if trip.vType:
-                    Trip.get_allowed(trip.start_edge, allowed_auto)
-                    # checking if person have more than one type of transport
-                    if isinstance(trip.vType, list) and person.name != 'Fake':
-                        random_auto = random.choice(trip.vType)  # choosing random from given list
-                    else:  # else using only one transport that is possible
-                        random_auto = trip.vType
-                    # if our auto is not allowed on a start point
+                if cr % 100 == 0:
+                    print(f'Trip nr {cr}')
+                start_edge, destination_edge, duration = trip.start_edge, trip.destination_edge, trip.duration
+                vType = trip.vType
+                mode = trip.mode
+
+                # Fetch allowed transport modes from cache
+                if start_edge not in allowed_transport_cache:
+                    allowed_transport_cache[start_edge] = Trip.get_allowed(start_edge)
+
+                allowed_auto = allowed_transport_cache[start_edge]
+
+                if vType:
+                    if isinstance(vType, list):
+                        random_auto = random.choice(vType)
+                    else:
+                        random_auto = vType
 
                     if not any(random_auto in group for group in allowed_auto):
-                        #  getting a route by which person will travel
-                        next_edges = traci.simulation.findIntermodalRoute(trip.start_edge, trip.destination_edge,
-                                                                          modes='car', vType=random_auto)
+                        # Find a better edge using SUMO (cache results to avoid multiple calls)
+                        next_edges = traci.simulation.findIntermodalRoute(start_edge, destination_edge, modes='car',
+                                                                          vType=random_auto)
+
                         if next_edges:
-                            allowed_a = set()  # creating a new list of allowed autos on next edge
-                            b = 0  # creating variable to count edges
-                            next_e = Trip.get_suitable_edge(next_edges, random_auto, allowed_a, b)
-                            # creating trip attribute from start to suitable edge using public transport
-                            trip_attrib = {
-                                'from': trip.start_edge, 'to': next_e,
-                                'line': trip.line, 'modes': trip.mode}
-                            etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
-                            # and then from suitable edge to destination
-                            trip_attrib = {
-                                'from': next_e, 'to': trip.destination_edge,
-                                'line': trip.line, 'vTypes': random_auto}  # creating trip attribute for xml file
+                            next_e = Trip.get_suitable_edge(next_edges, random_auto, allowed_transport_cache, 0)
+                            trip_attrib = {'from': start_edge, 'to': next_e, 'line': trip.line, 'modes': mode}
+                            etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)
+                            trip_attrib = {'from': next_e, 'to': destination_edge, 'line': trip.line,
+                                           'vTypes': random_auto}
                         else:
+                            trip_attrib = {'from': start_edge, 'to': destination_edge, 'line': trip.line,
+                                           'vTypes': random_auto}
+                    else:
+                        trip_attrib = {'from': start_edge, 'to': destination_edge, 'line': trip.line,
+                                       'vTypes': random_auto}
+                else:
+                    trip_attrib = {'from': start_edge, 'to': destination_edge, 'line': trip.line, 'modes': mode}
 
-                            trip_attrib = {
-                                'from': trip.start_edge, 'to': trip.destination_edge,
-                                'line': trip.line, 'vTypes': random_auto}
-                    else:  # if  edge is suitable from the start creating only one trip
-                        trip_attrib = {
-                            'from': trip.start_edge, 'to': trip.destination_edge,
-                            'line': trip.line, 'vTypes': random_auto}
-                else:  # and if person does not have any transport he`ll use public transport
-                    trip_attrib = {
-                        'from': trip.start_edge, 'to': trip.destination_edge,
-                        'line': trip.line, 'modes': trip.mode}
-                etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)  # saving trip attribute
-                if person.name != 'Fake':
-                    stop_attrib = {'duration': str(trip.duration), 'edge': trip.destination_edge, 'actType': 'singing'}  # creating stop attribute
-                    etree.SubElement(person_element, 'stop', attrib=stop_attrib)  # saving stop attribute
-        xml_2string = etree.tostring(root_2, encoding="utf-8")  # using normal encoding for xml file
-        dom = etree.fromstring(xml_2string)  # this two lines help to create readable xml file
-        formatted_xml = etree.tostring(dom, pretty_print=True, encoding="utf-8").decode()
-        with open("Without_transport/data.rou.xml", "w") as save:  # Writing information that we`ve saved to the xml fil
-            save.write(formatted_xml)
+                etree.SubElement(person_element, 'personTrip', attrib=trip_attrib)
 
+                stop_attrib = {'duration': str(duration), 'edge': destination_edge, 'actType': 'singing'}
+                etree.SubElement(person_element, 'stop', attrib=stop_attrib)
+                cr += 1
+                # Write XML once at the end
+
+            formatted_xml = etree.tostring(root_2, pretty_print=True, encoding="utf-8").decode()
+            with open("Without_transport/data.rou.xml", "w") as save:
+                save.write(formatted_xml)
+        print(f'Trip creation is finished')
     """@staticmethod
     def createTrips(durations, csvname):
         data = []
@@ -623,9 +628,9 @@ def main():
     args = Trip.parse_args()
     quantity_trips = args.t
     Human.quantity = args.p
+    save_obj = args.l
     Human.home = Human.home.sample(n=int(Human.quantity / 5))
     Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
-    save_obj = True  # will the simulation be extended
     if save_obj:
         print('Loading persons')
         humans = Human.load_state('state.pkl')
@@ -648,6 +653,7 @@ def main():
     traci.close()
     traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
+
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))

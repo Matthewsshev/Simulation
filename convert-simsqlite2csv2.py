@@ -51,7 +51,7 @@ def parse_args():
     # Add argument for shift multiplication with default value 1
     parser.add_argument('-s', type=float, default=1)
     # Add argument for enabling Errors with default value true
-    parser.add_argument('-err', type=bool, default=True)
+    parser.add_argument('-err', type=bool, default=False)
     # Parse arguments
     return parser.parse_args()
 # Convert simulation step into datetime string starting at a base time
@@ -120,10 +120,15 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, stepjump=
     con = openDB(dbinname)
     cur = con.cursor()  # to read data
     cur2 = con.cursor()
+    density = 5
+    if density == 1:
+        res = 0
+    else:
+        res = 1
     # get curser to simulated coordinates
     sql_cmd = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
                "FROM pedestrian_data AS p, vehicles AS v "
-               "WHERE transport = v.id")  # AND lat < 100 and lat > -100  was deleted, because no data was in those querries
+               f"WHERE transport = v.id and MOD(p.datetime, {density}) = {res}")  # AND lat < 100 and lat > -100  was deleted, because no data was in those querries
     sql_cmd2 = ('Select pi.id, pt.Type as Occupation '
                 'From personal_Info As pi '
                 'Join people_type As pt On pt.id = pi.type_id')
@@ -352,11 +357,12 @@ def eraser_percentages(occupation, multiplier):
     return random.uniform(min_val, max_val) * multiplier
 
 
-def percentages_remove(lst,tarr, percentage):
+def percentages_remove(lst, tarr, percentage):
     # Calculate the number of items to remove
     num_to_remove = int(len(lst) * percentage)
     arr = lst
-    start_index = random.randint(4, len(arr) - 2)
+    print(f'Len {len(arr)}')
+    start_index = random.randint(2, len(arr) - 2)
     for _ in range(num_to_remove):
         if len(arr) > 1:  # Make sure there's more than one element to avoid removing the last
             arr.pop(start_index)
@@ -506,10 +512,15 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, stepju
     con = openDB(dbinname)
     cur = con.cursor()  # to read data
     cur2 = con.cursor()
+    density = 5
+    if density == 1:
+        res = 0
+    else:
+        res = 1
     # get curser to simulated coordinates
     sql_cmd = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
                "FROM pedestrian_data AS p, vehicles AS v "
-               "WHERE transport = v.id")  # AND lat < 100 and lat > -100  was deleted, because no data was in those querries
+               f"WHERE transport = v.id and MOD(p.datetime, {density}) = {res}")  # AND lat < 100 and lat > -100  was deleted, because no data was in those querries
     sql_cmd2 = ('Select pi.id, pt.Type as Occupation '
                 'From personal_Info As pi '
                 'Join people_type As pt On pt.id = pi.type_id')
@@ -556,7 +567,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, stepju
         inf = 0
         while coordinate:
             ctr += 1
-            stepctr += 1
+            stepctr += density
             # print out some progress information
             if ctr % 5000 == 0:
                 print(ctr)
@@ -569,7 +580,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, stepju
             # Getting a stop with time more than 600 sec
             if lat == lat_prev and name == name_prev and lat_prev != 'inf' and transport_prev == transport:
                 stop += 1
-            elif stop >= 600 and lat != lat_prev:
+            elif stop >= 600 / density and lat != lat_prev:
                 stop_end = True
                 print(f"Stop for {name_prev} at {simulationstep_prev} for {stop}")
             else:
@@ -591,7 +602,8 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, stepju
                             # write first trip before stay if stay is 1 activity
                             mobtype = mob_list[0]
                             # getting trip data without stay
-                            # print(f"Name {name_prev}   unterschied {simulationstep_prev - stop}  {startsimulationstep}")
+                            print(f"Name {name_prev}   unterschied {simulationstep_prev - stop}  {startsimulationstep}")
+                            print(len(coordinates))
                             trip = coordinates[:-stop]
                             triptime = timearr[:-stop]
                             if error:
@@ -662,6 +674,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, stepju
                     erase_prob = eraser_percentages(info[1], eraser)
             else:
                 # consider only every stepjump time the current point
+                print(f'check {stepctr} {stepjump}')
                 if stepctr % stepjump == 0:
                     coordinates.append(point)
                     timearr.append(simulationstep)
@@ -769,8 +782,8 @@ def main():
     shift = args.s
     error = args.err
     print(db + ".db")
-    convertSQLtoWKTraw(db + ".db", 'try1' + ".csv", "2024-04-01 08:00:00", eraser, shift, error, stepjump=1)
-    convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 08:00:00",eraser, shift, error, stepjump=1)
+    convertSQLtoWKTraw(db + ".db", 'try1' + ".csv", "2024-04-01 08:00:00", eraser, shift, error, stepjump=5)
+    convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, stepjump=5)
 
     # convertSQLtoWKTraw(filename+".db", filename+"raw.csv", "2024-04-01 08:00:00")
     # dumpdb2csv(filename+".db", filename+"_dbraw_p136.csv", personlist=['p136'])
