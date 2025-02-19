@@ -1,13 +1,5 @@
-The Python script main.py includes a function to parse command-line arguments using the argparse module. This allows you to customize the number of trips and persons in the simulation by passing arguments when you run the script.
+The simulation model is based on the microscopic traffic simulation software SUMO (Simulation of Urban MObility). The map of the study area is integrated into SUMO as a road network. This is done by importing an OpenStreetMap (OSM) file in PBF format, which is then processed and validated to ensure a realistic representation of the road infrastructure using netconvert and scenarioFromOSM.py
 
-Available Arguments:
--t: Defines the number of trips each person will take in the simulation.
-Default value: 10
--p: Defines the number of persons to simulate.
-Default value: 1
+Public transport is incorporated into the simulation by defining bus and rail routes within SUMO. These are specified through route (.rou.xml) which was created with stops file additional.xml using ptlines2flows.py . Public transport vehicles follow predefined timetables and interact dynamically with private traffic.
 
-To run the simulation with default values:
-python main.py
-
-To customize the number of trips and persons, use the following format, but without []:
-python main.py -t [number_of_trips] -p [number_of_persons]
+The execution of activities within the simulation is managed using trip files (.rou.xml), which are processed in SUMO to simulate vehicle movements according to traffic rules and interactions. The routes can either be predefined or dynamically optimized based on traffic conditions.

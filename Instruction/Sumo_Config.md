@@ -15,16 +15,19 @@ How to create a sumo simulation using an osm file.
 4.After that Sumo Saga, that is already installed in Sumo,is needed. The location is: C:\Program Files (x86)\Eclipse\Sumo\tools\contributed\saga if the Sumo isn’t installed then application wouldn’t run properly. Installation guide SUMO: https://sumo.dlr.de/docs/Downloads.php
 5.Copy all files from saga to directory with Esslingen.osm file
 	•Installing a module to make it work faster pip install rtree
-	•After that using command python scenarioFromOSM.py --osm esslingen.osm  --out test where out is a folder, which will be created after everything.
+	•After that usin g command python scenarioFromOSM.py --osm esslingen.osm  --out test where out is a folder, which will be created after everything.
 6.In the end the folder test is created. Take all the files from that into our project repository and change already existing files in Retrieve and Without_Transport.
 7.After that open the OSM.sumocfg file using text redactor or Pycharm and into the <addition files> add file data.rou.xml
-8.One of the last steps is to adjust the time of available Public Transport
-	•Open the osm_pt.rou.xml file
-	•Scroll to the end of the file where Flows are
-	•Use find tool to locate flows
-	•End parameter is needed. In Pycharm everything is simple and all parameters can be changed at once.
-	•The time in the end parameter is in seconds, so keep that in mind
-	•Parameter flow after changing end value
+8.One of the last steps is to fix the Network file and public transport
+	•Open the cmd and write this command,which will fix the Network Problems
+	netconvert --osm esslingen.osm -o crr.net.xml --junctions.join-dist 10 --ramps.guess --geometry.remove --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
+	• Adjusting Public Transport
+	python ptlines2flows.py -n crr.net.xml -s additional.xml -l ptlines.xml -o flows.rou.xml -p 1200 --use-osm-routes --ignore-errors --vtype-prefix pt_ --verbose -e 36000000
+	• Changing input files in osm.sumocfg
+	osm_pt.rou.xml -> flows.rou.xml 
+	(route-files)
+	change all additional files to osm_polygons.add.xml, basic.vType.xml, additional.xml, data.rou.xml
+
 9. Then you need to create osm files, that contains data points for School, Unis, Work, etc.
 	•School
 osmium tags-filter -o school.osm check.osm n/amenity=school --overwrite
