@@ -79,8 +79,8 @@ class Trip:
         parser = argparse.ArgumentParser()
         # Add argument for number of trips (-t) with default value 10
         parser.add_argument('-t', type=int, default=10)
-        # Add argument for number of persons (-p) with default value 1
-        parser.add_argument('-p', type=int, default=1)
+        # Add argument for number of persons (-p) with default value 5
+        parser.add_argument('-p', type=int, default=5)
         # Add argument for loading/creating of persons with default value False(creating of persons)
         parser.add_argument('-l', type=bool, default=False)
         # Parse arguments
@@ -377,23 +377,21 @@ class Trip:
 
 
             if pedestrian_data[195] == '':  # checking transport type
-                transport = 8  # person is going by foot
+                transport = 7  # person is going by foot
             else:
                 vehicle_type = traci.vehicle.getVehicleClass(pedestrian_data[195])  # getting a vehicle type for ours
-                if vehicle_type == 'bus':  # checking type of transport
+                if vehicle_type == 'bus' or vehicle_type == 'trolleybus':  # checking type of transport
                     transport = 1
-                elif vehicle_type == 'trolleybus':
-                    transport = 2
                 elif vehicle_type == 'light rail':
-                    transport = 3
+                    transport = 2
                 elif vehicle_type == 'train':
-                    transport = 4
+                    transport = 3
                 elif vehicle_type == 'bicycle':
-                    transport = 5
+                    transport = 4
                 elif vehicle_type == 'motorcycle':
-                    transport = 6
+                    transport = 5
                 else:  # person is traveling by car
-                    transport = 7
+                    transport = 6
             # Executing an SQL query, which will insert new data into pedestrian_data table
             connection.execute(''' INSERT INTO pedestrian_data (name, transport, datetime, lat, lon, speed) 
                                                     VALUES (?, ?, ?, ?, ?, ?)''',
