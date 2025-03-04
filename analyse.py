@@ -1,6 +1,6 @@
 import sys
 import pandas as pd
-from shapely import wkt, geometry, Point, LineString
+from shapely import wkt, geometry, Point, LineString, Polygon
 from datetime import datetime, timedelta
 import osmnx as ox
 import matplotlib.pyplot as plt
@@ -33,12 +33,13 @@ def get_journeys(data):
     journey = []
     data_inx = data.index
     prev_inx = data_inx[0]
+    print(f'Check Data {data}')
     for inx in data_inx:
         if inx % 5000 == 0:
             print(inx)
-
-        if data['type'][inx] == 's':
+        if data['type'][inx] == 'S':
             duration = get_duration(data, inx)
+            print(f'duration {duration}')
             if duration >= timedelta(hours=1):
                 # Start einer neuen Reise, wenn die Dauer >= 1 Stunde ist
                 journey.append(inx)
@@ -49,7 +50,7 @@ def get_journeys(data):
                 journey.append(inx)
         elif data['userid'][prev_inx] != data['userid'][inx]:
             # Benutzerwechsel prüfen
-            if data['type'][prev_inx] == 's':
+            if data['type'][prev_inx] == 'S':
                 duration = get_duration(data, prev_inx)
                 if duration >= timedelta(hours=1):
                     # Alte Reise abschließen und neue beginnen
@@ -62,6 +63,8 @@ def get_journeys(data):
             # Füge Index der aktuellen Reise hinzu
             journey.append(inx)
         prev_inx = inx
+    if journey:
+        journeys.append(journey)
     """journeys = []
     journey = []
     check = data['journey'].tolist()
@@ -108,7 +111,7 @@ def check_rationality(data, journeys, time):
     good = 0
     for journey in journeys:
         duration = get_duration(data, journey[-1])
-        if data['type'][journey[-1]] == 's' and duration >= timedelta(hours=1):
+        if data['type'][journey[-1]] == 'S' and duration >= timedelta(hours=1):
             start_time = datetime.strptime(data['started_at_time'][journey[-1]], "%H:%M:%S").time()
             if start_time >= begin:
                 bad += 1
@@ -138,9 +141,21 @@ def journey_time(data, journeys):
 def create_polygon(address):
     area = get_area(address)
     simplified_polygon = area['geometry'].simplify(tolerance=0.0001)
+
+    polygon2 = Polygon(shell=[[9.28822681421639, 48.74276032714531], [9.28822681421639, 48.74061047264683],
+                                         [9.292100767050114, 48.74061047264683], [9.292100767050114, 48.74276032714531],
+                                         [9.28822681421639, 48.74276032714531]])
+    polygon = Polygon(shell=[[9.299559077340524, 48.739670561617906], [9.299559077340524, 48.73784150197222],
+         [9.302305049160038, 48.73784150197222], [9.302305049160038, 48.739670561617906],
+         [9.299559077340524, 48.739670561617906]])
+    polygon3 = Polygon(shell=[[9.293246318684142, 48.72656359993217], [9.293246318684142, 48.726030878223995],
+         [9.29466426847912, 48.726030878223995], [9.29466426847912, 48.72656359993217],
+         [9.293246318684142, 48.72656359993217]])
+
+    print(f'Simpl {simplified_polygon}')
     simplified_single_polygon = simplified_polygon.iloc[0]
-    polygon = geometry.Polygon(simplified_single_polygon.exterior.coords)
-    return polygon
+    # polygon = geometry.Polygon(simplified_single_polygon.exterior.coords)
+    return polygon3, polygon2, polygon
 
 
 # Function to check if a point is within a given polygon +
@@ -267,7 +282,7 @@ def end_c(data, journeys, polygon_end):
         if cr % 5000 == 0:
             print(cr)
         duration = get_duration(data, journey[-1])
-        if data['type'][journey[-1]] == 's' and duration >= timedelta(hours=1) and polygon_contains(data['geometry'][journey[-1]], polygon_end):
+        if data['type'][journey[-1]] == 'S' and duration >= timedelta(hours=1) and polygon_contains(data['geometry'][journey[-1]], polygon_end):
             filtered_journeys.append(journey)
             continue
         cr += 1
@@ -282,7 +297,7 @@ def direct_trip(data, journeys):
     for journey in journeys:
         for trip in journey:
             # Count as 'indirect' if there's a 'stay' point in the journey
-            if data['mobtype'][trip] == 'stay':
+            if data['type'][trip] == 'S':
                 journey_list['indirect'] += 1
             # Count as 'direct' if it's the last trip in the journey
             elif trip == journey[-1]:
@@ -299,8 +314,8 @@ def transport_percentage(data, journeys):
     for journey in journeys:
         for trip in journey:
             # Only consider valid trips with 'mobtype' as 'trip' and valid 'wkt' coordinates
-            if data['mobtype'][trip] == 'trip' and data['wkt'][trip] != Point("inf", "inf"):
-                transport_type = data['transport'][trip]
+            if data['type'][trip] == 't' and data['geometry'][trip] != Point("inf", "inf"):
+                transport_type = data['mode'][trip]
 
                 # Count as specific personal transport if in trans_list
                 if transport_type in trans_list:
@@ -391,27 +406,29 @@ def start_a_end_b(data, journeys, polygon_start, polygon_end):
 # Main function to execute the script
 def main():
     print(f"Check")
-    state = pd.read_csv("try1.csv")  # Read the CSV file
+    state = pd.read_csv("sql2csv.csv")  # Read the CSV file
     state['geometry'] = gpd.GeoSeries.from_wkt(state['geometry'])
     # Define start and end polygons
     addresses = ['R5297117', 'W1319624540', 'R5732233', 'R5732224']
-    polygon_k = create_polygon(addresses[0])
-    polygon_f = create_polygon(addresses[1])
-    polygon_p = create_polygon(addresses[2])
-    polygon_i = create_polygon(addresses[3])
+    polygon, polygon2, polygon3 = create_polygon(addresses[0])
+    #polygon_f = create_polygon(addresses[1])
+    #polygon_p = create_polygon(addresses[2])
+    #polygon_i = create_polygon(addresses[3])
     # Convert FeatureCollection to a GeoJSON string
     journeys = get_journeys(state)  # Get all journeys from the data
-    flandernstrasse = end_c(state, journeys, polygon_f)
+    flandernstrasse = end_c(state, journeys, polygon2)
+    print(f'kanalstrasse {flandernstrasse}')
     dict_t = transport_percentage(state, flandernstrasse)
     dict_d = direct_trip(state, flandernstrasse)
     # flandernstrasse = two_pt(state, flandernstrasse)
-    # flandernstrasse = through_b(state, flandernstrasse, polygon_p)
+    flandernstrasse = through_b(state, flandernstrasse, polygon3)
+    flandernstrasse = start_a(state, flandernstrasse, polygon)
     start_t = time.time()
     # flandernstrasse_data = state.loc(np.array(flandernstrasse).flatten())
 
-    kanalstrasse = end_c(state, journeys, polygon_k)
-    print(f'kanalstrasse {kanalstrasse}')
-    kanalstrasse = start_a(state, kanalstrasse, polygon_i)
+    # kanalstrasse = end_c(state, journeys, polygon_k)
+
+    # kanalstrasse = start_a(state, kanalstrasse, polygon_i)
     #f_length = journey_length(state, flandernstrasse)
     #f_times = journey_time(state, flandernstrasse)
 
@@ -427,8 +444,8 @@ def main():
     filename4 = 'Flanderstrasse.csv'
     filename5 = 'b2.csv'
     csvfile = 'polygon.csv'
-    save_polygon(csvfile, polygon_p, polygon_f, polygon_k, polygon_i)
-    save_journeys(filename3, kanalstrasse, state)
+    # save_polygon(csvfile, polygon_p, polygon_f, polygon_k, polygon_i)
+    #save_journeys(filename3, kanalstrasse, state)
     save_journeys(filename4, flandernstrasse, state)
     end_t = time.time()
     exec_t = end_t - start_t

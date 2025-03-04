@@ -45,7 +45,7 @@ def parse_args():
     # Add argument for database name without extension with default value simulation_data_test
     parser.add_argument('-d', type=str, default='simulation_data_test')
     # Add argument for output file (-p) with default value sql2csv
-    parser.add_argument('-o', type=str, default='sql2csv1')
+    parser.add_argument('-o', type=str, default='sql2csv')
     # Add argument for eraser multiplication with default value 1
     parser.add_argument('-e', type=float, default=1)
     # Add argument for shift multiplication with default value 1
@@ -53,7 +53,9 @@ def parse_args():
     # Add argument for enabling Errors with default value true
     parser.add_argument('-err', type=bool, default=False)
     # Add argument for density of Points
-    parser.add_argument('-den', type=int, default=1)
+    parser.add_argument('-den', type=int, default=5)
+    # Add argument for choice between raw and full data
+    parser.add_argument('-raw', type=bool, default=False)
     # Parse arguments
     return parser.parse_args()
 # Convert simulation step into datetime string starting at a base time
@@ -129,7 +131,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
     # get curser to simulated coordinates
     sql_cmd = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
                "FROM pedestrian_data AS p, vehicles AS v "
-               f"WHERE transport = v.id")  # and MOD(p.datetime, {density}) = {res}  was deleted
+               f"WHERE transport = v.id and lat != 'inf'")  # and MOD(p.datetime, {density}) = {res}  was deleted
     sql_cmd2 = ('Select pi.id, pt.Type as Occupation '
                 'From personal_Info As pi '
                 'Join people_type As pt On pt.id = pi.type_id')
@@ -213,17 +215,18 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                             # print(f"Name {name_prev}   unterschied {simulationstep_prev - stop}  {startsimulationstep}")
                             trip = coordinates[:-stop]
                             triptime = timearr[:-stop]
+                            trip = density_remove(trip, density)
+                            triptime = density_remove(triptime, density)
                             if error:
                                 trip, triptime = percentages_remove(trip, triptime, erase_prob)
                                 percent = shift_percentage(transport_prev, shift)
                                 trip = data_shift(trip, percent)
                             wktstr, length = coordinates2WKT(trip, geoformat)
-
                             # adjusting time for trip
                             simulationstep_prev -= stop + 1
                             starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
                             endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                            csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+                            csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
                             csvfile.write(csvstr)
                             startsimulationstep = simulationstep_prev + 1
                             if name != name_prev:
@@ -238,19 +241,23 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                         mobtype = mob_list[1]
                     else:
                         mobtype = mob_list[3]
-
+                    timearr = timearr[-stop:]
+                    timearr = density_remove(timearr, density)
                     # definition of point where stay is
                     stop_end = False
                     stop = 0
-                    print(f"Check {simulationstep_prev}")
                     wktstr, length = coordinates2WKT([point_prev], geoformat)
                 else:
                     mobtype = mob_list[0]
+                    coordinates = density_remove(coordinates, density)
+                    timearr = density_remove(timearr, density)
                     if error:
                         coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
                         percent = shift_percentage(transport_prev, shift)
                         coordinates = data_shift(coordinates, percent)
                         print(f'Data shift was done for {name_prev}')
+                    print(f' name {name_prev}  len {len(coordinates)} type {mobtype}  coord {coordinates}')
+
                     wktstr, length = coordinates2WKT(coordinates, geoformat)
 
 
@@ -309,6 +316,8 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 # Getting trip data without stay
                 trip = coordinates[:-stop]
                 triptime = timearr[:-stop]
+                trip = density_remove(trip, density)
+                triptime = density_remove(triptime, density)
                 if error:
                     trip, triptime = percentages_remove(trip, triptime, erase_prob)
                     percent = shift_percentage(transport_prev, shift)
@@ -319,7 +328,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 simulationstep_prev -= stop
                 starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
                 endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+                csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
                 csvfile.write(csvstr)
                 startsimulationstep = simulationstep_prev
                 simulationstep_prev = simulationstep
@@ -327,11 +336,19 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 mobtype = mob_list[1]
             else:
                 mobtype = mob_list[3]
+            timearr = timearr[-stop:]
+            timearr = density_remove(timearr, density)
             wktstr, length = coordinates2WKT([point_prev], geoformat)
         else:
             mobtype = mob_list[0]
+            coordinates = density_remove(coordinates, density)
+            timearr = density_remove(timearr, density)
+            if error:
+                coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+                percent = shift_percentage(transport_prev, shift)
+                coordinates = data_shift(coordinates, percent)
+                print(f'Data shift was done for {name_prev}')
             wktstr, length = coordinates2WKT(coordinates, geoformat)
-
         starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
         endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
         nr += 1
@@ -361,10 +378,13 @@ def percentages_remove(lst, tarr, percentage):
     # Calculate the number of items to remove
     num_to_remove = int(len(lst) * percentage)
     arr = lst
-    print(f'Len {len(arr)}')
-    start_index = random.randint(2, len(arr) - 2)
+    #print(f'Len {len(arr)}')
+    if len(lst) > 3:
+        start_index = random.randint(2, len(arr) - 2)
+    else:
+        return lst, tarr
     for _ in range(num_to_remove):
-        if len(arr) > 1:  # Make sure there's more than one element to avoid removing the last
+        if len(arr) > 2:  # Make sure there's more than one element to avoid removing the last
             arr.pop(start_index)
             tarr.pop(start_index)
             # Update start index to ensure we don't loop out of range
@@ -380,7 +400,8 @@ def data_shift(lst, percentage):
     # print(f'Lst {lst}')
     max_shift = 0.00009
     n = int(len(lst) * percentage)
-    indices = random.sample(range(len(lst)), n)
+    indices = random.sample(range(2, len(lst) - 2), n)  # Pick indices excluding first (0) and last (-1)
+    # print(f'Rand {indices} len {len(lst)}')
     for idx in indices:
         lat = random.uniform(-max_shift, max_shift)
         lon = random.uniform(-max_shift, max_shift)
@@ -398,7 +419,7 @@ def shift_percentage(transport, multiplier):
     max_percentage = 0.16 if transport in pt else transport_limits.get(transport, 0.08)
     return random.uniform(0, max_percentage * multiplier)
 
-
+'''
 def convertPTtoWKT(dbname, csvname, basetime, stepjump=1, geoformat='WKT', carslist=[]):
     con = openDB(dbname)
     cur = con.cursor()
@@ -509,7 +530,7 @@ def convertPTtoWKT(dbname, csvname, basetime, stepjump=1, geoformat='WKT', carsl
     con.close()
     print(ctr)
     print('finished')
-
+'''
 
 def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
     # open database to read
@@ -519,7 +540,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
     # get curser to simulated coordinates
     sql_cmd = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
                "FROM pedestrian_data AS p, vehicles AS v "
-               f"WHERE transport = v.id")  # and MOD(p.datetime, {density}) = {res}
+               f"WHERE transport = v.id and lat != 'inf'")  # and MOD(p.datetime, {density}) = {res}
     sql_cmd2 = ('Select pi.id, pt.Type as Occupation '
                 'From personal_Info As pi '
                 'Join people_type As pt On pt.id = pi.type_id')
@@ -598,13 +619,11 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                             # write first trip before stay if stay is 1 activity
                             mobtype = mob_list[0]
                             # getting trip data without stay
-                            print(f"Name {name_prev}   unterschied {simulationstep_prev - stop}  {startsimulationstep}")
-                            print(len(coordinates))
+                            # print(f"Name {name_prev}   unterschied {simulationstep_prev - stop}  {startsimulationstep}")
                             trip = coordinates[:-stop]
                             triptime = timearr[:-stop]
                             trip = density_remove(trip, density)
                             triptime = density_remove(triptime, density)
-                            print(triptime)
                             if error:
                                 trip, triptime = percentages_remove(trip, triptime, erase_prob)
                                 percent = shift_percentage(transport_prev, shift)
@@ -625,14 +644,16 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                     mobtype = mob_list[1]
                     # definition of point where stay is
                     stop_end = False
+                    timearr = timearr[-stop:]
+                    timearr = density_remove(timearr, density)
                     stop = 0
-                    print(f"Check {simulationstep_prev}")
                     wktstr, length = coordinates2WKT([point_prev], geoformat)
                 else:
                     mobtype = mob_list[0]
                     coordinates = density_remove(coordinates, density)
                     timearr = density_remove(timearr, density)
                     if error:
+                        # print(f'Len {len(coordinates)}  ?? {len(timearr)}')
                         coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
                         percent = shift_percentage(transport_prev, shift)
                         coordinates = data_shift(coordinates, percent)
@@ -650,8 +671,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                 else:
                     mode = ''
                 # NO SPACE AFTER COMMA!
-                print(f'Timearr {timearr}')
-
+                # print(f'Timearr {timearr}')
                 csvstr = f'"{nr}","{name_prev}","{mobtype}","{mode}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
                 csvfile.write(csvstr)
                 if mobtype == mob_list[3]:
@@ -695,6 +715,8 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                 # Getting trip data without stay
                 trip = coordinates[:-stop]
                 triptime = timearr[:-stop]
+                trip = density_remove(trip, density)
+                triptime = density_remove(triptime, density)
                 if error:
                     trip, triptime = percentages_remove(trip, triptime, erase_prob)
                     percent = shift_percentage(transport_prev, shift)
@@ -705,14 +727,23 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                 simulationstep_prev -= stop
                 starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
                 endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+                csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
                 csvfile.write(csvstr)
                 startsimulationstep = simulationstep_prev
                 simulationstep_prev = simulationstep
             mobtype = mob_list[1]
+            timearr = timearr[-stop:]
+            timearr = density_remove(timearr, density)
             wktstr, length = coordinates2WKT([point_prev], geoformat)
         else:
             mobtype = mob_list[0]
+            coordinates = density_remove(coordinates, density)
+            timearr = density_remove(timearr, density)
+            if error:
+                # print(f'Len {len(coordinates)}  ?? {len(timearr)}')
+                coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+                percent = shift_percentage(transport_prev, shift)
+                coordinates = data_shift(coordinates, percent)
             wktstr, length = coordinates2WKT(coordinates, geoformat)
 
         starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
@@ -723,7 +754,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
         if mobtype == mob_list[3]:
             journey += 1
         csvfile.write(csvstr)
-        print(f"Try {inf}")
     con.close()
     print(ctr)
     print("finished")
@@ -779,17 +809,22 @@ def main():
     # csv file with raw points in WKT is 93% smaller than db file
     args = parse_args()
     db = args.d
+    db = 'simulation_data_problem'
     output_file = args.o
     eraser = args.e
     shift = args.s
     error = args.err
-    density = 40
+    raw = args.raw
+    density = 5
     print(db + ".db")
-    convertSQLtoWKTraw(db + ".db", 'try1' + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
-    convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
 
-    # convertSQLtoWKTraw(filename+".db", filename+"raw.csv", "2024-04-01 08:00:00")
-    # dumpdb2csv(filename+".db", filename+"_dbraw_p136.csv", personlist=['p136'])
+    if raw:
+        convertSQLtoWKTraw(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
+        print(f'Choice raw')
+    else:
+        convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
+        print(f'Choice Full')
+
 
 
 if __name__ == "__main__":
