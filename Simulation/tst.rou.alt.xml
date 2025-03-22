@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-11-02 10:50:06 by Eclipse SUMO duarouter Version 1.19.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="crr.net.xml"/>
+        <additional-files value="stopinfos.xml,basic.vType.xml"/>
+        <route-files value="data.rou.xml"/>
+    </input>
+
+    <output>
+        <output-file value="tst.rou.xml"/>
+    </output>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <person id="p0" depart="0.00">
+        <personTrip from="-127314436#0" to="-202580281" modes="public" walkFactor="0.75" costs="4336.44"/>
+        <stop edge="-202580281" duration="48733.00" actType="singing"/>
+    </person>
+    <person id="p1" depart="0.00">
+        <personTrip from="-127314436#0" to="31626956#9" modes="public" walkFactor="0.75" costs="2988.12"/>
+        <stop edge="31626956#9" duration="39567.00" actType="singing"/>
+    </person>
+    <person id="p2" depart="0.00">
+        <personTrip from="-127314436#0" to="4807837#0" modes="public" walkFactor="0.75" costs="3228.42"/>
+        <stop edge="4807837#0" duration="37135.00" actType="singing"/>
+    </person>
+    <person id="p3" depart="0.00">
+        <personTrip from="639832307#0" to="25518070" modes="car" walkFactor="0.75" costs="2930.10"/>
+        <stop edge="25518070" duration="5399.00" actType="singing"/>
+    </person>
+    <person id="p4" depart="0.00">
+        <personTrip from="-26735019" to="158878371#1" modes="public" walkFactor="0.75" costs="4876.08"/>
+        <stop edge="158878371#1" duration="42410.00" actType="singing"/>
+    </person>
+    <person id="p5" depart="0.00">
+        <personTrip from="5047080#2" to="765613426" modes="car" walkFactor="0.75" costs="2144.03"/>
+        <stop edge="765613426" duration="16814.00" actType="singing"/>
+    </person>
+    <vType id="motorcycle" speedFactor="normc(1.00,0.10,0.20,2.00)" vClass="motorcycle" color="orange" personCapacity="2" latAlignment="arbitrary" minGapLat="0.50" lcPushy="1.0" tau="1.5"/>
+    <vehicle id="p6_0" type="motorcycle" depart="triggered">
+        <routeDistribution last="0">
+            <route cost="0.00" probability="1.00000000" edges="387401267#11 387401267#12 -387401267#12 -387401267#11 -387401267#10 -387401267#9 -387401267#8 -387401267#7 -387401267#6 -387401267#5 -387401267#4 -387401267#3 -387401267#2 -387401267#1 -387401267#0 -160153201 -231875715#2 -231875715#1 -231875715#0 -448036753 -1086199879#1 -1086199879#0 -37721059 -23100738#1 -23100738#0 -697552595#1 -697552595#0 -448974989 -1062836785#1 -1062836785#0 -1086199881 -23100755#0 22910685#0 22910685#1 23094825 -28673831 -28673835 -37721067 -56255592 -56255594 -9054646 9054644 978314929 37721065#0 37721065#1 37721066#0 37721066#1 37721066#2 261543559 24995209#0 24995209#1 24995209#2 261543546 176337395 -24994588 -176337394 -4067008 -24447633 -261543534 300813715#0 300813715#1 300813715#2 383945632 261543531#0 261543531#1 243261570-AddedOnRampEdge 243261570 243261558 243261573 243261574 243261571 613717231 613717231-AddedOffRampEdge 24957110#1 24957177#0 24957177#1 243261555 33077389#0 33077389#1 244530981#2 244576556 548822668 29556306#0 29556306#1 29556306#2 548822665 548822666 237155758 24780159#0 24780159#1 316814479 35359315#0 35359315#1 35359315#2 431480688 288806327 431444812 25642410#1 25642410#2 5783099#0 5783099#1 5783099#2 288808359 -29461960 5783068 29462004#0 29462004#1 -29462035#0 -22939374#0 22939375#0 -22939381#2 -22939381#1 -22939381#0"/>
+        </routeDistribution>
+    </vehicle>
+    <person id="p6" depart="0.00">
+        <personTrip from="25518101" to="387401267#11" modes="public" walkFactor="0.75" costs="636.68"/>
+        <personTrip from="387401267#11" to="-22939381#0" modes="car" walkFactor="0.75" costs="551.07"/>
+        <stop edge="-22939381#0" duration="34127.00" actType="singing"/>
+    </person>
+    <person id="p7" depart="0.00">
+        <personTrip from="695712555#2" to="-37181840#1" modes="public" walkFactor="0.75" costs="1446.65"/>
+        <personTrip from="-37181840#1" to="31626956#6" modes="car" walkFactor="0.75" costs="718.92"/>
+        <stop edge="31626956#6" duration="40503.00" actType="singing"/>
+    </person>
+    <person id="p8" depart="0.00">
+        <personTrip from="31828759#1" to="24620747#2" modes="public" walkFactor="0.75" costs="1095.91"/>
+        <stop edge="24620747#2" duration="48506.00" actType="singing"/>
+    </person>
+    <person id="p9" depart="0.00">
+        <personTrip from="31626956#4" to="316354387#1" modes="public" walkFactor="0.75" costs="203.46"/>
+        <stop edge="316354387#1" duration="49872.00" actType="singing"/>
+    </person>
+</routes>

@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmium/1.16.0">
+  <node id="177368825" version="9" timestamp="2020-08-11T14:43:59Z" lat="48.7254487" lon="9.3079809">
+    <tag k="addr:city" v="Esslingen am Neckar"/>
+    <tag k="addr:housenumber" v="2"/>
+    <tag k="addr:postcode" v="73734"/>
+    <tag k="addr:street" v="Traifelbergstraße"/>
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Rohräckerschule"/>
+    <tag k="website" v="https://www.rohraeckerschule.de/"/>
+    <tag k="wheelchair" v="yes"/>
+  </node>
+  <node id="249283645" version="5" timestamp="2011-07-19T23:26:36Z" lat="48.7348528" lon="9.2973619">
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Pliensauschule"/>
+  </node>
+  <node id="443392157" version="2" timestamp="2014-05-19T22:27:19Z" lat="48.7255533" lon="9.3637704">
+    <tag k="addr:city" v="Esslingen am Neckar"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="2"/>
+    <tag k="addr:postcode" v="73730"/>
+    <tag k="addr:street" v="Mettenhaldenstraße"/>
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Grundschule Zell"/>
+  </node>
+  <node id="535858861" version="5" timestamp="2020-08-19T10:44:42Z" lat="48.7214059" lon="9.3561033">
+    <tag k="addr:city" v="Esslingen"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:postcode" v="73730"/>
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Käthe-Kollwitz-Schule"/>
+  </node>
+  <node id="559198010" version="4" timestamp="2013-03-16T20:06:34Z" lat="48.7208611" lon="9.3550543">
+    <tag k="addr:city" v="Esslingen"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:postcode" v="73730"/>
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Friedrich-Ebert-Schule"/>
+  </node>
+  <node id="559198256" version="5" timestamp="2013-03-16T20:06:34Z" lat="48.7211574" lon="9.3526989">
+    <tag k="addr:city" v="Esslingen"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:postcode" v="73730"/>
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="John F.-Kennedy-Schule"/>
+  </node>
+  <node id="705894140" version="9" timestamp="2017-08-19T12:09:42Z" lat="48.7279401" lon="9.271709">
+    <tag k="addr:city" v="Ostfildern"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="78"/>
+    <tag k="addr:postcode" v="73760"/>
+    <tag k="addr:street" v="Lindenstraße"/>
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Lindenschule Grundschule"/>
+    <tag k="phone" v="+49 711 343121"/>
+    <tag k="wheelchair" v="no"/>
+  </node>
+  <node id="1619067917" version="1" timestamp="2012-02-05T16:19:49Z" lat="48.7283797" lon="9.2713859">
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Förderschule Lindenschule"/>
+  </node>
+  <node id="2629275206" version="3" timestamp="2019-03-07T22:20:41Z" lat="48.7584625" lon="9.294368">
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="KiSS Kindersportschule Esslingen"/>
+    <tag k="website" v="https://kiss-esslingen.de/"/>
+  </node>
+  <node id="2756684629" version="1" timestamp="2014-03-31T18:16:41Z" lat="48.743608" lon="9.2713163">
+    <tag k="addr:city" v="Esslingen"/>
+    <tag k="addr:country" v="DE"/>
+    <tag k="addr:housenumber" v="28"/>
+    <tag k="addr:postcode" v="73733"/>
+    <tag k="addr:street" v="Palmwaldstraße"/>
+    <tag k="addr:suburb" v="Brühl"/>
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Berufsausbildung"/>
+  </node>
+  <node id="9021295497" version="1" timestamp="2021-08-19T21:47:22Z" lat="48.7536176" lon="9.2749017">
+    <tag k="amenity" v="school"/>
+    <tag k="name" v="Freie Evangelische Schule Esslingen"/>
+    <tag k="website" v="https://www.fes-esslingen.de/"/>
+  </node>
+  <node id="9447890599" version="1" timestamp="2022-01-25T16:23:46Z" lat="48.7165556" lon="9.2951374">
+    <tag k="amenity" v="school"/>
+    <tag k="contact:website" v="https://www.rsn-ostfildern.de/"/>
+    <tag k="isced:level" v="2"/>
+    <tag k="name" v="Riegelhofschule"/>
+  </node>
+  <node id="9447890600" version="1" timestamp="2022-01-25T16:23:46Z" lat="48.7164693" lon="9.291661">
+    <tag k="amenity" v="school"/>
+    <tag k="contact:phone" v="+49 711 3411029"/>
+    <tag k="contact:website" v="http://www.eks-nellingen.de/"/>
+    <tag k="description" v="Gemeinschaftsschule"/>
+    <tag k="isced:level" v="1;2"/>
+    <tag k="name" v="Erich Kästner Schule"/>
+  </node>
+  <node id="9447890601" version="1" timestamp="2022-01-25T16:23:46Z" lat="48.7166743" lon="9.2923601">
+    <tag k="amenity" v="school"/>
+    <tag k="contact:website" v="https://www.ohg.es.bw.schule.de/"/>
+    <tag k="isced:level" v="2;3"/>
+    <tag k="name" v="Otto-Hahn-Gymnasium"/>
+  </node>
+  <node id="9447890602" version="1" timestamp="2022-01-25T16:23:46Z" lat="48.7173094" lon="9.2920772">
+    <tag k="amenity" v="school"/>
+    <tag k="contact:website" v="https://hhg-ostfildern.de/"/>
+    <tag k="isced:level" v="2;3"/>
+    <tag k="name" v="Heinrich-Heine-Gymnasium"/>
+    <tag k="phone" v="+49 711 2207070"/>
+  </node>
+</osm>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-11-21 18:34:34.224037 by gtfs2pt.py v1_19_0+0000-baa66a0f364
+  options: -n crr.net.xml <doubleminus>gtfs ../gtfs_realtime.zip <doubleminus>date 20241025 <doubleminus>osm-routes ptlines.xml <doubleminus>repair <doubleminus>vtype-output pt_vtypes.xml
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <vType id="bus" vClass="bus"/>
+    <vType id="ferry" vClass="ship"/>
+    <vType id="light_rail" vClass="rail_urban"/>
+    <vType id="subway" vClass="rail_urban"/>
+    <vType id="train" vClass="rail"/>
+    <vType id="tram" vClass="tram"/>
+</additional>

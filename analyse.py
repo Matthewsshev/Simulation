@@ -1,30 +1,13 @@
-import sys
+import argparse
 import pandas as pd
 from shapely import wkt, geometry, Point, LineString, Polygon
 from datetime import datetime, timedelta
 import osmnx as ox
 import matplotlib.pyplot as plt
-import time
 from shapely.ops import transform
 from pyproj import Transformer
 import geopandas as gpd
 from collections import defaultdict
-import numpy as np
-import sumolib
-# influences behavior of csv_reader
-maxInt = sys.maxsize
-"""
-# Adjusting the maximum size limit for reading CSV files to avoid OverflowError.
-while True:
-    try:
-        csv.field_size_limit(maxInt)
-        break
-    except OverflowError:
-        maxInt = int(maxInt/10)
-"""
-pd.set_option('display.max_colwidth', None)
-pd.set_option('display.max_rows', None)
-pd.set_option('display.max_columns', None)
 
 
 # Function to get journeys from the data +
@@ -33,7 +16,6 @@ def get_journeys(data):
     journey = []
     data_inx = data.index
     prev_inx = data_inx[0]
-    print(f'Check Data {data}')
     for inx in data_inx:
         if inx % 5000 == 0:
             print(inx)
@@ -65,27 +47,7 @@ def get_journeys(data):
         prev_inx = inx
     if journey:
         journeys.append(journey)
-    """journeys = []
-    journey = []
-    check = data['journey'].tolist()
-    prev_jr = check[0]
-    cr = 0
-    prev_cr = cr
-    print(f'Starting the funktion to get all journeys from database')
-    for jr in check:
-        if cr % 5000 == 0:
-            print(cr)
-        if jr != prev_jr or data['name'][cr] != data['name'][prev_cr]:
-            journeys.append(journey)
-            journey = [cr]
-        else:
-            journey.append(cr)
-        prev_jr = jr
-        prev_cr = cr
-        cr += 1
-    journeys.append(journey)  # Append the last journey
-    print(f'All of the journeys from database are found')"""
-    print(f'Journeys {journeys}')
+    print(f'All of the journeys from database are found')
     return journeys
 
 
@@ -103,6 +65,7 @@ def get_duration(data, inx):
     end_time = datetime.strptime(end_time, timeformat)
     duration = end_time - start_time
     return duration
+
 
 # Function to check the rationality of the Trip using departure times +
 def check_rationality(data, journeys, time):
@@ -138,29 +101,21 @@ def journey_time(data, journeys):
 
 
 # Function to create polygon using OSM +
-def create_polygon(address):
-    area = get_area(address)
-    simplified_polygon = area['geometry'].simplify(tolerance=0.0001)
-
-    polygon2 = Polygon(shell=[[9.28822681421639, 48.74276032714531], [9.28822681421639, 48.74061047264683],
-                                         [9.292100767050114, 48.74061047264683], [9.292100767050114, 48.74276032714531],
-                                         [9.28822681421639, 48.74276032714531]])
-    polygon = Polygon(shell=[[9.299559077340524, 48.739670561617906], [9.299559077340524, 48.73784150197222],
-         [9.302305049160038, 48.73784150197222], [9.302305049160038, 48.739670561617906],
-         [9.299559077340524, 48.739670561617906]])
-    polygon3 = Polygon(shell=[[9.293246318684142, 48.72656359993217], [9.293246318684142, 48.726030878223995],
-         [9.29466426847912, 48.726030878223995], [9.29466426847912, 48.72656359993217],
-         [9.293246318684142, 48.72656359993217]])
-
-    print(f'Simpl {simplified_polygon}')
-    simplified_single_polygon = simplified_polygon.iloc[0]
-    # polygon = geometry.Polygon(simplified_single_polygon.exterior.coords)
-    return polygon3, polygon2, polygon
+def create_polygon(lon, lat, radius):
+    # area = get_area(address)
+    radius = radius / 111320
+    points = [(lon - radius, lat - radius),
+              (lon + radius, lat - radius),
+              (lon + radius, lat + radius),
+              (lon - radius, lat + radius),
+              (lon - radius, lat - radius)]
+    # simplified_polygon = area['geometry'].simplify(tolerance=0.0001)
+    polygon = Polygon(points)
+    return polygon
 
 
 # Function to check if a point is within a given polygon +
 def polygon_contains(data, polygon_list):
-   #  gobj = wkt.loads(data)  # Load WKT data to geometry object
     if isinstance(data, LineString):
         point = Point(data.coords[0])  # Convert LineString to Point using the first coordinate
     else:
@@ -177,20 +132,12 @@ def polygon_intersects(data, polygon_list):
 
 
 # Function to save polygons in geojson format +
-def save_polygon(filename, polygon_s_g, polygon_f_g, polygon_k_g, polygon_m_g):
+def save_polygon(filename, arr):
     with open('analyse/' + filename, "w") as csvfile:
         csvfile.write(f'"id","polygon"\n')
-        csvfile.write(f'"polygon_s","{polygon_s_g}"\n')
-        csvfile.write(f'"polygon_f","{polygon_f_g}"\n')
-        csvfile.write(f'"polygon_k","{polygon_k_g}"\n')
-        csvfile.write(f'"polygon_m","{polygon_m_g}"\n')
-        '''writer = csv.writer(csvfile)
-        writer.writerow(['id', 'geojson'])
-        writer.writerow(['polygon_s', geojson.dumps(polygon_s_g)])
-        writer.writerow(['polygon_f', geojson.dumps(polygon_f_g)])
-        writer.writerow(['polygon_k', geojson.dumps(polygon_k_g)])
-        writer.writerow(['polygon_m', geojson.dumps(polygon_m_g)])
-'''
+        for inx, polygon in enumerate(arr):
+            print(f'Inx {inx} polygon {polygon} ')
+            csvfile.write(f'"polygon_{inx}","{polygon}"\n')
 
 
 # Function to save journeys in csv +
@@ -219,6 +166,26 @@ def start_a(data, journeys, polygon_start):
         cr += 1
     print(f'All of the journeys have been found')
     return filtered_journeys
+
+
+def parse_args():
+    # Define argument parser
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-i', type=str, default='sql2csv.csv')
+    # Add argument for output file (-o) with default value analyse.csv
+    parser.add_argument('-o', type=str, default='analyse.csv')
+    # Add argument for execution of finding journeys which are ending at Polygon a
+    parser.add_argument('-e', type=bool, default=False)
+    # Add argument for execution of finding journeys which are going through Polygon b
+    parser.add_argument('-t', type=bool, default=False)
+    # Add argument for execution of finding journeys which are starting at Polygon c
+    parser.add_argument('-s', type=bool, default=False)
+    # Add argument for Center of Polygon a
+    parser.add_argument('-ep', type=float, default=5)
+    parser.add_argument('-lon', type=float, default=9.28823)
+    parser.add_argument('-lat', type=float, default=48.74276)
+    # Parse arguments
+    return parser.parse_args()
 
 
 # Function to get all journeys that have use of two public transports 2 different Buses for example
@@ -349,6 +316,7 @@ def journeys_between_time(data, journeys, begin, end):
     print(f"All of the journeys have been found")
     return filtered_journeys
 
+
 # Function to get a length of a journey
 def journey_length(data, journeys):
     length = []
@@ -364,6 +332,7 @@ def journey_length(data, journeys):
         length.append(s / 1000)
     return length
 
+
 # Function to build a Histogram
 def histogram_build(trans_dict, title):
     plt.figure(figsize=(10, 6))
@@ -378,78 +347,41 @@ def histogram_build(trans_dict, title):
     plt.show()
 
 
-"""
-# Function to filter journeys starting within start polygon and intersecting with middle polygon
-def start_a_through_b_end_c(data, journeys, polygon_start, polygon_middle, polygon_end):
-    filtered_journeys = []
-    for journey in journeys:
-        if polygon_contains(data['wkt'][journey[0]], polygon_start) and polygon_contains(data['wkt'][journey[-1]], polygon_end):
-            for trip in journey:
-                if polygon_intersects(data['wkt'][trip], polygon_middle):
-                    filtered_journeys.append(journey)
-                    break  # Break out of the inner loop to avoid adding the same journey multiple times
-    return filtered_journeys
-"""
-"""
-# Function to filter journeys starting and ending within given polygons
-def start_a_end_b(data, journeys, polygon_start, polygon_end):
-    filtered_journeys = []
-
-    for journey in journeys:
-        # Check if the end point of the journey is within the end polygon
-        if polygon_contains(data['wkt'][journey[0]], polygon_start) and polygon_contains(data['wkt'][journey[-1]], polygon_end):
-            filtered_journeys.append(journey)
-    return filtered_journeys
-"""
-
-
 # Main function to execute the script
 def main():
-    print(f"Check")
-    state = pd.read_csv("sql2csv.csv")  # Read the CSV file
+    args = parse_args()
+    i = args.i
+    o = args.o
+    start = args.s
+    through = args.t
+    end = args.e
+    lon = args.lon
+    lat = args.lat
+    state = pd.read_csv(i)  # Read the CSV file
     state['geometry'] = gpd.GeoSeries.from_wkt(state['geometry'])
     # Define start and end polygons
     addresses = ['R5297117', 'W1319624540', 'R5732233', 'R5732224']
-    polygon, polygon2, polygon3 = create_polygon(addresses[0])
-    #polygon_f = create_polygon(addresses[1])
-    #polygon_p = create_polygon(addresses[2])
-    #polygon_i = create_polygon(addresses[3])
-    # Convert FeatureCollection to a GeoJSON string
-    journeys = get_journeys(state)  # Get all journeys from the data
-    flandernstrasse = end_c(state, journeys, polygon2)
-    print(f'kanalstrasse {flandernstrasse}')
-    dict_t = transport_percentage(state, flandernstrasse)
-    dict_d = direct_trip(state, flandernstrasse)
+    polygons = []
+    result = get_journeys(state)  # Get all journeys from the data
+    if start:
+        start_polygon = create_polygon(lon, lat, 100)
+        result = start_a(state, result, start_polygon)
+        polygons.append(start_polygon)
+    if through:
+        through_polygon = create_polygon(9.29323, 48.74276, 100)
+        result = through_b(state, result, through_polygon)
+        polygons.append(through_polygon)
+    if end:
+        end_polygon = create_polygon(9.28823, 48.76276, 100)
+        result = end_c(state, result, end_polygon)
+        polygons.append(end_polygon)
+    dict_t = transport_percentage(state, result)
+    dict_d = direct_trip(state, result)
     # flandernstrasse = two_pt(state, flandernstrasse)
-    flandernstrasse = through_b(state, flandernstrasse, polygon3)
-    flandernstrasse = start_a(state, flandernstrasse, polygon)
-    start_t = time.time()
-    # flandernstrasse_data = state.loc(np.array(flandernstrasse).flatten())
-
-    # kanalstrasse = end_c(state, journeys, polygon_k)
-
-    # kanalstrasse = start_a(state, kanalstrasse, polygon_i)
-    #f_length = journey_length(state, flandernstrasse)
-    #f_times = journey_time(state, flandernstrasse)
-
-    #print(f"Journeys length\n {f_length}")
     histogram_build(dict_t, 'Trips with different transport types')
     histogram_build(dict_d, 'Direct/Indirect Trips')
-
-    # print(f'Filtered {journeys_start_a_end_b}')
-    # print(f'Filtered {filt_1}')
-    filename = 'a_through_b_c.csv'
-    filename2 = 'a_c.csv'
-    filename3 = 'Kanalstrasse.csv'
-    filename4 = 'Flanderstrasse.csv'
-    filename5 = 'b2.csv'
-    csvfile = 'polygon.csv'
-    # save_polygon(csvfile, polygon_p, polygon_f, polygon_k, polygon_i)
-    #save_journeys(filename3, kanalstrasse, state)
-    save_journeys(filename4, flandernstrasse, state)
-    end_t = time.time()
-    exec_t = end_t - start_t
-    print(f'Execution Time {exec_t}')
+    save_journeys(o, result, state)
+    save_polygon('polygon.csv', polygons)
 
 
 # Entry point of the script

@@ -809,22 +809,19 @@ def main():
     # csv file with raw points in WKT is 93% smaller than db file
     args = parse_args()
     db = args.d
-    db = 'simulation_data_problem'
     output_file = args.o
     eraser = args.e
     shift = args.s
     error = args.err
     raw = args.raw
-    density = 5
+    density = args.den
     print(db + ".db")
-
     if raw:
         convertSQLtoWKTraw(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
-        print(f'Choice raw')
+        print(f'Motiontag Format was chosen')
     else:
         convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
-        print(f'Choice Full')
-
+        print(f'Our Format was chosen')
 
 
 if __name__ == "__main__":

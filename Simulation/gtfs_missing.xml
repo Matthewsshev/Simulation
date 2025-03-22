@@ -1,0 +1,616 @@
+<missingElements>
+    <stop id="de:08111:2508:1:3" name="Alte Krone" ptLine="61" direction_id="0"/>
+    <stop id="de:08111:2509:1:4" name="Untertürkheim Kelterplatz" ptLine="61" direction_id="1"/>
+    <stop id="de:08111:2512:1:3" name="Untertürkheim Alter Friedhof" ptLine="61" direction_id="0"/>
+    <stop id="de:08111:2520:0:3" name="Bächlenweg" ptLine="62" direction_id="0"/>
+    <stop id="de:08111:2520:0:4" name="Bächlenweg" ptLine="62" direction_id="1"/>
+    <stop id="de:08111:2521:0:3" name="Dürrbachstraße" ptLine="62" direction_id="0"/>
+    <stop id="de:08111:2521:0:4" name="Dürrbachstraße" ptLine="62" direction_id="1"/>
+    <stop id="de:08111:2526:0:3" name="Schildfarnweg" ptLine="65" direction_id="0"/>
+    <stop id="de:08111:2526:0:4" name="Schildfarnweg" ptLine="65" direction_id="1"/>
+    <stop id="de:08111:2526:0:4" name="Schildfarnweg" ptLine="N7" direction_id="0"/>
+    <stop id="de:08111:2527:0:4" name="Mönchweg" ptLine="61" direction_id="1"/>
+    <stop id="de:08111:2536:0:3" name="Lederberg" ptLine="65" direction_id="0"/>
+    <stop id="de:08111:2536:0:4" name="Lederberg" ptLine="65" direction_id="1"/>
+    <stop id="de:08111:2536:0:4" name="Lederberg" ptLine="N7" direction_id="0"/>
+    <stop id="de:08111:2537:0:3" name="Glaunerweg" ptLine="65" direction_id="0"/>
+    <stop id="de:08111:2537:0:4" name="Glaunerweg" ptLine="65" direction_id="1"/>
+    <stop id="de:08111:2537:0:4" name="Glaunerweg" ptLine="N7" direction_id="0"/>
+    <stop id="de:08111:2538:0:3" name="Heumaden Rose" ptLine="65" direction_id="0"/>
+    <stop id="de:08111:2538:0:4" name="Heumaden Rose" ptLine="65" direction_id="1"/>
+    <stop id="de:08111:2538:0:4" name="Heumaden Rose" ptLine="N7" direction_id="0"/>
+    <stop id="de:08111:6085:5:5" name="Untertürkheim Bf" ptLine="61" direction_id="0"/>
+    <stop id="de:08111:6085:5:5" name="Untertürkheim Bf" ptLine="N7" direction_id="1"/>
+    <stop id="de:08111:6085:5:6" name="Untertürkheim Bf" ptLine="61" direction_id="1"/>
+    <stop id="de:08111:83:0:3" name="Inselstraße" ptLine="N7" direction_id="1"/>
+    <stop id="de:08111:86:1:3" name="Großglocknerstraße" ptLine="61" direction_id="1"/>
+    <stop id="de:08111:86:1:3" name="Großglocknerstraße" ptLine="N7" direction_id="1"/>
+    <stop id="de:08111:86:1:4" name="Großglocknerstraße" ptLine="61" direction_id="0"/>
+    <stop id="de:08111:86:1:4" name="Großglocknerstraße" ptLine="61" direction_id="1"/>
+    <stop id="de:08116:1801:4:5" name="Mettingen Bf" ptLine="102" direction_id="0"/>
+    <stop id="de:08116:1801:4:5" name="Mettingen Bf" ptLine="102" direction_id="1"/>
+    <stop id="de:08116:2788:0:1" name="Wäldenbronn Hainbach" ptLine="110" direction_id="1"/>
+    <stop id="de:08116:2910:1:3" name="Nellingen Hindenburgstr." ptLine="119" direction_id="1"/>
+    <stop id="de:08116:2910:1:4" name="Nellingen Hindenburgstr." ptLine="119" direction_id="0"/>
+    <stop id="de:08116:2912:0:3" name="Nellingen Riegelstraße" ptLine="120" direction_id="1"/>
+    <stop id="de:08116:2912:0:4" name="Nellingen Riegelstraße" ptLine="120" direction_id="0"/>
+    <stop id="de:08116:2972:2:4" name="Scharnh. P. Kreuzbr." ptLine="120" direction_id="0"/>
+    <stop id="de:08116:2972:2:4" name="Scharnh. P. Kreuzbr." ptLine="120" direction_id="1"/>
+    <stop id="de:08116:2981:0:3" name="Nellingen Kaiserstraße" ptLine="119" direction_id="1"/>
+    <stop id="de:08116:2981:0:4" name="Nellingen Kaiserstraße" ptLine="119" direction_id="0"/>
+    <stop id="de:08116:3800:0:3" name="Altbach Altbacher Hof" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3800:0:4" name="Altbach Altbacher Hof" ptLine="140" direction_id="0"/>
+    <stop id="de:08116:3801:0:3" name="Altbach Im Braunkiel" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3801:0:4" name="Altbach Im Braunkiel" ptLine="140" direction_id="0"/>
+    <stop id="de:08116:3802:0:3" name="Altbach Losburgstraße" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3802:0:4" name="Altbach Losburgstraße" ptLine="140" direction_id="0"/>
+    <stop id="de:08116:3804:0:3" name="Altbach Gemeindehalle" ptLine="140" direction_id="0"/>
+    <stop id="de:08116:3804:0:4" name="Altbach Gemeindehalle" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3816:0:3" name="Altbach Stauferstraße" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3816:0:4" name="Altbach Stauferstraße" ptLine="140" direction_id="0"/>
+    <stop id="de:08116:3817:0:4" name="Altbach Feuerwehr" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3817:0:5" name="Altbach Feuerwehr" ptLine="140" direction_id="0"/>
+    <stop id="de:08116:3818:0:3" name="Altbach Haldenrainweg" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3835:0:1" name="Altbach Birkenweg" ptLine="140" direction_id="1"/>
+    <stop id="de:08116:3835:0:2" name="Altbach Birkenweg" ptLine="140" direction_id="0"/>
+    <stop id="de:08116:3912:0:3" name="Wiflingsh. Im Unt.Zehen" ptLine="110" direction_id="0"/>
+    <stop id="de:08116:3912:0:4" name="Wiflingsh. Im Unt.Zehen" ptLine="110" direction_id="1"/>
+    <stop id="de:08116:3992:0:1" name="Mettingen Alte Schifffahrt" ptLine="102" direction_id="0"/>
+    <stop id="de:08116:4007:0:4" name="Esslingen (N) Schelztor" ptLine="122" direction_id="1"/>
+    <stop id="de:08116:4010:0:4" name="Mettingen Cannstatter Str." ptLine="102" direction_id="1"/>
+    <stop id="de:08116:4011:0:3" name="Mettingen Burgunderstr." ptLine="102" direction_id="1"/>
+    <stop id="de:08116:4016:0:4" name="Weil Gestütsweg" ptLine="102" direction_id="1"/>
+    <stop id="de:08116:4020:0:3" name="Zell (Essl.) Hangelst. Kirche" ptLine="103" direction_id="1"/>
+    <stop id="de:08116:4020:0:4" name="Zell (Essl.) Hangelst. Kirche" ptLine="102" direction_id="0"/>
+    <stop id="de:08116:4021:0:3" name="Zell (Essl.) Albblick" ptLine="102" direction_id="0"/>
+    <stop id="de:08116:4021:0:4" name="Zell (Essl.) Albblick" ptLine="103" direction_id="1"/>
+    <stop id="de:08116:4033:0:4" name="Esslingen (N) Neckar Forum" ptLine="122" direction_id="1"/>
+    <stop id="de:08116:4034:1:4" name="Esslingen (N) Marktplatz" ptLine="122" direction_id="1"/>
+    <stop id="de:08116:4054:0:3" name="Deizisau Esslinger Str." ptLine="104" direction_id="1"/>
+    <stop id="de:08116:4054:0:4" name="Deizisau Esslinger Str." ptLine="104" direction_id="0"/>
+    <stop id="de:08116:4057:1:5" name="Deizisau Rathaus" ptLine="104" direction_id="0"/>
+    <stop id="de:08116:4057:1:5" name="Deizisau Rathaus" ptLine="104" direction_id="1"/>
+    <stop id="de:08116:4065:0:4" name="Weil Wannenrain" ptLine="102" direction_id="1"/>
+    <stop id="de:08116:4071:0:3" name="Liebersbr. Rotes Kreuz" ptLine="106" direction_id="1"/>
+    <stop id="de:08116:4071:0:4" name="Liebersbr. Rotes Kreuz" ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4071:0:5" name="Liebersbr. Rotes Kreuz" ptLine="106" direction_id="0"/>
+    <stop id="de:08116:4071:0:6" name="Liebersbr. Rotes Kreuz" ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4072:0:3" name="Liebersbr. Altbacher Weg" ptLine="106" direction_id="0"/>
+    <stop id="de:08116:4072:0:4" name="Liebersbr. Altbacher Weg" ptLine="106" direction_id="1"/>
+    <stop id="de:08116:4107:0:4" name="Wiflingsh. Dulkhäusle" ptLine="110" direction_id="0"/>
+    <stop id="de:08116:4107:0:4" name="Wiflingsh. Dulkhäusle" ptLine="110" direction_id="1"/>
+    <stop id="de:08116:4118:0:3" name="Sulzgries Bergstraße" ptLine="109" direction_id="0"/>
+    <stop id="de:08116:4119:0:3" name="Neckarhalde Heidestraße" ptLine="109" direction_id="0"/>
+    <stop id="de:08116:4120:0:3" name="Neckarhalde Stahlackerweg" ptLine="109" direction_id="0"/>
+    <stop id="de:08116:4121:0:3" name="Neckarhalde Herrenwiesenweg" ptLine="109" direction_id="0"/>
+    <stop id="de:08116:4137:0:3" name="Sankt Bernhardt Talstraße" ptLine="110" direction_id="0"/>
+    <stop id="de:08116:4137:0:4" name="Sankt Bernhardt Talstraße" ptLine="110" direction_id="1"/>
+    <stop id="de:08116:4139:0:3" name="Wiflingsh. V.-Böhringer-Weg" ptLine="110" direction_id="0"/>
+    <stop id="de:08116:4139:0:4" name="Wiflingsh. V.-Böhringer-Weg" ptLine="110" direction_id="1"/>
+    <stop id="de:08116:4140:0:3" name="Wiflingsh. Hubertusweg" ptLine="110" direction_id="0"/>
+    <stop id="de:08116:4140:0:4" name="Wiflingsh. Hubertusweg" ptLine="110" direction_id="1"/>
+    <stop id="de:08116:4141:0:3" name="Wiflingsh. Waldackerweg" ptLine="110" direction_id="0"/>
+    <stop id="de:08116:4141:0:4" name="Wiflingsh. Waldackerweg" ptLine="110" direction_id="1"/>
+    <stop id="de:08116:4149:1:3" name="Berkh. Am Wiesengrund" ptLine="113" direction_id="1"/>
+    <stop id="de:08116:4149:1:3" name="Berkh. Am Wiesengrund" ptLine="138" direction_id="1"/>
+    <stop id="de:08116:4154:0:3" name="Aichschieß Industriegeb." ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4154:0:4" name="Aichschieß Industriegeb." ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4155:0:3" name="Aichschieß Kreuzung" ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4155:0:6" name="Aichschieß Kreuzung" ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4156:0:3" name="Schanbach Kreisverkehr" ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4156:0:4" name="Schanbach Kreisverkehr" ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4162:0:3" name="Schanbach Siedlung" ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4162:0:4" name="Schanbach Siedlung" ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4163:0:3" name="Aichschieß Krummhardt Abzw." ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4163:0:4" name="Aichschieß Krummhardt Abzw." ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4163:0:5" name="Aichschieß Krummhardt Abzw." ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4166:0:3" name="Aichelberg Rathaus" ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4167:0:3" name="Aichelberg Holl" ptLine="114" direction_id="0"/>
+    <stop id="de:08116:4167:0:3" name="Aichelberg Holl" ptLine="114" direction_id="1"/>
+    <stop id="de:08116:4173:0:3" name="Zell (Essl.) Johannesstraße" ptLine="102" direction_id="1"/>
+    <stop id="de:08116:5016:0:3" name="Deizisau Körschtal" ptLine="104" direction_id="0"/>
+    <stop id="de:08116:5016:0:3" name="Deizisau Körschtal" ptLine="121" direction_id="0"/>
+    <stop id="de:08116:5016:0:4" name="Deizisau Körschtal" ptLine="104" direction_id="1"/>
+    <stop id="de:08116:5016:0:4" name="Deizisau Körschtal" ptLine="121" direction_id="1"/>
+    <stop id="de:08116:5019:0:4" name="Kemnat Reutlinger Str." ptLine="130" direction_id="1"/>
+    <stop id="de:08116:5019:0:4" name="Kemnat Reutlinger Str." ptLine="131" direction_id="0"/>
+    <stop id="de:08116:5019:0:4" name="Kemnat Reutlinger Str." ptLine="131" direction_id="1"/>
+    <stop id="de:08116:5022:0:3" name="Ruit Horbstraße" ptLine="130" direction_id="0"/>
+    <stop id="de:08116:5022:0:4" name="Ruit Horbstraße" ptLine="130" direction_id="1"/>
+    <ptLine id="de:vvs:10001_:" name="S1" trip_headsign="Herrenberg" direction_id="0"/>
+    <ptLine id="de:vvs:10001_:" name="S1" trip_headsign="Kirchheim (T)" direction_id="1"/>
+    <ptLine id="de:vvs:11005_:" name="RE5" trip_headsign="Göppingen" direction_id="1"/>
+    <ptLine id="de:vvs:11005_:" name="RE5" trip_headsign="Stuttgart Hauptbahnhof (oben)" direction_id="0"/>
+    <ptLine id="de:vvs:11011_:" name="RB11" trip_headsign="Kornwestheim" direction_id="1"/>
+    <ptLine id="de:vvs:11011_:" name="RB11" trip_headsign="Untertürkheim" direction_id="0"/>
+    <ptLine id="de:vvs:11016_:" name="MEX16" trip_headsign="Göppingen" direction_id="1"/>
+    <ptLine id="de:vvs:11016_:" name="MEX16" trip_headsign="Stuttgart Hauptbahnhof (oben)" direction_id="0"/>
+    <ptLine id="de:vvs:20004_:" name="U4" trip_headsign="Hölderlinplatz" direction_id="0"/>
+    <ptLine id="de:vvs:20004_:" name="U4" trip_headsign="Untertürkheim Bf" direction_id="1"/>
+    <ptLine id="de:vvs:20007_:" name="U7" trip_headsign="Mönchfeld" direction_id="1"/>
+    <ptLine id="de:vvs:20007_:" name="U7" trip_headsign="Nellingen Ostfildern" direction_id="0"/>
+    <ptLine id="de:vvs:20008_:" name="U8" trip_headsign="Nellingen Ostfildern" direction_id="1"/>
+    <ptLine id="de:vvs:20008_:" name="U8" trip_headsign="Vaihingen Bf" direction_id="0"/>
+    <ptLine id="de:vvs:20009_:" name="U9" trip_headsign="Vogelsang" direction_id="0"/>
+    <ptLine id="de:vvs:20009_:" name="U9" trip_headsign="Wasenstraße" direction_id="1"/>
+    <ptLine id="de:vvs:20013_:" name="U13" trip_headsign="Feuerbach Pfostenwäldle" direction_id="1"/>
+    <ptLine id="de:vvs:20013_:" name="U13" trip_headsign="Wasenstraße" direction_id="0"/>
+    <ptLine id="de:vvs:30009e:" name="U9E" trip_headsign="Hedelfingen" direction_id="1"/>
+    <ptLine id="de:vvs:30009e:" name="U9E" trip_headsign="Wasenstraße" direction_id="0"/>
+    <ptLine id="de:vvs:30060_:" name="60" trip_headsign="Oeffingen Dieselstraße" direction_id="1"/>
+    <ptLine id="de:vvs:30060_:" name="60" trip_headsign="Untertürkheim Bf" direction_id="0"/>
+    <ptLine id="de:vvs:31101_:" name="101" trip_headsign="Oberessl. Lerchenäcker" direction_id="1"/>
+    <ptLine id="de:vvs:31101_:" name="101" trip_headsign="Obertürkheim Bf" direction_id="0"/>
+    <ptLine id="de:vvs:31107_:" name="107" trip_headsign="Aichelberg Holl" direction_id="0"/>
+    <ptLine id="de:vvs:31107_:" name="107" trip_headsign="Plochingen ZOB" direction_id="1"/>
+    <ptLine id="de:vvs:31114a:" name="114A" trip_headsign="Aichelberg Holl" direction_id="0"/>
+    <ptLine id="de:vvs:31114a:" name="114A" trip_headsign="Zell (Essl.) Berufl. Schulzen." direction_id="1"/>
+    <ptLine id="de:vvs:31118_:" name="118" trip_headsign="Esslingen (N) ZOB" direction_id="0"/>
+    <ptLine id="de:vvs:31143_:" name="143" trip_headsign="Deizisau Wert" direction_id="1"/>
+    <ptLine id="de:vvs:31143_:" name="143" trip_headsign="Plochingen ZOB" direction_id="0"/>
+    <ptLine id="de:vvs:31149_:" name="149" trip_headsign="Plochingen ZOB" direction_id="1"/>
+    <ptLine id="de:vvs:31149_:" name="149" trip_headsign="Winterb. Engelb. Waldorfschule" direction_id="0"/>
+    <ptLine id="de:vvs:31202_:" name="202" trip_headsign="Endersbach Bf" direction_id="1"/>
+    <ptLine id="de:vvs:31202_:" name="202" trip_headsign="Strümpfelbach (Wn.) Rathaus" direction_id="0"/>
+    <ptLine id="de:vvs:33006_:" name="N6" trip_headsign="Oeffingen Dieselstraße" direction_id="0"/>
+    <ptLine id="de:vvs:34012_:" name="N12" trip_headsign="Esslingen (N) ZOB" direction_id="0"/>
+    <ptLine id="de:vvs:34013_:" name="N13" trip_headsign="Esslingen (N) ZOB" direction_id="0"/>
+    <ptLine id="de:vvs:34014_:" name="N14" trip_headsign="Aichelberg Holl" direction_id="0"/>
+    <ptLine id="de:vvs:34014_:" name="N14" trip_headsign="Esslingen (N) ZOB" direction_id="1"/>
+    <ptLine id="de:vvs:34016_:" name="N16" trip_headsign="Esslingen (N) ZOB" direction_id="0"/>
+    <ptLine id="de:vvs:50202_:" name="RT202" trip_headsign="Strümpfelbach (Wn.) Rathaus" direction_id="0"/>
+    <ptLine id="de:vvs:51006_:" name="RT6" trip_headsign="Rotenberg" direction_id="0"/>
+    <ptLine id="de:vvs:51007_:" name="RT7" trip_headsign="Rohracker" direction_id="0"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-105-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-106-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-107-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-108-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-109-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-110-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-111-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-112-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-113-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-121-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-122-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-124-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-125-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-126-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-126-j24.trimmed"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-30-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-31-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-32-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-33-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-34-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-35-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-36-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-37-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-38-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-39-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-40-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-41-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-42-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-43-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-44-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-45-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-46-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-47-j24"/>
+    <stopSequence stop_id="de:08116:2788:0:2_0" stop_name="Wäldenbronn Hainbach" ptLine="110" trip_headsign="Wiflingsh. Dulkhäusle" direction_id="0" trip_id="de:vvs:31110_::1-T0-48-j24"/>
+    <stopSequence stop_id="de:08116:2800:0:3_0" stop_name="Esslingen (N) Maille" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2800:0:3_0" stop_name="Esslingen (N) Maille" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2800:0:3_0" stop_name="Esslingen (N) Maille" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2800:0:4_0" stop_name="Esslingen (N) Maille" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2800:0:4_0" stop_name="Esslingen (N) Maille" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2800:0:4_0" stop_name="Esslingen (N) Maille" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2800:0:4_0" stop_name="Esslingen (N) Maille" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2801:1:3_0" stop_name="Pliensauv. Weilstraße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2801:1:3_0" stop_name="Pliensauv. Weilstraße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2801:1:3_0" stop_name="Pliensauv. Weilstraße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2801:1:5_0" stop_name="Pliensauv. Weilstraße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2801:1:5_0" stop_name="Pliensauv. Weilstraße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2801:1:5_0" stop_name="Pliensauv. Weilstraße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2801:1:5_0" stop_name="Pliensauv. Weilstraße" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2802:0:3_0" stop_name="Zollberg Mutzenreis" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2802:0:3_0" stop_name="Zollberg Mutzenreis" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2802:0:3_0" stop_name="Zollberg Mutzenreis" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2802:0:3_0" stop_name="Zollberg Mutzenreis" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2802:0:4_0" stop_name="Zollberg Mutzenreis" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2802:0:4_0" stop_name="Zollberg Mutzenreis" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2802:0:4_0" stop_name="Zollberg Mutzenreis" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2804:0:3_0" stop_name="Zollberg Pliensaufriedhof" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2804:0:3_0" stop_name="Zollberg Pliensaufriedhof" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2804:0:3_0" stop_name="Zollberg Pliensaufriedhof" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2804:0:3_0" stop_name="Zollberg Pliensaufriedhof" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2804:0:4_0" stop_name="Zollberg Pliensaufriedhof" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2804:0:4_0" stop_name="Zollberg Pliensaufriedhof" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2804:0:4_0" stop_name="Zollberg Pliensaufriedhof" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2806:1:3_0" stop_name="Esslingen (N) Pliensauturm" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2806:1:3_0" stop_name="Esslingen (N) Pliensauturm" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2806:1:3_0" stop_name="Esslingen (N) Pliensauturm" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2806:1:6_0" stop_name="Esslingen (N) Pliensauturm" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2806:1:6_0" stop_name="Esslingen (N) Pliensauturm" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2806:1:6_0" stop_name="Esslingen (N) Pliensauturm" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2806:1:6_0" stop_name="Esslingen (N) Pliensauturm" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2932:0:3_0" stop_name="Ruit Kirche" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2932:0:3_0" stop_name="Ruit Kirche" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2932:0:3_0" stop_name="Ruit Kirche" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2932:0:3_0" stop_name="Ruit Kirche" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2933:0:3_0" stop_name="Ruit Im Kapf" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2933:0:3_0" stop_name="Ruit Im Kapf" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2933:0:3_0" stop_name="Ruit Im Kapf" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2933:0:3_0" stop_name="Ruit Im Kapf" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2936:0:3_0" stop_name="Parks. Robert-Koch-Straße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2936:0:3_0" stop_name="Parks. Robert-Koch-Straße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2936:0:3_0" stop_name="Parks. Robert-Koch-Straße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2936:0:3_0" stop_name="Parks. Robert-Koch-Straße" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2936:0:4_0" stop_name="Parks. Robert-Koch-Straße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2936:0:4_0" stop_name="Parks. Robert-Koch-Straße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2936:0:4_0" stop_name="Parks. Robert-Koch-Straße" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2968:2:3_0" stop_name="Ruit" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2968:2:3_0" stop_name="Ruit" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2968:2:3_0" stop_name="Ruit" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2968:2:3_0" stop_name="Ruit" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2969:2:3_0" stop_name="Ruit Zinsholz" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2969:2:3_0" stop_name="Ruit Zinsholz" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2969:2:3_0" stop_name="Ruit Zinsholz" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2969:2:3_0" stop_name="Ruit Zinsholz" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2971:2:4_0" stop_name="Scharnhauser Park" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2971:2:4_0" stop_name="Scharnhauser Park" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2971:2:4_0" stop_name="Scharnhauser Park" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2971:3:5_0" stop_name="Scharnhauser Park" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2971:3:5_0" stop_name="Scharnhauser Park" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2971:3:5_0" stop_name="Scharnhauser Park" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:2971:3:5_0" stop_name="Scharnhauser Park" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:2972:2:4_0" stop_name="Scharnh. P. Kreuzbr." ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:2972:2:4_0" stop_name="Scharnh. P. Kreuzbr." ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:2972:2:4_0" stop_name="Scharnh. P. Kreuzbr." ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-10-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-1020003-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-11-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-12-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-13-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-14-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-15-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-16-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-17-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-18-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-19-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-20-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-21-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-22-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-23-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-24-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-25-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-26-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-27-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-28-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-3-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-5-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-6-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-60-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-7-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-8-j24"/>
+    <stopSequence stop_id="de:08116:4016:0:4_0" stop_name="Weil Gestütsweg" ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-9-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-10-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-102-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-103-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-104-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-105-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-106-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-107-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-108-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-109-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-11-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-110-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-111-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-112-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-113-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-114-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-115-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-116-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-117-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-118-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-12-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-120-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-13-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-14-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-15-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-16-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-17-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-18-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-19-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-20-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-21-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-22-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-23-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-24-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-25-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-26-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-27-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-28-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-3-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-30-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-31-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-32-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-33-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-34-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-35-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-36-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-37-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-38-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-39-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-40-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-41-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-42-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-5-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-6-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-7-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-8-j24"/>
+    <stopSequence stop_id="de:08116:4033:0:4_1" stop_name="Esslingen (N) Neckar Forum" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-9-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-10-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-102-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-103-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-104-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-105-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-106-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-107-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-108-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-109-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-11-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-110-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-111-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-112-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-113-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-114-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-115-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-116-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-117-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-118-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-12-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-120-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-13-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-14-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-15-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-16-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-17-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-18-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-19-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-20-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-21-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-22-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-23-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-24-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-25-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-26-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-27-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-28-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-3-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-30-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-31-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-32-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-33-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-34-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-35-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-36-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-37-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-38-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-39-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-40-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-41-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-42-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-5-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-6-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-7-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-8-j24"/>
+    <stopSequence stop_id="de:08116:4034:1:4_1" stop_name="Esslingen (N) Marktplatz" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-9-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-1040066-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-1040068-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-30-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-31-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-32-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-33-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-34-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-35-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-36-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-37-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-38-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-39-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-40-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-41-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-42-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-43-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-44-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-45-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-46-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-47-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-48-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-49-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-50-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-51-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-52-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-53-j24"/>
+    <stopSequence stop_id="de:08116:4051:0:4_0" stop_name="Sirnau Schwalbenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-54-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-1040066-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-1040068-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-30-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-31-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-32-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-33-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-34-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-35-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-36-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-37-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-38-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-39-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-40-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-41-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-42-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-43-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-44-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-45-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-46-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-47-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-48-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-49-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-50-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-51-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-52-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-53-j24"/>
+    <stopSequence stop_id="de:08116:4052:0:4_0" stop_name="Sirnau Finkenweg" ptLine="104" trip_headsign="Esslingen (N) ZOB" direction_id="1" trip_id="de:vvs:31104_::1-T0-54-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-10-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-102-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-103-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-104-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-105-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-106-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-107-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-108-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-109-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-11-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-110-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-111-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-112-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-113-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-114-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-115-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-116-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-117-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-118-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-12-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-120-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-13-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-14-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-15-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-16-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-17-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-18-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-19-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-20-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-21-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-22-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-23-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-24-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-25-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-26-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-27-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-28-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-3-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-30-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-31-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-32-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-33-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-34-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-35-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-36-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-37-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-38-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-39-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-40-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-41-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-42-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-5-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-6-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-7-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-8-j24"/>
+    <stopSequence stop_id="de:08116:4094:0:4_0" stop_name="Essl.(N) Katharinenstaffel" ptLine="105" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:31105_::1-T0-9-j24"/>
+    <stopSequence stop_id="de:08116:4173:0:3_0" stop_name="Zell (Essl.) Johannesstraße" ptLine="138" trip_headsign="Zell (Essl.) Johannesstraße" direction_id="0" trip_id="de:vvs:31138_::1-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:4197:0:3_0" stop_name="Oberessl. Th.-Heuss-Gymnasium" ptLine="138" trip_headsign="Zell (Essl.) Johannesstraße" direction_id="0" trip_id="de:vvs:31138_::1-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-10-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-1020003-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-11-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-12-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-13-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-14-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-15-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-16-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-17-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-18-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-19-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-20-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-21-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-22-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-23-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-24-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-25-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-26-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-27-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-28-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-3-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-5-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-6-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-60-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-7-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-8-j24"/>
+    <stopSequence stop_id="de:08116:6841:0:3_0" stop_name="Weil Württembergstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-9-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-1-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-10-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-1020003-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-11-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-12-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-13-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-14-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-15-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-16-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-17-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-18-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-19-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-2-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-20-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-21-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-22-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-23-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-24-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-25-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-26-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-27-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-28-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-29-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-3-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-4-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-5-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-6-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-60-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-7-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-8-j24"/>
+    <stopSequence stop_id="de:08116:6842:0:3_0" stop_name="Brühl Palmenwaldstr." ptLine="102" trip_headsign="Mettingen Bf" direction_id="0" trip_id="de:vvs:31102_::14-T0-9-j24"/>
+    <stopSequence stop_id="de:08116:6969:0:3_0" stop_name="Pliensauv. Pfeifferklinge" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:6969:0:3_0" stop_name="Pliensauv. Pfeifferklinge" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:6969:0:3_0" stop_name="Pliensauv. Pfeifferklinge" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:6969:0:3_0" stop_name="Pliensauv. Pfeifferklinge" ptLine="N22" trip_headsign="Scharnhausen Plieninger Str." direction_id="0" trip_id="de:vvs:34022_::3-UU-4-j24"/>
+    <stopSequence stop_id="de:08116:6969:0:4_0" stop_name="Pliensauv. Pfeifferklinge" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:6969:0:4_0" stop_name="Pliensauv. Pfeifferklinge" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:6969:0:4_0" stop_name="Pliensauv. Pfeifferklinge" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:7801:1:4_0" stop_name="Esslingen (N) ZOB" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-1-j24"/>
+    <stopSequence stop_id="de:08116:7801:1:4_0" stop_name="Esslingen (N) ZOB" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-2-j24"/>
+    <stopSequence stop_id="de:08116:7801:1:4_0" stop_name="Esslingen (N) ZOB" ptLine="N22" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34022_::3-UU-3-j24"/>
+    <stopSequence stop_id="de:08116:7801:3:3_0" stop_name="Esslingen (N) ZOB" ptLine="N19" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34019_::3-UK-1-j24"/>
+    <stopSequence stop_id="de:08116:7801:3:3_0" stop_name="Esslingen (N) ZOB" ptLine="N19" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34019_::3-UK-2-j24"/>
+    <stopSequence stop_id="de:08116:7801:3:3_0" stop_name="Esslingen (N) ZOB" ptLine="N19" trip_headsign="Esslingen (N) ZOB" direction_id="0" trip_id="de:vvs:34019_::3-UK-6-j24"/>
+</missingElements>

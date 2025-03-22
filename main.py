@@ -22,7 +22,7 @@ if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
     sys.path.append(tools)
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
-sumoCmd1 = ["sumo", "-c", "Without_transport" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
+sumoCmd1 = ["sumo", "-c", "Simulation" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
             "-W", "--step-log.period", "100", "--emission-output", "emissions.xml"]  # saving directory of the file
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
@@ -93,8 +93,14 @@ class Trip:
                 print(f'edge {edge} lane {lane} Lane number {traci.edge.getLaneNumber(edge)}')
                 res = traci.lane.getAllowed(lane)
                 '''
-        lane = f'{edge}_0'
-        res = traci.lane.getAllowed(lane)
+        res = []
+        for i in range(0, 6):
+            lane = f'{edge}_{i}'
+            try:
+                res.append(traci.lane.getAllowed(lane))
+            except traci.TraCIException:
+                print(f' Lane {lane} doesn`t exist')
+
         return res
 
     @staticmethod
@@ -115,7 +121,7 @@ class Trip:
         next_edge = next_edges[0].edges[0]
         for edge in next_edges[0].edges:  # making a loop to find the closest suitable edge
             count += 1
-            if count % 15 == 0:  # every 15 edges checking for a suitable edge
+            if count % 5 == 0:  # every 15 edges checking for a suitable edge
                 if edge not in allowed_a:
                     allowed_a[edge] = Trip.get_allowed(edge)
                 allowed = allowed_a[edge]
@@ -243,7 +249,6 @@ class Trip:
                 time = (time + duration / 3600) % 24  # Keep within 24-hour range
                 person.assign_trip(person.location, destination, duration)
                 person.location = destination  # Update the person's location
-
             for trip in person.trip:  # now we`re working with trips
                 if cr % 100 == 0:
                     print(f'Trip nr {cr}')
@@ -262,7 +267,6 @@ class Trip:
                         random_auto = random.choice(vType)
                     else:
                         random_auto = vType
-
                     if not any(random_auto in group for group in allowed_auto):
                         # Find a better edge using SUMO (cache results to avoid multiple calls)
                         next_edges = traci.simulation.findIntermodalRoute(start_edge, destination_edge, modes='car',
@@ -291,7 +295,7 @@ class Trip:
                 # Write XML once at the end
 
             formatted_xml = etree.tostring(root_2, pretty_print=True, encoding="utf-8").decode()
-            with open("Without_transport/data.rou.xml", "w") as save:
+            with open("Simulation/data.rou.xml", "w") as save:
                 save.write(formatted_xml)
         print(f'Trip creation is finished')
     """@staticmethod
@@ -372,8 +376,11 @@ class Trip:
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
         for person, pedestrian_data in result.items():  # saving al information into sql table
             lon, lat = traci.simulation.convertGeo(pedestrian_data[66][0], pedestrian_data[66][1])
-            lon = "{:.5f}".format(lon)
-            lat = "{:.5f}".format(lat)
+            if lon == 'inf':
+                continue
+            else:
+                lon = "{:.5f}".format(lon)
+                lat = "{:.5f}".format(lat)
 
 
             if pedestrian_data[195] == '':  # checking transport type
@@ -439,9 +446,9 @@ class Human:  # creating a human class for retrieving information
     Human will have their own list of trips. List of destination is places where person can go in simulation
     """
     quantity = 5  # quantity of people that will be in simulation
-    friends = pd.read_csv('Without_transport' + slash_char + 'friends.csv')
-    home = pd.read_csv('Without_transport' + slash_char + 'home.csv')
-    supermarket = pd.read_csv('Without_transport' + slash_char + 'shop.csv')
+    friends = pd.read_csv('Simulation' + slash_char + 'friends.csv')
+    home = pd.read_csv('Simulation' + slash_char + 'home.csv')
+    supermarket = pd.read_csv('Simulation' + slash_char + 'shop.csv')
 
     def __init__(self, name):
         self.name = name  # getting variables from input
@@ -464,6 +471,14 @@ class Human:  # creating a human class for retrieving information
 
     @staticmethod
     def create_humans(persons):
+        '''
+        for i in range(Human.quantity):
+            if i < Human.quantity / 4:
+                person = Worker(f'p{i}')
+            else:
+                person = Student(f'p{i}')
+            persons.append(person)
+            '''
         for i in range(Human.quantity):  # creating 1000 people with different type of class
             if i < Human.quantity / 4:
                 person = Worker(f'p{i}')  # creating a Worker
@@ -474,6 +489,7 @@ class Human:  # creating a human class for retrieving information
             else:
                 person = Senior(f'p{i}')  # creating a Senior
             persons.append(person)
+
 
     @staticmethod
     def save_humans(persons, connection):
@@ -528,13 +544,18 @@ class Worker(Human):  # creating a subclass of Human
     Subclass of Human. Only difference in personal information like age etc. And also worker is having more
     places to go for example work.
     """
-    work = pd.read_csv('Without_transport' + slash_char + 'work.csv')
+    work = pd.read_csv('Simulation' + slash_char + 'work.csv')
+    '''work = []
+    workgps = [48.74527, 9.32249]
+    res = traci.simulation.convertRoad(workgps[1], workgps[0], isGeo=True)
+    work.append(res[0])'''
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
         self.work = Worker.work['edge'].sample(n=1).to_string(index=False)
+        # self.work = Worker.work[0]
         self.work_lon, self.work_lat = Trip.convert_edge_to_gps(self.work)
         self.destination.append(self.work)
 
@@ -557,12 +578,12 @@ class Student(Human):  # creating a second subclass of Human
     for lat, lon in uniGps:
         res = traci.simulation.convertRoad(lon, lat, isGeo=True)  # converting gps coordinates to sumo edge
         uni.append(res[0])
-
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(800, 1100)  # getting random scholarship in range
         self.age = random.randrange(20, 30)  # getting random age in range
         self.uni = random.choice(Student.uni)
+        # self.uni = Student.uni[0]
         self.uni_lon, self.uni_lat = Trip.convert_edge_to_gps(self.uni)
         self.destination.append(self.uni)
 
@@ -578,7 +599,7 @@ class Pupil(Human):  # creating a second subclass of Human
         Subclass of Human. Only difference in personal information like age etc. And also Pupil is having more
         places to go for example school.
     """
-    school = pd.read_csv('Without_transport' + slash_char + 'school.csv')
+    school = pd.read_csv('Simulation' + slash_char + 'school.csv')
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
@@ -600,7 +621,7 @@ class Senior(Human):  # creating a subclass of Human
          Subclass of Human. Only difference in personal information like age etc. And also Senior is having more
          places to go for example park.
      """
-    park = pd.read_csv('Without_transport' + slash_char + 'park.csv')
+    park = pd.read_csv('Simulation' + slash_char + 'park.csv')
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
@@ -628,7 +649,7 @@ def main():
     Human.quantity = args.p
     save_obj = args.l
     Human.home = Human.home.sample(n=int(Human.quantity / 5))
-    Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
+    # Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
     if save_obj:
         print('Loading persons')
         humans = Human.load_state('state.pkl')
@@ -639,8 +660,6 @@ def main():
         humans = []  # creating an empty list for person that`ll be created
         t1 = Thread(target=Human.create_humans(humans))
         t1.start()
-    ''' duration = []
-    csvName = 'Fake.csv' '''
     # t2 = Thread(target=Trip.createTrips(duration, csvName))
     # t2.start()
     t22 = Thread(target=Trip.create_trips(humans, quantity_trips))
