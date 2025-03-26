@@ -98,6 +98,7 @@ class Trip:
             lane = f'{edge}_{i}'
             try:
                 res.append(traci.lane.getAllowed(lane))
+                print(f'RES {res[i]}')
             except traci.TraCIException:
                 print(f' Lane {lane} doesn`t exist')
 
@@ -471,15 +472,13 @@ class Human:  # creating a human class for retrieving information
 
     @staticmethod
     def create_humans(persons):
-        '''
         for i in range(Human.quantity):
             if i < Human.quantity / 4:
                 person = Worker(f'p{i}')
             else:
                 person = Student(f'p{i}')
             persons.append(person)
-            '''
-        for i in range(Human.quantity):  # creating 1000 people with different type of class
+        '''for i in range(Human.quantity):  # creating 1000 people with different type of class
             if i < Human.quantity / 4:
                 person = Worker(f'p{i}')  # creating a Worker
             elif i < Human.quantity / 2:
@@ -489,7 +488,7 @@ class Human:  # creating a human class for retrieving information
             else:
                 person = Senior(f'p{i}')  # creating a Senior
             persons.append(person)
-
+        '''
 
     @staticmethod
     def save_humans(persons, connection):
@@ -544,18 +543,18 @@ class Worker(Human):  # creating a subclass of Human
     Subclass of Human. Only difference in personal information like age etc. And also worker is having more
     places to go for example work.
     """
-    work = pd.read_csv('Simulation' + slash_char + 'work.csv')
-    '''work = []
+    # work = pd.read_csv('Simulation' + slash_char + 'work.csv')
+    work = []
     workgps = [48.74527, 9.32249]
     res = traci.simulation.convertRoad(workgps[1], workgps[0], isGeo=True)
-    work.append(res[0])'''
+    work.append(res[0])
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
-        self.work = Worker.work['edge'].sample(n=1).to_string(index=False)
-        # self.work = Worker.work[0]
+        # self.work = Worker.work['edge'].sample(n=1).to_string(index=False)
+        self.work = Worker.work[0]
         self.work_lon, self.work_lat = Trip.convert_edge_to_gps(self.work)
         self.destination.append(self.work)
 
@@ -578,12 +577,13 @@ class Student(Human):  # creating a second subclass of Human
     for lat, lon in uniGps:
         res = traci.simulation.convertRoad(lon, lat, isGeo=True)  # converting gps coordinates to sumo edge
         uni.append(res[0])
+
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(800, 1100)  # getting random scholarship in range
         self.age = random.randrange(20, 30)  # getting random age in range
-        self.uni = random.choice(Student.uni)
-        # self.uni = Student.uni[0]
+        # self.uni = random.choice(Student.uni)
+        self.uni = Student.uni[0]
         self.uni_lon, self.uni_lat = Trip.convert_edge_to_gps(self.uni)
         self.destination.append(self.uni)
 
