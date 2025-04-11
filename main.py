@@ -370,8 +370,13 @@ class Trip:
     """
     @staticmethod
     def pedestrian_retrieval(connection):
+        persons = traci.person.getIDList()
+        step = traci.simulation.getTime()
+        if not persons and step > 21601:
+            print(f'All of the persons have finished their activities')
+            traci.close()
         # function will retrieve information of a person movement in every simulation step
-        for per_id in traci.person.getIDList():  # using a built-in subscription to get all variables
+        for per_id in persons:  # using a built-in subscription to get all variables
             traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE, traci.constants.VAR_POSITION,
                                             traci.constants.VAR_SPEED])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
@@ -382,7 +387,6 @@ class Trip:
             else:
                 lon = "{:.5f}".format(lon)
                 lat = "{:.5f}".format(lat)
-
 
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 7  # person is going by foot
@@ -671,6 +675,7 @@ def main():
     traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
 
+
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
         t4 = Thread(target=Trip.pedestrian_retrieval(conn))
@@ -682,7 +687,6 @@ def main():
         conn.commit()  # saving data to a database
         traci.simulationStep()  # making one step
     conn.close()  # closing a connection to database
-    traci.close()  # closing a simulation
 
 
 if __name__ == "__main__":
