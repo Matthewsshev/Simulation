@@ -1,0 +1,2 @@
+start,through,end,polygon_start,polygon_through,polygon_end,input,output
+False,False,True,"9.29323,48.74276,100","9.29323,48.74276,100","9.30139,48.739545,500","sql2csv.csv","analyse.csv"

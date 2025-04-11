@@ -8,6 +8,7 @@ from shapely.ops import transform
 from pyproj import Transformer
 import geopandas as gpd
 from collections import defaultdict
+import numpy as np
 
 
 # Function to get journeys from the data +
@@ -21,7 +22,6 @@ def get_journeys(data):
             print(inx)
         if data['type'][inx] == 'S':
             duration = get_duration(data, inx)
-            print(f'duration {duration}')
             if duration >= timedelta(hours=1):
                 # Start einer neuen Reise, wenn die Dauer >= 1 Stunde ist
                 journey.append(inx)
@@ -136,7 +136,6 @@ def save_polygon(filename, arr):
     with open('analyse/' + filename, "w") as csvfile:
         csvfile.write(f'"id","polygon"\n')
         for inx, polygon in enumerate(arr):
-            print(f'Inx {inx} polygon {polygon} ')
             csvfile.write(f'"polygon_{inx}","{polygon}"\n')
 
 
@@ -347,40 +346,82 @@ def histogram_build(trans_dict, title):
     plt.show()
 
 
+def transport_type(data, journeys, transport):
+    tranport_journeys = []
+    for journey in journeys:
+        for trip in journey:
+            if transport == data['mode'][trip]:
+                tranport_journeys.append(journey)
+                break
+    return tranport_journeys
+
+
+def cruising_speed(data, journeys, quantile):
+    journey_cruising = []
+    print(f'check {len(journeys)}')
+    for journey in journeys:
+        journey_length = 0
+        journey_time = 0
+        for trip in journey:
+            if trip != journey[-1]:
+                trip_length = int(data['length'][trip])
+                trip_start = pd.to_datetime(f"{data['started_at_date'][trip]} {data['started_at_time'][trip]}")
+                trip_end = pd.to_datetime(f"{data['finished_at_date'][trip]} {data['finished_at_time'][trip]}")
+                trip_time = trip_end - trip_start
+                journey_time += trip_time.total_seconds() / 60
+                journey_length += trip_length
+            else:
+                continue
+        journey_speed = int(journey_length / journey_time)
+        journey_cruising.append(journey_speed)
+    res = np.quantile(journey_cruising, quantile)
+    return res
+
+
 # Main function to execute the script
 def main():
-    args = parse_args()
-    i = args.i
-    o = args.o
-    start = args.s
-    through = args.t
-    end = args.e
-    lon = args.lon
-    lat = args.lat
-    state = pd.read_csv(i)  # Read the CSV file
+    config = pd.read_csv('analyse/config.csv')
+    start = config['start'][0]
+    through = config['through'][0]
+    end = config['end'][0]
+    input = config['input'][0]
+    output = config['output'][0]
+    polygon_start = config['polygon_start'][0].split(',')
+    polygon_through = config['polygon_through'][0].split(',')
+    polygon_end = config['polygon_end'][0].split(',')
+    state = pd.read_csv(input)  # Read the CSV file
     state['geometry'] = gpd.GeoSeries.from_wkt(state['geometry'])
+
     # Define start and end polygons
-    addresses = ['R5297117', 'W1319624540', 'R5732233', 'R5732224']
+    # addresses = ['R5297117', 'W1319624540', 'R5732233', 'R5732224']
     polygons = []
     result = get_journeys(state)  # Get all journeys from the data
+    print(f'Check res {result}')
+
+    quantile_values = [0.05, 0.95]
+    transport_values = ['passenger', 'bicycle']
     if start:
-        start_polygon = create_polygon(lon, lat, 100)
+        start_polygon = create_polygon(float(polygon_start[0]), float(polygon_start[1]), int(polygon_start[2]))
         result = start_a(state, result, start_polygon)
         polygons.append(start_polygon)
     if through:
-        through_polygon = create_polygon(9.29323, 48.74276, 100)
+        through_polygon = create_polygon(float(polygon_through[0]), float(polygon_through[1]), int(polygon_through[2]))
         result = through_b(state, result, through_polygon)
         polygons.append(through_polygon)
     if end:
-        end_polygon = create_polygon(9.28823, 48.76276, 100)
+        end_polygon = create_polygon(float(polygon_end[0]), float(polygon_end[1]), int(polygon_end[2]))
         result = end_c(state, result, end_polygon)
+        car_journeys = transport_type(state, result, transport_values[0])
+        quantile_result = cruising_speed(state, result, quantile_values)
+        print(f' car res {car_journeys}')
+
         polygons.append(end_polygon)
     dict_t = transport_percentage(state, result)
     dict_d = direct_trip(state, result)
     # flandernstrasse = two_pt(state, flandernstrasse)
     histogram_build(dict_t, 'Trips with different transport types')
     histogram_build(dict_d, 'Direct/Indirect Trips')
-    save_journeys(o, result, state)
+    save_journeys(output, result, state)
     save_polygon('polygon.csv', polygons)
 
 

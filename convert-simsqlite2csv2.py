@@ -43,7 +43,7 @@ def parse_args():
     # Define argument parser
     parser = argparse.ArgumentParser()
     # Add argument for database name without extension with default value simulation_data_test
-    parser.add_argument('-d', type=str, default='simulation_data_test')
+    parser.add_argument('-d', type=str, default='simulation_data')
     # Add argument for output file (-p) with default value sql2csv
     parser.add_argument('-o', type=str, default='sql2csv')
     # Add argument for eraser multiplication with default value 1

@@ -238,7 +238,7 @@ class Trip:
         cr = 0
         for person in persons:
             # creating and saving person in xml file depart - time of start. File must be sorted by departure time
-            person_attrib = {'id': person.name, 'depart': '0.00'}
+            person_attrib = {'id': person.name, 'depart': '21600.00'}
             person_element = etree.SubElement(root_2, 'person', attrib=person_attrib)
             # seting time to 6 am
             time = 6
@@ -370,7 +370,12 @@ class Trip:
     @staticmethod
     def pedestrian_retrieval(connection):
         # function will retrieve information of a person movement in every simulation step
-        for per_id in traci.person.getIDList():  # using a built-in subscription to get all variables
+        persons = traci.person.getIDList()
+        step = traci.simulation.getTime()
+        if not persons and step > 21601:
+            print(f'All of the persons have finished their activities')
+            traci.close()
+        for per_id in persons:  # using a built-in subscription to get all variables
             traci.person.subscribe(per_id, [traci.constants.VAR_VEHICLE, traci.constants.VAR_POSITION,
                                             traci.constants.VAR_SPEED])
         result = traci.person.getAllSubscriptionResults()  # collecting results into a tuple
@@ -381,7 +386,6 @@ class Trip:
             else:
                 lon = "{:.5f}".format(lon)
                 lat = "{:.5f}".format(lat)
-
 
             if pedestrian_data[195] == '':  # checking transport type
                 transport = 7  # person is going by foot
@@ -404,7 +408,7 @@ class Trip:
                                                     VALUES (?, ?, ?, ?, ?, ?)''',
                                (person, transport, traci.simulation.getTime(),
                                 lat, lon,
-                                pedestrian_data[64]))
+                                int(pedestrian_data[64])))
 
     @staticmethod
     def autos_retrieval(connection):
@@ -425,7 +429,7 @@ class Trip:
                                         VALUES (?, ?, ?, ?, ?, ?)''',
                                (vehicle, traci.simulation.getTime(),
                                 lat, lon,
-                                vehicle_data[64], co2))
+                                int(vehicle_data[64]), co2))
 
     @staticmethod
     def delete_all(connection):  # function will delete all data from previous simulations
@@ -471,14 +475,6 @@ class Human:  # creating a human class for retrieving information
 
     @staticmethod
     def create_humans(persons):
-        '''
-        for i in range(Human.quantity):
-            if i < Human.quantity / 4:
-                person = Worker(f'p{i}')
-            else:
-                person = Student(f'p{i}')
-            persons.append(person)
-            '''
         for i in range(Human.quantity):  # creating 1000 people with different type of class
             if i < Human.quantity / 4:
                 person = Worker(f'p{i}')  # creating a Worker
@@ -545,17 +541,13 @@ class Worker(Human):  # creating a subclass of Human
     places to go for example work.
     """
     work = pd.read_csv('Simulation' + slash_char + 'work.csv')
-    '''work = []
-    workgps = [48.74527, 9.32249]
-    res = traci.simulation.convertRoad(workgps[1], workgps[0], isGeo=True)
-    work.append(res[0])'''
+
 
     def __init__(self, name):
         super().__init__(name)  # getting variables from class human
         self.money = random.randrange(3300, 4800)  # getting a random salary in range
         self.age = random.randrange(30, 60)  # getting a random age in range
         self.work = Worker.work['edge'].sample(n=1).to_string(index=False)
-        # self.work = Worker.work[0]
         self.work_lon, self.work_lat = Trip.convert_edge_to_gps(self.work)
         self.destination.append(self.work)
 
@@ -649,7 +641,7 @@ def main():
     Human.quantity = args.p
     save_obj = args.l
     Human.home = Human.home.sample(n=int(Human.quantity / 5))
-    # Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
+    Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
     if save_obj:
         print('Loading persons')
         humans = Human.load_state('state.pkl')
@@ -673,16 +665,14 @@ def main():
 
     while traci.simulation.getMinExpectedNumber() > 0:  # making a step in simulation while there`re still some trips
         # Using threads again to make simulation faster
-        t4 = Thread(target=Trip.pedestrian_retrieval(conn))
+        t4 = Thread(target=Trip.autos_retrieval(conn))
         t4.start()
-        # if traci.simulation.getTime() % 3000 == 0:
-        # print(f'Persons {traci.person.getIDList()}')
-        t5 = Thread(target=Trip.autos_retrieval(conn))
+        t5 = Thread(target=Trip.pedestrian_retrieval(conn))
         t5.start()
+
         conn.commit()  # saving data to a database
         traci.simulationStep()  # making one step
     conn.close()  # closing a connection to database
-    traci.close()  # closing a simulation
 
 
 if __name__ == "__main__":
