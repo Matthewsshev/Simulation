@@ -427,8 +427,7 @@ def heatmap_cruising(filename, data, journeys, transport, quantile_values):
         quantile_result = cruising_speed(data, polygon_journeys, quantile_values)
         quantile_arr.append(quantile_result)
         polygons.append(polygon)
-    output = 'heatmap.csv'
-    heatmap_save(polygons, quantile_arr, transport, output)
+    return polygons, quantile_arr
 
     print(f'Check {polygons}')
 
@@ -442,15 +441,14 @@ def main():
     # Define start and end polygons
     addresses = ['R5732233', 'R5732224', 'R5732231', 'R5734257', 'R5732222']
     # test_polygons = create_polygon_osm(addresses)
-    polygons = []
     result = get_journeys(state)  # Get all journeys from the data
     quantile_values = [0.05, 0.95]
     transport_values = ['passenger', 'bicycle']
-    #heatmap_journeys = transport_type(state, result, transport_values[0])]
     heatmap_journeys = result
     file = 'heatmap_config.csv'
-    # pt_waiting_times(state, result, (9.29323, 48.74276))
-    heatmap_cruising('analyse/' + file, state, heatmap_journeys, transport_values[0], quantile_values[0])
+    polygons, quantile = heatmap_cruising('analyse/' + file, state, heatmap_journeys, transport_values[0], quantile_values[0])
+    output_file = 'heatmap.csv'
+    heatmap_save(polygons, quantile, transport_values[0], output_file)
     if config_tuple['start']:
         start_polygon = create_polygon(float(config_tuple['polygon_start'][0]), float(config_tuple['polygon_start'][1]), int(config_tuple['polygon_start'][2]))
         result = start_a(state, result, start_polygon)
