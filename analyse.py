@@ -87,29 +87,20 @@ def check_rationality(data, journeys, time):
         print(f'Percentage {(bad/good) * 100:.2f} %')
 
 
-# Function to get duration of a trip +
-def journey_time(data, journeys):
-    duration = []
-    for journey in journeys:
-        start = pd.to_datetime(data['starttime'][journey[0]])
-        end = pd.to_datetime(data['starttime'][journey[-1]])
-        trip = (end - start).total_seconds() / 3600
-        duration.append(trip)
-        if trip >= 24:
-            print(f'There may be some problem with Data')
-    return duration
 
+def create_polygon_osm(address):
+    area = get_area(address)
+    simplified_polygon = area['geometry'].simplify(tolerance=0.0001)
+    return simplified_polygon
 
 # Function to create polygon using OSM +
 def create_polygon(lon, lat, radius):
-    # area = get_area(address)
     radius = radius / 111320
     points = [(lon - radius, lat - radius),
               (lon + radius, lat - radius),
               (lon + radius, lat + radius),
               (lon - radius, lat + radius),
               (lon - radius, lat - radius)]
-    # simplified_polygon = area['geometry'].simplify(tolerance=0.0001)
     polygon = Polygon(points)
     return polygon
 
@@ -167,7 +158,7 @@ def start_a(data, journeys, polygon_start):
     return filtered_journeys
 
 
-def parse_args():
+'''def parse_args():
     # Define argument parser
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', type=str, default='sql2csv.csv')
@@ -185,6 +176,7 @@ def parse_args():
     parser.add_argument('-lat', type=float, default=48.74276)
     # Parse arguments
     return parser.parse_args()
+'''
 
 
 # Function to get all journeys that have use of two public transports 2 different Buses for example
@@ -209,14 +201,26 @@ def two_pt(data, journeys):
     return filtered_journeys
 
 
+def stop_duration(data, trip):
+    stop_start = pd.to_datetime(f"{data['started_at_date'][trip]} {data['started_at_time'][trip]}")
+    stop_end = pd.to_datetime(f"{data['finished_at_date'][trip]} {data['finished_at_time'][trip]}")
+    temp = stop_end - stop_start
+    duration = temp.total_seconds() / 60
+    return duration
+
+
 # Function to check how much time does Bus take to complete his Route
-def pt_time_check(data):
-    # data['starttime'] = datetime.strptime(data['starttime'], "%Y-%m-%d %H:%M:%S")
-    # data['endtime'] = datetime.strptime(data['endtime'], "%Y-%m-%d %H:%M:%S")
-    data_i = data.index
-    for transport in data_i:
-        time_start = datetime.strptime(data['starttime'][transport], "%Y-%m-%d %H:%M:%S")
-        time_end = datetime.strptime(data['endtime'][transport], "%Y-%m-%d %H:%M:%S")
+def pt_waiting_times(data, journeys, end_point):
+    polygon_end = create_polygon(end_point[0], end_point[1], 1000)
+    print(f'polygon {polygon_end}')
+    pt = ['bus', 'LightRail', 'RegionalTrain']
+    journeys_end = end_c(data, journeys, polygon_end)
+    journey_end_transport = transport_type(data, journeys_end, pt)
+    print(f'End {journey_end_transport}')
+
+    for journey in journey_end_transport:
+        duration = stop_duration(data, journey[-1])
+        print(f'Duration {duration}')
     b = data
     return b
 
@@ -350,70 +354,116 @@ def transport_type(data, journeys, transport):
     tranport_journeys = []
     for journey in journeys:
         for trip in journey:
-            if transport == data['mode'][trip]:
-                tranport_journeys.append(journey)
-                break
+            mode = data['mode'][trip]
+            if isinstance(transport, list):
+                if mode in transport:
+                    tranport_journeys.append(journey)
+                    break
+            else:
+                if mode == transport:
+                    tranport_journeys.append(journey)
+                    break
     return tranport_journeys
 
 
 def cruising_speed(data, journeys, quantile):
     journey_cruising = []
-    print(f'check {len(journeys)}')
     for journey in journeys:
         journey_length = 0
-        journey_time = 0
-        for trip in journey:
-            if trip != journey[-1]:
-                trip_length = int(data['length'][trip])
-                trip_start = pd.to_datetime(f"{data['started_at_date'][trip]} {data['started_at_time'][trip]}")
-                trip_end = pd.to_datetime(f"{data['finished_at_date'][trip]} {data['finished_at_time'][trip]}")
-                trip_time = trip_end - trip_start
-                journey_time += trip_time.total_seconds() / 60
-                journey_length += trip_length
-            else:
-                continue
+        journey_time = journey_duration(data, journey)
+        print(f'Journey duration {journey_time} {journey}')
+        for trip in journey[:-1]:
+            trip_length = int(data['length'][trip])
+            journey_length += trip_length
         journey_speed = int(journey_length / journey_time)
         journey_cruising.append(journey_speed)
     res = np.quantile(journey_cruising, quantile)
     return res
 
 
+def config_read(data):
+    return {
+        'start': data['start'][0],
+        'through': data['through'][0],
+        'end': data['end'][0],
+        'input': data['input'][0],
+        'output': data['output'][0],
+        'polygon_start': data['polygon_start'][0].split(','),
+        'polygon_through': data['polygon_through'][0].split(','),
+        'polygon_end': data['polygon_end'][0].split(',')
+    }
+
+
+# Function to get duration of a trip
+def journey_duration(data, journey):
+    journey_start = pd.to_datetime(f"{data['started_at_date'][journey[0]]} {data['started_at_time'][journey[0]]}")
+    journey_end = pd.to_datetime(f"{data['finished_at_date'][journey[-2]]} {data['finished_at_time'][journey[-2]]}")
+    temp = journey_end - journey_start
+    duration = temp.total_seconds() / 60
+    return duration
+
+
+def heatmap_save(polygons, quantile, transport, filename):
+    with open('analyse/' + filename, "w") as csvfile:
+        csvfile.write(f'"id","polygon","transport","quantile"\n')
+        for inx, polygon in enumerate(polygons):
+            csvstr = f'"{inx}","{polygon}","{transport}","{quantile[inx]}"\n'
+            csvfile.write(csvstr)
+    return 5
+
+
+def heatmap_cruising(filename, data, journeys, transport, quantile_values):
+    config = pd.read_csv(filename)
+    '''polygons_dict = {i: row['polygon'].split(',') for i, row in config.iterrows()}
+    keys = polygons_dict.keys()'''
+    polygons_addr = config['polygon']
+    quantile_arr = []
+    polygons = []
+    index = polygons_addr.index
+    for inx in index:
+        polygon = create_polygon_osm(polygons_addr[inx])
+        polygon_journeys = start_a(data, journeys, polygon[0])
+        print(f'Polygon Journeys {polygon_journeys}')
+        quantile_result = cruising_speed(data, polygon_journeys, quantile_values)
+        quantile_arr.append(quantile_result)
+        polygons.append(polygon)
+    output = 'heatmap.csv'
+    heatmap_save(polygons, quantile_arr, transport, output)
+
+    print(f'Check {polygons}')
+
+
 # Main function to execute the script
 def main():
     config = pd.read_csv('analyse/config.csv')
-    start = config['start'][0]
-    through = config['through'][0]
-    end = config['end'][0]
-    input = config['input'][0]
-    output = config['output'][0]
-    polygon_start = config['polygon_start'][0].split(',')
-    polygon_through = config['polygon_through'][0].split(',')
-    polygon_end = config['polygon_end'][0].split(',')
-    state = pd.read_csv(input)  # Read the CSV file
+    config_tuple = config_read(config)
+    state = pd.read_csv(config_tuple['input'])  # Read the CSV file
     state['geometry'] = gpd.GeoSeries.from_wkt(state['geometry'])
-
     # Define start and end polygons
-    # addresses = ['R5297117', 'W1319624540', 'R5732233', 'R5732224']
+    addresses = ['R5732233', 'R5732224', 'R5732231', 'R5734257', 'R5732222']
+    # test_polygons = create_polygon_osm(addresses)
     polygons = []
     result = get_journeys(state)  # Get all journeys from the data
-    print(f'Check res {result}')
-
     quantile_values = [0.05, 0.95]
     transport_values = ['passenger', 'bicycle']
-    if start:
-        start_polygon = create_polygon(float(polygon_start[0]), float(polygon_start[1]), int(polygon_start[2]))
+    #heatmap_journeys = transport_type(state, result, transport_values[0])]
+    heatmap_journeys = result
+    file = 'heatmap_config.csv'
+    # pt_waiting_times(state, result, (9.29323, 48.74276))
+    heatmap_cruising('analyse/' + file, state, heatmap_journeys, transport_values[0], quantile_values[0])
+    if config_tuple['start']:
+        start_polygon = create_polygon(float(config_tuple['polygon_start'][0]), float(config_tuple['polygon_start'][1]), int(config_tuple['polygon_start'][2]))
         result = start_a(state, result, start_polygon)
         polygons.append(start_polygon)
-    if through:
-        through_polygon = create_polygon(float(polygon_through[0]), float(polygon_through[1]), int(polygon_through[2]))
+    if config_tuple['through']:
+        through_polygon = create_polygon(float(config_tuple['polygon_through'][0]), float(config_tuple['polygon_through'][1]), int(config_tuple['polygon_through'][2]))
         result = through_b(state, result, through_polygon)
         polygons.append(through_polygon)
-    if end:
-        end_polygon = create_polygon(float(polygon_end[0]), float(polygon_end[1]), int(polygon_end[2]))
+    if config_tuple['end']:
+        end_polygon = create_polygon(float(config_tuple['polygon_end'][0]), float(config_tuple['polygon_end'][1]), int(config_tuple['polygon_end'][2]))
         result = end_c(state, result, end_polygon)
         car_journeys = transport_type(state, result, transport_values[0])
         quantile_result = cruising_speed(state, result, quantile_values)
-        print(f' car res {car_journeys}')
 
         polygons.append(end_polygon)
     dict_t = transport_percentage(state, result)
@@ -421,7 +471,7 @@ def main():
     # flandernstrasse = two_pt(state, flandernstrasse)
     histogram_build(dict_t, 'Trips with different transport types')
     histogram_build(dict_d, 'Direct/Indirect Trips')
-    save_journeys(output, result, state)
+    save_journeys(config_tuple['output'], result, state)
     save_polygon('polygon.csv', polygons)
 
 

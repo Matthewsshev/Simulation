@@ -43,7 +43,7 @@ def parse_args():
     # Define argument parser
     parser = argparse.ArgumentParser()
     # Add argument for database name without extension with default value simulation_data_test
-    parser.add_argument('-d', type=str, default='simulation_data')
+    parser.add_argument('-d', type=str, default='simulation_data_test')
     # Add argument for output file (-p) with default value sql2csv
     parser.add_argument('-o', type=str, default='sql2csv')
     # Add argument for eraser multiplication with default value 1
@@ -532,6 +532,7 @@ def convertPTtoWKT(dbname, csvname, basetime, stepjump=1, geoformat='WKT', carsl
     print('finished')
 '''
 
+
 def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
     # open database to read
     con = openDB(dbinname)
@@ -583,7 +584,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
         stop = 0  # counter for stop time
         erase_prob = eraser_percentages(info[1], eraser)
         mob_list = ["T", "S", "Ps", "Bs"]  # trip and stay
-        inf = 0
         while coordinate:
             ctr += 1
             stepctr += 1
@@ -691,8 +691,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                     journey = 1
                     transport_trip_prev = transport
                     info = res2.fetchone()
-                    if info[0] != name:
-                        print(f"????")
+
                     erase_prob = eraser_percentages(info[1], eraser)
             else:
                 # consider only every stepjump time the current point
@@ -817,11 +816,11 @@ def main():
     density = args.den
     print(db + ".db")
     if raw:
-        convertSQLtoWKTraw(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
         print(f'Motiontag Format was chosen')
+        convertSQLtoWKTraw(db + ".db", output_file + ".csv", "2024-04-01 00:00:00", eraser, shift, error, density)
     else:
-        convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 08:00:00", eraser, shift, error, density)
         print(f'Our Format was chosen')
+        convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 00:00:00", eraser, shift, error, density)
 
 
 if __name__ == "__main__":
