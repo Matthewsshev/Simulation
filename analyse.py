@@ -429,7 +429,6 @@ def heatmap_cruising(filename, data, journeys, transport, quantile_values):
         polygons.append(polygon)
     return polygons, quantile_arr
 
-    print(f'Check {polygons}')
 
 
 # Main function to execute the script
