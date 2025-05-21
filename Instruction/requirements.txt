@@ -1,0 +1,15 @@
+folium==0.15.1
+geopandas==0.14.4
+lxml==5.2.1
+matplotlib==3.8.2
+numpy==1.25.0
+osmium==3.7.0
+osmnx==2.0.3
+pandas==2.0.3
+pyproj==3.6.1
+Shapely==2.1.1
+sumolib==1.16.0
+tqdm==4.66.1
+traci==1.16.0
+Unidecode==1.4.0
+visualization==1.0.0
