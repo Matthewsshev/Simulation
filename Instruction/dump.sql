@@ -9,7 +9,7 @@ INSERT INTO vehicles VALUES(5,'Motorbike');
 INSERT INTO vehicles VALUES(6,'Car');
 INSERT INTO vehicles VALUES(7,'Walk');
 CREATE TABLE pedestrian_data (name VARCHAR (5) NOT NULL, transport INTEGER NOT NULL REFERENCES vehicles (id), datetime INTEGER NOT NULL, lat DOUBLE NOT NULL, lon DOUBLE NOT NULL, speed DOUBLE NOT NULL);
-CREATE TABLE vehicle_data (id VARCHAR (20) NOT NULL, datetime INTEGER NOT NULL, lat DOUBLE NOT NULL, lon DOUBLE NOT NULL, speed DOUBLE NOT NULL);
+CREATE TABLE vehicle_data (id VARCHAR (20) NOT NULL, datetime INTEGER NOT NULL, lat DOUBLE NOT NULL, lon DOUBLE NOT NULL, speed DOUBLE NOT NULL, co2 INTEGER);
 CREATE TABLE personal_Info (id VARCHAR (5), type_id INTEGER REFERENCES people_type (id), age INTEGER, home_lon DOUBLE, home_lat DOUBLE, friends_lon DOUBLE, friends_lat DOUBLE, supermarket_lon DOUBLE, supermarket_lat DOUBLE, place_lon DOUBLE, place_lat DOUBLE, money INTEGER);
 CREATE TABLE people_type (id INTEGER PRIMARY KEY, Type VARCHAR (7));
 INSERT INTO people_type VALUES(1,'Worker');

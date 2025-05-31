@@ -642,11 +642,13 @@ def main():
     quantity_trips = args.t
     Human.quantity = args.p
     save_obj = args.l
-    Human.home = Human.home.sample(n=int(Human.quantity / 5))
-    Worker.work = Worker.work.sample(n=int(Human.quantity / 5))
+    calculated_value = math.floor(Human.quantity / 5)
+    n = max(1, calculated_value)
+    Human.home = Human.home.sample(n=n)
+    Worker.work = Worker.work.sample(n=n)
     if save_obj:
         print('Loading persons')
-        humans = Human.load_state('state.pkl')
+        humans = Human.load_state('Instruction/state.pkl')
         for human in humans:
             Human.delete_trips(human)
     else:
