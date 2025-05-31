@@ -4,12 +4,13 @@ import random
 import platform
 import os
 from lxml import etree
-import sqlite3
+import math
 from threading import Thread
 import pickle
 import argparse
 import osmium as osm
 import pandas as pd
+from db import connect_db
 
 
 print(platform.system())  # printing out our system and then creating new variable for slash character
@@ -631,7 +632,8 @@ class Senior(Human):  # creating a subclass of Human
 
 
 def main():
-    conn = sqlite3.connect('simulation_data_test.db')  # Connecting to a db file with all data
+    filename = 'simulation_data'
+    conn = connect_db(filename)  # Connecting to a db file with all data
     # Using Threading making our code to run Functions at the same time
     t = Thread(target=Trip.delete_all(conn))  # executing a function to create new persons
     t.start()
