@@ -73,18 +73,22 @@ xml
         <additional-files value="data.rou.xml,other_additional_files_here.xml"/>
     </input>
     </configuration>
-8. Fix Network File and Adjust Public Transport
-8.1. Fix Network Problems
+
+---
+
+## 8. Fix Network File and Adjust Public Transport
+
+1. Fix Network Problems
 Open CMD and write this command, which will fix the Network Problems:
 
 Bash
 
 netconvert --osm esslingen.osm -o crr.net.xml --junctions.join-dist 10 --ramps.guess --geometry.remove --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
-8.2. Adjusting Public Transport
+2. Adjusting Public Transport
 Bash
 
 python ptlines2flows.py -n crr.net.xml -s additional.xml -l ptlines.xml -o flows.rou.xml -p 1200 --use-osm-routes --ignore-errors --vtype-prefix pt_ --verbose -e 36000000
-8.3. Changing Input Files in osm.sumocfg
+3. Changing Input Files in osm.sumocfg
 Change osm_pt.rou.xml to flows.rou.xml within the <route-files> section.
 Change all additional-files to osm_polygons.add.xml, basic.vType.xml, additional.xml, data.rou.xml.
 XML
@@ -96,7 +100,10 @@ XML
         <additional-files value="osm_polygons.add.xml,basic.vType.xml,additional.xml,data.rou.xml"/>
     </input>
     </configuration>
-9. Create OSM Files for Data Points
+
+---
+
+## 9. Create OSM Files for Data Points
 Then you need to create OSM files that contain data points for School, Universities, Work, etc. These are filtered from your main OSM file (e.g., check.osm).
 
 School:
@@ -123,7 +130,10 @@ Home:
 Bash
 
 osmium tags-filter -o home.osm check.osm w/landuse=residential --overwrite
-10. Convert Files Using osm2csv.py (or main.py)
+
+---
+
+## 11. Convert Files Using osm2csv.py (or main.py)
 This script, main.py, reads OSM files, converts GPS data into SUMO road edges, and saves the results into CSV files. It uses Osmium to process OSM data and Traci to convert GPS coordinates to SUMO edges.
 
 Arguments:
@@ -147,5 +157,8 @@ To specify custom OSM files for different locations:
 Bash
 
 python main.py -f custom_friends.osm -s custom_shop.osm -home custom_home.osm -w custom_work.osm -sc custom_school.osm -p custom_park.osm
-11. Conclusion
+
+---
+
+## 12. Conclusion
 Finally, the code is ready to work with the new Map 😊
