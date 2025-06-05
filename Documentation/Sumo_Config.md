@@ -18,7 +18,9 @@ The Osmium tool is essential for processing OSM files. Here's how to install it:
 * While installing it, make sure to select "Add Mambaforge to my PATH environment variable".
 * Make sure all Git Bash, PowerShell, and CMD instances are closed.
 * Open CMD as an administrator.
-* Inside CMD, type `mamba install osmium-tool`, and press 'Enter'.
+* Inside CMD, type 
+```bash mamba install osmium-tool
+``` 
 * Osmium should be installed and available to use from anywhere in the command line! Just type `osmium --version` to verify the installation.
 
 ---
