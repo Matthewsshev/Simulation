@@ -41,7 +41,7 @@ class NodeHandler(osm.SimpleHandler):
         parser.add_argument('-f', type=str, default='Without_transport' + slash_char + 'friends.osm')
         # Add argument for number of persons (-p) with default value 1
         parser.add_argument('-s', type=str, default='Without_transport' + slash_char + 'shop.osm')
-        parser.add_argument('-home', type=str, default='Without_transport' + slash_char + 'home.osm')
+        parser.add_argument('-h', type=str, default='Without_transport' + slash_char + 'home.osm')
         parser.add_argument('-w', type=str, default='Without_transport' + slash_char + 'work.osm')
         parser.add_argument('-sc', type=str, default='Without_transport' + slash_char + 'school.osm')
         parser.add_argument('-p', type=str, default='Without_transport/park.osm')

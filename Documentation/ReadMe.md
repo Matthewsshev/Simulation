@@ -10,7 +10,13 @@ If you need to change map, public transport, etc. Please read `Sumo_config.md`
     * Default value: 1
 
 **To run the simulation with default values:**
+
+```bash
 python main.py
+```
 
 **To customize the number of trips and persons, use the following format, but without `[]`:**
+
+```bash
 python main.py -t [number_of_trips] -p [number_of_persons]
+```

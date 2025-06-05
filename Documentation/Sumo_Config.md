@@ -81,18 +81,19 @@ xml
 1. Fix Network Problems
 Open CMD and write this command, which will fix the Network Problems:
 
-Bash
-
+```bash
 netconvert --osm esslingen.osm -o crr.net.xml --junctions.join-dist 10 --ramps.guess --geometry.remove --osm.stop-output.length 20 --ptstop-output additional.xml --ptline-output ptlines.xml
+```
 2. Adjusting Public Transport
-Bash
 
+```bash
 python ptlines2flows.py -n crr.net.xml -s additional.xml -l ptlines.xml -o flows.rou.xml -p 1200 --use-osm-routes --ignore-errors --vtype-prefix pt_ --verbose -e 36000000
+```
+
 3. Changing Input Files in osm.sumocfg
 Change osm_pt.rou.xml to flows.rou.xml within the <route-files> section.
 Change all additional-files to osm_polygons.add.xml, basic.vType.xml, additional.xml, data.rou.xml.
-XML
-
+```XML
 <configuration>
     <input>
         <net-file value="crr.net.xml"/>
@@ -100,63 +101,83 @@ XML
         <additional-files value="osm_polygons.add.xml,basic.vType.xml,additional.xml,data.rou.xml"/>
     </input>
     </configuration>
+```
 
 ---
 
 ## 9. Create OSM Files for Data Points
 Then you need to create OSM files that contain data points for School, Universities, Work, etc. These are filtered from your main OSM file (e.g., check.osm).
 
-School:
-Bash
+* School:
 
+```bash
 osmium tags-filter -o school.osm check.osm n/amenity=school --overwrite
-Friends (Social places):
-Bash
+```
 
+* Friends (Social places):
+
+```bash
 osmium tags-filter -o friends.osm check.osm n/amenity=bar,biergarten,cafe,fast_food,food_court,ice_cream,pub,restaurant --overwrite
-Work:
-Bash
+```
 
+* Work:
+
+```bash
 osmium tags-filter -o work.osm check.osm w/landuse=commercial,construction,industrial,retail --overwrite
-Shop:
-Bash
+```
 
+* Shop:
+
+```bash
 osmium tags-filter -o shop.osm check.osm n/shop --overwrite
-Park:
-Bash
+```
+* Park:
 
+```bash
 osmium tags-filter -o park.osm check.osm wr/leisure=park --overwrite
-Home:
-Bash
+```
 
+* Home:
+
+```bash
 osmium tags-filter -o home.osm check.osm w/landuse=residential --overwrite
+```
 
 ---
 
-## 11. Convert Files Using osm2csv.py (or main.py)
-This script, main.py, reads OSM files, converts GPS data into SUMO road edges, and saves the results into CSV files. It uses Osmium to process OSM data and Traci to convert GPS coordinates to SUMO edges.
+## 11. Convert Files Using osm2csv.py
+This script reads OSM files, converts GPS data into SUMO road edges, and saves the results into CSV files. It uses Osmium to process OSM data and Traci to convert GPS coordinates to SUMO edges.
 
-Arguments:
+**Available Arguments:**
+
 The script accepts several command-line arguments to specify the locations of OSM files for various places (friends, shop, home, etc.):
 
--f: OSM file for the friends' location.
-Default: Without_transport/friends.osm
--s: OSM file for the shop location.
-Default: Without_transport/shop.osm
--home: OSM file for the home location.
-Default: Without_transport/home.osm
--w: OSM file for the work location.
-Default: Without_transport/work.osm
--sc: OSM file for the school location.
-Default: Without_transport/school.osm
--p: OSM file for the park location.
-Default: Without_transport/park.osm
-Example Usage:
-To specify custom OSM files for different locations:
+* `-f`: OSM file for the friends' location.
+	* Default: Simulation/friends.osm
+* `-s`: OSM file for the shop location.
+	* Default: Simulation/shop.osm
+* `-h`: OSM file for the home location.
+	* Default: Simulation/home.osm
 
-Bash
+* -w: OSM file for the work location.
+	* Default: Simulation/work.osm
 
+* `-sc`: OSM file for the school location.
+	* Default: Simulation/school.osm
+* `-p`: OSM file for the park location.
+
+	* Default: Simulation/park.osm
+* Example Usage:
+
+**To run the script with default OSM files for different locations:**
+```bash
+python osm2csv.py 
+```
+**To specify custom OSM files for different locations:**
+
+```bash
 python main.py -f custom_friends.osm -s custom_shop.osm -home custom_home.osm -w custom_work.osm -sc custom_school.osm -p custom_park.osm
+```
 
 ---
 
