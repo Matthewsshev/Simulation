@@ -65,7 +65,7 @@ In the end, the folder `test` is created. Take all the files from that into your
 
 After that, open the `OSM.sumocfg` file using a text editor or PyCharm and into the `<additional-files>` section, add `data.rou.xml`.
 
-xml
+```xml
 <configuration>
     <input>
         <net-file value="your_network_file.net.xml"/>
@@ -73,6 +73,7 @@ xml
         <additional-files value="data.rou.xml,other_additional_files_here.xml"/>
     </input>
     </configuration>
+```
 
 ---
 
