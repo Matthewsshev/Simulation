@@ -10,8 +10,7 @@ import pickle
 import argparse
 import osmium as osm
 import pandas as pd
-from db import connect_db
-
+from Databases.db import connect_db
 
 print(platform.system())  # printing out our system and then creating new variable for slash character
 if platform.system() == "Windows":

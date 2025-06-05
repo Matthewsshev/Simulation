@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-05-31 12:44:16 by Eclipse SUMO sumo Version 1.23.1
-<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+<!-- generated on 2025-06-05 13:11:56 by Eclipse SUMO sumo Version 1.19.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
         <net-file value="Simulation\crr.net.xml"/>
@@ -72,7 +72,7 @@
     </taxi_device>
 
     <traci_server>
-        <remote-port value="64963"/>
+        <remote-port value="50381"/>
     </traci_server>
 
     <random_number>
@@ -83,7 +83,7 @@
         <gui-settings-file value="Simulation\default-gui.xml"/>
     </gui_only>
 
-</sumoConfiguration>
+</configuration>
 -->
 
 <statistics xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/statistic_file.xsd">
