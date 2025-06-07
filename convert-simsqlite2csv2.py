@@ -36,7 +36,7 @@ while True:
 
 
 # open SQLITE3 database
-def openDB(dbname):
+def open_DB(dbname):
     con = sqlite3.connect(dbname)
     return con
 def parse_args():
@@ -45,7 +45,7 @@ def parse_args():
     # Add argument for database name without extension with default value simulation_data_test
     parser.add_argument('-d', type=str, default='simulation_data_test')
     # Add argument for output file (-p) with default value sql2csv
-    parser.add_argument('-o', type=str, default='sql2csv')
+    parser.add_argument('-o', type=str, default='modular_test')
     # Add argument for eraser multiplication with default value 1
     parser.add_argument('-e', type=float, default=1)
     # Add argument for shift multiplication with default value 1
@@ -120,28 +120,10 @@ def coordinates2WKT(coordinates, geoformat="WKT"):
 #   lon DOUBLE NOT NULL,
 #   speed DOUBLE NOT NULL);
 def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
-    # open database to read
-    con = openDB(dbinname)
-    cur = con.cursor()  # to read data
-    cur2 = con.cursor()
-    # get curser to simulated coordinates
-    sql_cmd = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
-               "FROM pedestrian_data AS p, vehicles AS v "
-               f"WHERE transport = v.id and lat != 'inf'")
-    sql_cmd2 = ('Select pi.id, pt.Type as Occupation '
-                'From personal_Info As pi '
-                'Join people_type As pt On pt.id = pi.type_id')
-    if len(personlist) > 0:
-        plist = '\',\''.join(personlist)
-        plist = '\'' + plist + '\''
-        whereclause = ' AND p.name IN (' + plist + ')'
-        sql_cmd += whereclause
-    sql_cmd += " ORDER BY p.name, datetime"
-    print(sql_cmd)
-    res = cur.execute(sql_cmd)
-    res2 = cur2.execute(sql_cmd2)
-    info = res2.fetchone()
-    coordinate = res.fetchone()
+    conn = open_DB(dbinname)
+    coordinate_result, info_result = get_pedestrian_data_from_db(conn, personlist)
+    coordinate = coordinate_result.fetchone()
+    info = info_result.fetchone()
     # open csvfile
     with open(csvname, "w") as csvfile:
         # write heading
@@ -249,7 +231,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                         percent = shift_percentage(transport_prev, shift)
                         coordinates = data_shift(coordinates, percent)
                         print(f'Data shift was done for {name_prev}')
-                    print(f' name {name_prev}  len {len(coordinates)} type {mobtype}  coord {coordinates}')
 
                     wktstr, length = coordinates2WKT(coordinates, geoformat)
 
@@ -283,9 +264,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 if name != name_prev:
                     journey = 1
                     transport_trip_prev = transport
-                    info = res2.fetchone()
-                    if info[0] != name:
-                        print(f"????")
+                    info = info_result.fetchone()
                     erase_prob = eraser_percentages(info[1], eraser)
             else:
                 # consider only every stepjump time the current point
@@ -297,7 +276,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             simulationstep_prev = simulationstep
             point_prev = point
             lat_prev = lat
-            coordinate = res.fetchone()
+            coordinate = coordinate_result.fetchone()
         # end of loop, write last trip to file
         if stop >= 600:
             print(f"Stop for {name_prev} at time {startsimulationstep} for {simulationstep_prev - stop}")
@@ -349,7 +328,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             journey += 1
         csvfile.write(csvstr)
         print(f"Try {inf}")
-    con.close()
+    conn.close()
     print(ctr)
     print("finished")
 
@@ -408,31 +387,31 @@ def shift_percentage(transport, multiplier):
     return random.uniform(0, max_percentage * multiplier)
 
 
-
-
-def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
-    # open database to read
-    con = openDB(dbinname)
-    cur = con.cursor()  # to read data
-    cur2 = con.cursor()
+def get_pedestrian_data_from_db(conn, personlist=[]):
+    cur = conn.cursor()  # to read data
+    cur2 = conn.cursor()
     # get curser to simulated coordinates
-    sql_cmd = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
+    pedestrian_geo_data_sql = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
                "FROM pedestrian_data AS p, vehicles AS v "
-               f"WHERE transport = v.id and lat != 'inf'")  # and MOD(p.datetime, {density}) = {res}
-    sql_cmd2 = ('Select pi.id, pt.Type as Occupation '
+               f"WHERE transport = v.id and lat != 'inf'")
+    pedestrian_personal_info_data_sql = ('Select pi.id, pt.Type as Occupation '
                 'From personal_Info As pi '
                 'Join people_type As pt On pt.id = pi.type_id')
     if len(personlist) > 0:
         plist = '\',\''.join(personlist)
         plist = '\'' + plist + '\''
         whereclause = ' AND p.name IN (' + plist + ')'
-        sql_cmd += whereclause
-    sql_cmd += " ORDER BY p.name, datetime"
-    print(sql_cmd)
-    res = cur.execute(sql_cmd)
-    res2 = cur2.execute(sql_cmd2)
-    info = res2.fetchone()
-    coordinate = res.fetchone()
+        pedestrian_geo_data_sql += whereclause
+    pedestrian_geo_data_sql += " ORDER BY p.name, datetime"
+    pedestrian_geo_data_result = cur.execute(pedestrian_geo_data_sql)
+    pedestrian_personal_info_result = cur2.execute(pedestrian_personal_info_data_sql)
+    return pedestrian_geo_data_result, pedestrian_personal_info_result
+
+def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
+    conn = open_DB(dbinname)
+    coordinate_result, info_result = get_pedestrian_data_from_db(conn, personlist)
+    coordinate = coordinate_result.fetchone()
+    info = info_result.fetchone()
     # open csvfile
     with open(csvname, "w") as csvfile:
         # write heading
@@ -560,7 +539,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                 if name != name_prev:
                     journey = 1
                     transport_trip_prev = transport
-                    info = res2.fetchone()
+                    info = info_result.fetchone()
 
                     erase_prob = eraser_percentages(info[1], eraser)
             else:
@@ -573,7 +552,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
             simulationstep_prev = simulationstep
             point_prev = point
             lat_prev = lat
-            coordinate = res.fetchone()
+            coordinate = coordinate_result.fetchone()
         # end of loop, write last trip to file
         if stop >= 600:
             print(f"Stop for {name_prev} at time {startsimulationstep} for {simulationstep_prev - stop}")
@@ -621,7 +600,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
         if mobtype == mob_list[3]:
             journey += 1
         csvfile.write(csvstr)
-    con.close()
+    conn.close()
     print(ctr)
     print("finished")
 
@@ -629,7 +608,7 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
 # dump the data of a simulation SQLITE3 db into csv
 def dumpdb2csv(dbname, csvname, personlist=[]):
     # open database to read
-    con = openDB(dbname)
+    con = open_DB(dbname)
     cur = con.cursor()  # to read data
     # get curser to simulated coordinates
     sql_cmd = """
@@ -685,10 +664,10 @@ def main():
     print(db + ".db")
     if raw:
         print(f'Motiontag Format was chosen')
-        convertSQLtoWKTraw(db + ".db", output_file + ".csv", "2024-04-01 00:00:00", eraser, shift, error, density)
+        convertSQLtoWKTraw(f'Databases/{db}.db', output_file + ".csv", "2024-04-01 00:00:00", eraser, shift, error, density)
     else:
         print(f'Our Format was chosen')
-        convertSQLtoWKT(db + ".db", output_file + ".csv", "2024-04-01 00:00:00", eraser, shift, error, density)
+        convertSQLtoWKT(f'Databases/{db}.db', output_file + ".csv", "2024-04-01 00:00:00", eraser, shift, error, density)
 
 
 if __name__ == "__main__":
