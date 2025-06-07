@@ -124,14 +124,10 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
     con = openDB(dbinname)
     cur = con.cursor()  # to read data
     cur2 = con.cursor()
-    if density == 1:
-        res = 0
-    else:
-        res = 1
     # get curser to simulated coordinates
     sql_cmd = ("SELECT   p.name, v.name AS transport, datetime, lat, lon, speed "
                "FROM pedestrian_data AS p, vehicles AS v "
-               f"WHERE transport = v.id and lat != 'inf'")  # and MOD(p.datetime, {density}) = {res}  was deleted
+               f"WHERE transport = v.id and lat != 'inf'")
     sql_cmd2 = ('Select pi.id, pt.Type as Occupation '
                 'From personal_Info As pi '
                 'Join people_type As pt On pt.id = pi.type_id')
@@ -145,7 +141,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
     res = cur.execute(sql_cmd)
     res2 = cur2.execute(sql_cmd2)
     info = res2.fetchone()
-    # print(f"RES: \n{info}")
     coordinate = res.fetchone()
     # open csvfile
     with open(csvname, "w") as csvfile:
@@ -179,7 +174,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
         while coordinate:
             ctr += 1
             stepctr += 1
-            # print out some progress information
             if ctr % 5000 == 0:
                 print(ctr)
             # Read current data and check for end of trip or stay
@@ -212,7 +206,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                             # write first trip before stay if stay is 1 activity
                             mobtype = mob_list[0]
                             # getting trip data without stay
-                            # print(f"Name {name_prev}   unterschied {simulationstep_prev - stop}  {startsimulationstep}")
                             trip = coordinates[:-stop]
                             triptime = timearr[:-stop]
                             trip = density_remove(trip, density)
@@ -262,9 +255,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
 
 
 
-                # Add coordinate as the last one if not coordinate of next user
-                # if name == name_prev:
-                #    coordinates.append(point)
+
                 stepctr = 0
                 # Convert time objects into time strings
                 starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
@@ -378,7 +369,6 @@ def percentages_remove(lst, tarr, percentage):
     # Calculate the number of items to remove
     num_to_remove = int(len(lst) * percentage)
     arr = lst
-    #print(f'Len {len(arr)}')
     if len(lst) > 3:
         start_index = random.randint(2, len(arr) - 2)
     else:
@@ -397,11 +387,9 @@ def density_remove(arr, density):
 
 
 def data_shift(lst, percentage):
-    # print(f'Lst {lst}')
     max_shift = 0.00009
     n = int(len(lst) * percentage)
     indices = random.sample(range(2, len(lst) - 2), n)  # Pick indices excluding first (0) and last (-1)
-    # print(f'Rand {indices} len {len(lst)}')
     for idx in indices:
         lat = random.uniform(-max_shift, max_shift)
         lon = random.uniform(-max_shift, max_shift)
@@ -419,118 +407,7 @@ def shift_percentage(transport, multiplier):
     max_percentage = 0.16 if transport in pt else transport_limits.get(transport, 0.08)
     return random.uniform(0, max_percentage * multiplier)
 
-'''
-def convertPTtoWKT(dbname, csvname, basetime, stepjump=1, geoformat='WKT', carslist=[]):
-    con = openDB(dbname)
-    cur = con.cursor()
-    sql_cmd = ('SELECT v.id, datetime, lat, lon, co2 '
-               'FROM vehicle_data AS v '
-               'WHERE v.id LIKE "%pt%" '
-               'ORDER BY v.id, datetime')
-    if len(carslist) > 0:
-        clist = '\',\''.join(carslist)
-        clist = '\'' + clist + '\''
-        whereclause = ' AND v.id IN (' + clist + ')'
-        sql_cmd += whereclause
-    res = cur.execute(sql_cmd)
-    coordinate = res.fetchone()
-    with open(csvname, 'w') as csvfile:
-        csvfile.write(f'id,nr,startstep,starttime,endstep,endtime,wkt\n')
-        stepctr = 0  # for each trip/stay (per person) the steps 1,2,3,...
-        ctr = 0
-        nr = 0
-        stop = 0
-        id_prev = coordinate[0]
-        simulationstep_prev = coordinate[1]
-        startsimulationstep = simulationstep_prev
-        point_prev = Point(coordinate[3], coordinate[2])
-        lat_prev = coordinate[3]
-        stop_end = None
-        coordinates = []
-        timearr =[]
-        while coordinate:
-            ctr += 1
-            stepctr += 1
-            if ctr % 5000 == 0:
-                print(ctr)
-            id = coordinate[0]
-            simulationstep = coordinate[1]
-            point = Point(coordinate[3], coordinate[2])
-            lat = coordinate[3]
-            if lat_prev == lat and id == id_prev:
-                stop += 1
-            elif stop >= 50 and lat != lat_prev and id == id_prev:
-                stop_end = True
-            else:
-                stop = 0
-            if id != id_prev or stop_end or simulationstep - simulationstep_prev > 1 :
-                nr += 1
 
-                if stop_end:
-                    if simulationstep_prev - stop != startsimulationstep:
-                        trip = coordinates[:-stop]
-                        wktstr, length = coordinates2WKT(trip, geoformat)
-
-                        simulationstep_prev -= stop + 1
-                        starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                        endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                        csvstr = f'"{id_prev}","{nr}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{enddate}","{wktstr}"\n'
-                        csvfile.write(csvstr)
-                        startsimulationstep = simulationstep_prev + 1
-                        simulationstep_prev = simulationstep - 1
-                        nr += 1
-                    stop_end = False
-                    stop = 0
-                    wktstr, length = coordinates2WKT([point_prev], geoformat)
-                else:
-                    wktstr, length = coordinates2WKT(coordinates, geoformat)
-                stepctr = 0
-                starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                csvstr = f'"{id_prev}","{nr}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{enddate}","{wktstr}"\n'
-                csvfile.write(csvstr)
-                coordinates = []
-                timearr = []
-                timearr.append(simulationstep)
-                coordinates.append(point)
-                if stop >= 600:
-                    startsimulationstep = simulationstep_prev
-                else:
-                    startsimulationstep = simulationstep
-                if id != id_prev:
-                    nr = 0
-            else:
-                if stepctr % stepjump == 0:
-                    coordinates.append(point)
-                    timearr.append(simulationstep)
-            id_prev = id
-            point_prev = point
-            simulationstep_prev = simulationstep
-            lat_prev = lat
-            coordinate = res.fetchone()
-        if stop >= 600:
-            if simulationstep_prev - stop != startsimulationstep:
-                trip = coordinates[:-stop]
-                wktstr, length = coordinates2WKT(trip, geoformat)
-                simulationstep_prev -= stop + 1
-                starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                csvstr = f'"{id_prev}","{nr}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{enddate}","{wktstr}"\n'
-                csvfile.write(csvstr)
-                startsimulationstep = simulationstep_prev + 1
-                simulationstep_prev = simulationstep - 1
-                nr += 1
-            wktstr, length = coordinates2WKT([point_prev], geoformat)
-        else:
-            wktstr, length = coordinates2WKT(coordinates, geoformat)
-        starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-        endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-        csvstr = f'"{id_prev}","{nr}","{startsimulationstep}","{starttime}","{simulationstep_prev}","{enddate}","{wktstr}"\n'
-        csvfile.write(csvstr)
-    con.close()
-    print(ctr)
-    print('finished')
-'''
 
 
 def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
@@ -555,7 +432,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
     res = cur.execute(sql_cmd)
     res2 = cur2.execute(sql_cmd2)
     info = res2.fetchone()
-    # print(f"RES: \n{info}")
     coordinate = res.fetchone()
     # open csvfile
     with open(csvname, "w") as csvfile:
@@ -587,7 +463,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
         while coordinate:
             ctr += 1
             stepctr += 1
-            # print out some progress information
             if ctr % 5000 == 0:
                 print(ctr)
             # Read current data and check for end of trip or stay
@@ -619,7 +494,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                             # write first trip before stay if stay is 1 activity
                             mobtype = mob_list[0]
                             # getting trip data without stay
-                            # print(f"Name {name_prev}   unterschied {simulationstep_prev - stop}  {startsimulationstep}")
                             trip = coordinates[:-stop]
                             triptime = timearr[:-stop]
                             trip = density_remove(trip, density)
@@ -653,15 +527,12 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                     coordinates = density_remove(coordinates, density)
                     timearr = density_remove(timearr, density)
                     if error:
-                        # print(f'Len {len(coordinates)}  ?? {len(timearr)}')
                         coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
                         percent = shift_percentage(transport_prev, shift)
                         coordinates = data_shift(coordinates, percent)
                     wktstr, length = coordinates2WKT(coordinates, geoformat)
 
-                # Add coordinate as the last one if not coordinate of next user
-                # if name == name_prev:
-                #    coordinates.append(point)
+
                 stepctr = 0
                 # Convert time objects into time strings
                 starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
@@ -671,7 +542,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                 else:
                     mode = ''
                 # NO SPACE AFTER COMMA!
-                # print(f'Timearr {timearr}')
                 csvstr = f'"{nr}","{name_prev}","{mobtype}","{mode}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
                 csvfile.write(csvstr)
                 if mobtype == mob_list[3]:
@@ -695,7 +565,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
                     erase_prob = eraser_percentages(info[1], eraser)
             else:
                 # consider only every stepjump time the current point
-                # print(f'check {stepctr} {stepjump}')
                 if stepctr % stepjump == 0:
                     coordinates.append(point)
                     timearr.append(simulationstep)
@@ -739,7 +608,6 @@ def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, densit
             coordinates = density_remove(coordinates, density)
             timearr = density_remove(timearr, density)
             if error:
-                # print(f'Len {len(coordinates)}  ?? {len(timearr)}')
                 coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
                 percent = shift_percentage(transport_prev, shift)
                 coordinates = data_shift(coordinates, percent)
