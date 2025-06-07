@@ -112,225 +112,218 @@ def coordinates2WKT(coordinates, geoformat="WKT"):
 # Therefore, with the parameter stepjump only every xth coordinate can be considered here.
 # 5 persons x 1 trip = 124 KB WKB, 141 KB WKT (-13% WKB vs WKT)
 # 1000 persons x 1 trip = 70128 KB WKB, 80180 KB WKT (-13% WKB vs WKT)
-# CREATE TABLE pedestrian_data (
-#   name VARCHAR (5) NOT NULL,
-#   transport INTEGER NOT NULL REFERENCES vehicles (id),
-#   datetime INTEGER NOT NULL,
-#   lat DOUBLE NOT NULL,
-#   lon DOUBLE NOT NULL,
-#   speed DOUBLE NOT NULL);
+
 def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
     conn = open_DB(dbinname)
     coordinate_result, info_result = get_pedestrian_data_from_db(conn, personlist)
     coordinate = coordinate_result.fetchone()
     info = info_result.fetchone()
+    raw_format = False
     # open csvfile
-    with open(csvname, "w") as csvfile:
-        # write heading
-        csvfile.write("id,userid,journey,type,mode,geometry,length,timearray,started_at_date,started_at_time,finished_at_date,finished_at_time,confirmed\n")
-        # loop through all simulated coordinates
-        stepctr = 0  # for each trip/stay (per person) the steps 1,2,3,...
-        ctr = 0
-        journey = 1
-        # store first data line as previous data
-        name_prev = coordinate[0]
-        transport_prev = coordinate[1]  # string such as "on foot", "bus", ...
-        simulationstep_prev = coordinate[2]  # min is 1
-        startsimulationstep = simulationstep_prev
-        point_prev = Point(coordinate[4], coordinate[3])  # shapely object
-        lat_prev = coordinate[4]
-        stop_end = None  # variable for end of stop
-        if error:
-            print(f'Errors will be added')
+    csvfile = setup_csv(csvname, raw_format)
+    # loop through all simulated coordinates
+    stepctr = 0  # for each trip/stay (per person) the steps 1,2,3,...
+    ctr = 0
+    journey = 1
+    # store first data line as previous data
+    name_prev = coordinate[0]
+    transport_prev = coordinate[1]  # string such as "on foot", "bus", ...
+    simulationstep_prev = coordinate[2]  # min is 1
+    startsimulationstep = simulationstep_prev
+    point_prev = Point(coordinate[4], coordinate[3])  # shapely object
+    lat_prev = coordinate[4]
+    stop_end = None  # variable for end of stop
+    if error:
+        print(f'Errors will be added')
+    else:
+        print(f'Simulation Data will be saved without adding errors')
+    transport_trip_prev = transport_prev
+    coordinates = []  # list of all points of a trip/stay'
+    timearr = []  # list of time for every point
+    nr = 0  # consecutive number of trip/stay of one person
+    stop = 0  # counter for stop time
+    erase_prob = eraser_percentages(info[1], eraser)
+    mob_list = ["T", "S", "Ps", "Bs"]  # trip and stay
+    public_transport_list = ["bus", "trolleybus", "light rail", "train"]
+    inf = 0
+    while coordinate:
+        ctr += 1
+        stepctr += 1
+        if ctr % 5000 == 0:
+            print(ctr)
+        # Read current data and check for end of trip or stay
+        name = coordinate[0]
+        transport = coordinate[1]
+        simulationstep = coordinate[2]
+        lat = coordinate[4]
+        point = Point(coordinate[4], coordinate[3])  # shapely object
+        # Getting a stop with time more than 600 sec
+        if lat == lat_prev and name == name_prev and lat_prev != 'inf' and transport_prev == transport:
+            stop += 1
+        elif stop >= 600 and lat != lat_prev:
+            stop_end = True
+            print(f"Stop for {name_prev} at {simulationstep_prev} for {stop}")
         else:
-            print(f'Simulation Data will be saved without adding errors')
-        transport_trip_prev = transport_prev
-        coordinates = []  # list of all points of a trip/stay'
-        timearr = []  # list of time for every point
-        nr = 0  # consecutive number of trip/stay of one person
-        stop = 0  # counter for stop time
-        erase_prob = eraser_percentages(info[1], eraser)
-        mob_list = ["T", "S", "Ps", "Bs"]  # trip and stay
-        public_transport_list = ["bus", "trolleybus", "light rail", "train"]
-        inf = 0
-        while coordinate:
-            ctr += 1
-            stepctr += 1
-            if ctr % 5000 == 0:
-                print(ctr)
-            # Read current data and check for end of trip or stay
-            name = coordinate[0]
-            transport = coordinate[1]
-            simulationstep = coordinate[2]
-            lat = coordinate[4]
-            point = Point(coordinate[4], coordinate[3])  # shapely object
-            # Getting a stop with time more than 600 sec
-            if lat == lat_prev and name == name_prev and lat_prev != 'inf' and transport_prev == transport:
-                stop += 1
-            elif stop >= 600 and lat != lat_prev:
-                stop_end = True
-                print(f"Stop for {name_prev} at {simulationstep_prev} for {stop}")
-            else:
+            stop = 0
+
+        # End trip if
+        # a) user name changes
+        # b) transport mode changes
+        # c) there is a stop with time > 600 (not implemented yet)
+        # d) there is an unreasonable jump in position > 100m (not implemented yet)
+        if name != name_prev or stop_end or transport_prev != transport or simulationstep - simulationstep_prev > 1:
+            if distance(point, point_prev) > 0.001:
+                print(f'Person {name_prev} jumping about!')
+            nr += 1
+            if stop_end:
+                if transport_prev != transport_trip_prev or transport_prev == transport_trip_prev or transport_prev != transport:
+                    if simulationstep_prev - stop != startsimulationstep:
+                        # write first trip before stay if stay is 1 activity
+                        mobtype = mob_list[0]
+                        # getting trip data without stay
+                        trip = coordinates[:-stop]
+                        triptime = timearr[:-stop]
+                        trip = density_remove(trip, density)
+                        triptime = density_remove(triptime, density)
+                        if error:
+                            trip, triptime = percentages_remove(trip, triptime, erase_prob)
+                            percent = shift_percentage(transport_prev, shift)
+                            trip = data_shift(trip, percent)
+                        wktstr, length = coordinates2WKT(trip, geoformat)
+                        # adjusting time for trip
+                        simulationstep_prev -= stop + 1
+                        starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+                        endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+                        csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+                        csvfile.write(csvstr)
+                        startsimulationstep = simulationstep_prev + 1
+                        if name != name_prev:
+                            simulationstep_prev += stop + 1
+                        else:
+                            simulationstep_prev = simulationstep - 1
+                        nr += 1
+
+                if transport in public_transport_list and transport_prev not in public_transport_list:
+                    mobtype = mob_list[2]
+                elif stop <= 3600:
+                    mobtype = mob_list[1]
+                else:
+                    mobtype = mob_list[3]
+                timearr = timearr[-stop:]
+                timearr = density_remove(timearr, density)
+                # definition of point where stay is
+                stop_end = False
                 stop = 0
+                wktstr, length = coordinates2WKT([point_prev], geoformat)
+            else:
+                mobtype = mob_list[0]
+                coordinates = density_remove(coordinates, density)
+                timearr = density_remove(timearr, density)
+                if error:
+                    coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+                    percent = shift_percentage(transport_prev, shift)
+                    coordinates = data_shift(coordinates, percent)
+                    print(f'Data shift was done for {name_prev}')
 
-            # End trip if
-            # a) user name changes
-            # b) transport mode changes
-            # c) there is a stop with time > 600 (not implemented yet)
-            # d) there is an unreasonable jump in position > 100m (not implemented yet)
-            if name != name_prev or stop_end or transport_prev != transport or simulationstep - simulationstep_prev > 1 :
-                if distance(point, point_prev) > 0.001:
-                    print(f'Person {name_prev} jumping about!')
-                nr += 1
-                if stop_end:
-                    if transport_prev != transport_trip_prev or transport_prev == transport_trip_prev or transport_prev != transport:
-                        if simulationstep_prev - stop != startsimulationstep:
-                            # write first trip before stay if stay is 1 activity
-                            mobtype = mob_list[0]
-                            # getting trip data without stay
-                            trip = coordinates[:-stop]
-                            triptime = timearr[:-stop]
-                            trip = density_remove(trip, density)
-                            triptime = density_remove(triptime, density)
-                            if error:
-                                trip, triptime = percentages_remove(trip, triptime, erase_prob)
-                                percent = shift_percentage(transport_prev, shift)
-                                trip = data_shift(trip, percent)
-                            wktstr, length = coordinates2WKT(trip, geoformat)
-                            # adjusting time for trip
-                            simulationstep_prev -= stop + 1
-                            starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                            endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                            csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-                            csvfile.write(csvstr)
-                            startsimulationstep = simulationstep_prev + 1
-                            if name != name_prev:
-                                simulationstep_prev += stop + 1
-                            else:
-                                simulationstep_prev = simulationstep - 1
-                            nr += 1
+                wktstr, length = coordinates2WKT(coordinates, geoformat)
 
-                    if transport in public_transport_list and transport_prev not in public_transport_list:
-                        mobtype = mob_list[2]
-                    elif stop <= 3600:
-                        mobtype = mob_list[1]
-                    else:
-                        mobtype = mob_list[3]
-                    timearr = timearr[-stop:]
-                    timearr = density_remove(timearr, density)
-                    # definition of point where stay is
-                    stop_end = False
-                    stop = 0
-                    wktstr, length = coordinates2WKT([point_prev], geoformat)
-                else:
-                    mobtype = mob_list[0]
-                    coordinates = density_remove(coordinates, density)
-                    timearr = density_remove(timearr, density)
-                    if error:
-                        coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
-                        percent = shift_percentage(transport_prev, shift)
-                        coordinates = data_shift(coordinates, percent)
-                        print(f'Data shift was done for {name_prev}')
-
-                    wktstr, length = coordinates2WKT(coordinates, geoformat)
-
-
-
-
-                stepctr = 0
-                # Convert time objects into time strings
-                starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                if mobtype == mob_list[0]:
-                    mode = transport_prev
-                else:
-                    mode = ''
-                # NO SPACE AFTER COMMA!
-                csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{mode}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-                csvfile.write(csvstr)
-                if mobtype == mob_list[3]:
-                    journey += 1
-                coordinates = []  # start new trip
-                timearr = []
-                transport_trip_prev = transport_prev
+            stepctr = 0
+            # Convert time objects into time strings
+            starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+            endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+            if mobtype == mob_list[0]:
+                mode = transport_prev
+            else:
+                mode = ''
+            # NO SPACE AFTER COMMA!
+            csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{mode}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+            csvfile.write(csvstr)
+            if mobtype == mob_list[3]:
+                journey += 1
+            coordinates = []  # start new trip
+            timearr = []
+            transport_trip_prev = transport_prev
+            coordinates.append(point)
+            timearr.append(simulationstep)
+            if stop >= 600:
+                startsimulationstep = simulationstep_prev
+            else:
+                startsimulationstep = simulationstep
+            # If change of user store current coordinate and reset trip/stay number and change
+            # transport for previous trip
+            if name != name_prev:
+                journey = 1
+                transport_trip_prev = transport
+                info = info_result.fetchone()
+                erase_prob = eraser_percentages(info[1], eraser)
+        else:
+            # consider only every stepjump time the current point
+            if stepctr % stepjump == 0:
                 coordinates.append(point)
                 timearr.append(simulationstep)
-                if stop >= 600:
-                    startsimulationstep = simulationstep_prev
-                else:
-                    startsimulationstep = simulationstep
-                # If change of user store current coordinate and reset trip/stay number and change
-                # transport for previous trip
-                if name != name_prev:
-                    journey = 1
-                    transport_trip_prev = transport
-                    info = info_result.fetchone()
-                    erase_prob = eraser_percentages(info[1], eraser)
-            else:
-                # consider only every stepjump time the current point
-                if stepctr % stepjump == 0:
-                    coordinates.append(point)
-                    timearr.append(simulationstep)
-            name_prev = name
-            transport_prev = transport
-            simulationstep_prev = simulationstep
-            point_prev = point
-            lat_prev = lat
-            coordinate = coordinate_result.fetchone()
-        # end of loop, write last trip to file
-        if stop >= 600:
-            print(f"Stop for {name_prev} at time {startsimulationstep} for {simulationstep_prev - stop}")
-            if simulationstep_prev - stop != startsimulationstep:
-                nr += 1
-                mobtype = mob_list[0]
-                # Getting trip data without stay
-                trip = coordinates[:-stop]
-                triptime = timearr[:-stop]
-                trip = density_remove(trip, density)
-                triptime = density_remove(triptime, density)
-                if error:
-                    trip, triptime = percentages_remove(trip, triptime, erase_prob)
-                    percent = shift_percentage(transport_prev, shift)
-                    trip = data_shift(trip, percent)
-                wktstr, length = coordinates2WKT(trip, geoformat)
-
-                # Adjusting time for trip
-                simulationstep_prev -= stop
-                starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-                csvfile.write(csvstr)
-                startsimulationstep = simulationstep_prev
-                simulationstep_prev = simulationstep
-            if stop <= 3600:
-                mobtype = mob_list[1]
-            else:
-                mobtype = mob_list[3]
-            timearr = timearr[-stop:]
-            timearr = density_remove(timearr, density)
-            wktstr, length = coordinates2WKT([point_prev], geoformat)
-        else:
+        name_prev = name
+        transport_prev = transport
+        simulationstep_prev = simulationstep
+        point_prev = point
+        lat_prev = lat
+        coordinate = coordinate_result.fetchone()
+    # end of loop, write last trip to file
+    if stop >= 600:
+        print(f"Stop for {name_prev} at time {startsimulationstep} for {simulationstep_prev - stop}")
+        if simulationstep_prev - stop != startsimulationstep:
+            nr += 1
             mobtype = mob_list[0]
-            coordinates = density_remove(coordinates, density)
-            timearr = density_remove(timearr, density)
+            # Getting trip data without stay
+            trip = coordinates[:-stop]
+            triptime = timearr[:-stop]
+            trip = density_remove(trip, density)
+            triptime = density_remove(triptime, density)
             if error:
-                coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+                trip, triptime = percentages_remove(trip, triptime, erase_prob)
                 percent = shift_percentage(transport_prev, shift)
-                coordinates = data_shift(coordinates, percent)
-                print(f'Data shift was done for {name_prev}')
-            wktstr, length = coordinates2WKT(coordinates, geoformat)
-        starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-        endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-        nr += 1
-        # NO SPACE AFTER COMMA!
-        csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-        if mobtype == mob_list[3]:
-            journey += 1
-        csvfile.write(csvstr)
-        print(f"Try {inf}")
+                trip = data_shift(trip, percent)
+            wktstr, length = coordinates2WKT(trip, geoformat)
+
+            # Adjusting time for trip
+            simulationstep_prev -= stop
+            starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+            endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+            csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+            csvfile.write(csvstr)
+            startsimulationstep = simulationstep_prev
+            simulationstep_prev = simulationstep
+        if stop <= 3600:
+            mobtype = mob_list[1]
+        else:
+            mobtype = mob_list[3]
+        timearr = timearr[-stop:]
+        timearr = density_remove(timearr, density)
+        wktstr, length = coordinates2WKT([point_prev], geoformat)
+    else:
+        mobtype = mob_list[0]
+        coordinates = density_remove(coordinates, density)
+        timearr = density_remove(timearr, density)
+        if error:
+            coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+            percent = shift_percentage(transport_prev, shift)
+            coordinates = data_shift(coordinates, percent)
+            print(f'Data shift was done for {name_prev}')
+        wktstr, length = coordinates2WKT(coordinates, geoformat)
+    starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+    endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+    nr += 1
+    # NO SPACE AFTER COMMA!
+    csvstr = f'"{nr}","{name_prev}","{journey}","{mobtype}","{transport_prev}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+    if mobtype == mob_list[3]:
+        journey += 1
+    csvfile.write(csvstr)
     conn.close()
     print(ctr)
     print("finished")
+
+
+
+
 
 
 def eraser_percentages(occupation, multiplier):
@@ -407,202 +400,212 @@ def get_pedestrian_data_from_db(conn, personlist=[]):
     pedestrian_personal_info_result = cur2.execute(pedestrian_personal_info_data_sql)
     return pedestrian_geo_data_result, pedestrian_personal_info_result
 
+def setup_csv(csvname, raw_format):
+    csvfile = open(csvname, 'w')
+    if raw_format:
+        header = "id,userid,type,mode,geometry,length,timearray,started_at_date,started_at_time,finished_at_date,finished_at_time,confirmed\n"
+    else:
+        header = "id,userid,journey,type,mode,geometry,length,timearray,started_at_date,started_at_time,finished_at_date,finished_at_time,confirmed\n"
+    csvfile.write(header)
+    return csvfile
+
+
 def convertSQLtoWKTraw(dbinname, csvname, basetime, eraser, shift, error, density=1, stepjump=1, geoformat='WKT', personlist=[]):
     conn = open_DB(dbinname)
     coordinate_result, info_result = get_pedestrian_data_from_db(conn, personlist)
     coordinate = coordinate_result.fetchone()
     info = info_result.fetchone()
     # open csvfile
-    with open(csvname, "w") as csvfile:
-        # write heading
-        csvfile.write(
-            "id,userid,type,mode,geometry,length,timearray,started_at_date,started_at_time,finished_at_date,finished_at_time,confirmed\n")
-        # loop through all simulated coordinates
-        stepctr = 0  # for each trip/stay (per person) the steps 1,2,3,...
-        ctr = 0
-        # store first data line as previous data
-        name_prev = coordinate[0]
-        transport_prev = coordinate[1]  # string such as "on foot", "bus", ...
-        simulationstep_prev = coordinate[2]  # min is 1
-        startsimulationstep = simulationstep_prev
-        point_prev = Point(coordinate[4], coordinate[3])  # shapely object
-        lat_prev = coordinate[4]
-        stop_end = None  # variable for end of stop
-        if error:
-            print(f'Errors will be added')
+    raw_format = True
+    csvfile = setup_csv(csvname, raw_format)
+    # loop through all simulated coordinates
+    stepctr = 0  # for each trip/stay (per person) the steps 1,2,3,...
+    ctr = 0
+    # store first data line as previous data
+    name_prev = coordinate[0]
+    transport_prev = coordinate[1]  # string such as "on foot", "bus", ...
+    simulationstep_prev = coordinate[2]  # min is 1
+    startsimulationstep = simulationstep_prev
+    point_prev = Point(coordinate[4], coordinate[3])  # shapely object
+    lat_prev = coordinate[4]
+    stop_end = None  # variable for end of stop
+    if error:
+        print(f'Errors will be added')
+    else:
+        print(f'Simulation Data will be saved without adding errors')
+    transport_trip_prev = transport_prev
+    coordinates = []  # list of all points of a trip/stay'
+    timearr = []  # list of time for every point
+    nr = 0  # consecutive number of trip/stay of one person
+    stop = 0  # counter for stop time
+    erase_prob = eraser_percentages(info[1], eraser)
+    mob_list = ["T", "S", "Ps", "Bs"]  # trip and stay
+    while coordinate:
+        ctr += 1
+        stepctr += 1
+        if ctr % 5000 == 0:
+            print(ctr)
+        # Read current data and check for end of trip or stay
+        name = coordinate[0]
+        transport = coordinate[1]
+        simulationstep = coordinate[2]
+        lat = coordinate[4]
+        point = Point(coordinate[4], coordinate[3])  # shapely object
+        # Getting a stop with time more than 600 sec
+        if lat == lat_prev and name == name_prev and lat_prev != 'inf' and transport_prev == transport:
+            stop += 1
+        elif stop >= 600 and lat != lat_prev:
+            stop_end = True
+            print(f"Stop for {name_prev} at {simulationstep_prev} for {stop}")
         else:
-            print(f'Simulation Data will be saved without adding errors')
-        transport_trip_prev = transport_prev
-        coordinates = []  # list of all points of a trip/stay'
-        timearr = []  # list of time for every point
-        nr = 0  # consecutive number of trip/stay of one person
-        stop = 0  # counter for stop time
-        erase_prob = eraser_percentages(info[1], eraser)
-        mob_list = ["T", "S", "Ps", "Bs"]  # trip and stay
-        while coordinate:
-            ctr += 1
-            stepctr += 1
-            if ctr % 5000 == 0:
-                print(ctr)
-            # Read current data and check for end of trip or stay
-            name = coordinate[0]
-            transport = coordinate[1]
-            simulationstep = coordinate[2]
-            lat = coordinate[4]
-            point = Point(coordinate[4], coordinate[3])  # shapely object
-            # Getting a stop with time more than 600 sec
-            if lat == lat_prev and name == name_prev and lat_prev != 'inf' and transport_prev == transport:
-                stop += 1
-            elif stop >= 600 and lat != lat_prev:
-                stop_end = True
-                print(f"Stop for {name_prev} at {simulationstep_prev} for {stop}")
-            else:
+            stop = 0
+
+        # End trip if
+        # a) user name changes
+        # b) transport mode changes
+        # c) there is a stop with time > 600 (not implemented yet)
+        # d) there is an unreasonable jump in position > 100m (not implemented yet)
+        if name != name_prev or stop_end or transport_prev != transport or simulationstep - simulationstep_prev > density:
+
+            nr += 1
+            if stop_end:
+                if transport_prev != transport_trip_prev or transport_prev == transport_trip_prev or transport_prev != transport:
+                    if simulationstep_prev - stop != startsimulationstep:
+                        # write first trip before stay if stay is 1 activity
+                        mobtype = mob_list[0]
+                        # getting trip data without stay
+                        trip = coordinates[:-stop]
+                        triptime = timearr[:-stop]
+                        trip = density_remove(trip, density)
+                        triptime = density_remove(triptime, density)
+                        if error:
+                            trip, triptime = percentages_remove(trip, triptime, erase_prob)
+                            percent = shift_percentage(transport_prev, shift)
+                            trip = data_shift(trip, percent)
+                        wktstr, length = coordinates2WKT(trip, geoformat)
+                        # adjusting time for trip
+                        simulationstep_prev -= stop + 1
+                        starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+                        endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+                        csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+                        csvfile.write(csvstr)
+                        startsimulationstep = simulationstep_prev + 1
+                        if name != name_prev:
+                            simulationstep_prev += stop + 1
+                        else:
+                            simulationstep_prev = simulationstep - 1
+                        nr += 1
+                mobtype = mob_list[1]
+                # definition of point where stay is
+                stop_end = False
+                timearr = timearr[-stop:]
+                timearr = density_remove(timearr, density)
                 stop = 0
+                wktstr, length = coordinates2WKT([point_prev], geoformat)
+            else:
+                mobtype = mob_list[0]
+                coordinates = density_remove(coordinates, density)
+                timearr = density_remove(timearr, density)
+                if error:
+                    coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+                    percent = shift_percentage(transport_prev, shift)
+                    coordinates = data_shift(coordinates, percent)
+                wktstr, length = coordinates2WKT(coordinates, geoformat)
 
-            # End trip if
-            # a) user name changes
-            # b) transport mode changes
-            # c) there is a stop with time > 600 (not implemented yet)
-            # d) there is an unreasonable jump in position > 100m (not implemented yet)
-            if name != name_prev or stop_end or transport_prev != transport or simulationstep - simulationstep_prev > density:
+            stepctr = 0
+            # Convert time objects into time strings
+            starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+            endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+            if mobtype == mob_list[0]:
+                mode = transport_prev
+            else:
+                mode = ''
+            # NO SPACE AFTER COMMA!
+            csvstr = f'"{nr}","{name_prev}","{mobtype}","{mode}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+            csvfile.write(csvstr)
+            if mobtype == mob_list[3]:
+                journey += 1
+            coordinates = []  # start new trip
+            timearr = []
+            transport_trip_prev = transport_prev
+            coordinates.append(point)
+            timearr.append(simulationstep)
+            if stop >= 600:
+                startsimulationstep = simulationstep_prev
+            else:
+                startsimulationstep = simulationstep
+            # If change of user store current coordinate and reset trip/stay number and change
+            # transport for previous trip
+            if name != name_prev:
+                journey = 1
+                transport_trip_prev = transport
+                info = info_result.fetchone()
 
-                nr += 1
-                if stop_end:
-                    if transport_prev != transport_trip_prev or transport_prev == transport_trip_prev or transport_prev != transport:
-                        if simulationstep_prev - stop != startsimulationstep:
-                            # write first trip before stay if stay is 1 activity
-                            mobtype = mob_list[0]
-                            # getting trip data without stay
-                            trip = coordinates[:-stop]
-                            triptime = timearr[:-stop]
-                            trip = density_remove(trip, density)
-                            triptime = density_remove(triptime, density)
-                            if error:
-                                trip, triptime = percentages_remove(trip, triptime, erase_prob)
-                                percent = shift_percentage(transport_prev, shift)
-                                trip = data_shift(trip, percent)
-                            wktstr, length = coordinates2WKT(trip, geoformat)
-                            # adjusting time for trip
-                            simulationstep_prev -= stop + 1
-                            starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                            endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                            csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-                            csvfile.write(csvstr)
-                            startsimulationstep = simulationstep_prev + 1
-                            if name != name_prev:
-                                simulationstep_prev += stop + 1
-                            else:
-                                simulationstep_prev = simulationstep - 1
-                            nr += 1
-                    mobtype = mob_list[1]
-                    # definition of point where stay is
-                    stop_end = False
-                    timearr = timearr[-stop:]
-                    timearr = density_remove(timearr, density)
-                    stop = 0
-                    wktstr, length = coordinates2WKT([point_prev], geoformat)
-                else:
-                    mobtype = mob_list[0]
-                    coordinates = density_remove(coordinates, density)
-                    timearr = density_remove(timearr, density)
-                    if error:
-                        coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
-                        percent = shift_percentage(transport_prev, shift)
-                        coordinates = data_shift(coordinates, percent)
-                    wktstr, length = coordinates2WKT(coordinates, geoformat)
-
-
-                stepctr = 0
-                # Convert time objects into time strings
-                starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                if mobtype == mob_list[0]:
-                    mode = transport_prev
-                else:
-                    mode = ''
-                # NO SPACE AFTER COMMA!
-                csvstr = f'"{nr}","{name_prev}","{mobtype}","{mode}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-                csvfile.write(csvstr)
-                if mobtype == mob_list[3]:
-                    journey += 1
-                coordinates = []  # start new trip
-                timearr = []
-                transport_trip_prev = transport_prev
+                erase_prob = eraser_percentages(info[1], eraser)
+        else:
+            # consider only every stepjump time the current point
+            if stepctr % stepjump == 0:
                 coordinates.append(point)
                 timearr.append(simulationstep)
-                if stop >= 600:
-                    startsimulationstep = simulationstep_prev
-                else:
-                    startsimulationstep = simulationstep
-                # If change of user store current coordinate and reset trip/stay number and change
-                # transport for previous trip
-                if name != name_prev:
-                    journey = 1
-                    transport_trip_prev = transport
-                    info = info_result.fetchone()
-
-                    erase_prob = eraser_percentages(info[1], eraser)
-            else:
-                # consider only every stepjump time the current point
-                if stepctr % stepjump == 0:
-                    coordinates.append(point)
-                    timearr.append(simulationstep)
-            name_prev = name
-            transport_prev = transport
-            simulationstep_prev = simulationstep
-            point_prev = point
-            lat_prev = lat
-            coordinate = coordinate_result.fetchone()
-        # end of loop, write last trip to file
-        if stop >= 600:
-            print(f"Stop for {name_prev} at time {startsimulationstep} for {simulationstep_prev - stop}")
-            if simulationstep_prev - stop != startsimulationstep:
-                nr += 1
-                mobtype = mob_list[0]
-                # Getting trip data without stay
-                trip = coordinates[:-stop]
-                triptime = timearr[:-stop]
-                trip = density_remove(trip, density)
-                triptime = density_remove(triptime, density)
-                if error:
-                    trip, triptime = percentages_remove(trip, triptime, erase_prob)
-                    percent = shift_percentage(transport_prev, shift)
-                    trip = data_shift(trip, percent)
-                wktstr, length = coordinates2WKT(trip, geoformat)
-
-                # Adjusting time for trip
-                simulationstep_prev -= stop
-                starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-                endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-                csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-                csvfile.write(csvstr)
-                startsimulationstep = simulationstep_prev
-                simulationstep_prev = simulationstep
-            mobtype = mob_list[1]
-            timearr = timearr[-stop:]
-            timearr = density_remove(timearr, density)
-            wktstr, length = coordinates2WKT([point_prev], geoformat)
-        else:
+        name_prev = name
+        transport_prev = transport
+        simulationstep_prev = simulationstep
+        point_prev = point
+        lat_prev = lat
+        coordinate = coordinate_result.fetchone()
+    # end of loop, write last trip to file
+    if stop >= 600:
+        print(f"Stop for {name_prev} at time {startsimulationstep} for {simulationstep_prev - stop}")
+        if simulationstep_prev - stop != startsimulationstep:
+            nr += 1
             mobtype = mob_list[0]
-            coordinates = density_remove(coordinates, density)
-            timearr = density_remove(timearr, density)
+            # Getting trip data without stay
+            trip = coordinates[:-stop]
+            triptime = timearr[:-stop]
+            trip = density_remove(trip, density)
+            triptime = density_remove(triptime, density)
             if error:
-                coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+                trip, triptime = percentages_remove(trip, triptime, erase_prob)
                 percent = shift_percentage(transport_prev, shift)
-                coordinates = data_shift(coordinates, percent)
-            wktstr, length = coordinates2WKT(coordinates, geoformat)
+                trip = data_shift(trip, percent)
+            wktstr, length = coordinates2WKT(trip, geoformat)
 
-        starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
-        endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
-        nr += 1
-        # NO SPACE AFTER COMMA!
-        csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-        if mobtype == mob_list[3]:
-            journey += 1
-        csvfile.write(csvstr)
+            # Adjusting time for trip
+            simulationstep_prev -= stop
+            starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+            endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+            csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+            csvfile.write(csvstr)
+            startsimulationstep = simulationstep_prev
+            simulationstep_prev = simulationstep
+        mobtype = mob_list[1]
+        timearr = timearr[-stop:]
+        timearr = density_remove(timearr, density)
+        wktstr, length = coordinates2WKT([point_prev], geoformat)
+    else:
+        mobtype = mob_list[0]
+        coordinates = density_remove(coordinates, density)
+        timearr = density_remove(timearr, density)
+        if error:
+            coordinates, timearr = percentages_remove(coordinates, timearr, erase_prob)
+            percent = shift_percentage(transport_prev, shift)
+            coordinates = data_shift(coordinates, percent)
+        wktstr, length = coordinates2WKT(coordinates, geoformat)
+
+    starttime, startdate = simulationstep2datetimestr(basetime, startsimulationstep)
+    endtime, enddate = simulationstep2datetimestr(basetime, simulationstep_prev)
+    nr += 1
+    # NO SPACE AFTER COMMA!
+    csvstr = f'"{nr}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{timearr}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+    if mobtype == mob_list[3]:
+        journey += 1
+    csvfile.write(csvstr)
     conn.close()
     print(ctr)
     print("finished")
+
+
+
 
 
 # dump the data of a simulation SQLITE3 db into csv
