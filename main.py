@@ -23,7 +23,7 @@ if 'SUMO_HOME' in os.environ:  # checking the environment for SUMO
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 sumoCmd1 = ["sumo", "-c", "Simulation" + slash_char + "osm.sumocfg", "--device.rerouting.threads", "64",
-            "-W", "--step-log.period", "100", "--emission-output", "emissions.xml"]  # saving directory of the file
+            "-W", "--step-log.period", "100", "--emission-output", "Simulation_Temp/emissions.xml"]  # saving directory of the file
 traci.start(sumoCmd1, label='sim1')  # starting simulation
 
 

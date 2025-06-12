@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-06-12 13:17:18 by Eclipse SUMO sumo Version 1.19.0
+<!-- generated on 2025-06-12 13:23:44 by Eclipse SUMO sumo Version 1.19.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -11,7 +11,7 @@
 
     <output>
         <output-prefix value="output."/>
-        <emission-output value="emissions.xml"/>
+        <emission-output value="Simulation_Temp/emissions.xml"/>
         <summary-output value="Simulation\summary.xml"/>
         <person-summary-output value="Simulation\person.summary.xml"/>
         <tripinfo-output value="Simulation\tripinfo.xml"/>
@@ -72,7 +72,7 @@
     </taxi_device>
 
     <traci_server>
-        <remote-port value="52254"/>
+        <remote-port value="52289"/>
     </traci_server>
 
     <random_number>
