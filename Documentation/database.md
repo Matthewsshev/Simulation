@@ -46,3 +46,7 @@ This table lists all available transport modes within the simulation. Examples i
 
 This table is similar to `pedestrian_data` but specifically for vehicles. In addition to movement data and speed, it includes an extra column:
 * **CO2 production:** Shows the amount of CO2 produced by the vehicle in milligrams per second (mg/s).
+
+---
+DB Schema
+![Image](Img/Db_Schema.jpg)
