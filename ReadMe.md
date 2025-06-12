@@ -103,6 +103,15 @@ Similar to the `eraser` argument, the `shift` argument acts as a **multiplier** 
 * A value less than `1` will apply a lower percentage of shifting (fewer zigzags).
 * **Default Value:** `1.0` (no change to default percentages).
 
+---
+
+## 4. `Density` Parameter
+The `density` parameter is a powerful tool to simulate a more realistic tracking experience. Instead of meticulously saving *every single point* from the database, it intelligently selects a subset. This is crucial because real-world tracking systems don't always capture every infinitesimal movement, leading to a less cluttered and more natural representation of a path.
+The value you set for `density` directly determines the **sampling rate** of the points that are saved:
+
+* For example, if you set `density` to `5`, this means that **only 1 out of every 5 points** from the original data will be saved and included in the final output.
+* A higher `density` value will result in fewer saved points, creating a "sparser" or more generalized path, mimicking systems with lower sampling rates.
+
 **Available Argument:**
 * **`-d`**: Specifies the name of the input database file without the extension.
     * **Default:** `simulation_data_test`
