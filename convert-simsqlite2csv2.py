@@ -45,7 +45,7 @@ def parse_args():
     # Add argument for database name without extension with default value simulation_data_test
     parser.add_argument('-d', type=str, default='simulation_data_test')
     # Add argument for output file (-p) with default value sql2csv
-    parser.add_argument('-o', type=str, default='modular_test')
+    parser.add_argument('-o', type=str, default='Simulation_Temp/modular_test')
     # Add argument for eraser multiplication with default value 1
     parser.add_argument('-e', type=float, default=1)
     # Add argument for shift multiplication with default value 1
