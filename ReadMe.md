@@ -1,6 +1,11 @@
+## The Python script `main.py` 
+This Script used to control the simulation. If you want to update `main.py` all Classes are explained in `Documentation/Config.md`
+## The Python script `convert-simsqlite2csv2.py`
+This Script is designed to convert raw database data into a more usable CSV format.The primary function of this script is to process the raw movement data and categorize it into individual trips and different types of stays, as defined in the `Documentation/Journey_Conf.md` documentation. 
+
 The Python script `main.py` includes a function to parse command-line arguments using the `argparse` module. This allows you to customize the number of trips and persons in the simulation by passing arguments when you run the script.
 
-If you need to change map, public transport, etc. Please read `Sumo_config.md`
+If you need to change map, public transport, etc. Please read `Documentation/Sumo_config.md`
 
 **Available Arguments:**
 
