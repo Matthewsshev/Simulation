@@ -19,7 +19,8 @@ The Osmium tool is essential for processing OSM files. Here's how to install it:
 * Make sure all Git Bash, PowerShell, and CMD instances are closed.
 * Open CMD as an administrator.
 * Inside CMD, type 
-```bash mamba install osmium-tool
+```bash
+mamba install osmium-tool
 ``` 
 * Osmium should be installed and available to use from anywhere in the command line! Just type `osmium --version` to verify the installation.
 
