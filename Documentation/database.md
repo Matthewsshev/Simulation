@@ -25,7 +25,7 @@ This table categorizes individuals based on their type, providing classification
 This table stores movement data specifically for pedestrians. It includes information such as:
 * Person's movement trajectory.
 * Transport mode used (e.g., by foot).
-* Their speed.
+* Their speed in m/s.
 
 ---
 
@@ -44,7 +44,7 @@ This table lists all available transport modes within the simulation. Examples i
 
 ## 5. `vehicle_data`
 
-This table is similar to `pedestrian_data` but specifically for vehicles. In addition to movement data and speed, it includes an extra column:
+This table is similar to `pedestrian_data` but specifically for vehicles. In addition to movement data and speed in m/s, it includes an extra column:
 * **CO2 production:** Shows the amount of CO2 produced by the vehicle in milligrams per second (mg/s).
 
 ---
