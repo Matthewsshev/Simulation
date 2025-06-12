@@ -125,6 +125,20 @@ def initiate_simulation_variables(pedestrian_geo_data_list, pedestrian_personal_
         "mob_list": ["T", "S", "Ps", "Bs"],
         "public_transport_list": ["bus", "trolleybus", "light rail", "train"],
     }
+
+def count_stop_condition(state):
+    if state['lat'] == state['lat_prev'] and state['name'] == state[
+        'name_prev'] and state['lat_prev'] != 'inf' and state['transport_prev'] == \
+            state['transport']:
+        state['stop'] += 1
+    elif state['stop'] >= 600 and state['lat'] != state['lat_prev']:
+        state['stop_end'] = True
+        print(
+            f"Stop for {state['name_prev']} at {state['simulationstep_prev']} for {state['stop']}")
+    else:
+        state['stop'] = 0
+
+# def get_current_row_database_data(state)
 # Convert individual coordinates of all persons in trips and stays in the format WKB.
 # A trip starts or ends when
 # a) there are no previous/later coordinates
@@ -163,13 +177,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
         simulation_state['lat'] = coordinate[4]
         simulation_state['point'] = Point(coordinate[4], coordinate[3])  # shapely object
         # Getting a stop with time more than 600 sec
-        if simulation_state['lat'] == simulation_state['lat_prev'] and simulation_state['name'] == simulation_state['name_prev'] and simulation_state['lat_prev'] != 'inf' and simulation_state['transport_prev'] == simulation_state['transport']:
-            simulation_state['stop'] += 1
-        elif simulation_state['stop'] >= 600 and simulation_state['lat'] != simulation_state['lat_prev']:
-            simulation_state['stop_end'] = True
-            print(f"Stop for {simulation_state['name_prev']} at {simulation_state['simulationstep_prev']} for {simulation_state['stop']}")
-        else:
-            simulation_state['stop'] = 0
+        count_stop_condition(simulation_state)
 
         # End trip if
         # a) user name changes
