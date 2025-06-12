@@ -48,5 +48,5 @@ This table is similar to `pedestrian_data` but specifically for vehicles. In add
 * **CO2 production:** Shows the amount of CO2 produced by the vehicle in milligrams per second (mg/s).
 
 ---
-DB Schema
+# DB Schema
 ![Image](Img/Db_Schema.jpg)
