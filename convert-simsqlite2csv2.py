@@ -138,7 +138,7 @@ def count_stop_condition(state):
     else:
         state['stop'] = 0
 
-def get_current_row_database_data(state, row):
+def set_current_row_database_data(state, row):
     state['ctr'] += 1
     state['stepctr'] += 1
     state['name'] = row[0]
@@ -146,6 +146,19 @@ def get_current_row_database_data(state, row):
     state['simulationstep'] = row[2]
     state['lat'] = row[4]
     state['point'] = Point(row[4], row[3])
+
+def set_previous_row_database_data(state):
+    state['name_prev'] = state['name']
+    state['transport_prev'] = state['transport']
+    state['simulationstep_prev'] = state['simulationstep']
+    state['point_prev'] = state['point']
+    state['lat_prev'] = state['lat']
+
+def change_personal_information_for_new_pedestrian(state, eraser, info):
+    state['journey'] = 1
+    state['transport_trip_prev'] = state['transport']
+    state['info'] = info.fetchone()
+    state['erase_prob'] = eraser_percentages(state['info'][1], eraser)
 # Convert individual coordinates of all persons in trips and stays in the format WKB.
 # A trip starts or ends when
 # a) there are no previous/later coordinates
@@ -174,7 +187,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
     else:
         print(f'Simulation Data will be saved without adding errors')
     while coordinate:
-        get_current_row_database_data(simulation_state, coordinate)
+        set_current_row_database_data(simulation_state, coordinate)
         if simulation_state['ctr'] % 5000 == 0:
             print(simulation_state['ctr'])
         # Getting a stop with time more than 600 sec
@@ -266,20 +279,13 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             # If change of user store current coordinate and reset trip/stay number and change
             # transport for previous trip
             if simulation_state['name'] != simulation_state['name_prev']:
-                simulation_state['journey'] = 1
-                simulation_state['transport_trip_prev'] = simulation_state['transport']
-                simulation_state['info'] = info_result.fetchone()
-                simulation_state['erase_prob'] = eraser_percentages(simulation_state['info'][1], eraser)
+                change_personal_information_for_new_pedestrian(simulation_state, eraser, info_result)
         else:
             # consider only every stepjump time the current point
             if simulation_state['stepctr'] % stepjump == 0:
                 simulation_state['coordinates'].append(simulation_state['point'])
                 simulation_state['timearr'].append(simulation_state['simulationstep'])
-        simulation_state['name_prev'] = simulation_state['name']
-        simulation_state['transport_prev'] = simulation_state['transport']
-        simulation_state['simulationstep_prev'] = simulation_state['simulationstep']
-        simulation_state['point_prev'] = simulation_state['point']
-        simulation_state['lat_prev'] = simulation_state['lat']
+        set_previous_row_database_data(simulation_state)
         coordinate = coordinate_result.fetchone()
     # end of loop, write last trip to file
     if simulation_state['stop'] >= 600:
