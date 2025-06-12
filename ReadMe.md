@@ -89,8 +89,8 @@ The `eraser` argument acts as a **multiplier** to adjust these default percentag
 
 The `shift` parameter (controlled by the `-s` argument) is used to introduce small, realistic variations (zigzags) in the data points by shifting them a few meters. This accounts for minor inaccuracies or natural deviations that can occur in real-life movement tracking (e.g., a person walking slightly off a straight path).
 
-The default percentage for shifting depends on the `transport type`:
-
+The default percentage for points that would be shifted depends on the `transport type`:
+All the points would be shifted randomly. It could be shifted from 0,1 to 9 meters.
 * **Public Transport (`pt`)**: The `max_percentage` for shifting is `0.16` (16%).
 * **`transport_limits` (for other modes):**
     * `car`: `20%`
