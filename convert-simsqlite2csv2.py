@@ -43,7 +43,7 @@ def parse_args():
     # Define argument parser
     parser = argparse.ArgumentParser()
     # Add argument for database name without extension with default value simulation_data_test
-    parser.add_argument('-d', type=str, default='simulation_data_test')
+    parser.add_argument('-d', type=str, default='simulation_data_12_6_2025_4')
     # Add argument for output file (-p) with default value sql2csv
     parser.add_argument('-o', type=str, default='Simulation_Temp/modular_test')
     # Add argument for eraser multiplication with default value 1
@@ -258,7 +258,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             simulation_state['timearr'] = []
             simulation_state['transport_trip_prev'] = simulation_state['transport_prev']
             simulation_state['coordinates'].append(simulation_state['point'])
-            simulation_state['timearr'].append(['simulationstep'])
+            simulation_state['timearr'].append(simulation_state['simulationstep'])
             if simulation_state['stop'] >= 600:
                 simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev']
             else:
