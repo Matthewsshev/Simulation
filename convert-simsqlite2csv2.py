@@ -138,7 +138,14 @@ def count_stop_condition(state):
     else:
         state['stop'] = 0
 
-# def get_current_row_database_data(state)
+def get_current_row_database_data(state, row):
+    state['ctr'] += 1
+    state['stepctr'] += 1
+    state['name'] = row[0]
+    state['transport'] = row[1]
+    state['simulationstep'] = row[2]
+    state['lat'] = row[4]
+    state['point'] = Point(row[4], row[3])
 # Convert individual coordinates of all persons in trips and stays in the format WKB.
 # A trip starts or ends when
 # a) there are no previous/later coordinates
@@ -167,15 +174,9 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
     else:
         print(f'Simulation Data will be saved without adding errors')
     while coordinate:
-        simulation_state['ctr'] += 1
-        simulation_state['stepctr'] += 1
+        get_current_row_database_data(simulation_state, coordinate)
         if simulation_state['ctr'] % 5000 == 0:
             print(simulation_state['ctr'])
-        simulation_state['name'] = coordinate[0]
-        simulation_state['transport'] = coordinate[1]
-        simulation_state['simulationstep'] = coordinate[2]
-        simulation_state['lat'] = coordinate[4]
-        simulation_state['point'] = Point(coordinate[4], coordinate[3])  # shapely object
         # Getting a stop with time more than 600 sec
         count_stop_condition(simulation_state)
 
