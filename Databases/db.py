@@ -10,7 +10,7 @@ def connect_db(name):
         temp = db_name + f'_{i}.db'
         if not os.path.isfile(temp):
             conn = sqlite3.connect(temp)
-            dump_file = 'Documentation/dump.sql'
+            dump_file = 'Databases/dump.sql'
             with open(dump_file, 'r', encoding='utf-8') as f:
                 sql_script = f.read()
                 conn.executescript(sql_script)
