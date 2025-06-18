@@ -45,7 +45,7 @@ def parse_args():
     # Add argument for database name without extension with default value simulation_data_test
     parser.add_argument('-d', type=str, default='simulation_data_12_6_2025_4')
     # Add argument for output file (-p) with default value sql2csv
-    parser.add_argument('-o', type=str, default='Simulation_Temp/modular_test')
+    parser.add_argument('-o', type=str, default='modular_test')
     # Add argument for eraser multiplication with default value 1
     parser.add_argument('-e', type=float, default=1)
     # Add argument for shift multiplication with default value 1
@@ -175,6 +175,11 @@ def add_errors_into_mobility(state, shift):
     percent = shift_percentage(state['transport_prev'], shift)
     state['coordinates'] = data_shift(state['coordinates'], percent)
     print(f'Data shift was done for {state['name_prev']}')
+
+def is_new_mobility(state):
+    return state['name'] != state['name_prev'] or state['stop_end'] or state['transport_prev'] != state['transport'] or state['simulationstep'] - state['simulationstep_prev'] > 1
+def is_stop_time_equals_mobility_time(state):
+    return state['simulationstep_prev'] - state['stop'] != state['startsimulationstep']
 # Convert individual coordinates of all persons in trips and stays in the format WKB.
 # A trip starts or ends when
 # a) there are no previous/later coordinates
@@ -214,37 +219,36 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
         # b) transport mode changes
         # c) there is a stop with time > 600 (not implemented yet)
         # d) there is an unreasonable jump in position > 100m (not implemented yet)
-        if simulation_state['name'] != simulation_state['name_prev'] or simulation_state['stop_end'] or simulation_state['transport_prev'] != simulation_state['transport'] or simulation_state['simulationstep'] - simulation_state['simulationstep_prev'] > 1:
+        if is_new_mobility(simulation_state):
             if distance(simulation_state['point'], simulation_state['point_prev']) > 0.001:
                 print(f'Person {simulation_state['name_prev']} jumping about!')
             simulation_state['nr'] += 1
             if simulation_state['stop_end']:
-                if simulation_state['transport_prev'] != simulation_state['transport_trip_prev'] or simulation_state['transport_prev'] == simulation_state['transport_trip_prev'] or simulation_state['transport_prev'] != simulation_state['transport']:
-                    if simulation_state['simulationstep_prev'] - simulation_state['stop'] != simulation_state['startsimulationstep']:
-                        # write first trip before stay if stay is 1 activity
-                        mobtype = simulation_state['mob_list'][0]
-                        # getting trip data without stay
-                        trip = simulation_state['coordinates'][:-simulation_state['stop']]
-                        triptime = simulation_state['timearr'][:-simulation_state['stop']]
-                        trip = density_remove(trip, density)
-                        triptime = density_remove(triptime, density)
-                        if error:
-                            trip, triptime = percentages_remove(trip, triptime, simulation_state['erase_prob'])
-                            percent = shift_percentage(simulation_state['transport_prev'], shift)
-                            trip = data_shift(trip, percent)
-                        wktstr, length = coordinates2WKT(trip, geoformat)
-                        # adjusting time for trip
-                        simulation_state['simulationstep_prev'] -= simulation_state['stop'] + 1
-                        starttime, startdate = simulationstep2datetimestr(basetime, simulation_state['startsimulationstep'])
-                        endtime, enddate = simulationstep2datetimestr(basetime, simulation_state['simulationstep_prev'])
-                        csvstr = f'"{simulation_state['nr']}","{simulation_state['name_prev']}","{simulation_state['journey']}","{mobtype}","{simulation_state['transport_prev']}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-                        csvfile.write(csvstr)
-                        simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev'] + 1
-                        if simulation_state['name'] != simulation_state['name_prev']:
-                            simulation_state['simulationstep_prev'] += simulation_state['stop'] + 1
-                        else:
-                            simulation_state['simulationstep_prev'] = simulation_state['simulationstep'] - 1
-                        simulation_state['nr'] += 1
+                if is_stop_time_equals_mobility_time:
+                    # write first trip before stay if stay is 1 activity
+                    mobtype = simulation_state['mob_list'][0]
+                    # getting trip data without stay
+                    trip = simulation_state['coordinates'][:-simulation_state['stop']]
+                    triptime = simulation_state['timearr'][:-simulation_state['stop']]
+                    trip = density_remove(trip, density)
+                    triptime = density_remove(triptime, density)
+                    if error:
+                        trip, triptime = percentages_remove(trip, triptime, simulation_state['erase_prob'])
+                        percent = shift_percentage(simulation_state['transport_prev'], shift)
+                        trip = data_shift(trip, percent)
+                    wktstr, length = coordinates2WKT(trip, geoformat)
+                    # adjusting time for trip
+                    simulation_state['simulationstep_prev'] -= simulation_state['stop'] + 1
+                    starttime, startdate = simulationstep2datetimestr(basetime, simulation_state['startsimulationstep'])
+                    endtime, enddate = simulationstep2datetimestr(basetime, simulation_state['simulationstep_prev'])
+                    csvstr = f'"{simulation_state['nr']}","{simulation_state['name_prev']}","{simulation_state['journey']}","{mobtype}","{simulation_state['transport_prev']}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+                    csvfile.write(csvstr)
+                    simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev'] + 1
+                    if simulation_state['name'] != simulation_state['name_prev']:
+                        simulation_state['simulationstep_prev'] += simulation_state['stop'] + 1
+                    else:
+                        simulation_state['simulationstep_prev'] = simulation_state['simulationstep'] - 1
+                    simulation_state['nr'] += 1
 
                 if simulation_state['transport'] in simulation_state['public_transport_list'] and simulation_state['transport_prev'] not in simulation_state['public_transport_list']:
                     mobtype = simulation_state['mob_list'][2]
@@ -432,7 +436,7 @@ def get_pedestrian_data_from_db(conn, personlist=[]):
     return pedestrian_geo_data_result, pedestrian_personal_info_result
 
 def setup_csv(csvname, raw_format):
-    csvfile = open(csvname, 'w')
+    csvfile = open(f'Simulation_Temp/{csvname}','w')
     if raw_format:
         header = "id,userid,type,mode,geometry,length,timearray,started_at_date,started_at_time,finished_at_date,finished_at_time,confirmed\n"
     else:
