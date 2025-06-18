@@ -159,6 +159,22 @@ def change_personal_information_for_new_pedestrian(state, eraser, info):
     state['transport_trip_prev'] = state['transport']
     state['info'] = info.fetchone()
     state['erase_prob'] = eraser_percentages(state['info'][1], eraser)
+
+'''def save_person_activity_into_csv(state, raw):
+    if raw:
+        csvstr = f'"{state["nr"]}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+
+    else:
+        csvstr = f'"{state['nr']}","{state['name_prev']}","{state['journey']}","{mobtype}","{simulation_state['transport_prev']}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+'''
+
+def add_errors_into_mobility(state, shift):
+    state['coordinates'], state['timearr'] = percentages_remove(state['coordinates'],
+                                                                                      state['timearr'],
+                                                                                      state['erase_prob'])
+    percent = shift_percentage(state['transport_prev'], shift)
+    state['coordinates'] = data_shift(state['coordinates'], percent)
+    print(f'Data shift was done for {state['name_prev']}')
 # Convert individual coordinates of all persons in trips and stays in the format WKB.
 # A trip starts or ends when
 # a) there are no previous/later coordinates
@@ -247,10 +263,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 simulation_state['coordinates'] = density_remove(simulation_state['coordinates'], density)
                 simulation_state['timearr'] = density_remove(simulation_state['timearr'], density)
                 if error:
-                    simulation_state['coordinates'], simulation_state['timearr'] = percentages_remove(simulation_state['coordinates'], simulation_state['timearr'], simulation_state['erase_prob'])
-                    percent = shift_percentage(simulation_state['transport_prev'], shift)
-                    simulation_state['coordinates'] = data_shift(simulation_state['coordinates'], percent)
-                    print(f'Data shift was done for {simulation_state['name_prev']}')
+                    add_errors_into_mobility(simulation_state, shift)
 
                 wktstr, length = coordinates2WKT(simulation_state['coordinates'], geoformat)
 
@@ -299,9 +312,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             trip = density_remove(trip, density)
             triptime = density_remove(triptime, density)
             if error:
-                trip, triptime = percentages_remove(trip, triptime, simulation_state['erase_prob'])
-                percent = shift_percentage(simulation_state['transport_prev'], shift)
-                trip = data_shift(trip, percent)
+                add_errors_into_mobility(simulation_state, shift)
             wktstr, length = coordinates2WKT(trip, geoformat)
 
             # Adjusting time for trip
