@@ -224,7 +224,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 print(f'Person {simulation_state['name_prev']} jumping about!')
             simulation_state['nr'] += 1
             if simulation_state['stop_end']:
-                if is_stop_time_equals_mobility_time:
+                if is_stop_time_equals_mobility_time(simulation_state):
                     # write first trip before stay if stay is 1 activity
                     mobtype = simulation_state['mob_list'][0]
                     # getting trip data without stay
