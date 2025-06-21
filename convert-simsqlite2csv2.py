@@ -171,8 +171,14 @@ def set_current_row_database_data(state, row):
     state['lat'] = row[4]
     state['point'] = Point(row[4], row[3])
 
-# def set_current_mobility_data_to_save(sim_state, mob_state):
+def set_current_mobility_data_to_save(sim_state, mob_state, time_state):
+    pass
 
+def adjust_current_mobility_data_to_save(mob_state, sim_state, density):
+    trip = sim_state['coordinates'][:-sim_state['stop']]
+    triptime = sim_state['time_arr'][:-sim_state['stop']]
+    mob_state['wktstr'] = density_remove(trip, density)
+    mob_state['time_arr'] = density_remove(triptime, density)
 def set_previous_row_database_data(state):
     state['name_prev'] = state['name']
     state['transport_prev'] = state['transport']
@@ -197,7 +203,7 @@ def add_errors_into_mobility(state, shift):
 
 def is_new_mobility(state):
     return state['name'] != state['name_prev'] or state['stop_end'] or state['transport_prev'] != state['transport'] or state['simulationstep'] - state['simulationstep_prev'] > 1
-def is_stop_time_equals_mobility_time(state):
+def stop_time_doesnt_equals_mobility_time(state):
     return state['simulationstep_prev'] - state['stop'] != state['startsimulationstep']
 
 def get_mobility_time_range_tuple(basetime, sim_state):
@@ -257,23 +263,20 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 print(f'Person {simulation_state['name_prev']} jumping about!')
             simulation_state['nr'] += 1
             if simulation_state['stop_end']:
-                if is_stop_time_equals_mobility_time(simulation_state):
+                if stop_time_doesnt_equals_mobility_time(simulation_state):
                     # write first trip before stay if stay is 1 activity
                     simulation_state['mobtype'] = simulation_state['mob_list'][0]
                     # getting trip data without stay
-                    trip = simulation_state['coordinates'][:-simulation_state['stop']]
-                    triptime = simulation_state['time_arr'][:-simulation_state['stop']]
-                    trip = density_remove(trip, density)
-                    triptime = density_remove(triptime, density)
+                    adjust_current_mobility_data_to_save(mobility_state, simulation_state, density)
                     if error:
-                        trip, triptime = percentages_remove(trip, triptime, simulation_state['erase_prob'])
+                        trip, triptime = percentages_remove(mobility_state['wktstr'], mobility_state['time_arr'], simulation_state['erase_prob'])
                         percent = shift_percentage(simulation_state['transport_prev'], shift)
                         trip = data_shift(trip, percent)
                     wktstr, length = coordinates2WKT(trip, geoformat)
                     # adjusting time for trip
                     simulation_state['simulationstep_prev'] -= simulation_state['stop'] + 1
                     date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
-                    # set_current_mobility_data_to_save(simulation_state, mobility_state)
+                    # set_current_mobility_data_to_save(simulation_state, mobility_state, date_time_state)
 
                     csvstr = f'"{simulation_state['nr']}","{simulation_state['name_prev']}","{simulation_state['journey']}","{simulation_state['mobtype']}","{simulation_state['transport_prev']}","{wktstr}","{length}","{triptime}","{date_time_state['start_date']}","{date_time_state['start_time']}","{date_time_state['end_date']}","{date_time_state['end_time']}","0"\n'
                     csvfile.write(csvstr)
