@@ -127,6 +127,29 @@ def initiate_simulation_variables(pedestrian_geo_data_list, pedestrian_personal_
         "mobtype": str
     }
 
+
+'''def save_person_activity_into_csv(state, raw):
+    if raw:
+        csvstr = f'"{state["nr"]}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+
+    else:
+        csvstr = f'"{state['nr']}","{state['name_prev']}","{state['journey']}","{mobtype}","{simulation_state['transport_prev']}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
+'''
+def initiate_mobility_variables_to_save(state):
+    return {
+        "row_number": state["nr"],
+        "person_name": state["name_prev"],
+        "mobtype": state["mobtype"],
+        "mobility_transport": state["transport_prev"],
+        "wktstr": str,
+        "length": str,
+        "triptime": state["timearr"],
+        "startdate": str,
+        "starttime": str,
+        "enddate": str,
+        "endtime": str,
+        "confirmed": 0
+    }
 def count_stop_condition(state):
     if state['lat'] == state['lat_prev'] and state['name'] == state[
         'name_prev'] and state['lat_prev'] != 'inf' and state['transport_prev'] == \
@@ -148,6 +171,7 @@ def set_current_row_database_data(state, row):
     state['lat'] = row[4]
     state['point'] = Point(row[4], row[3])
 
+
 def set_previous_row_database_data(state):
     state['name_prev'] = state['name']
     state['transport_prev'] = state['transport']
@@ -161,13 +185,6 @@ def change_personal_information_for_new_pedestrian(state, eraser, info):
     state['info'] = info.fetchone()
     state['erase_prob'] = eraser_percentages(state['info'][1], eraser)
 
-'''def save_person_activity_into_csv(state, raw):
-    if raw:
-        csvstr = f'"{state["nr"]}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-
-    else:
-        csvstr = f'"{state['nr']}","{state['name_prev']}","{state['journey']}","{mobtype}","{simulation_state['transport_prev']}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-'''
 
 def add_errors_into_mobility(state, shift):
     state['coordinates'], state['timearr'] = percentages_remove(state['coordinates'],
@@ -204,12 +221,14 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
     csvfile = setup_csv(csvname, raw_format)
     # loop through all simulated coordinates
     simulation_state = initiate_simulation_variables(coordinate, info, eraser)
+    mobility_state = initiate_mobility_variables_to_save(simulation_state)
     if error:
         print(f'Errors will be added')
     else:
         print(f'Simulation Data will be saved without adding errors')
     while coordinate:
         set_current_row_database_data(simulation_state, coordinate)
+
         if simulation_state['ctr'] % 5000 == 0:
             print(simulation_state['ctr'])
         # Getting a stop with time more than 600 sec
