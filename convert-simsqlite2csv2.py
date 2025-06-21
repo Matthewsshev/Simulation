@@ -142,6 +142,7 @@ def initiate_mobility_variables_to_save(state):
         "mobtype": state["mobtype"],
         "mobility_transport": state["transport_prev"],
         "wktstr": str,
+        "coordinates": str,
         "length": str,
         "triptime": state["time_arr"],
         "startdate": str,
@@ -177,7 +178,7 @@ def set_current_mobility_data_to_save(sim_state, mob_state, time_state):
 def adjust_current_mobility_data_to_save(mob_state, sim_state, density):
     trip = sim_state['coordinates'][:-sim_state['stop']]
     triptime = sim_state['time_arr'][:-sim_state['stop']]
-    mob_state['wktstr'] = density_remove(trip, density)
+    mob_state['coordinates'] = density_remove(trip, density)
     mob_state['time_arr'] = density_remove(triptime, density)
 def set_previous_row_database_data(state):
     state['name_prev'] = state['name']
@@ -269,7 +270,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                     # getting trip data without stay
                     adjust_current_mobility_data_to_save(mobility_state, simulation_state, density)
                     if error:
-                        trip, triptime = percentages_remove(mobility_state['wktstr'], mobility_state['time_arr'], simulation_state['erase_prob'])
+                        trip, triptime = percentages_remove(mobility_state['coordinates'], mobility_state['time_arr'], simulation_state['erase_prob'])
                         percent = shift_percentage(simulation_state['transport_prev'], shift)
                         trip = data_shift(trip, percent)
                     wktstr, length = coordinates2WKT(trip, geoformat)
