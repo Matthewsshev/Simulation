@@ -128,13 +128,16 @@ def initiate_simulation_variables(pedestrian_geo_data_list, pedestrian_personal_
     }
 
 
-'''def save_person_activity_into_csv(state, raw):
-    if raw:
-        csvstr = f'"{state["nr"]}","{name_prev}","{mobtype}","{transport_prev}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-
+def save_person_activity_into_csv(sim_state, date_state, mob_state, raw, csvfile):
+    if sim_state['mobtype'] == sim_state['mob_list'][0]:
+        mode = sim_state['transport_prev']
     else:
-        csvstr = f'"{state['nr']}","{state['name_prev']}","{state['journey']}","{mobtype}","{simulation_state['transport_prev']}","{wktstr}","{length}","{triptime}","{startdate}","{starttime}","{enddate}","{endtime}","0"\n'
-'''
+        mode = ''
+    if raw:
+        csvstr = f'"{sim_state["nr"]}","{sim_state['name_prev']}","{sim_state["mobtype"]}","{mode}","{mob_state['wktstr']}","{mob_state['length']}","{date_state['start_date']}","{date_state['start_time']}","{date_state['end_date']}","{date_state['end_time']}","0"\n'
+    else:
+        csvstr = f'"{sim_state['nr']}","{sim_state['name_prev']}","{sim_state['journey']}","{sim_state['mobtype']}","{mode}","{mob_state['wktstr']}","{mob_state['length']}","{mob_state['triptime']}","{date_state['start_date']}","{date_state['start_time']}","{date_state['end_date']}","{date_state['end_time']}","0"\n'
+    csvfile.write(csvstr)
 def initiate_mobility_variables_to_save(state):
     return {
         "row_number": state["nr"],
@@ -143,7 +146,7 @@ def initiate_mobility_variables_to_save(state):
         "mobility_transport": state["transport_prev"],
         "wktstr": str,
         "coordinates": [],
-        "length": str,
+        "length": int,
         "triptime": state["time_arr"],
         "startdate": str,
         "starttime": str,
@@ -176,13 +179,11 @@ def set_current_mobility_data_to_save(sim_state, mob_state, time_state):
     pass
 
 def adjust_current_mobility_data_to_save(mob_state, sim_state, density):
-    mob_state['coordinates'] = sim_state['coordinates']
-    mob_state['triptime'] = sim_state['time_arr']
-    trip = mob_state['coordinates'][:-sim_state['stop']]
-    triptime = mob_state['triptime'][:-sim_state['stop']]
+
+    trip = sim_state['coordinates'][:-sim_state['stop']]
+    triptime = sim_state['time_arr'][:-sim_state['stop']]
     mob_state['coordinates'] = density_remove(trip, density)
     mob_state['triptime'] = density_remove(triptime, density)
-    print(f'{sim_state['stop']}  {len(sim_state['coordinates'])}')
 
 
 def set_previous_row_database_data(state):
@@ -276,14 +277,13 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                     adjust_current_mobility_data_to_save(mobility_state, simulation_state, density)
                     if error:
                         add_errors_into_mobility(simulation_state, mobility_state, shift)
-                    wktstr, length = coordinates2WKT(mobility_state['coordinates'], geoformat)
+                    mobility_state['wktstr'], mobility_state['length'] = coordinates2WKT(mobility_state['coordinates'], geoformat)
                     # adjusting time for trip
                     simulation_state['simulationstep_prev'] -= simulation_state['stop'] + 1
                     date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
                     # set_current_mobility_data_to_save(simulation_state, mobility_state, date_time_state)
 
-                    csvstr = f'"{simulation_state['nr']}","{simulation_state['name_prev']}","{simulation_state['journey']}","{simulation_state['mobtype']}","{simulation_state['transport_prev']}","{wktstr}","{length}","{mobility_state['triptime']}","{date_time_state['start_date']}","{date_time_state['start_time']}","{date_time_state['end_date']}","{date_time_state['end_time']}","0"\n'
-                    csvfile.write(csvstr)
+                    save_person_activity_into_csv(simulation_state, date_time_state,mobility_state, raw_format, csvfile)
                     simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev'] + 1
                     if simulation_state['name'] != simulation_state['name_prev']:
                         simulation_state['simulationstep_prev'] += simulation_state['stop'] + 1
@@ -303,7 +303,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 # definition of point where stay is
                 simulation_state['stop_end'] = False
                 simulation_state['stop'] = 0
-                wktstr, length = coordinates2WKT([simulation_state['point_prev']], geoformat)
+                mobility_state['wktstr'], mobility_state['length'] = coordinates2WKT([simulation_state['point_prev']], geoformat)
             else:
                 simulation_state['mobtype'] = simulation_state['mob_list'][0]
                 simulation_state['coordinates'] = density_remove(simulation_state['coordinates'], density)
@@ -313,18 +313,15 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                     mobility_state['triptime'] = simulation_state['time_arr']
                     add_errors_into_mobility(simulation_state, mobility_state, shift)
 
-                wktstr, length = coordinates2WKT(simulation_state['coordinates'], geoformat)
+                mobility_state['wktstr'], mobility_state['length'] = coordinates2WKT(simulation_state['coordinates'], geoformat)
 
             simulation_state['stepctr'] = 0
             # Convert time objects into time strings
             date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
-            if simulation_state['mobtype'] == simulation_state['mob_list'][0]:
-                mode = simulation_state['transport_prev']
-            else:
-                mode = ''
-            # NO SPACE AFTER COMMA!
-            csvstr = f'"{simulation_state['nr']}","{simulation_state['name_prev']}","{simulation_state['journey']}","{simulation_state['mobtype']}","{mode}","{wktstr}","{length}","{simulation_state['time_arr']}","{date_time_state['start_date']}","{date_time_state['start_time']}","{date_time_state['end_date']}","{date_time_state['end_time']}","0"\n'
-            csvfile.write(csvstr)
+            mobility_state['coordinates'] = simulation_state['coordinates']
+            mobility_state['triptime'] = simulation_state['time_arr']
+            save_person_activity_into_csv(simulation_state, date_time_state, mobility_state, raw_format, csvfile)
+
             if simulation_state['mobtype'] == simulation_state['mob_list'][3]:
                 simulation_state['journey'] += 1
             simulation_state['coordinates'] = []  # start new trip
@@ -357,14 +354,14 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             adjust_current_mobility_data_to_save(mobility_state, simulation_state, density)
             if error:
                 add_errors_into_mobility(simulation_state, mobility_state, shift)
-            wktstr, length = coordinates2WKT(mobility_state['coordinates'], geoformat)
+            mobility_state['wktstr'], mobility_state['length'] = coordinates2WKT(mobility_state['coordinates'],
+                                                                                 geoformat)
             # adjusting time for trip
             simulation_state['simulationstep_prev'] -= simulation_state['stop'] + 1
             date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
             # set_current_mobility_data_to_save(simulation_state, mobility_state, date_time_state)
 
-            csvstr = f'"{simulation_state['nr']}","{simulation_state['name_prev']}","{simulation_state['journey']}","{simulation_state['mobtype']}","{simulation_state['transport_prev']}","{wktstr}","{length}","{mobility_state['triptime']}","{date_time_state['start_date']}","{date_time_state['start_time']}","{date_time_state['end_date']}","{date_time_state['end_time']}","0"\n'
-            csvfile.write(csvstr)
+            save_person_activity_into_csv(simulation_state, date_time_state, mobility_state, raw_format, csvfile)
             simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev'] + 1
             if simulation_state['name'] != simulation_state['name_prev']:
                 simulation_state['simulationstep_prev'] += simulation_state['stop'] + 1
@@ -385,7 +382,8 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
         # definition of point where stay is
         simulation_state['stop_end'] = False
         simulation_state['stop'] = 0
-        wktstr, length = coordinates2WKT([simulation_state['point_prev']], geoformat)
+        mobility_state['wktstr'], mobility_state['length'] = coordinates2WKT([simulation_state['point_prev']],
+                                                                             geoformat)
     else:
         simulation_state['mobtype'] = simulation_state['mob_list'][0]
         simulation_state['coordinates'] = density_remove(simulation_state['coordinates'], density)
@@ -395,18 +393,14 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             mobility_state['triptime'] = simulation_state['time_arr']
             add_errors_into_mobility(simulation_state, mobility_state, shift)
 
-        wktstr, length = coordinates2WKT(simulation_state['coordinates'], geoformat)
+        mobility_state['wktstr'], mobility_state['length'] = coordinates2WKT(simulation_state['coordinates'], geoformat)
 
     simulation_state['stepctr'] = 0
     # Convert time objects into time strings
     date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
-    if simulation_state['mobtype'] == simulation_state['mob_list'][0]:
-        mode = simulation_state['transport_prev']
-    else:
-        mode = ''
-    # NO SPACE AFTER COMMA!
-    csvstr = f'"{simulation_state['nr']}","{simulation_state['name_prev']}","{simulation_state['journey']}","{simulation_state['mobtype']}","{mode}","{wktstr}","{length}","{simulation_state['time_arr']}","{date_time_state['start_date']}","{date_time_state['start_time']}","{date_time_state['end_date']}","{date_time_state['end_time']}","0"\n'
-    csvfile.write(csvstr)
+    mobility_state['coordinates'] = simulation_state['coordinates']
+    mobility_state['triptime'] = simulation_state['time_arr']
+    save_person_activity_into_csv(simulation_state, date_time_state, mobility_state, raw_format, csvfile)
     conn.close()
     print(simulation_state['ctr'])
     print("finished")
