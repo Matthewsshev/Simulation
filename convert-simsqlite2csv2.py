@@ -206,6 +206,10 @@ def set_previous_row_database_data(state):
     state['point_prev'] = state['point']
     state['lat_prev'] = state['lat']
 
+
+def add_data_into_mobility(sim_state):
+    sim_state['coordinates'].append(sim_state['point'])
+    sim_state['time_arr'].append(sim_state['simulationstep'])
 def change_personal_information_for_new_pedestrian(state, eraser, info):
     state['journey'] = 1
     state['transport_trip_prev'] = state['transport']
@@ -342,8 +346,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
         else:
             # consider only every stepjump time the current point
             if simulation_state['stepctr'] % stepjump == 0:
-                simulation_state['coordinates'].append(simulation_state['point'])
-                simulation_state['time_arr'].append(simulation_state['simulationstep'])
+                add_data_into_mobility(simulation_state)
         set_previous_row_database_data(simulation_state)
         coordinate = coordinate_result.fetchone()
     # end of loop, write last trip to file
