@@ -187,6 +187,18 @@ def adjust_current_mobility_data_to_save(mob_state, sim_state, density):
     mob_state['triptime'] = density_remove(triptime, density)
 
 
+def set_new_mobility(sim_state):
+    sim_state['coordinates'] = []  # start new trip
+    sim_state['time_arr'] = []
+    sim_state['transport_trip_prev'] = sim_state['transport_prev']
+    sim_state['coordinates'].append(sim_state['point'])
+    sim_state['time_arr'].append(sim_state['simulationstep'])
+    if sim_state['stop'] >= 600:
+        sim_state['startsimulationstep'] = sim_state['simulationstep_prev']
+    else:
+        sim_state['startsimulationstep'] = sim_state['simulationstep']
+
+
 def set_previous_row_database_data(state):
     state['name_prev'] = state['name']
     state['transport_prev'] = state['transport']
@@ -322,15 +334,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
 
             if simulation_state['mobtype'] == simulation_state['mob_list'][3]:
                 simulation_state['journey'] += 1
-            simulation_state['coordinates'] = []  # start new trip
-            simulation_state['time_arr'] = []
-            simulation_state['transport_trip_prev'] = simulation_state['transport_prev']
-            simulation_state['coordinates'].append(simulation_state['point'])
-            simulation_state['time_arr'].append(simulation_state['simulationstep'])
-            if simulation_state['stop'] >= 600:
-                simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev']
-            else:
-                simulation_state['startsimulationstep'] = simulation_state['simulationstep']
+            set_new_mobility(simulation_state)
             # If change of user store current coordinate and reset trip/stay number and change
             # transport for previous trip
             if simulation_state['name'] != simulation_state['name_prev']:
