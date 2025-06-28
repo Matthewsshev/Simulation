@@ -207,6 +207,16 @@ def set_previous_row_database_data(state):
     state['lat_prev'] = state['lat']
 
 
+def change_step_and_number_variables_after_additional_mobility(sim_state):
+    prev_name = sim_state['name_prev']
+    name = sim_state['name']
+    stop = sim_state['stop']
+    simulation_step = sim_state['simulationstep']
+    if name != prev_name:
+        sim_state['simulationstep_prev'] += stop + 1
+    else:
+        sim_state['simulationstep_prev'] = simulation_step - 1
+    sim_state['nr'] += 1
 def add_data_into_mobility(sim_state):
     sim_state['coordinates'].append(sim_state['point'])
     sim_state['time_arr'].append(sim_state['simulationstep'])
@@ -315,14 +325,8 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                     date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
                     save_person_activity_into_csv(simulation_state, date_time_state,mobility_state, raw_format, csvfile)
                     simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev'] + 1
-                    if simulation_state['name'] != simulation_state['name_prev']:
-                        simulation_state['simulationstep_prev'] += simulation_state['stop'] + 1
-                    else:
-                        simulation_state['simulationstep_prev'] = simulation_state['simulationstep'] - 1
-                    simulation_state['nr'] += 1
-
+                    change_step_and_number_variables_after_additional_mobility(simulation_state)
                 get_stay_type(simulation_state, raw_format)
-                print(f' {len(simulation_state["time_arr"])}  {simulation_state["stop"]}')
                 simulation_state['time_arr'] = simulation_state['time_arr'][-simulation_state['stop']:]
                 simulation_state['time_arr'] = density_remove(simulation_state['time_arr'], density)
                 # definition of point where stay is
@@ -336,15 +340,12 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 if error:
                     set_current_mobility_data_to_save(simulation_state, mobility_state)
                     add_errors_into_mobility(simulation_state, mobility_state, shift)
-
                 mobility_state['wktstr'], mobility_state['length'] = coordinates2WKT(simulation_state['coordinates'], geoformat)
-
             simulation_state['stepctr'] = 0
             # Convert time objects into time strings
             date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
             set_current_mobility_data_to_save(simulation_state, mobility_state)
             save_person_activity_into_csv(simulation_state, date_time_state, mobility_state, raw_format, csvfile)
-
             if simulation_state['mobtype'] == simulation_state['mob_list'][3]:
                 simulation_state['journey'] += 1
             set_new_mobility(simulation_state)
@@ -383,7 +384,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
             simulation_state['nr'] += 1
 
         get_stay_type(simulation_state, raw_format)
-        print(f' {len(simulation_state["time_arr"])}  {simulation_state["stop"]}')
         simulation_state['time_arr'] = simulation_state['time_arr'][-simulation_state['stop']:]
         simulation_state['time_arr'] = density_remove(simulation_state['time_arr'], density)
         # definition of point where stay is
