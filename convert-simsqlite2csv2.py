@@ -227,9 +227,26 @@ def add_errors_into_mobility(sim_state, mob_state, shift):
 
 def is_new_mobility(state):
     return state['name'] != state['name_prev'] or state['stop_end'] or state['transport_prev'] != state['transport'] or state['simulationstep'] - state['simulationstep_prev'] > 1
+
+
 def stop_time_doesnt_equals_mobility_time(state):
     return state['simulationstep_prev'] - state['stop'] != state['startsimulationstep']
 
+
+def get_stay_type(sim_state, raw):
+    transport = sim_state['transport']
+    transport_prev = sim_state['transport_prev']
+    stop_duration = sim_state['stop']
+    mob_list = sim_state['mob_list']
+    public_transport = sim_state['public_transport_list']
+    if raw:
+        sim_state['mobtype'] = mob_list[1]
+    elif transport in public_transport and transport_prev not in public_transport:
+        sim_state['mobtype'] = mob_list[2]
+    elif stop_duration <= 3600:
+        sim_state['mobtype'] = mob_list[1]
+    else:
+        sim_state['mobtype'] = mob_list[3]
 def get_mobility_time_range_tuple(basetime, sim_state):
     start_time, start_date = simulationstep2datetimestr(basetime, sim_state['startsimulationstep'])
     end_time, end_date = simulationstep2datetimestr(basetime, sim_state['simulationstep_prev'])
@@ -271,12 +288,10 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
         print(f'Simulation Data will be saved without adding errors')
     while coordinate:
         set_current_row_database_data(simulation_state, coordinate)
-
         if simulation_state['ctr'] % 5000 == 0:
             print(simulation_state['ctr'])
         # Getting a stop with time more than 600 sec
         count_stop_condition(simulation_state)
-
         # End trip if
         # a) user name changes
         # b) transport mode changes
@@ -298,7 +313,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                     # adjusting time for trip
                     simulation_state['simulationstep_prev'] -= simulation_state['stop'] + 1
                     date_time_state = get_mobility_time_range_tuple(basetime, simulation_state)
-
                     save_person_activity_into_csv(simulation_state, date_time_state,mobility_state, raw_format, csvfile)
                     simulation_state['startsimulationstep'] = simulation_state['simulationstep_prev'] + 1
                     if simulation_state['name'] != simulation_state['name_prev']:
@@ -307,12 +321,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                         simulation_state['simulationstep_prev'] = simulation_state['simulationstep'] - 1
                     simulation_state['nr'] += 1
 
-                if simulation_state['transport'] in simulation_state['public_transport_list'] and simulation_state['transport_prev'] not in simulation_state['public_transport_list']:
-                    simulation_state['mobtype'] = simulation_state['mob_list'][2]
-                elif simulation_state['stop'] <= 3600:
-                    simulation_state['mobtype'] = simulation_state['mob_list'][1]
-                else:
-                    simulation_state['mobtype'] = simulation_state['mob_list'][3]
+                get_stay_type(simulation_state, raw_format)
                 print(f' {len(simulation_state["time_arr"])}  {simulation_state["stop"]}')
                 simulation_state['time_arr'] = simulation_state['time_arr'][-simulation_state['stop']:]
                 simulation_state['time_arr'] = density_remove(simulation_state['time_arr'], density)
@@ -373,13 +382,7 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, density=1
                 simulation_state['simulationstep_prev'] = simulation_state['simulationstep'] - 1
             simulation_state['nr'] += 1
 
-        if simulation_state['transport'] in simulation_state['public_transport_list'] and simulation_state[
-            'transport_prev'] not in simulation_state['public_transport_list']:
-            simulation_state['mobtype'] = simulation_state['mob_list'][2]
-        elif simulation_state['stop'] <= 3600:
-            simulation_state['mobtype'] = simulation_state['mob_list'][1]
-        else:
-            simulation_state['mobtype'] = simulation_state['mob_list'][3]
+        get_stay_type(simulation_state, raw_format)
         print(f' {len(simulation_state["time_arr"])}  {simulation_state["stop"]}')
         simulation_state['time_arr'] = simulation_state['time_arr'][-simulation_state['stop']:]
         simulation_state['time_arr'] = density_remove(simulation_state['time_arr'], density)
