@@ -246,6 +246,7 @@ def stop_time_doesnt_equals_mobility_time(state):
     return state['simulationstep_prev'] - state['stop'] != state['startsimulationstep']
 
 
+
 def get_stay_type(sim_state, raw):
     transport = sim_state['transport']
     transport_prev = sim_state['transport_prev']
@@ -272,6 +273,17 @@ def get_mobility_time_range_tuple(basetime, sim_state):
         "time_arr": time_arr
     }
 
+def prepare_the_data_to_be_processed(dbinname, personlist, csvname, eraser, raw_format):
+    conn = open_DB(dbinname)
+    coordinate_result, info_result = get_pedestrian_data_from_db(conn, personlist)
+    coordinate = coordinate_result.fetchone()
+    info = info_result.fetchone()
+    # open csvfile
+    csvfile = setup_csv(csvname, raw_format)
+    # loop through all simulated coordinates
+    simulation_state = initiate_simulation_variables(coordinate, info, eraser)
+    mobility_state = initiate_mobility_variables_to_save(simulation_state)
+    return conn, coordinate, coordinate_result, info_result, mobility_state, simulation_state, csvfile
 def process_and_save_current_mobility(simulation_state, mobility_state, basetime, eraser, shift, error, density, geoformat, raw_format, csvfile, info_result):
     if distance(simulation_state['point'], simulation_state['point_prev']) > 0.001:
         print(f'Person {simulation_state['name_prev']} jumping about!')
@@ -334,16 +346,7 @@ def process_and_save_current_mobility(simulation_state, mobility_state, basetime
 # 1000 persons x 1 trip = 70128 KB WKB, 80180 KB WKT (-13% WKB vs WKT)
 
 def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, raw_format, density=1, stepjump=1, geoformat='WKT', personlist=[]):
-    conn = open_DB(dbinname)
-    coordinate_result, info_result = get_pedestrian_data_from_db(conn, personlist)
-    coordinate = coordinate_result.fetchone()
-    info = info_result.fetchone()
-    raw_format = False
-    # open csvfile
-    csvfile = setup_csv(csvname, raw_format)
-    # loop through all simulated coordinates
-    simulation_state = initiate_simulation_variables(coordinate, info, eraser)
-    mobility_state = initiate_mobility_variables_to_save(simulation_state)
+    conn, coordinate, coordinate_result, info_result, mobility_state, simulation_state, csvfile = prepare_the_data_to_be_processed(dbinname, personlist, csvname, eraser, raw_format)
     if error:
         print(f'Errors will be added')
     else:
@@ -371,7 +374,6 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, raw_forma
     if simulation_state['stop'] >= 600:
         simulation_state['stop_end'] = True
     process_and_save_current_mobility(simulation_state, mobility_state, basetime, eraser, shift, error, density, geoformat, raw_format, csvfile, info_result)
-
     conn.close()
     print(simulation_state['ctr'])
     print("finished")
