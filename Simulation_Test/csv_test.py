@@ -11,9 +11,17 @@ def compare_files(file1, file2):
     rows2 = read_csv(file2)
 
     if rows1 == rows2:
-        return True
+        return True, [], []  # Files are identical, no differences
     else:
-        return False
+        # Convert lists of tuples to sets for efficient difference finding
+        set1 = set(rows1)
+        set2 = set(rows2)
+
+        # Find rows unique to each file
+        diff_in_file1 = sorted(list(set1 - set2))  # Rows present in file1 but not file2
+        diff_in_file2 = sorted(list(set2 - set1))  # Rows present in file2 but not file1
+
+        return False, diff_in_file1, diff_in_file2
 
 def parse_args():
     # Define argument parser
@@ -29,11 +37,31 @@ def main():
     new_file_for_comparison = args.m
     old_file_to_compare_with = args.s
 
-    result = compare_files(new_file_for_comparison, old_file_to_compare_with)
+    result, diff_in_new, diff_in_old = compare_files(new_file_for_comparison, old_file_to_compare_with)
     if result:
-        print('All tests passed ✅')
+        print('All tests passed ✅ - Files are identical.')
     else:
-        print('Some tests failed ❌')
+        print('Some tests failed ❌ - Files are different.')
+        if diff_in_new is None and diff_in_old is None:
+            print("Comparison could not be performed due to file reading errors.")
+        else:
+            quit()
+            if diff_in_new:
+                print(f"\n--- Rows unique to '{new_file_for_comparison}' (not in '{old_file_to_compare_with}') ---")
+                for i, row in enumerate(diff_in_new):
+                    print(f"  Row {i + 1}: {dict(row)}")  # Convert tuple back to dict for readability
+            else:
+                print(f"\n--- No unique rows found in '{new_file_for_comparison}' ---")
+
+            if diff_in_old:
+                print(f"\n--- Rows unique to '{old_file_to_compare_with}' (not in '{new_file_for_comparison}') ---")
+                for i, row in enumerate(diff_in_old):
+                    print(f"  Row {i + 1}: {dict(row)}")  # Convert tuple back to dict for readability
+            else:
+                print(f"\n--- No unique rows found in '{old_file_to_compare_with}' ---")
+
 
 if __name__ == '__main__':
     main()
+
+
