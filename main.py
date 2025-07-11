@@ -523,7 +523,7 @@ class Human:  # creating a human class for retrieving information
         """ Static method, that will save all object information so that previous information could be loaded.
          Using for this given list of people that was created earlier.
                 """
-        with open(filename, 'wb') as f:
+        with open(f'Simulation_Temp{filename}.pkl', 'wb') as f:
             pickle.dump(data, f)
 
     @staticmethod
@@ -647,7 +647,11 @@ def main():
     Worker.work = Worker.work.sample(n=n)
     if save_obj:
         print('Loading persons')
-        humans = Human.load_state('Instruction/state.pkl')
+        try:
+            humans = Human.load_state('Simulation_Temp/state.pkl')
+        except FileNotFoundError:
+            print('No persons loaded, because the File does not exist')
+            quit()
         for human in humans:
             Human.delete_trips(human)
     else:
@@ -661,7 +665,7 @@ def main():
     t22.start()
     t3 = Thread(target=Human.save_humans(humans, conn))
     t3.start()
-    Human.save_state('state.pkl', humans)
+    Human.save_state('state', humans)
     traci.close()
     traci.start(sumoCmd1, label='sim2')  # starting second simulation
     traci.switch('sim2')
