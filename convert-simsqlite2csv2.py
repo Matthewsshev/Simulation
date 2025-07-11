@@ -5,6 +5,7 @@
 # Dominik Schoop, 25.02.2024
 import random
 import sys
+import os
 import csv
 import datetime
 import binascii # hexlify
@@ -37,6 +38,8 @@ while True:
 
 # open SQLITE3 database
 def open_DB(dbname):
+    if not(os.path.exists(dbname)):
+        sys.exit(f"Database with name {dbname} does not exist.")
     con = sqlite3.connect(dbname)
     return con
 def parse_args():
