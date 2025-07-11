@@ -88,11 +88,6 @@ class Trip:
 
     @staticmethod
     def get_allowed(edge):  # creating a function that will append lists of allowed lane
-        '''for lane in traci.lane.getIDList():
-            if traci.lane.getEdgeID(lane) == edge:
-                print(f'edge {edge} lane {lane} Lane number {traci.edge.getLaneNumber(edge)}')
-                res = traci.lane.getAllowed(lane)
-                '''
         res = []
         for i in range(0, 6):
             lane = f'{edge}_{i}'
@@ -298,75 +293,6 @@ class Trip:
             with open("Simulation/data.rou.xml", "w") as save:
                 save.write(formatted_xml)
         print(f'Trip creation is finished')
-    """@staticmethod
-    def createTrips(durations, csvname):
-        data = []
-        # Read data from 'fakePerson.csv'
-        with open('fakePerson.csv', newline='') as csvfile:
-            spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-            # Store each row as a string in the 'data' list
-            for row in spamreader:
-                data.append(','.join(row))
-
-        # Create a list to store person objects
-        person = []
-        # Append two Worker objects to the 'person' list
-        person.append(Worker('Fake'))
-        person.append(Worker('Check'))
-
-        c = 1
-        # Open the output CSV file for writing
-        with open(csvname, "w") as csvfile:
-            csvfile.write("name,trip, time,lon,lat\n")
-            # Iterate over each row in the 'data' list
-            for row in data:
-                # Split the row string into a list of elements
-                temp = row.split(',')
-                # Remove leading and trailing double quotes from each element in the 'temp' list
-                temp = [element.strip('"') for element in temp]
-                # If the second element of 'temp' is 't', indicating a trip
-                if temp[1] == 't':
-                    # Convert start and end coordinates to edge IDs
-                    edgeStart = traci.simulation.convertRoad(float(temp[2]), float(temp[3]), isGeo=True)
-                    edgeEnd = traci.simulation.convertRoad(float(temp[6]), float(temp[7]), isGeo=True)
-                    print(f'Check start {Trip.convert_edge_to_gps(edgeStart[0])}  real {temp[2]}  {temp[3]}')
-                    print(f'Check end {Trip.convert_edge_to_gps(edgeEnd[0])}  real {temp[6]}  {temp[7]}')
-
-                    # Find intermodal route (public transport) between start and end edges
-                    edges = traci.simulation.findIntermodalRoute(edgeStart[0], edgeEnd[0], modes='car')
-                    print(f'Trips {edges}')
-                    if edges:
-                        # Iterate over each Stage object in the 'edges' list
-                        for i in range(len(edges)):
-                            # Iterate over each edge in the current Stage object
-                            for edge in edges[i].edges:
-                                # Get lane shape and write to CSV
-                                # lane = Trip.get_lane(edge)
-                                res = Trip.convert_edge_to_gps(edge)
-                                csvfile.write(f'{person[0].name}, {temp[0]}, {c}, {res[0]}, {res[1]}\n')
-                                c += 1
-                    # Assign trip to person
-                    person[0].assign_trip(edgeStart[0], edgeEnd[0])
-                else:
-                    # Calculate duration of non-trip
-                    start_time = datetime.strptime(temp[5], '%H:%M:%S')
-                    end_time = datetime.strptime(temp[9], '%H:%M:%S')
-                    duration = (end_time - start_time).total_seconds()
-                    # Ensure duration is non-negative
-                    if duration < 0:
-                        duration = duration + 86400  # Add a day in seconds
-                    # Increment counter by duration
-                    c += duration
-                    # Append duration to 'durations' list
-                    durations.append([temp[0], duration])
-        # Calculate and print sum of durations
-        sum = 0
-        for i, dur in durations:
-            sum += dur
-        print(f"Quantity {sum}")
-        # Create trips for person objects
-        Trip.create_trips(person, 5, durations)
-    """
     @staticmethod
     def pedestrian_retrieval(connection):
         # function will retrieve information of a person movement in every simulation step
