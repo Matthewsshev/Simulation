@@ -284,6 +284,12 @@ def prepare_the_data_to_be_processed(dbinname, personlist, csvname, eraser, raw_
     simulation_state = initiate_simulation_variables(coordinate, info, eraser)
     mobility_state = initiate_mobility_variables_to_save(simulation_state)
     return conn, coordinate, coordinate_result, info_result, mobility_state, simulation_state, csvfile
+
+def adding_error_message(error):
+    if error:
+        print(f'Errors will be added')
+    else:
+        print(f'Simulation Data will be saved without adding errors')
 def process_and_save_current_mobility(simulation_state, mobility_state, basetime, eraser, shift, error, density, geoformat, raw_format, csvfile, info_result):
     if distance(simulation_state['point'], simulation_state['point_prev']) > 0.001:
         print(f'Person {simulation_state['name_prev']} jumping about!')
@@ -347,10 +353,7 @@ def process_and_save_current_mobility(simulation_state, mobility_state, basetime
 
 def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, raw_format, density=1, stepjump=1, geoformat='WKT', personlist=[]):
     conn, coordinate, coordinate_result, info_result, mobility_state, simulation_state, csvfile = prepare_the_data_to_be_processed(dbinname, personlist, csvname, eraser, raw_format)
-    if error:
-        print(f'Errors will be added')
-    else:
-        print(f'Simulation Data will be saved without adding errors')
+    adding_error_message(error)
     while coordinate:
         set_current_row_database_data(simulation_state, coordinate)
         if simulation_state['ctr'] % 5000 == 0:
