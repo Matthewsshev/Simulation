@@ -35,13 +35,13 @@ while True:
     except OverflowError:
         maxInt = int(maxInt/10)
 
-
 # open SQLITE3 database
 def open_DB(dbname):
     if not(os.path.exists(dbname)):
         sys.exit(f"Database with name {dbname} does not exist.")
     con = sqlite3.connect(dbname)
     return con
+
 def parse_args():
     # Define argument parser
     parser = argparse.ArgumentParser()
@@ -64,6 +64,7 @@ def parse_args():
 # Convert simulation step into datetime string starting at a base time
 # basetime = string of format dd.mm.yyyy hh:mm:ss
 # simulationstep = string of integer, starting at 1
+
 def simulationstep2datetimestr(basetimestr, simulationstepstr):
     timeformat = "%Y-%m-%d %H:%M:%S"
     basetime = datetime.datetime.strptime(basetimestr, timeformat)
@@ -73,7 +74,6 @@ def simulationstep2datetimestr(basetimestr, simulationstepstr):
     time = new_time.time()
     date = new_time.date()
     return time, date
-
 
 # Construct from a list of Points a string in WKT or WKB format
 def coordinates2WKT(coordinates, geoformat="WKT"):
@@ -130,7 +130,6 @@ def initiate_simulation_variables(pedestrian_geo_data_list, pedestrian_personal_
         "mobtype": str
     }
 
-
 def save_person_activity_into_csv(sim_state, date_state, mob_state, raw, csvfile):
     if sim_state['mobtype'] == sim_state['mob_list'][0]:
         mode = sim_state['transport_prev']
@@ -141,6 +140,7 @@ def save_person_activity_into_csv(sim_state, date_state, mob_state, raw, csvfile
     else:
         csvstr = f'"{sim_state['nr']}","{sim_state['name_prev']}","{sim_state['journey']}","{sim_state['mobtype']}","{mode}","{mob_state['wktstr']}","{mob_state['length']}","{mob_state['triptime']}","{date_state['start_date']}","{date_state['start_time']}","{date_state['end_date']}","{date_state['end_time']}","0"\n'
     csvfile.write(csvstr)
+
 def initiate_mobility_variables_to_save(state):
     return {
         "row_number": state["nr"],
@@ -157,6 +157,7 @@ def initiate_mobility_variables_to_save(state):
         "endtime": str,
         "confirmed": 0
     }
+
 def count_stop_condition(state):
     if state['lat'] == state['lat_prev'] and state['name'] == state[
         'name_prev'] and state['lat_prev'] != 'inf' and state['transport_prev'] == \
@@ -183,12 +184,10 @@ def set_current_mobility_data_to_save(sim_state, mob_state):
     mob_state['triptime'] = sim_state['time_arr']
 
 def adjust_current_mobility_data_to_save(mob_state, sim_state, density):
-
     trip = sim_state['coordinates'][:-sim_state['stop']]
     triptime = sim_state['time_arr'][:-sim_state['stop']]
     mob_state['coordinates'] = density_remove(trip, density)
     mob_state['triptime'] = density_remove(triptime, density)
-
 
 def set_new_mobility(sim_state):
     sim_state['coordinates'] = []  # start new trip
@@ -201,14 +200,12 @@ def set_new_mobility(sim_state):
     else:
         sim_state['startsimulationstep'] = sim_state['simulationstep']
 
-
 def set_previous_row_database_data(state):
     state['name_prev'] = state['name']
     state['transport_prev'] = state['transport']
     state['simulationstep_prev'] = state['simulationstep']
     state['point_prev'] = state['point']
     state['lat_prev'] = state['lat']
-
 
 def change_step_and_number_variables_after_additional_mobility(sim_state):
     prev_name = sim_state['name_prev']
@@ -220,15 +217,16 @@ def change_step_and_number_variables_after_additional_mobility(sim_state):
     else:
         sim_state['simulationstep_prev'] = simulation_step - 1
     sim_state['nr'] += 1
+
 def add_data_into_mobility(sim_state):
     sim_state['coordinates'].append(sim_state['point'])
     sim_state['time_arr'].append(sim_state['simulationstep'])
+
 def change_personal_information_for_new_pedestrian(state, eraser, info):
     state['journey'] = 1
     state['transport_trip_prev'] = state['transport']
     state['info'] = info.fetchone()
     state['erase_prob'] = eraser_percentages(state['info'][1], eraser)
-
 
 def add_errors_into_mobility(sim_state, mob_state, shift):
     mob_state['coordinates'], mob_state['triptime'] = percentages_remove(mob_state['coordinates'],
@@ -241,11 +239,8 @@ def add_errors_into_mobility(sim_state, mob_state, shift):
 def is_new_mobility(state):
     return state['name'] != state['name_prev'] or state['stop_end'] or state['transport_prev'] != state['transport'] or state['simulationstep'] - state['simulationstep_prev'] > 1
 
-
 def stop_time_doesnt_equals_mobility_time(state):
     return state['simulationstep_prev'] - state['stop'] != state['startsimulationstep']
-
-
 
 def get_stay_type(sim_state, raw):
     transport = sim_state['transport']
@@ -261,6 +256,7 @@ def get_stay_type(sim_state, raw):
         sim_state['mobtype'] = mob_list[1]
     else:
         sim_state['mobtype'] = mob_list[3]
+
 def get_mobility_time_range_tuple(basetime, sim_state):
     start_time, start_date = simulationstep2datetimestr(basetime, sim_state['startsimulationstep'])
     end_time, end_date = simulationstep2datetimestr(basetime, sim_state['simulationstep_prev'])
@@ -290,6 +286,7 @@ def adding_error_message(error):
         print(f'Errors will be added')
     else:
         print(f'Simulation Data will be saved without adding errors')
+
 def process_and_save_current_mobility(simulation_state, mobility_state, basetime, eraser, shift, error, density, geoformat, raw_format, csvfile, info_result):
     if distance(simulation_state['point'], simulation_state['point_prev']) > 0.001:
         print(f'Person {simulation_state['name_prev']} jumping about!')
@@ -338,6 +335,7 @@ def process_and_save_current_mobility(simulation_state, mobility_state, basetime
     # transport for previous trip
     if simulation_state['name'] != simulation_state['name_prev']:
         change_personal_information_for_new_pedestrian(simulation_state, eraser, info_result)
+
 # Convert individual coordinates of all persons in trips and stays in the format WKB.
 # A trip starts or ends when
 # a) there are no previous/later coordinates
@@ -350,7 +348,6 @@ def process_and_save_current_mobility(simulation_state, mobility_state, basetime
 # Therefore, with the parameter stepjump only every xth coordinate can be considered here.
 # 5 persons x 1 trip = 124 KB WKB, 141 KB WKT (-13% WKB vs WKT)
 # 1000 persons x 1 trip = 70128 KB WKB, 80180 KB WKT (-13% WKB vs WKT)
-
 def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, raw_format, density=1, stepjump=1, geoformat='WKT', personlist=[]):
     conn, coordinate, coordinate_result, info_result, mobility_state, simulation_state, csvfile = prepare_the_data_to_be_processed(dbinname, personlist, csvname, eraser, raw_format)
     adding_error_message(error)
@@ -381,21 +378,14 @@ def convertSQLtoWKT(dbinname, csvname, basetime, eraser, shift, error, raw_forma
     print(simulation_state['ctr'])
     print("finished")
 
-
-
-
-
-
 def eraser_percentages(occupation, multiplier):
     occupation_limits = {
         "Pupil": (0.07, 0.15),
         "Student": (0.05, 0.1),
         "Worker": (0.1, 0.2)
     }
-
     min_val, max_val = occupation_limits.get(occupation, (0.2, 0.3))
     return random.uniform(min_val, max_val) * multiplier
-
 
 def percentages_remove(lst, tarr, percentage):
     # Calculate the number of items to remove
@@ -413,10 +403,8 @@ def percentages_remove(lst, tarr, percentage):
             start_index = (start_index - 1) % (len(arr) - 1)
     return arr, tarr
 
-
 def density_remove(arr, density):
     return [arr[i] for i in [0, *range(density - 1, len(arr) - 1, density), len(arr) - 1] if i < len(arr)]
-
 
 def data_shift(lst, percentage):
     max_shift = 0.00009
@@ -428,7 +416,6 @@ def data_shift(lst, percentage):
         lst[idx] = Point(lst[idx].x + lon, lst[idx].y + lat)
     return lst
 
-
 def shift_percentage(transport, multiplier):
     pt = ['trolleybus', 'bus', 'light rail', 'train']
     transport_limits = {
@@ -438,7 +425,6 @@ def shift_percentage(transport, multiplier):
     }
     max_percentage = 0.16 if transport in pt else transport_limits.get(transport, 0.08)
     return random.uniform(0, max_percentage * multiplier)
-
 
 def get_pedestrian_data_from_db(conn, personlist=[]):
     cur = conn.cursor()  # to read data
@@ -511,7 +497,6 @@ def dumpdb2csv(dbname, csvname, personlist=[]):
     con.close()
     print(ctr)
     print("finished")
-
 
 def main():
     # stepjump = n only takes ever n-th point, reduces size
